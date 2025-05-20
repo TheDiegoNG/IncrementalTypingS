@@ -1,0 +1,87 @@
+<section id="upgradesMenu" class="menu upgrades-menu">
+  <div class="tree-zone" #treeWrapper>
+    <svg
+      class="upgrade-tree"
+      [attr.viewBox]="viewBox"
+      (mousedown)="startPan($event)"
+      (mousemove)="pan($event)"
+      (mouseup)="endPan()"
+      (mouseleave)="endPan()"
+      (wheel)="zoom($event)"
+      preserveAspectRatio="xMidYMid meet"
+    >
+      @for (upgrade of upgrades; track $index) { @for (parentId of
+      upgrade.parents; track $index) {
+      <line
+        *ngIf="getUpgradeById(parentId) as parent"
+        [attr.x1]="parent.x"
+        [attr.y1]="parent.y"
+        [attr.x2]="upgrade.x"
+        [attr.y2]="upgrade.y"
+        stroke="#aaa"
+        stroke-width="2"
+      />
+      } } @for (upgrade of upgrades; track $index) {
+      <g (click)="selectUpgrade(upgrade)" style="cursor: pointer">
+        <!-- Rectángulo con bordes redondeados -->
+        <rect
+          [attr.x]="upgrade.x - 60"
+          [attr.y]="upgrade.y - 30"
+          width="140"
+          height="60"
+          rx="12"
+          ry="12"
+          [attr.fill]="isUnlocked(upgrade.id) ? '#88c070' : '#555'"
+          stroke="#ccc"
+          stroke-width="2"
+        ></rect>
+
+        <!-- Nombre del upgrade -->
+        <text
+          [attr.x]="upgrade.x + 10"
+          [attr.y]="upgrade.y - 5"
+          text-anchor="middle"
+          font-size="10"
+          fill="#fff"
+        >
+          {{ upgrade.name }}
+        </text>
+
+        <!-- Costo -->
+        <text
+          [attr.x]="upgrade.x + 10"
+          [attr.y]="upgrade.y + 15"
+          text-anchor="middle"
+          font-size="11"
+          fill="#111"
+        >
+          Cost: {{ upgrade.cost | exponentialNumber }}
+        </text>
+      </g>
+
+      }
+    </svg>
+  </div>
+  @if (selectedUpgrade) {
+  <div class="description-zone">
+    <mat-card appearance="outlined" class="description-card">
+      <mat-card-header>
+        <mat-card-title>{{ selectedUpgrade.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <i>{{ selectedUpgrade.description }}</i>
+        <p class="bonus-description">Bonus: {{selectedUpgrade.bonus}}</p>
+        <p class="cost-description">Cost: {{ selectedUpgrade.cost | exponentialNumber }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          [disabled]="!canUnlock(selectedUpgrade)"
+          (click)="onUpgradeClick(selectedUpgrade)"
+        >
+          Buy!
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  }
+</section>

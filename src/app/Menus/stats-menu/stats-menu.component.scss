@@ -1,0 +1,26 @@
+@import "../../../shared/shared.scss";
+
+.stats-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--small-custom-text);
+}
+
+.stats-wrapper > p {
+  margin: 1rem 0;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--small-custom-text);
+  width: 20vw;
+}
+
+.chart-container {
+  width: 30vw;
+}

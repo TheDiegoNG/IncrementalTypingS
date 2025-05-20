@@ -1,0 +1,21 @@
+<section id="cardsMenu" class="menu">
+    <div id="cardsHeaderContainer">
+        @for (pack of packService.packs; track $index) {
+            <div class="cardsButton" (click)="getPack(pack.type)" >
+                @if (isCardPackUnlocked(pack)) {
+                    <div class="cardsHeaderContainer">
+                        <button class="cardsButton">Get a Pack! | Cost: {{pack.cost | exponentialNumber}}</button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <p id="cardBonus" class="cardBonus"> {{ this.cardService.getBonus() }}</p>
+    <div id="cardsContainer" class="cardsContainer">
+        @for (card of this.gameService.game().cards; track $index) {
+            <div [ngClass]="getCardType(card)" class="normalCard" [attr.data-tooltip]="card.description">
+                {{card.name}}
+            </div>
+        }
+    </div>
+</section>

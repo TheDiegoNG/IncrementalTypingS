@@ -1,0 +1,66 @@
+.words-container {
+    color: rgba(150, 150, 150, 0.5);
+    font-size: var(--small-custom-text);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    white-space: nowrap;
+    gap: 3rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .words-container > :first-child,
+    .words-container > :last-child {
+        display: none;
+    }
+
+    .words-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 425px) {
+    .words-container > :nth-child(1),
+    .words-container > :nth-child(2),
+    .words-container > :nth-last-child(1),
+    .words-container > :nth-last-child(2) {
+        display: none;
+    }
+
+    .words-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.word-to-guess-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.word-to-guess {
+    color: white;
+    text-shadow: 0 0 0.25em currentColor;
+    font-size: var(--big-custom-text);
+    margin: 0;
+}
+
+.word-to-guess-wrapper {
+    transition: transform 100ms ease-in-out;
+    animation: background-pan 2s linear infinite;
+    background: linear-gradient(to right, gray, white, gray);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+.word-to-guess-wrapper.expand {
+    transform: scale(1.3);
+}

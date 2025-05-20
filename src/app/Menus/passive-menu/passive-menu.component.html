@@ -1,0 +1,36 @@
+<section id="passiveMenu" class="menu">
+  <div id="PassivePointsWrapper" class="passivePointsWrapper">
+    <div id="PassivePointsLeft" class="passivePointsLeft">
+      <p id="passivePointsWord" class="passivePointsWord">
+        {{ passiveService.passiveWord() }}
+      </p>
+      <p id="passivePoints" class="passivePoints">
+        {{ gameService.game().passivePoints | exponentialNumber }}
+      </p>
+    </div>
+
+    <div id="PassivePointsRight" class="passivePointsRight">
+      @for (generator of generators; track $index) { @if
+      (shouldDisplayGenerator(generator.id)) {
+
+      <div class="passivePointsGenerator" (click)="BuyGenerator(generator.id)">
+        <p>
+          {{ generator.name }} | Generators:
+          {{ generator.amountGained | exponentialNumber }} (Bought:
+          {{ generator.amountBought }}) | Cost:
+          {{ generator.cost | exponentialNumber }}
+        </p>
+      </div>
+      }
+      <button
+        id="GeneratorButton"
+        class="generatorButton"
+        (click)="BuyGeneratorTier()"
+      >
+        Buy the next Tier of Generators! | Cost
+        {{ nextTierGeneratorsCost() | exponentialNumber }}
+      </button>
+      }
+    </div>
+  </div>
+</section>

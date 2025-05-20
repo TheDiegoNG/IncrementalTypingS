@@ -1,0 +1,147 @@
+.menu { 
+    margin: 1rem;
+  }
+  
+  .hoverEffectContainer:hover > .hoverEffectChild {
+    opacity: 0.3;
+    cursor: default;
+  }
+  
+  .hoverEffectContainer:hover > .hoverEffectChild:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .hoverEffectChild {
+    transition: opacity 400ms ease;
+    transition: transform 50ms ease-in;
+  }
+  
+  .commonCard {
+    border: 5px solid gray;
+    background: gray;
+    color: var(--black-900);
+  }
+  
+  .uncommonCard {
+    border: 5px solid var(--green);
+    background: var(--green);
+    color: var(--black-900);
+  }
+  
+  .brokenCard {
+    border: 5px solid black;
+    background: black;
+    color: white;
+  }
+  
+  .rareCard {
+    border: 5px solid var(--primary-400);
+    background: var(--primary-400);
+    color: var(--black-900);
+  }
+  
+  .epicCard {
+    border: 5px solid var(--fucsia);
+    background: linear-gradient(to bottom, var(--fucsia), var(--black-900), var(--fucsia));
+    color: var(--fucsia);
+  }
+  
+  .legendaryCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--golden);
+    background: linear-gradient(to bottom, var(--golden), var(--black-900), var(--golden));
+    background-size: 200%;
+    color: rgb(240, 240, 240);
+  }
+  
+  .mythicalCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--silver);
+    background: linear-gradient(to bottom, var(--silver), var(--black-900), var(--silver));
+    background-size: 200%;
+    color: white;
+  }
+  
+  .celestialCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--primary-200);
+    background: linear-gradient(to bottom, var(--primary-700), var(--primary-400), var(--primary-700));
+    background-size: 200%;
+    color: var(--primary-200);
+  }
+  
+  .divineCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--black-900);
+    background: linear-gradient(to bottom, var(--light-yellow), var(--goldenrod), var(--dark-brown), var(--black-900), var(--dark-brown), var(--goldenrod), var(--light-yellow));
+    background-size: 200%;
+    color: white;
+  }
+  
+  .ultimateCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--accent-600);
+    background: linear-gradient(to bottom, var(--accent-600), var(--black-900), var(--accent-600));
+    background-size: 200%;
+    color: rgb(240, 240, 240);
+  }
+  
+  .infiniteCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--black-900);
+    background: linear-gradient(to bottom right, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background-size: 200%;
+    color: white;
+  }
+  
+  .omnipotentCard {
+    animation: background-pan 2s linear infinite;
+    border: 5px solid var(--black-900);
+    background: linear-gradient(to right, var(--green), var(--primary-400), var(--golden), var(--fucsia), var(--green));
+    background-size: 200%;
+    color: black;
+  }
+  
+  @keyframes background-pan {
+    from {
+      background-position-x: 0%;
+    }
+  
+    to {
+      background-position-x: -200%;
+    }
+  }
+  
+  
+  @keyframes background-pan-y {
+    from {
+      background-position-y: 0%;
+    }
+  
+    to {
+      background-position-y: -200%;
+    }
+  }
+  
+  @keyframes scale {
+    from,
+    to {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(180deg);
+    }
+  }
+  

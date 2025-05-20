@@ -1,0 +1,19 @@
+
+.word-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .wordbox {
+    background-color: transparent;
+    border-radius: 50px;
+    border-color: rgb(120, 120, 120);
+    color: white;
+    width: clamp(5rem, 20vw, 50rem);
+    font-size: var(--medium-custom-text);
+    font-family: var(--primary-font);
+    padding-left: 2rem;
+  }
+  

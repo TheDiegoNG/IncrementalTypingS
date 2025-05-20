@@ -1,0 +1,125 @@
+<section>
+  <div class="module-wrapper">
+    <div
+      class="module"
+      [ngClass]="{ 'hidden-module': !this.modulesService.scrabbleModuleAvailable }"
+    >
+      <div
+        class="module-overlay"
+        [@fadeOut]="!this.modulesService.scrabbleModuleBought ? 'visible' : 'hidden'"
+        (click)="this.modulesService.buyScrabbleModule()"
+      >
+        Cost: 1e+9
+      </div>
+      <div class="scrabble-module-desc">
+        <div class="text-wrapper">
+          <p>Scrabble Module</p>
+          <div class="vertical-line"></div>
+          <p>Enhance every letter separately!</p>
+          <div class="vertical-line"></div>
+          <p>Cost: The Bonus in Prestige Points!</p>
+        </div>
+        <div class="buttonTierWrapper">
+          @for (bonus of this.modulesService.lettersBonus; track $index) {
+          <div>
+            <button (click)="this.activeService.buyLetterTier($index)">
+              Tier {{ $index + 1 }}
+            </button>
+            <p>{{ bonus }}</p>
+          </div>
+          }
+          <mat-icon
+            matTooltip="Tier 1: a-e-i-o-u-l-n-s-t-r | Tier 2: d-g | Tier 3: b-c-m-p | Tier 4: f-h-v-w-y | Tier 5: k | Tier 6: j-x | Tier 7: q-z | Tier 8: Special Characters"
+            matTooltipPosition="right"
+            matTooltipDelay="500"
+            >info</mat-icon
+          >
+        </div>
+      </div>
+      <div class="enhance-wrapper">
+        <!-- <button>
+            <p>Enhance everything!</p>
+            <p>Cost: 500</p>
+          </button> -->
+      </div>
+    </div>
+    <div
+      class="module"
+      [ngClass]="{ 'hidden-module': !this.modulesService.synergyModuleAvailable }"
+    >
+      <div
+        class="module-overlay"
+        [@fadeOut]="!this.modulesService.synergyModuleBought ? 'visible' : 'hidden'"
+        (click)="this.modulesService.buySynergyModule()"
+      >
+        Cost: 1e+12
+      </div>
+      <hr />
+      <div class="scrabble-module-desc">
+        <div>
+          <p>Synergy Module</p>
+          <p>Enhance the synergy</p>
+          <p>between generators!</p>
+          <p>Costs Passive Points</p>
+        </div>
+        <div class="buttonTierWrapper">
+          @for (generator of this.modulesService.generators; track $index) {
+          <button (click)="this.modulesService.buySynergyValue(generator)">
+            G{{ $index + 1 }} | Cost:
+            {{ generator.synergyCost | exponentialNumber }} | SV:
+            {{ generator.synergyValue }}
+          </button>
+          }
+        </div>
+      </div>
+      <hr />
+      <!-- <button>
+          Enhance Everything by 1.3!
+          <p>Cost: 100</p>
+        </button> -->
+    </div>
+    <div
+      class="module-two"
+      [ngClass]="{ 'hidden-module': !this.modulesService.mergeModuleAvailable }"
+    >
+      <div
+        class="module-overlay"
+        [@fadeOut]="!this.modulesService.mergeModuleBought ? 'visible' : 'hidden'"
+        (click)="this.modulesService.buyMergeModule()"
+      >
+        Cost: 1e+15
+      </div>
+      <div class="scrabble-module-desc">
+        <div class="text-wrapper">
+          <p>Merge Module</p>
+          <div class="vertical-line"></div>
+          <p>Merge Cards!</p>
+          <div class="vertical-line"></div>
+          <p>
+            You need {{ this.modulesService.mergeAmount }} repeated cards to merge them to a better
+            Tier!
+          </p>
+          <div class="vertical-line"></div>
+          <button (click)="this.cardService.reduceMergeCost()">
+            <p>Reduce Merge Amount!</p>
+            <p>Reach: {{ this.modulesService.mergeCardsCost }} | Cards: {{ this.modulesService.totalCards }}</p>
+            <p class="red">ALL YOUR CARDS WILL BE RESET</p>
+          </button>
+        </div>
+      </div>
+      <div class="merge-wrapper">
+        @for (card of this.modulesService.cards; track $index) {
+        <div class="card-wrapper">
+          <div [ngClass]="getCardType(card)" class="card-merge">
+            {{ card.description }}
+          </div>
+          <p>Amount: {{ getCardsAmount(card) }}</p>
+          @if (canMerge(card)) {
+          <button (click)="this.modulesService.mergeCard(card)">Merge!</button>
+          }
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

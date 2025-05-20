@@ -1,0 +1,37 @@
+@import '../../shared/shared.scss';
+
+
+.menuButton {
+  font-size: var(--medium-custom-text);
+}
+
+.tabsContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 0 2rem;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  margin-top: 1rem;
+}
+
+.tabsContainer::-webkit-scrollbar {
+  height: 3px;
+}
+
+.tabsContainer::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(80, 80, 80, 0.75);
+}
+
+.game-wrapper {
+    display: flex;
+    width: 70%;
+    gap: 1rem;
+}
+
+.options-wrapper {
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}

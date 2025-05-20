@@ -1,0 +1,32 @@
+@import '../../../shared/shared.scss';
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: var(--small-custom-text);
+  }
+  
+  .fontContainer,
+  .languageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .fontContainer > p,
+  .languageContainer > p {
+    margin: 1rem;
+  }
+  
+  .fontSelector,
+  .languageSelector {
+    appearance: none;
+    pointer-events: none;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    font-family: var(--primary-font);
+    border: none;
+  }
+  

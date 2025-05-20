@@ -1,1 +1,277 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@300&family=Montserrat:wght@100;400;600&family=Nabla&family=Raleway:wght@100&family=Saira+Condensed:wght@900&family=Source+Code+Pro&display=swap");
+// @import '~primeng/resources/themes/saga-blue/theme.css';
+// @import 'primeng/resources/primeng.min.css';
+// @import './toast-styles';
+
+html {
+    width: 100%;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --xsmall-custom-text: 1rem;
+    --small-custom-text: clamp(1rem, 1vw, 2rem);
+    --medium-custom-text: clamp(1.5rem, 2vw, 5rem);
+    --medium-big-custom-text: clamp(2rem, 4vw, 6rem);
+    --big-custom-text: clamp(2rem, 7vw, 10rem);
+    --black-900: rgb(20, 20, 20);
+    --silver: rgb(192, 192, 192);
+    --golden: rgb(237, 203, 177);
+    --green: hsl(92, 55%, 40%);
+    --dark-green: hsl(92, 55%, 20%);
+    --fucsia: rgb(170, 62, 152);
+    --dark-purple: rgb(48, 25, 52);
+    --light-yellow: rgb(255, 255, 237);
+    --goldenrod: rgb(218, 165, 32);
+    --dark-brown: rgb(92, 64, 51);
+    --primary-font: "Montserrat", sans-serif;
+    --secondary-font: 'Karla', sans-serif;
+    --primary-900: hsl(214, 41%, 10%);
+    --primary-800: hsl(214, 41%, 20%);
+    --primary-700: hsl(214, 41%, 30%);
+    --primary-600: hsl(214, 41%, 40%);
+    --primary-500: hsl(214, 41%, 50%);
+    --primary-400: hsl(214, 41%, 60%);
+    --primary-300: hsl(214, 41%, 70%);
+    --primary-200: hsl(214, 41%, 80%);
+    --primary-100: hsl(214, 41%, 90%);
+    --accent-800: hsl(359, 100%, 20%);
+    --accent-600: hsl(359, 100%, 40%);
+    --accent-300: hsl(359, 100%, 70%);
+    --accent-100: hsl(359, 100%, 90%);
+  }
+
+body {
+    background: hsl(224, 32%, 12%);
+    background-image: conic-gradient(
+        from 0deg at 50% 50%,
+        var(--black-900),
+        var(--primary-700),
+        var(--primary-400),
+        var(--primary-400),
+        var(--primary-700),
+        var(--black-900)
+    );
+    background-size: 200%;
+    background-blend-mode: multiply;
+    animation: background-pan 30s linear infinite;
+    margin: 0;
+    padding: 0;
+    color: white;
+    min-block-size: 100dvh;
+    font-family: var(--primary-font);
+    user-select: none;
+    overflow-x: hidden;
+    transition: opacity 500ms ease;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+body::-webkit-scrollbar {
+    height: 3px;
+}
+
+.body::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(80, 80, 80, 0.75);
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    border-color: transparent;
+    font-family: var(--primary-font);
+  }
+
+  .highlight {
+    color: var(--fucsia);
+  }
+
+@keyframes background-pan {
+    from {
+      background-position: 0% center;
+    }
+  
+    to {
+      background-position: -200% center;
+    }
+  }
+  
+  @keyframes scale {
+    from,
+    to {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(180deg);
+    }
+  }
+  
+  .menu { 
+    margin: 1rem;
+  }
+  
+  .hoverEffectContainer:hover > .hoverEffectChild {
+    opacity: 0.3;
+    cursor: default;
+  }
+  
+  .hoverEffectContainer:hover > .hoverEffectChild:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  
+  .hoverEffectChild {
+    transition: opacity 400ms ease;
+    transition: transform 50ms ease-in;
+  }
+  
+  .commonCard {
+    border: 5px solid gray;
+    background: gray;
+    color: var(--black-900);
+  }
+  
+  .uncommonCard {
+    border: 5px solid var(--green);
+    background: var(--green);
+    color: var(--black-900);
+  }
+  
+  .brokenCard {
+    border: 5px solid black;
+    background: black;
+    color: white;
+  }
+  
+  .rareCard {
+    border: 5px solid var(--primary-400);
+    background: var(--primary-400);
+    color: var(--black-900);
+  }
+  
+  .epicCard {
+    border: 5px solid var(--fucsia);
+    background: linear-gradient(to bottom, var(--fucsia), var(--black-900), var(--fucsia));
+    color: var(--fucsia);
+  }
+  
+  .legendaryCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--golden);
+    background: linear-gradient(to bottom, var(--golden), var(--black-900), var(--golden));
+    background-size: 200%;
+    color: rgb(240, 240, 240);
+  }
+  
+  .mythicalCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--silver);
+    background: linear-gradient(to bottom, var(--silver), var(--black-900), var(--silver));
+    background-size: 200%;
+    color: white;
+  }
+  
+  .celestialCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--primary-200);
+    background: linear-gradient(to bottom, var(--primary-700), var(--primary-400), var(--primary-700));
+    background-size: 200%;
+    color: var(--primary-200);
+  }
+  
+  .divineCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--black-900);
+    background: linear-gradient(to bottom, var(--light-yellow), var(--goldenrod), var(--dark-brown), var(--black-900), var(--dark-brown), var(--goldenrod), var(--light-yellow));
+    background-size: 200%;
+    color: white;
+  }
+  
+  .ultimateCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--accent-600);
+    background: linear-gradient(to bottom, var(--accent-600), var(--black-900), var(--accent-600));
+    background-size: 200%;
+    color: rgb(240, 240, 240);
+  }
+  
+  .infiniteCard {
+    animation: background-pan-y 2s linear infinite;
+    border: 5px solid var(--black-900);
+    background: linear-gradient(to bottom right, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background-size: 200%;
+    color: white;
+  }
+  
+  .omnipotentCard {
+    animation: background-pan 2s linear infinite;
+    border: 5px solid var(--black-900);
+    background: linear-gradient(to right, var(--green), var(--primary-400), var(--golden), var(--fucsia), var(--green));
+    background-size: 200%;
+    color: black;
+  }
+  
+  @keyframes background-pan {
+    from {
+      background-position-x: 0%;
+    }
+  
+    to {
+      background-position-x: -200%;
+    }
+  }
+  
+  
+  @keyframes background-pan-y {
+    from {
+      background-position-y: 0%;
+    }
+  
+    to {
+      background-position-y: -200%;
+    }
+  }
+  
+  @keyframes scale {
+    from,
+    to {
+      transform: scale(0);
+    }
+  
+    50% {
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(180deg);
+    }
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

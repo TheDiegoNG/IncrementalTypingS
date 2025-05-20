@@ -1,0 +1,46 @@
+<section id="activeMenu" class="upgrades-container menu">
+  <div class="multiUpgradesButtons">
+    @for (multiUpgrade of this.gameService.game().multiUpgrades; track $index) {
+    <div
+      class="multiUpgrade"
+      (click)="AddMultiUpgrade(multiUpgrade.id)"
+    >
+      <p class="multiUpgradeName">{{ multiUpgrade.name }}</p>
+      <p class="multiUpgradeDesc">{{ multiUpgrade.description }}</p>
+      <p>{{ multiUpgrade.cost | exponentialNumber }}</p>
+    </div>
+    }
+  </div>
+  <div class="upgradeTypeWrapper">
+    <div class="upgrades-list">
+      @for (upgrade of this.upgradeService.getScoreUpgrades(); track $index) {
+      <button
+        class="upgrade-square"
+        (click)="this.upgradeService.getScoreUpgrade(upgrade.id)"
+        [class.active]="isUpgradeActive(upgrade.id)"
+        [class.inactive]="!isUpgradeActive(upgrade.id)"
+      >
+        <div class="upgrade-name-wrapper equal-height">
+          <mat-icon>attach_money</mat-icon>
+          <div class="upgrade-name">
+            {{ upgrade.name }}
+          </div>
+        </div>
+        <div class="upgrade-information equal-height">
+          <div class="upgrade-description-wrapper">
+            <div class="upgrade-description">
+              {{ upgrade.description }}
+            </div>
+            <div class="upgrade-cost">
+              Cost: {{ upgrade.cost | exponentialNumber }} Points
+            </div>
+          </div>
+          <div class="buy-button-wrapper">
+            <button class="buy-button">Buy!</button>
+          </div>
+        </div>
+      </button>
+      }
+    </div>
+  </div>
+</section>

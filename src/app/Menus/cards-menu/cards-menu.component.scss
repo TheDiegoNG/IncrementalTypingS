@@ -1,0 +1,100 @@
+@import '../../../shared/shared.scss';
+
+.cardsHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .cardsHeaderContainer > button {
+    font-size: var(--medium-custom-text);
+  }
+
+  .cardsHeaderContainer:hover > .cardsButton {
+    color: black;
+  }
+  
+  .cardsHeaderContainer:hover::before {
+    transition: width 250ms ease;
+    width: 100%;
+  }
+  
+  .cardsHeaderContainer:before {
+    --golden: rgb(237, 203, 177);
+    transition: width 250ms ease;
+    background: linear-gradient(to right, transparent, var(--golden), rgb(240, 240, 240));
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    z-index: -1;
+  }
+  
+  .cardsButton {
+    animation: background-pan 2s linear infinite;
+    background: linear-gradient(to right, var(--black-900), var(--golden), var(--black-900));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap; 
+  }
+
+  .cardsContainer {
+    margin-top: 1rem;
+    padding: 0 3rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  }
+
+  .normalCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 5/7;
+    border-radius: 1vmin;
+    font-size: var(--small-custom-text);
+    text-align: center;
+    position: relative;
+  }
+
+  .normalCard:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    padding: 2rem;
+    box-shadow: 0 0 1em black;
+    left: 50%;
+    transform: translateX(-50%);
+    visibility: hidden;
+    z-index: 1;
+    color: black;
+    background: var(--primary-400);
+    border-radius: 2rem;
+    border: 2px solid black;
+    transition: opacity 250ms ease, width 100ms ease;
+    width: 0%;
+    opacity: 0;
+    text-align: center;
+    font-size: var(--xsmall-custom-text);
+  }
+
+  .normalCard:hover::before {
+    visibility: visible;
+    opacity: 1;
+    width: 80%;
+  }
+  
+  .cardBonus {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: var(--small-custom-text);
+  }
+
+
+  

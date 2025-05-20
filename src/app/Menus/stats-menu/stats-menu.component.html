@@ -1,0 +1,26 @@
+<section id="statsMenu" class="menu">
+    <div id="statsWrapper" class="stats-wrapper menu">
+      <div class="chart-container">    
+          <canvas #pieBonusChart class="pie-chart"></canvas>
+      </div>
+      <div class="chart-container">    
+          <canvas #pieSumsBonusChart class="pie-chart"></canvas>
+      </div>
+      <div class="stats-container"> 
+          <p id="pointsStat">Points: {{ this.gameService.game().points | number : "1.1-1" }}</p>
+          <p id="maxLengthStat">Max Length: {{ this.gameService.game().maxLength }}</p>
+          <p id="bestWordStat">Best Word: {{ this.gameService.game().bestWord }}</p>
+          <p id="multiupgradesStat">Multiupgrades: {{ getMultiUpgradesStat() }}</p>
+          <p id="achievementsAmountStat">
+              Achievements Amount: {{ this.gameService.game().achievements.length }}
+          </p>
+          <p id="wordsAmountStat">Words Typed: {{ this.gameService.game().wordsAmount }}</p>
+          <p id="passivePointsStat">
+              Passive Points: {{ this.gameService.game().passivePoints | number : "1.1-1" }}
+          </p>
+          <p id="passiveLengthStat">Passive Length: {{ this.gameService.game().passiveLength }}</p>
+          <p id="cardsAmountStat">Cards Amount: {{ this.gameService.game().cards.length }}</p>
+      </div>
+  </div>
+  </section>
+  

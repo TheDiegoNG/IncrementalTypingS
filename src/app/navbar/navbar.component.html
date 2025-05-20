@@ -1,0 +1,28 @@
+<div
+  id="TabsContainer"
+  class="tabsContainer"
+  (wheel)="onNavbarScroll($event)"
+>
+  <div class="game-wrapper hoverEffectContainer">
+    @for(gameMenu of menuService.gameNavbarItems(); track $index) { @if(gameMenu.visible) {
+    <button
+      id="{{ gameMenu.id }}MenuButton"
+      class="menuButton hoverEffectChild"
+      (click)="menuService.setActive(gameMenu.id)"
+    >
+      {{ gameMenu.id | titlecase }}
+    </button>
+    } }
+  </div>
+  <div class="options-wrapper hoverEffectContainer">
+    @for (optMenu of menuService.optNavbarItems; track $index) {
+        <button
+      id="{{ optMenu.id }}MenuButton"
+      class="menuButton hoverEffectChild"
+      (click)="menuService.setActive(optMenu.id)"
+    >
+      {{ optMenu.id | titlecase }}
+    </button>
+    }
+  </div>
+</div>

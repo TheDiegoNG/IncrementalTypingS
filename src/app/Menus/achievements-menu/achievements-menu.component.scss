@@ -1,0 +1,74 @@
+@import "../../../shared/shared.scss";
+
+.achievementContainer {
+  margin: 1rem;
+  display: grid;
+  font-size: var(--small-custom-text);
+  text-align: center;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  padding: 1rem 1rem;
+}
+
+.achievement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-block: 0.75rem;
+  padding-inline: 0.5rem;
+  background: var(--primary-700);
+  border-radius: 1rem;
+  aspect-ratio: 3/2;
+  position: relative;
+}
+
+.achievement.unlocked {
+  background: linear-gradient(45deg, rgb(40, 40, 40), var(--black-900), var(--golden));
+  box-shadow: 0 0 0.3rem black;
+}
+
+.achievement:before {
+  content: attr(data-tooltip);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  box-shadow: 0 0 1em black;
+  left: 50%;
+  transform: translateX(-50%);
+  visibility: hidden;
+  z-index: 1;
+  color: black;
+  background: var(--primary-400);
+  border-radius: 2rem;
+  border: 2px solid black;
+  transition: opacity 250ms ease, width 100ms ease;
+  width: 0%;
+  opacity: 0;
+  font-size: var(--xsmall-custom-text);
+  height: 80%;
+}
+
+.achievement:hover::before {
+  visibility: visible;
+  opacity: 1;
+  width: 80%;
+}
+
+.progress-bar {
+  margin-top: 0.5rem;
+  height: 0.5rem;
+  background: linear-gradient(to right, var(--primary-900), var(--primary-700));
+  border: 1px solid black;
+}
+
+.progress-bar.hidden {
+  display: none;
+}
+
+.progress-bar.completed {
+  background: linear-gradient(to right, var(--green), var(--black-900), var(--green));
+  background-size: 200%;
+  animation: background-pan 2s linear infinite;
+}

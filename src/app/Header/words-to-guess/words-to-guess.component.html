@@ -1,0 +1,15 @@
+<div id="WordsContainer" class="words-container">
+  <p id="WordLeft" class="word-left">{{ wordLeft }}</p>
+  <p id="WordLeft2" class="word-left">{{ wordLeft2 }}</p>
+  <div id="WordToGuessWrapper" class="words-to-guess-wrapper">
+    <p #WordToGuess class="word-to-guess">{{ wordToGuess() }}</p>
+    <mat-icon
+      [matTooltip]="getWordBonus()"
+      matTooltipPosition="right"
+      matTooltipDelay="500"
+      >info</mat-icon
+    >
+  </div>
+  <p id="WordRight" class="word-right">{{ wordRight }}</p>
+  <p id="WordRight2" class="word-right">{{ wordRight2 }}</p>
+</div>

@@ -1,0 +1,48 @@
+<div id="wordWrapper" class="word-wrapper">
+  @if(ComboCounterVisibility) {
+  <p id="comboCounter" class="combo-counter">
+    Current Combo: {{ comboCounter() }}
+  </p>
+  } @if(LPSVisibility) {
+  <p id="lettersPerSecond" class="letters-per-second">
+    LPS: {{ lettersPerSecond }}
+  </p>
+  }
+  <input
+    type="text"
+    id="wordBox"
+    class="wordbox"
+    name="WordBox"
+    [(ngModel)]="inputValue"
+    (input)="checkWord()"
+  />
+  <div id="gameButtonWrapper" class="game-button-wrapper hover-effect-container">
+    <button
+      id="saveButton"
+      class="game-button hover-effect-child"
+      (click)="saveGame()"
+    >
+      Save
+    </button>
+    <!-- <input
+      type="file"
+      #fileInput
+      style="display: none"
+      (change)="loadGame($event)"
+    /> -->
+    <!-- <button
+      id="loadButton"
+      class="game-button hover-effect-child"
+      (click)="fileInput.click()"
+    >
+      Load
+    </button> -->
+    <button
+      id="logButton"
+      class="game-button hover-effect-child"
+      (click)="logGame()"
+    >
+      Log
+    </button>
+  </div>
+</div>

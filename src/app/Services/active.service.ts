@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { GameService } from './game.service';
-import { WordsService } from './words.service';
 import { MarketService } from './market.service';
 import { GameUtils } from '../Utils/gameUtils';
 import { MasteryService } from './mastery.service';
@@ -16,11 +15,11 @@ export class ActiveService {
 
   constructor() {}
 
-  CalculateMultiUpgradesPoints(): [number, string, number[], number[]] {
-    let bonus = '';
-    let totalPoints = 0;
-    let bonusesValues: number[] = [];
-    let bonusesSumsValues: number[] = [];
+  CalculateMultiUpgradesPoints(): [string, string, number, number] {
+    let sumBonus = '';
+    let multiBonus = '';
+    let bonusesValues: number = 1;
+    let bonusesSumsValues: number = 0;
     const muPoints = this.gameService
       .game()
       .multiUpgrades.find((x) => x.id === 'MultiUpgradePoints')!;
@@ -29,19 +28,16 @@ export class ActiveService {
       .multiUpgrades.find((x) => x.id == 'MultiUpgradePointsMult')!;
 
     if (muPoints.count > 0) {
-      totalPoints += muPoints.count;
-      bonus += ' + [MultiUpgrade1]';
-      bonusesValues.push(muPoints.count);
-      bonusesSumsValues.push(muPoints.count);
+      sumBonus = ' + [MultiUpgrade1]';
+      bonusesSumsValues = muPoints.count;
     }
 
     if (muMulti.count > 0) {
-      totalPoints *= muMulti.count * 1.25;
-      bonus += ' x [MultiUpgrade 2] * 1.25';
-      bonusesValues.push(muMulti.count * 1.25);
+      multiBonus = ' x [MultiUpgrade 2] * 1.25';
+      bonusesValues = muMulti.count * 1.25;
     }
 
-    return [totalPoints, bonus, bonusesValues, bonusesSumsValues];
+    return [sumBonus, multiBonus, bonusesSumsValues, bonusesValues];
   }
 
   getRepeatedLetters(word: string): number {
@@ -73,13 +69,13 @@ export class ActiveService {
   buyLetterTier(index: number) {
     const letterBonus = this.gameService.game().lettersBonus[index];
     if (letterBonus <= this.gameService.game().prestigePoints) {
+      const lettersBonus = this.gameService.game().lettersBonus;
+      lettersBonus[index]++;
       this.gameService.game.update((game) => ({
         ...game,
         prestigePoints: game.prestigePoints - letterBonus,
+        lettersBonus: lettersBonus,
       }));
-      const lettersBonus = this.gameService.game().lettersBonus;
-      lettersBonus[index]++;
-      this.gameService.game.update((game) => ({...game, lettersBonus: lettersBonus}));
     }
   }
 }

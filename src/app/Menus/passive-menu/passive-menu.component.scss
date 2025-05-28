@@ -1,38 +1,43 @@
-@import '../../../shared/shared.scss';
+@import "../../../shared/shared.scss";
 
 .passivePointsWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0 2rem;
-    gap: 10rem;
-    text-align: center;
-    max-width: 100%;
-  }
-  
-  @media (max-width: 1423px) {
-    .passivePointsWrapper {
-      gap: 1rem;
-    }
-  }
-  
-  .passivePointsLeft {
-    font-size: var(--medium-custom-text);
-    padding: 0 1rem;
-  }
-  
-  .passivePointsRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+  gap: 10rem;
+  text-align: center;
+  max-width: 100%;
+}
+
+@media (max-width: 1423px) {
+  .passivePointsWrapper {
     gap: 1rem;
-    font-size: var(--small-custom-text);
   }
-  
-  .passivePointsRight > button,
-  .passivePointsRight > p {
-    margin: 1rem 0;
-    font-size: var(--small-custom-text);
-  }
-  
+}
+
+.passivePointsLeft {
+  font-size: var(--medium-custom-text);
+  padding: 0 1rem;
+}
+
+.passivePointsRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  font-size: var(--small-custom-text);
+}
+
+.passivePointsRight > button,
+.passivePointsRight > p {
+  margin: 1rem 0;
+  font-size: var(--small-custom-text);
+}
+
+.passive-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

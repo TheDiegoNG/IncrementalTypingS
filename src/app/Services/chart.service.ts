@@ -3,7 +3,6 @@ import { Chart, ChartConfiguration } from 'chart.js';
 import { MarketService } from './market.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { StatsService } from './stats.service';
-import { WordsService } from './words.service';
 import { DateTime } from 'luxon';
 import { GameService } from './game.service';
 import { ChartUtils } from '../Utils/chartUtils';
@@ -50,19 +49,21 @@ export class ChartService {
   bonusMultiValues = computed(() => {
     let bonusValues = this.gameService.game().bonusValues;
     if (!this.componentStatsActive) return;
-    this.pieBonusChart!.data.datasets[0].data = bonusValues;
+    const bonusValuesArr = Object.values(bonusValues)
+    this.pieBonusChart!.data.datasets[0].data = bonusValuesArr;
 
     this.pieBonusChart!.update();
-    return bonusValues;
+    return bonusValuesArr;
   });
 
   bonusSumsValues = computed(() => {
     let bonusValues = this.gameService.game().bonusSumsValues;
     if (!this.componentStatsActive) return;
-    this.pieBonusSumsChart!.data.datasets[0].data = bonusValues;
+    const bonusValuesArr = Object.values(bonusValues)
+    this.pieBonusSumsChart!.data.datasets[0].data = bonusValuesArr;
 
     this.pieBonusSumsChart!.update();
-    return bonusValues;
+    return bonusValuesArr;
   });
 
   constructor(private router: Router) {

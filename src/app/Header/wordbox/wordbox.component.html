@@ -1,11 +1,11 @@
 <div id="wordWrapper" class="word-wrapper">
-  @if(ComboCounterVisibility) {
+  @if(this.layoutService.comboCounterVisible()) {
   <p id="comboCounter" class="combo-counter">
     Current Combo: {{ comboCounter() }}
   </p>
-  } @if(LPSVisibility) {
+  } @if(this.layoutService.lettersPerSecondVisible()) {
   <p id="lettersPerSecond" class="letters-per-second">
-    LPS: {{ lettersPerSecond }}
+    LPS: {{ lettersPerSecond() | number:'1.1' }}
   </p>
   }
   <input

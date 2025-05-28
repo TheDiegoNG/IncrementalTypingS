@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { UpgradeService } from '../../Services/upgrade.service';
-import { Upgrade } from '../../Classes/upgrade';
+import { eIdUpgrade, Upgrade } from '../../Classes/upgrade';
 import { GameService } from '../../Services/game.service';
 import { ExponentialNumberPipe } from "../../Pipes/exponential-number.pipe";
 import { MatCardModule } from '@angular/material/card'
+import { WordsService } from '../../Services/words.service';
 
 @Component({
   selector: 'app-upgrades-menu',
@@ -16,6 +17,7 @@ import { MatCardModule } from '@angular/material/card'
 export class UpgradesMenuComponent {
   upgradeService = inject(UpgradeService);
   gameService = inject(GameService)
+  bonus$ = inject(WordsService).getBonusSignal();
   upgrades = this.upgradeService.starterUpgrades.concat(
     this.upgradeService.explorerUpgrades.concat(
       this.upgradeService.masterUpgrades.concat(
@@ -37,23 +39,33 @@ export class UpgradesMenuComponent {
   }
 
   canUnlock(upgrade: Upgrade): boolean {
-    return upgrade.parents.every(pid => this.isUnlocked(pid)) &&
-           !this.isUnlocked(upgrade.id);
+    if (upgrade.parents.length === 0) {
+      return true; // upgrades sin padres siempre están desbloqueables
+    }
+  
+    if (upgrade.unlockType === 'ALL') {
+      return upgrade.parents.every(pid => this.isUnlocked(pid));
+    } else if (upgrade.unlockType === 'ANY') {
+      return upgrade.parents.some(pid => this.isUnlocked(pid));
+    }
+  
+    return false;
   }
 
   onUpgradeClick(upgrade: Upgrade): void {
-    const canUnlock = upgrade.parents.every(
-      (pid) => this.isUnlocked(pid)
-    );
-  
-    if (canUnlock && !this.isUnlocked(upgrade.id) && this.gameService.game().points >= upgrade.cost) {
-      this.gameService.game.update((game) => ({...game, points: game.points - upgrade.cost}))
-      this.gameService.addUpgrade(upgrade);
+    if (this.canUnlock(upgrade) && !this.isUnlocked(upgrade.id)) {
+      this.upgradeService.getUpgradeByBranch(upgrade.id, upgrade.branch);
     }
   }
 
-  isUnlocked(id: string): boolean {
+  isUnlocked(id: eIdUpgrade): boolean {
     return this.gameService.game().upgrades.some(u => u.id === id);
+  }
+
+  isLocked(upgrade: Upgrade): boolean {
+    const excludedUpg = upgrade.excludes ?? [];
+    return excludedUpg.some(excludedId => this.isUnlocked(excludedId)) &&
+           !this.isUnlocked('Act/IdleI');
   }
 
   // ViewBox control

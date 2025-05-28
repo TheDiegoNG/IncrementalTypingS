@@ -345,11 +345,7 @@ export class CardService {
       }
 
       this.gameService.game().cards.push(card);
-      this.gameService.game.update((game) => ({ ...game, cards: game.cards }));
-      this.gameService.game.update((game) => ({
-        ...game,
-        cardsAmount: game.cardsAmount++,
-      }));
+      this.gameService.game.update((game) => ({ ...game, cards: game.cards, cardsAmount: ++game.cardsAmount }));
       //TODO: TAX EVASION
 
       switch (card.bonusType) {
@@ -539,13 +535,10 @@ export class CardService {
       this.gameService.game.update((game) => ({
         ...game,
         mergeCardsCost: game.mergeCardsCost + 100,
+        mergeAmount: --game.mergeAmount,
+        cards: [],
+        cardsAmount: 0
       }));
-      this.gameService.game.update((game) => ({
-        ...game,
-        mergeAmount: game.mergeAmount--,
-      }));
-      this.gameService.game.update((game) => ({ ...game, cards: [] }));
-      this.gameService.game.update((game) => ({ ...game, cardsAmount: 0 }));
     }
   }
 

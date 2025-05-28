@@ -13,24 +13,33 @@ export class Game {
   maxLength: number = 4;
   bestWord: string = '';
   multiUpgrades: MultiUpgrade[] = [
-    new MultiUpgrade('Point Booster', '+1 Point per Word', 50, 'MultiUpgradePoints'),
+    new MultiUpgrade(
+      'Point Booster',
+      '+1 Point per Word',
+      50,
+      'MultiUpgradePoints',
+      'Multi'
+    ),
     new MultiUpgrade(
       'Multiplier Mastery',
       'x1.25 Points',
-      500, 
-      'MultiUpgradePointsMult', 
+      500,
+      'MultiUpgradePointsMult',
+      'Multi'
     ),
     new MultiUpgrade(
       'Critical Chance',
       '+1% Critical Chance',
       1000,
-      'MultiUpgradeCritChance'
+      'MultiUpgradeCritChance',
+      'Multi'
     ),
     new MultiUpgrade(
       'Critical Multiplier',
       'x1.1 Critical Multiplier',
       1000,
-      'MultiUpgradeCritMulti'
+      'MultiUpgradeCritMulti',
+      'Multi'
     ),
   ];
   achievements: Achievement[] = [];
@@ -83,9 +92,8 @@ export class Game {
   letterCounterPerfection: number = 0;
   wordCounterPerfection: number = 0;
   marketBonus: number[] = [];
-  bonusValues: number[] = [];
-  bonusSumsValues: number[] = [];
-
+  bonusValues: Record<string, number> = {};
+  bonusSumsValues: Record<string, number> = {};
   constructor(pointsAmount: number, gameType: GameType) {
     this.points = pointsAmount;
     this.allTimePoints = pointsAmount;

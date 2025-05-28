@@ -5,6 +5,7 @@ import { GameUtils } from '../Utils/gameUtils';
 import { LayoutService } from './layout.service';
 import { OverlayService } from './overlay.service';
 import { PrestigeService } from './prestige.service';
+import { Language, LanguageService } from './language.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +15,9 @@ export class ChallengesService {
   prestigeService = inject(PrestigeService);
   layoutService = inject(LayoutService);
   overlayService = inject(OverlayService);
+  languageService = inject(LanguageService)
 
   challenges: Challenge[] = [];
-  language = signal<Language>('English');
   intervalId: ReturnType<typeof setInterval> | null = null;
 
   constructor() {
@@ -136,7 +137,7 @@ export class ChallengesService {
     if (!challenge) return;
     this.prestigeService.prestigeStats();
     setTimeout(() => {
-      if (challenge.type === 'Language') this.language.set('Amharic');
+      if (challenge.type === 'Language') this.languageService.language.set('Amharic');
       this.gameService.saveToActiveGame();
       this.loadAchievements();
       this.loadChallenges();
@@ -150,7 +151,7 @@ export class ChallengesService {
     challengeType: ChallengeType,
     challengeCompleted: boolean = true
   ) {
-    if (challengeType === 'Language') this.language.set('English');
+    if (challengeType === 'Language') this.languageService.language.set('English');
     this.gameService.loadActiveGame();
     this.gameService.updateChallengeState(false, challengeType);
     this.gameService.game.update((game) => ({...game, letterCounter: 0}));
@@ -168,22 +169,4 @@ export class ChallengesService {
   loadChallenges() {
     this.gameService.updateChallenges();
   }
-
-  setLanguageChallenge(language: Language) {
-    switch (language) {
-      case 'Japanese':
-        this.language.set('Japanese');
-        break;
-    }
-  }
 }
-
-export type Language =
-  | 'English'
-  | 'Spanish'
-  | 'French'
-  | 'German'
-  | 'Russian'
-  | 'Japanese'
-  | 'Arabic'
-  | 'Amharic';

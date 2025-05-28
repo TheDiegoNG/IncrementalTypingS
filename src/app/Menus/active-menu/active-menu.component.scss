@@ -143,3 +143,11 @@
     color: white;
     background-image: linear-gradient(to bottom, var(--green) 50%, var(--dark-green) 50%, var(--dark-green) 100%);
 }
+
+.upgrade-square.locked {
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}
+.upgrade-square.locked:hover {
+  transform: none; /* Desactiva cualquier efecto hover */
+}

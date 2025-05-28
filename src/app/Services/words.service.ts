@@ -10,6 +10,7 @@ import { MasteryService } from './mastery.service';
 import { AchievementService } from './achievement.service';
 import { ActiveService } from './active.service';
 import { CardService } from './card.service';
+import { Language, LanguageService } from './language.service';
 // import { AchievementsService } from './achievements.service';
 // import { ActiveService } from './active.service';
 // import { MasteryService } from './mastery.service';
@@ -24,6 +25,7 @@ export class WordsService {
   wordShifted = new Subject<void>();
   wordBonus: string = '';
   critical = signal(false);
+
   hiraganaWordList: string[] = [
     'あお',
     'いえ',
@@ -501,12 +503,42 @@ export class WordsService {
     'አንደኛዎችንዋ',
     'አንደኛውንዋንው',
   ];
-  // language: language = 'English';
 
   constructor() {
-    // this.challengeService
-    //   .getLanguage()
-    //   .subscribe((language) => (this.language = language));
+    setInterval(() => this.updateBonuses(), 100);
+  }
+
+  updateBonuses() {
+    const now = Date.now();
+    const elapsedTime = (now - this.lastWordTime) / 1000;
+
+    const bonuses = { ...this.bonusSignal() }; // copia actual
+
+    // Bonus dinámico: xFast
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
+      const MIN = 1;
+      const MAX = 5;
+      const DECAY_FACTOR = 1;
+      const t = Math.max(elapsedTime, 0.01);
+
+      const logDecay = Math.log(DECAY_FACTOR / t) + 4;
+      const normalized = Math.max(MIN, Math.min(MAX, logDecay))
+      
+      bonuses['xFast'] = normalized;
+    }
+
+    // Bonus dinámico: xSlow
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
+      const BASE = 1;
+      const GROWTH_FACTOR = 0.01;
+      const exponent = 1.5;
+      const t = Math.max(elapsedTime, 0.01);
+      const powerGrowth = BASE + (t * GROWTH_FACTOR) ** exponent
+      bonuses['xSlow'] =  powerGrowth;
+    }
+
+
+    this.bonusSignal.set(bonuses);
   }
 
   gameService = inject(GameService);
@@ -514,12 +546,16 @@ export class WordsService {
   activeService = inject(ActiveService);
   achievementService = inject(AchievementService);
   masteryService = inject(MasteryService);
-  cardService = inject(CardService)
-  // challengeService = inject(ChallengesService)
+  cardService = inject(CardService);
+  languageService = inject(LanguageService);
+
+  private bonusSignal = signal<Record<string, number>>({});
+  private bonusSumSignal = signal<Record<string, number>>({});
+  private lastWordTime: number = Date.now();
 
   generateWord() {
     let generatedWord: string = '';
-    switch ('English') {
+    switch (this.languageService.language()) {
       case 'English':
         var filteredWordList = this.wordList.filter(
           (x) => x.length <= this.gameService.game().maxLength
@@ -527,27 +563,30 @@ export class WordsService {
         generatedWord =
           filteredWordList[Math.floor(Math.random() * filteredWordList.length)];
         break;
-      // case 'Russian':
-      //   generatedWord =
-      //     this.russianWordList[
-      //       Math.floor(Math.random() * this.russianWordList.length)
-      //     ];
-      //   break;
-      // case 'Japanese':
-      //   generatedWord =
-      //     this.hiraganaWordList[
-      //       Math.floor(Math.random() * this.hiraganaWordList.length)
-      //     ];
-      //   break;
-      // case 'Amharic':
-      //   generatedWord =
-      //     this.amharicWordList[
-      //       Math.floor(Math.random() * this.amharicWordList.length)
-      //     ];
-      //   break;
+      case 'Russian':
+        generatedWord =
+          this.russianWordList[
+            Math.floor(Math.random() * this.russianWordList.length)
+          ];
+        break;
+      case 'Japanese':
+        generatedWord =
+          this.hiraganaWordList[
+            Math.floor(Math.random() * this.hiraganaWordList.length)
+          ];
+        break;
+      case 'Amharic':
+        generatedWord =
+          this.amharicWordList[
+            Math.floor(Math.random() * this.amharicWordList.length)
+          ];
+        break;
     }
 
-    if (GameUtils.HasCard(this.gameService.game(), 12) || GameUtils.IsInChallenge(this.gameService.game(), 'Accuracy'))
+    if (
+      GameUtils.HasCard(this.gameService.game(), 12) ||
+      GameUtils.IsInChallenge(this.gameService.game(), 'Accuracy')
+    )
       generatedWord = generatedWord.toLowerCase();
 
     return generatedWord;
@@ -555,6 +594,20 @@ export class WordsService {
 
   checkWordMatch(input: string) {
     return this.currentWord() === input;
+  }
+
+  getBonusSignal() {
+    return this.bonusSignal.asReadonly(); // para que solo se lea desde fuera
+  }
+
+  updateBonus(upgradeId: string, value: number) {
+    const current = this.bonusSignal();
+    this.bonusSignal.set({ ...current, [upgradeId]: value });
+  }
+
+  updateSumBonus(upgradeId: string, value: number) {
+    const current = this.bonusSumSignal();
+    this.bonusSumSignal.set({ ...current, [upgradeId]: value });
   }
 
   guessedWord(word: string) {
@@ -571,25 +624,28 @@ export class WordsService {
   9 - Critical
   10 - Mastery Bonus
   */
-    console.log("Guessed word: ", word)
+
+  this.lastWordTime = Date.now();
+    console.log('Guessed word: ', word);
     this.wordBonus = '';
-    let pointsLetters = word.length;
-    let pointsBonus = word.length;
-    let bonusValues: number[] = [];
-    let bonusSumsValues: number[] = [];
-    this.wordBonus += '[WordLength] ';
     let totalPoints = 0;
     let bonusMainSum = 0; //For bonusesValues[0] and bonusesSumsValues[0]
     let bonusMainMulti = 1; //For bonusesValues[1]
-    bonusSumsValues.push(word.length);
+    this.wordBonus = '[WordLength] ';
+    this.updateSumBonus('WordLength', word.length);
+    // bonusSumsValues.push(word.length);
+
+    let muResult = this.activeService.CalculateMultiUpgradesPoints();
+    if (muResult[0] !== '') {
+      this.wordBonus += muResult[0];
+      this.updateSumBonus('muSum', muResult[2]);
+    }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Scr')) {
-      var lettersValue = 0;
-      lettersValue = this.GetPointsLetters(word);
-      pointsLetters += lettersValue;
-      pointsBonus += lettersValue;
+      let lettersValue = this.GetPointsLetters(word);
       this.wordBonus += ` + [LettersValue] (Upgrade 8)`;
-      bonusSumsValues.push(lettersValue);
+      this.updateSumBonus('LettersValue', lettersValue - word.length);
+      // bonusSumsValues.push(lettersValue);
       if (
         lettersValue > this.GetPointsLetters(this.gameService.game().bestWord)
       ) {
@@ -597,92 +653,128 @@ export class WordsService {
       }
     }
 
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'WordsValueBitMore')) {
-      totalPoints += 4;
+    if (
+      GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'WordsValueBitMore')
+    ) {
       this.wordBonus += ' + 4 (Upgrade 2)';
       bonusMainSum += 4;
     }
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'WordsValueBitMoreMore')) {
-      totalPoints += 10;
+    if (
+      GameUtils.IsPurchasedUpgrade(
+        this.gameService.game(),
+        'WordsValueBitMoreMore'
+      )
+    ) {
       this.wordBonus += ' + 10 (Upgrade 7)';
       bonusMainSum += 10;
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'LastBasic')) {
-      totalPoints += 20;
       this.wordBonus += ' + 20 (Upgrade 12)';
       bonusMainSum += 20;
     }
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'IntermediateBasicsTwo')) {
-      totalPoints += 25;
+    if (
+      GameUtils.IsPurchasedUpgrade(
+        this.gameService.game(),
+        'IntermediateBasicsTwo'
+      )
+    ) {
       this.wordBonus += ' + 25 (Upgrade 18)';
       bonusMainSum += 25;
     }
-
-    bonusSumsValues.push(bonusMainSum);
+    this.updateSumBonus('BonusMainSum', bonusMainSum);
+    // bonusSumsValues.push(bonusMainSum);
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'saLW')) {
-      let repeatedLettersBonus = Math.pow(1.25, this.getRepeatedLetters(word));
-      pointsLetters += repeatedLettersBonus;
+      let repeatedLettersBonus = Math.pow(1.5, this.getRepeatedLetters(word));
       this.wordBonus += ` + [DifferentRepeatedLetters] (Upgrade 14)`;
-      bonusMainSum += repeatedLettersBonus;
-      bonusSumsValues.push(repeatedLettersBonus);
+      this.updateSumBonus('saLW', repeatedLettersBonus);
+      // bonusSumsValues.push(repeatedLettersBonus);
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'diLW')) {
       let differentLettersBonus = Math.pow(1.1, this.getDifferentLetters(word));
-      pointsLetters += differentLettersBonus;
       this.wordBonus += ` + [DifferentLetters] (Upgrade 17)`;
-      bonusMainSum += differentLettersBonus;
-      bonusSumsValues.push(differentLettersBonus);
+      this.updateSumBonus('diLW', differentLettersBonus);
+      // bonusSumsValues.push(differentLettersBonus);
     }
-    
-    if(this.gameService.game().cards.find(x => x.bonusType === 'PointsAmount')) {
+
+    if (
+      this.gameService.game().cards.find((x) => x.bonusType === 'PointsAmount')
+    ) {
       let cardResultSum = this.cardService.getCardPointAmountTotal();
-      bonusMainSum += cardResultSum[0]
-      bonusSumsValues.push(cardResultSum[0]);
       this.wordBonus += cardResultSum[1];
+      this.updateSumBonus('CardPointsAmount', cardResultSum[0]);
+      // bonusSumsValues.push(cardResultSum[0]);
     }
-    console.log("Bonus Sums Values: ", bonusSumsValues)
-    bonusValues.push((bonusSumsValues ?? []).reduce((a, b) => a + b, 0));
-    totalPoints = (bonusSumsValues ?? []).reduce((a, b) => a + b, 0)
-    console.log("Bonus Values init: ", bonusValues)
+    console.log('Bonus Sums Values: ', this.bonusSignal());
+    this.updateBonus(
+      'Sums',
+      Object.values(this.bonusSumSignal()).reduce((a, b) => a + b, 0)
+    );
+    // bonusValues.push((bonusSumsValues ?? []).reduce((a, b) => a + b, 0));
+    totalPoints = Object.values(this.bonusSumSignal()).reduce(
+      (a, b) => a + b,
+      0
+    );
+    console.log('Bonus Values init: ', this.bonusSignal());
     if (totalPoints < 1) totalPoints = 1;
 
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'FirstUpgradePoints')) {
-      totalPoints *= 1.3;
+    if (
+      GameUtils.IsPurchasedUpgrade(
+        this.gameService.game(),
+        'FirstUpgradePoints'
+      )
+    ) {
       this.wordBonus += ' x 1.3 (Upgrade 1)';
       bonusMainMulti *= 1.3;
     }
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'SecondUpgradePoints')) {
-      totalPoints *= 1.5;
+    if (
+      GameUtils.IsPurchasedUpgrade(
+        this.gameService.game(),
+        'SecondUpgradePoints'
+      )
+    ) {
       this.wordBonus += ' x 1.5 (Upgrade 5)';
       bonusMainMulti *= 1.5;
     }
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'IntermediateBasicsOne')) {
-      totalPoints *= 3;
+    if (
+      GameUtils.IsPurchasedUpgrade(
+        this.gameService.game(),
+        'IntermediateBasicsOne'
+      )
+    ) {
       this.wordBonus += ' x 3 (Upgrade 15)';
       bonusMainMulti *= 3;
     }
+    totalPoints *= bonusMainMulti;
+    this.updateBonus('BonusMainMulti', bonusMainMulti);
+    // bonusValues.push(bonusMainMulti);
 
-    bonusValues.push(bonusMainMulti);
-
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xWL')) {
-      totalPoints *= pointsLetters;
-      this.wordBonus += ' x[WordLength] (Upgrade 16)';
-      bonusValues.push(pointsLetters);
+    if (muResult[1] !== '') {
+      this.wordBonus += muResult[1];
+      this.updateBonus('muMulti', muResult[3]);
     }
 
-    if(this.gameService.game().cards.find(x => x.bonusType === 'PointsPercentage')) {
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xWL')) {
+      totalPoints *= word.length;
+      this.wordBonus += ' x[WordLength] (Upgrade 16)';
+      this.updateBonus('xWL', word.length);
+      // bonusValues.push(pointsLetters);
+    }
+
+    if (
+      this.gameService
+        .game()
+        .cards.find((x) => x.bonusType === 'PointsPercentage')
+    ) {
       let cardResultMulti = this.cardService.getCardPointPercentageTotal();
-      bonusValues.push(cardResultMulti[0])
+      this.updateBonus('CardPointsPercentage', cardResultMulti[0]);
+      // bonusValues.push(cardResultMulti[0])
       this.wordBonus += cardResultMulti[1];
     }
 
-    let muResult = this.activeService.CalculateMultiUpgradesPoints();
-    totalPoints += muResult[0];
-    this.wordBonus += muResult[1];
-    bonusValues = bonusValues.concat(muResult[2]);
-    bonusSumsValues = bonusSumsValues.concat(muResult[3]);
+    // bonusValues = bonusValues.concat(muResult[2]);
+    // bonusSumsValues = bonusSumsValues.concat(muResult[3]);
 
     // let result = this.activeService.CalculatePoints(pointsLetters);
     // totalPoints += result[0];
@@ -690,13 +782,29 @@ export class WordsService {
     // bonusValues = bonusValues.concat(result[2]);
     // bonusSumsValues = bonusSumsValues.concat(result[3]);
 
+
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
+      const multi = this.bonusSignal()['xFast']
+      totalPoints *= multi;
+      this.wordBonus += ' x[Speed]';
+    }
+
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
+      const multi = this.bonusSignal()['xSlow']
+      totalPoints *= multi;
+      this.wordBonus += ' x[TimeElapsed]';
+    }
     if (
       GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Ach') &&
       this.gameService.game().achievements.length > 0
     ) {
       totalPoints *= Math.sqrt(this.gameService.game().achievements.length);
       this.wordBonus += ' x sqrt([Achievements] (Upgrade 6))';
-      bonusValues.push(Math.sqrt(this.gameService.game().achievements.length));
+      this.updateBonus(
+        'Ach',
+        Math.sqrt(this.gameService.game().achievements.length)
+      );
+      // bonusValues.push(Math.sqrt(this.gameService.game().achievements.length));
     }
     if (
       GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE') &&
@@ -704,19 +812,32 @@ export class WordsService {
     ) {
       totalPoints *= Math.log10(this.gameService.game().passivePoints);
       this.wordBonus += ' x log10([PassivePoints])';
-      bonusValues.push(Math.log10(this.gameService.game().passivePoints));
+      this.updateBonus(
+        'PaE',
+        Math.log10(this.gameService.game().passivePoints)
+      );
+      // bonusValues.push(Math.log10(this.gameService.game().passivePoints));
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xcaAm')) {
       totalPoints *= Math.log(GameUtils.getCardBonus(this.gameService.game()));
       this.wordBonus += ' x ln([CardsBonus] (Upgrade 19 & 20))';
-      bonusValues.push(Math.log(GameUtils.getCardBonus(this.gameService.game())));
+      this.updateBonus(
+        'xcaAm',
+        Math.log(GameUtils.getCardBonus(this.gameService.game()))
+      );
+      // bonusValues.push(Math.log(GameUtils.getCardBonus(this.gameService.game())));
     }
 
-
-    if (GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'PrestigeFreeMultiplier')) {
+    if (
+      GameUtils.IsPurchasedPrestigeUpgrade(
+        this.gameService.game(),
+        'PrestigeFreeMultiplier'
+      )
+    ) {
       totalPoints *= 2;
       this.wordBonus += 'x 2 (Prestige Upgrade 1)';
-      bonusValues.push(2);
+      this.updateBonus('PrestigeFreeMultiplier', 2);
+      // bonusValues.push(2);
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xPrec')) {
@@ -725,35 +846,44 @@ export class WordsService {
       if (wordCounter + 1 < 100) {
         totalPoints *= Math.sqrt(wordCounter + 1);
         this.wordBonus += 'xMath.sqrt(perfectWords)';
-        bonusValues.push(Math.sqrt(wordCounter + 1));
+        this.updateBonus('xPrec', Math.sqrt(wordCounter + 1));
+        // bonusValues.push(Math.sqrt(wordCounter + 1));
       } else {
         totalPoints *= 10;
         this.wordBonus += 'x10 (perfectWords > 100)';
-        bonusValues.push(10);
+        this.updateBonus('xPrec', 10);
+        // bonusValues.push(10);
       }
     }
 
     if (this.critical()) {
-      let critMulti = 2 * 1.1 ** (this.gameService.game().multiUpgrades.find(x => x.id == "MultiUpgradeCritMulti")?.count ?? 0)
-      console.log("Crit Multi: ", critMulti)
+      let critMulti =
+        2 *
+        1.1 **
+          (this.gameService
+            .game()
+            .multiUpgrades.find((x) => x.id == 'MultiUpgradeCritMulti')
+            ?.count ?? 0);
+      console.log('Crit Multi: ', critMulti);
       totalPoints *= critMulti;
       this.wordBonus += `x${critMulti} (CRITICAL)`;
-      bonusValues.push(critMulti);
+      this.updateBonus('Crit', critMulti);
+      // bonusValues.push(critMulti);
     }
-    console.log("Bonus Values Final: ", bonusValues, "Bonus Sums Values: ", bonusSumsValues)
-    console.log("Total Points: ", totalPoints)
+    console.log(
+      'Bonus Values Final: ',
+      this.bonusSignal(),
+      'Bonus Sums Values: ',
+      this.bonusSumSignal()
+    );
+    console.log('Total Points: ', totalPoints);
+    console.log('Words Amount: ', this.gameService.game().wordsAmount);
 
     this.gameService.game.update((game) => ({
       ...game,
       points: (game.points += totalPoints),
-    }));
-    this.gameService.game.update((game) => ({
-      ...game,
       allTimePoints: (game.allTimePoints += totalPoints),
-    }));
-    this.gameService.game.update((game) => ({
-      ...game,
-      wordsAmount: game.wordsAmount++,
+      wordsAmount: ++game.wordsAmount,
     }));
 
     this.achievementService.checkAchievementsByWord(word);
@@ -770,13 +900,10 @@ export class WordsService {
 
     this.gameService.game.update((game) => ({
       ...game,
-      bonusValues: bonusValues,
+      bonusValues: this.bonusSignal(),
+      bonusSumsValues: this.bonusSumSignal(),
     }));
-    this.gameService.game.update((game) => ({
-      ...game,
-      bonusSumsValues: bonusSumsValues,
-    }));
-    console.log(bonusValues);
+    console.log(this.bonusSignal());
   }
 
   GetPointsLetters(word: string, passive: boolean = false) {
@@ -787,7 +914,13 @@ export class WordsService {
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Mark')) {
       marketBonus = this.marketService.letterBonus();
     }
-    if (passive && !GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveMarket')) {
+    if (
+      passive &&
+      !GameUtils.IsPurchasedPassiveUpgrade(
+        this.gameService.game(),
+        'PassiveMarket'
+      )
+    ) {
       marketBonus = [1, 1, 1, 1, 1, 1, 1, 1];
     }
     letters.forEach((element) => {
@@ -909,4 +1042,3 @@ export class WordsService {
     return this.wordBonus;
   }
 }
-

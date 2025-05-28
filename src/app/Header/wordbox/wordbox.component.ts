@@ -1,4 +1,13 @@
-import { Component, computed, inject, model, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  model,
+  OnDestroy,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { GameService } from '../../Services/game.service';
 // import { LayoutService } from '../../Services/layout.service';
 // import { SaveService } from '../../Services/save.service';
@@ -10,46 +19,72 @@ import { MessageService } from 'primeng/api';
 // } from 'src/app/services/challenges.service';
 import { GameUtils } from '../../Utils/gameUtils';
 import { FormsModule } from '@angular/forms';
+import { LayoutService } from '../../Services/layout.service';
+import { timestamp } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wordbox',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './wordbox.component.html',
   styleUrls: ['./wordbox.component.scss'],
 })
 export class WordboxComponent {
   wordService = inject(WordsService);
-  // layoutService = inject(LayoutService);
+  layoutService = inject(LayoutService);
   gameService = inject(GameService);
   // saveService = inject(SaveService);
   // messageService = inject(MessageService);
   // challengeService = inject(ChallengesService);
-  lettersPerSecond = 0;
   startTime = Date.now();
-  letters = 0;
-  inputValue = model('');
-  LPSVisibility = false;
-  ComboCounterVisibility = false;
   critical = false;
-  // language: language = 'English';
+  inputValue = model('');
+  currentLetterCount = computed(() => this.inputValue().length);
+  currentTime = signal(Date.now());
+  lettersPerSecond = signal(0);
+
+  lettersTimestamps: number[] = [];
+  private lastLength = 0;
+
+  // language: language = 'English ';
 
   constructor() {
     // this.challengeService
     //   .getLanguage()
     //   .subscribe((language) => (this.language = language));
+
+    effect(() => {
+      const newLength = this.inputValue().length;
+      const delta = newLength - this.lastLength;
+      const now = Date.now();
+
+      if (delta > 0) {
+        for (let i = 0; i < delta; i++) {
+          this.lettersTimestamps.push(now);
+        }
+      }
+
+      this.lastLength = newLength;
+    });
+
+    setInterval(() => {
+      const now = Date.now();
+      const oneSecondAgo = now - 1000;
+
+      // Filtra timestamps que estén dentro de la última ventana de 1 segundo
+      this.lettersTimestamps = this.lettersTimestamps.filter(
+        (t) => t > oneSecondAgo
+      );
+
+      // Actualiza el signal
+      this.lettersPerSecond.set(this.lettersTimestamps.length);
+    }, 200);
   }
 
   gameUtils = new GameUtils();
-
   comboCounter = computed(() => this.gameService.game().wordCounterPerfection);
 
   ngOnInit() {
-    // this.intervalSubscription = interval(1000).subscribe(() => {
-    //   this.updateLettersPerSecond();
-    // });
-    // this.layoutService.getLettersPerSecondVisibility().subscribe((visible) => {
-    //   this.LPSVisibility = visible;
-    // });
     // this.layoutService.getComboCounterVisibility().subscribe((visible) => {
     //   this.ComboCounterVisibility = visible;
     // });
@@ -73,11 +108,8 @@ export class WordboxComponent {
     // }
     this.gameService.game.update((game) => ({
       ...game,
-      letterCounter: game.letterCounter++,
-    }));
-    this.gameService.game.update((game) => ({
-      ...game,
-      letterCounterPerfection: game.letterCounterPerfection++,
+      letterCounter: ++game.letterCounter,
+      letterCounterPerfection: ++game.letterCounterPerfection,
     }));
     if (!this.wordService.checkWordMatch(this.inputValue())) return;
     if (
@@ -86,34 +118,28 @@ export class WordboxComponent {
     ) {
       this.gameService.game.update((game) => ({
         ...game,
-        wordCounterPerfection: game.wordCounterPerfection++,
+        wordCounterPerfection: ++game.wordCounterPerfection,
       }));
     } else {
       this.gameService.game.update((game) => ({
         ...game,
         wordCounterPerfection: 0,
+        letterCounterPerfection: 0,
       }));
     }
-    this.gameService.game.update((game) => ({
-      ...game,
-      letterCounterPerfection: 0,
-    }));
     this.wordService.wordShifted.next();
     this.wordService.guessedWord(this.inputValue());
     this.inputValue.set('');
-    let critChance = 1 + (this.gameService.game().multiUpgrades.find(x => x.id == "MultiUpgradeCritChance")?.count ?? 0)
-    console.log("Crit chance: ", critChance)
-    this.wordService.critical.set(Math.floor(Math.random() * 100) <= critChance);
-  }
-
-  updateLettersPerSecond() {
-    const currentTime = Date.now();
-    const elapsedTime = (currentTime - this.startTime) / 1000;
-    const newLetters = this.inputValue.length;
-    const deltaLetters = newLetters - this.letters;
-    this.letters = newLetters;
-    this.lettersPerSecond = deltaLetters >= 0 ? deltaLetters / elapsedTime : 0;
-    this.startTime = currentTime;
+    let critChance =
+      1 +
+      (this.gameService
+        .game()
+        .multiUpgrades.find((x) => x.id == 'MultiUpgradeCritChance')?.count ??
+        0);
+    console.log('Crit chance: ', critChance);
+    this.wordService.critical.set(
+      Math.floor(Math.random() * 100) <= critChance
+    );
   }
 
   saveGame() {

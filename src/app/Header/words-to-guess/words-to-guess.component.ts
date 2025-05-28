@@ -25,7 +25,7 @@ export class WordsToGuessComponent implements OnInit{
   challengeService = inject(ChallengesService)
   @ViewChild('WordToGuess', { static: true }) wordToGuessElement!: ElementRef;
   private wordListUrl: string =
-    'https://raw.githubusercontent.com/dwyl/english-words/master/words.txt';
+    '/words.txt';
   wordLeft: string = '';
   wordLeft2: string = '';
   wordRight: string = '';
@@ -33,13 +33,11 @@ export class WordsToGuessComponent implements OnInit{
   private critical: boolean = false;
 
   constructor(
-    private http: HttpClient,
-    private renderer: Renderer2
   ) {
-    this.http
-      .get(this.wordListUrl, { responseType: 'text' })
-      .subscribe((response) => {
-        const wordList = response.split('\n');
+    fetch(this.wordListUrl)
+    .then(res => res.text())
+    .then(text => {
+        const wordList = text.split('\n');
         this.wordService.wordList = wordList;
         this.setWords();
       });

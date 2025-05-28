@@ -22,7 +22,7 @@
         stroke-width="2"
       />
       } } @for (upgrade of upgrades; track $index) {
-      <g (click)="selectUpgrade(upgrade)" style="cursor: pointer">
+      <g (click)="!isLocked(upgrade) && selectUpgrade(upgrade)" (dblclick)="!isLocked(upgrade) && onUpgradeClick(upgrade)" style="cursor: pointer" [class.locked]="isLocked(upgrade)">
         <!-- Rectángulo con bordes redondeados -->
         <rect
           [attr.x]="upgrade.x - 60"
@@ -70,7 +70,7 @@
       </mat-card-header>
       <mat-card-content>
         <i>{{ selectedUpgrade.description }}</i>
-        <p class="bonus-description">Bonus: {{selectedUpgrade.bonus}}</p>
+        <p class="bonus-description">Bonus: x{{ bonus$()[selectedUpgrade.id]?.toFixed(2) ?? 1 }}</p>
         <p class="cost-description">Cost: {{ selectedUpgrade.cost | exponentialNumber }}</p>
       </mat-card-content>
       <mat-card-actions>

@@ -39,6 +39,8 @@ export class PassiveService {
   }
 
   gameUtils = new GameUtils();
+  barActMultiplier = signal(1);
+  barIdleMultiplier = signal(1)
 
   createGenerator(generator: Generator) {
     this.generators.push(generator);
@@ -53,6 +55,12 @@ export class PassiveService {
     this.passiveWord.set(word);
     var points = this.getPassivePoints(word);
     points *= portableGenerator.amountGained;
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
+      points *= this.barActMultiplier()
+    }
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
+      points *= this.barIdleMultiplier()
+    }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE'))
       this.gameService.game.update((game) => ({
         ...game,

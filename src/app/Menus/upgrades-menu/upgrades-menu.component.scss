@@ -167,3 +167,8 @@ circle:hover {
   fill: #aaffaa !important;
   stroke: #fff;
 }
+
+.locked rect {
+  fill: #333 !important;
+  cursor: not-allowed;
+}

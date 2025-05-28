@@ -3,13 +3,16 @@ import { PassiveService } from '../../Services/passive.service';
 import { GameService } from '../../Services/game.service';
 import { ExponentialNumberPipe } from "../../Pipes/exponential-number.pipe";
 import { Generator } from '../../Classes/generator';
+import { PassiveBarComponent } from "../../passive-bar-active/passive-bar-active.component";
+import { GameUtils } from '../../Utils/gameUtils';
+import { PassiveBarIdleComponent } from "../../passive-bar-idle/passive-bar-idle.component";
 // import translator from "./translator";
 
 @Component({
   selector: 'app-passive-menu',
   templateUrl: './passive-menu.component.html',
   styleUrls: ['./passive-menu.component.scss'],
-  imports: [ExponentialNumberPipe],
+  imports: [ExponentialNumberPipe, PassiveBarComponent, PassiveBarIdleComponent],
 })
 export class PassiveMenuComponent {
   passiveService = inject(PassiveService)
@@ -73,4 +76,13 @@ export class PassiveMenuComponent {
     const game = this.gameService.game();
     return game.passiveGenerators.length >= id;
   }
+
+  isPassiveActiveBarPurchased() {
+    return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')
+  }
+
+  isPassiveIdleBarPurchased() {
+    return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')
+  }
+
 }

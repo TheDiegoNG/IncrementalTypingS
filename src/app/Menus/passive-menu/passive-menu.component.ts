@@ -78,11 +78,11 @@ export class PassiveMenuComponent {
   }
 
   isPassiveActiveBarPurchased() {
-    return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')
+    return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xPass/h')
   }
 
   isPassiveIdleBarPurchased() {
-    return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')
+    return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xPass/t')
   }
 
 }

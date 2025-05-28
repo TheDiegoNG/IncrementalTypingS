@@ -2,9 +2,9 @@
     <div (click)="clickZone()" class="passive-bar">
         <div class="bar-background"></div>
         <div class="bar-zone"></div> <!-- zona clara -->
-        <div class="bar-line" [style.left.%]="position() * 100"></div>
+        <div class="bar-line" [style.left.%]="passiveService.passBarActPosition() * 100"></div>
     </div>
     <button (click)="clickZone()">Click the bar!</button>
-    <p>Multiplier: x{{ passiveService.barActMultiplier() | number:'1.1-1' }}</p>
+    <p>Multiplier: x{{ wordsService.barActMultiplier() | number:'1.1-1' }}</p>
 </div>
     

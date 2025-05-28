@@ -119,6 +119,7 @@ export class WordboxComponent {
       this.gameService.game.update((game) => ({
         ...game,
         wordCounterPerfection: ++game.wordCounterPerfection,
+        letterCounterPerfection: 0
       }));
     } else {
       this.gameService.game.update((game) => ({

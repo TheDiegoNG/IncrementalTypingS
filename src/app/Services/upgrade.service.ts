@@ -1294,6 +1294,12 @@ export class UpgradeService {
       if (upgradeType === 'LpV') {
         this.layoutService.lettersPerSecondVisible.set(true);
       }
+      if (upgradeType === 'xPrec') {
+        this.layoutService.comboCounterVisible.set(true);
+      }
+      if (upgradeType === 'xPass/t') {
+        this.passiveService.passBarIdleProgress.set(1)
+      }
       if (upgradeType === 'PaE') {
         if (!this.gameService.game().passiveGenerators.some((x) => x.id == 1)) {
           console.log('Bought PaE, added Generator');

@@ -11,6 +11,8 @@ import { AchievementService } from './achievement.service';
 import { ActiveService } from './active.service';
 import { CardService } from './card.service';
 import { Language, LanguageService } from './language.service';
+import { PassiveMenuComponent } from '../Menus/passive-menu/passive-menu.component';
+import { PassiveService } from './passive.service';
 // import { AchievementsService } from './achievements.service';
 // import { ActiveService } from './active.service';
 // import { MasteryService } from './mastery.service';
@@ -548,10 +550,14 @@ export class WordsService {
   masteryService = inject(MasteryService);
   cardService = inject(CardService);
   languageService = inject(LanguageService);
+  
 
   private bonusSignal = signal<Record<string, number>>({});
   private bonusSumSignal = signal<Record<string, number>>({});
   private lastWordTime: number = Date.now();
+
+  barActMultiplier = signal(1);
+  barIdleMultiplier = signal(1)
 
   generateWord() {
     let generatedWord: string = '';
@@ -817,6 +823,11 @@ export class WordsService {
         Math.log10(this.gameService.game().passivePoints)
       );
       // bonusValues.push(Math.log10(this.gameService.game().passivePoints));
+    }
+    if(GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow/cPrep')) {
+      this.wordBonus += 'x cbrt([PassiveBarIdleMulti])'
+      totalPoints *= Math.cbrt(this.barIdleMultiplier())
+      this.updateBonus('xSlow/c/Prop', Math.cbrt(this.barIdleMultiplier()))
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xcaAm')) {
       totalPoints *= Math.log(GameUtils.getCardBonus(this.gameService.game()));

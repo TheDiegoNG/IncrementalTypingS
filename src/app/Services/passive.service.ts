@@ -36,11 +36,46 @@ export class PassiveService {
         this.calculatePassiveGenerators();
       }, rate);
     });
+
+    setInterval(() => {
+      let newProgress = this.passBarIdleProgress() + this.passBarIdleSpeed;
+        this.wordsService.barIdleMultiplier.set(newProgress);
+      
+      this.passBarIdleProgress.set(newProgress);
+    }, 20);
+
+    setInterval(() => {
+
+      let newPos = this.passBarActPosition() + this.passBarActDirection() * this.passBarActSpeed;
+      if (newPos >= 1) {
+        newPos = 1;
+        this.passBarActDirection.set(-1);
+        this.decreaseMultiplier(); // toca el extremo derecho
+      } else if (newPos <= 0) {
+        newPos = 0;
+        this.passBarActDirection.set(1);
+        this.decreaseMultiplier(); // toca el extremo izquierdo
+      }
+      this.passBarActPosition.set(newPos);
+    }, 20); // actualiza cada 20ms para suavidad
   }
 
   gameUtils = new GameUtils();
-  barActMultiplier = signal(1);
-  barIdleMultiplier = signal(1)
+
+  passBarIdleProgress = signal(1); // de 0 a 1
+  passBarIdleSpeed = 0.0005; // velocidad de llenado (ajustable)
+
+  passBarActPosition = signal(0); // posición de la línea en la barra, 0 a 1
+  passBarActDirection = signal(1); // dirección: 1 (derecha) o -1 (izquierda)
+  passBarActSpeed = 0.01; // velocidad de movimiento
+  
+  increaseMultiplier() {
+    this.wordsService.barActMultiplier.update((multi) => multi + 0.1); // sube el multiplicador
+  }
+
+  decreaseMultiplier() {
+    this.wordsService.barActMultiplier.update((multi) => Math.max(1, multi - 0.1)); // baja mínimo a 1
+  }
 
   createGenerator(generator: Generator) {
     this.generators.push(generator);
@@ -56,10 +91,10 @@ export class PassiveService {
     var points = this.getPassivePoints(word);
     points *= portableGenerator.amountGained;
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
-      points *= this.barActMultiplier()
+      points *= this.wordsService.barActMultiplier()
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
-      points *= this.barIdleMultiplier()
+      points *= this.wordsService.barIdleMultiplier()
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE'))
       this.gameService.game.update((game) => ({

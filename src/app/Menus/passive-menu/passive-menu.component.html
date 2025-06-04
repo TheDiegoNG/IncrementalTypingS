@@ -1,41 +1,83 @@
 <section id="passiveMenu" class="menu passive-menu">
-  <div id="PassivePointsWrapper" class="passivePointsWrapper">
-    <div id="PassivePointsLeft" class="passivePointsLeft">
-      <p id="passivePointsWord" class="passivePointsWord">
-        {{ passiveService.passiveWord() }}
-      </p>
-      <p id="passivePoints" class="passivePoints">
-        {{ gameService.game().passivePoints | exponentialNumber }}
-      </p>
-    </div>
-
-    <div id="PassivePointsRight" class="passivePointsRight">
-      @for (generator of this.passiveService.generators; track $index) { @if
-      (shouldDisplayGenerator(generator.id)) {
-
-      <div class="passivePointsGenerator" (click)="BuyGenerator(generator.id)">
-        <p>
-          {{ generator.name }} | Generators:
-          {{ generator.amountGained | exponentialNumber }} (Bought:
-          {{ generator.amountBought }}) | Cost:
-          {{ generator.cost | exponentialNumber }}
+  <div class="passive-points-gameplay">
+    <div id="PassivePointsWrapper" class="passivePointsWrapper">
+      <div id="PassivePointsLeft" class="passivePointsLeft">
+        <p id="passivePointsWord" class="passivePointsWord">
+          {{ passiveService.passiveWord() }}
+        </p>
+        <p id="passivePoints" class="passivePoints">
+          {{ gameService.game().passivePoints | exponentialNumber }}
         </p>
       </div>
-      } }
+
+      <div id="PassivePointsRight" class="passivePointsRight">
+        @for (generator of this.passiveService.generators; track $index) { @if
+        (shouldDisplayGenerator(generator.id)) {
+
+        <div
+          class="passivePointsGenerator"
+          (click)="BuyGenerator(generator.id)"
+        >
+          <p>
+            {{ generator.name }} | Generators:
+            {{ generator.amountGained | exponentialNumber }} (Bought:
+            {{ generator.amountBought }}) | Cost:
+            {{ generator.cost | exponentialNumber }}
+          </p>
+        </div>
+        } }
+        <button
+          id="GeneratorButton"
+          class="generatorButton"
+          (click)="BuyGeneratorTier()"
+        >
+          Buy the next Tier of Generators! | Cost
+          {{ nextTierGeneratorsCost() | exponentialNumber }}
+        </button>
+      </div>
+    </div>
+    @if(isPassiveActiveBarPurchased()) {
+    <app-passive-bar-active></app-passive-bar-active>
+    } @if(isPassiveIdleBarPurchased()) {
+    <app-passive-bar-idle></app-passive-bar-idle>
+    }
+  </div>
+  <div class="passive-upgrade-wrapper">
+    <div class="upgrades-list">
+      @for (upgrade of this.getVisibleScoreUpgrades(); track $index) {
       <button
-        id="GeneratorButton"
-        class="generatorButton"
-        (click)="BuyGeneratorTier()"
+        class="upgrade-square"
+        (click)="upgrade.cost !== null && this.upgradeService.getPassiveScoreUpgrade(upgrade.id)"
+        [class.active]="isUpgradeActive(upgrade.id)"
+        [class.inactive]="!isUpgradeActive(upgrade.id)"
+        [class.locked]="upgrade.cost === null" 
+        [disabled]="upgrade.cost === null"
       >
-        Buy the next Tier of Generators! | Cost
-        {{ nextTierGeneratorsCost() | exponentialNumber }}
+        <div class="upgrade-name-wrapper equal-height">
+          <mat-icon>attach_money</mat-icon>
+          <div class="upgrade-name">
+            {{ upgrade.name }}
+          </div>
+        </div>
+        <div class="upgrade-information equal-height">
+          <div class="upgrade-description-wrapper">
+            <div class="upgrade-description">
+              {{ upgrade.description }}
+            </div>
+            @if (upgrade.cost !== null) {
+              <div class="upgrade-cost">
+                Cost: {{ upgrade.cost | exponentialNumber }} Points
+              </div>
+            }
+          </div>
+          @if (upgrade.cost !== null) {
+            <div class="buy-button-wrapper">
+              <button class="buy-button">Buy!</button>
+            </div>
+          }
+        </div>
       </button>
+      }
     </div>
   </div>
-  @if(isPassiveActiveBarPurchased()) {
-    <app-passive-bar-active></app-passive-bar-active>
-  }
-  @if(isPassiveIdleBarPurchased()) {
-    <app-passive-bar-idle></app-passive-bar-idle>
-  }
 </section>

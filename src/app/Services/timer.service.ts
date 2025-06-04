@@ -6,7 +6,9 @@ import { Injectable } from '@angular/core';
 export class TimerService {
   private gameTimerStart: number = 0;
 
-  constructor() {}
+  constructor() {
+    this.initialize()
+  }
 
   initialize(): Promise<any> {
       this.gameTimerStart = Date.now();
@@ -15,6 +17,6 @@ export class TimerService {
     };
 
   logGameTimer(message?: string) {
-    console.log((Date.now() - this.gameTimerStart) / 1000, message);
+    console.log("Logging Timemark: ", (Date.now() - this.gameTimerStart) / 1000, message);
   }
 }

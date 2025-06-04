@@ -55,7 +55,7 @@ export class ModulesService {
         (x) => x.id === 'ScrM'
       );
       this.synergyModuleAvailable = game.upgrades.some(
-        (x) => x.id === 'PassiveMoreModules'
+        (x) => x.id === 'SynM'
       );
       this.mergeModuleAvailable = game.upgrades.some(
         (x) => x.id === 'MergM'
@@ -105,7 +105,7 @@ export class ModulesService {
       this.gameService.game().points >= 1_000_000_000_000 &&
       GameUtils.IsPurchasedPassiveUpgrade(
         this.gameService.game(),
-        'PassiveMoreModules'
+        'SynM'
       )
     ) {
       this.gameService.game.update((game) => ({

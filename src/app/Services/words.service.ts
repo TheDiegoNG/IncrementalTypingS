@@ -691,14 +691,14 @@ export class WordsService {
     // bonusSumsValues.push(bonusMainSum);
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'saLW')) {
-      let repeatedLettersBonus = Math.pow(1.5, this.getRepeatedLetters(word));
+      let repeatedLettersBonus = Math.pow(3.5, this.getRepeatedLetters(word));
       this.wordBonus += ` + [DifferentRepeatedLetters] (Upgrade 14)`;
       this.updateSumBonus('saLW', repeatedLettersBonus);
       // bonusSumsValues.push(repeatedLettersBonus);
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'diLW')) {
-      let differentLettersBonus = Math.pow(1.1, this.getDifferentLetters(word));
+      let differentLettersBonus = Math.pow(1.8, this.getDifferentLetters(word));
       this.wordBonus += ` + [DifferentLetters] (Upgrade 17)`;
       this.updateSumBonus('diLW', differentLettersBonus);
       // bonusSumsValues.push(differentLettersBonus);
@@ -757,6 +757,7 @@ export class WordsService {
     // bonusValues.push(bonusMainMulti);
 
     if (muResult[1] !== '') {
+      totalPoints *= muResult[3]
       this.wordBonus += muResult[1];
       this.updateBonus('muMulti', muResult[3]);
     }
@@ -929,7 +930,7 @@ export class WordsService {
       passive &&
       !GameUtils.IsPurchasedPassiveUpgrade(
         this.gameService.game(),
-        'PassiveMarket'
+        'MarkPB'
       )
     ) {
       marketBonus = [1, 1, 1, 1, 1, 1, 1, 1];

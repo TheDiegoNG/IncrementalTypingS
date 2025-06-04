@@ -34,7 +34,7 @@ export class ActiveService {
 
     if (muMulti.count > 0) {
       multiBonus = ' x [MultiUpgrade 2] * 1.25';
-      bonusesValues = muMulti.count * 1.25;
+      bonusesValues = Math.pow(1.25, muMulti.count);
     }
 
     return [sumBonus, multiBonus, bonusesSumsValues, bonusesValues];

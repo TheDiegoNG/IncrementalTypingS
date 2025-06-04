@@ -6,15 +6,19 @@ import { Generator } from '../../Classes/generator';
 import { PassiveBarComponent } from "../../passive-bar-active/passive-bar-active.component";
 import { GameUtils } from '../../Utils/gameUtils';
 import { PassiveBarIdleComponent } from "../../passive-bar-idle/passive-bar-idle.component";
+import { UpgradeService } from '../../Services/upgrade.service';
+import { eIdUpgrade } from '../../Classes/upgrade';
+import { MatIconModule } from '@angular/material/icon';
 // import translator from "./translator";
 
 @Component({
   selector: 'app-passive-menu',
   templateUrl: './passive-menu.component.html',
   styleUrls: ['./passive-menu.component.scss'],
-  imports: [ExponentialNumberPipe, PassiveBarComponent, PassiveBarIdleComponent],
+  imports: [ExponentialNumberPipe, PassiveBarComponent, PassiveBarIdleComponent, MatIconModule],
 })
 export class PassiveMenuComponent {
+  upgradeService = inject(UpgradeService)
   passiveService = inject(PassiveService)
   gameService = inject(GameService)
   generators: Generator[] = [];
@@ -83,6 +87,24 @@ export class PassiveMenuComponent {
 
   isPassiveIdleBarPurchased() {
     return GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xPass/t')
+  }
+
+  getVisibleScoreUpgrades() {
+    const unlockedIds = this.gameService.game().passiveUpgrades.map(u => u.id);
+    const upgrades = this.upgradeService.passiveScoreUpgrades;
+    const nextIndex = upgrades.findIndex(u => !unlockedIds.includes(u.id));
+  
+    return upgrades.map((u, i) => {
+      if (unlockedIds.includes(u.id) || i === nextIndex) {
+        return u;
+      } else {
+        return { ...u, name: '???????', description: '???????', cost: null };
+      }
+    });
+  }
+
+  isUpgradeActive(index: eIdUpgrade): boolean {
+    return this.gameService.game().passiveUpgrades.some((x) => x.id == index);
   }
 
 }

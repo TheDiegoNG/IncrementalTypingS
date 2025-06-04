@@ -35,6 +35,7 @@ export class CardsMenuComponent {
       this.timerService.logGameTimer('Purchased Cards');
       this.gameService.updateCardsCost();
       this.overlayService.cards.set(cards)
+      console.log("New cards in overlay: ", this.overlayService.cards())
     }
   }
 

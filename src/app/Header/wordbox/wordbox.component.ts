@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../../Services/layout.service';
 import { timestamp } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { TimerService } from '../../Services/timer.service';
 
 @Component({
   selector: 'app-wordbox',
@@ -33,6 +34,7 @@ export class WordboxComponent {
   wordService = inject(WordsService);
   layoutService = inject(LayoutService);
   gameService = inject(GameService);
+  timerService = inject(TimerService)
   // saveService = inject(SaveService);
   // messageService = inject(MessageService);
   // challengeService = inject(ChallengesService);
@@ -79,15 +81,34 @@ export class WordboxComponent {
       // Actualiza el signal
       this.lettersPerSecond.set(this.lettersTimestamps.length);
     }, 200);
+
+    
   }
 
   gameUtils = new GameUtils();
   comboCounter = computed(() => this.gameService.game().wordCounterPerfection);
 
-  ngOnInit() {
-    // this.layoutService.getComboCounterVisibility().subscribe((visible) => {
-    //   this.ComboCounterVisibility = visible;
-    // });
+  mockTyping() {
+    const currWord = this.wordService.currentWord();
+    const currentInput = this.inputValue();
+    if (currentInput.length < currWord.length) {
+      // Add the next letter from currentWord
+      const nextLetter = currWord[currentInput.length];
+      this.inputValue.set(currentInput + nextLetter);
+  
+      // Call checkWord to process the input
+      this.checkWord();
+    }
+  }
+
+  customTimerLog() {
+    this.timerService.logGameTimer("Custom Timer")
+  }
+
+  startAuto() {
+    setInterval(() => {
+      this.mockTyping()
+    }, 400)
   }
 
   checkWord() {

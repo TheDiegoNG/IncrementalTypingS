@@ -1,0 +1,34 @@
+<div
+  id="challengeProgress"
+  class="challengeProgress"
+  [style.width.%]="overlayService.progress()"
+  [ngClass]="{
+    red: challengeStatus == 'failure',
+    green: challengeStatus == 'success',
+    inactive: challengeStatus == 'inactive'
+  }"
+  (transitionend)="onOverlayAnimationEnd()"
+></div>
+@if (overlayVisible()) {
+<div #overlay class="overlay" (click)="removeOverlay()"></div>
+<div
+  class="light"
+  [style.left]="calcLeft(mouseX())"
+  [style.top]="calcTop(mouseY())"
+></div>
+<div
+  #viewerCardsContainer
+  class="viewerCardsContainer"
+  [class.viewer-active]="viewerActive()" 
+  (click)="removeOverlay()"
+>
+  <div
+    *ngFor="let card of cards()"
+    [ngClass]="getCardType(card)"
+    class="singleCard"
+  >
+    {{ card.description }}
+  </div>
+</div>
+}
+<!-- <p-toast></p-toast> -->

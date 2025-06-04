@@ -1,0 +1,7 @@
+<section #prestigeMenu class="menu">
+  <div class="prestigePointsContainer">
+    <p>Prestige Points when Prestige: {{ prestigePointsToGet() }}</p>
+    <p>Prestige Points: {{ gameService.game().prestigePoints }}</p>
+    <button class="prestigeButton" (click)="fadeOutBody()">Prestige!</button>
+  </div>
+</section>

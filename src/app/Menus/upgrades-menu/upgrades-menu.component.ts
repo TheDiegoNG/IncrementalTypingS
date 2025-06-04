@@ -6,13 +6,13 @@ import { GameService } from '../../Services/game.service';
 import { ExponentialNumberPipe } from "../../Pipes/exponential-number.pipe";
 import { MatCardModule } from '@angular/material/card'
 import { WordsService } from '../../Services/words.service';
-
+import { TabsModule } from  'primeng/tabs'
 @Component({
   selector: 'app-upgrades-menu',
   templateUrl: './upgrades-menu.component.html',
   styleUrls: ['./upgrades-menu.component.scss'],
   standalone: true,
-  imports: [CommonModule, ExponentialNumberPipe, MatCardModule],
+  imports: [CommonModule, ExponentialNumberPipe, MatCardModule, TabsModule],
 })
 export class UpgradesMenuComponent {
   upgradeService = inject(UpgradeService);
@@ -38,6 +38,10 @@ export class UpgradesMenuComponent {
     return this.upgrades.find((u) => u.id === id);
   }
 
+  getPassiveUpgradeById(id: string): Upgrade | undefined {
+    return this.upgradeService.passiveUpgrades.find((u) => u.id === id);
+  }
+
   canUnlock(upgrade: Upgrade): boolean {
     if (upgrade.parents.length === 0) {
       return true; // upgrades sin padres siempre están desbloqueables
@@ -52,14 +56,15 @@ export class UpgradesMenuComponent {
     return false;
   }
 
-  onUpgradeClick(upgrade: Upgrade): void {
+   onUpgradeClick(upgrade: Upgrade): void {
     if (this.canUnlock(upgrade) && !this.isUnlocked(upgrade.id)) {
       this.upgradeService.getUpgradeByBranch(upgrade.id, upgrade.branch);
     }
   }
 
   isUnlocked(id: eIdUpgrade): boolean {
-    return this.gameService.game().upgrades.some(u => u.id === id);
+    const upgrades = this.gameService.game().upgrades.concat(this.gameService.game().passiveUpgrades)
+    return upgrades.some(u => u.id === id);
   }
 
   isLocked(upgrade: Upgrade): boolean {

@@ -1,4 +1,4 @@
-import { effect, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { ActiveService } from './active.service';
 import { GameService } from './game.service';
 import { Generator } from '../Classes/generator';
@@ -15,6 +15,8 @@ export class PassiveService {
   generators: Generator[] = [];
   intervalId: ReturnType<typeof setInterval> | null = null;
   passiveWord = signal('');
+  passiveRate = computed(() => this.gameService.game().passiveRate);
+
   constructor() {
     this.createGenerator(new Generator('Portable Generator', 5, 1));
     this.createGenerator(new Generator('Small Generator', 6, 2));
@@ -27,7 +29,7 @@ export class PassiveService {
     this.createGenerator(new Generator('Jumbo Generator', 27, 9));
     this.createGenerator(new Generator('Colossal Generator', 30, 10));
     effect(() => {
-      const rate = this.gameService.game().passiveRate;
+      const rate = this.passiveRate();
       if (this.intervalId !== null) {
         clearInterval(this.intervalId);
       }
@@ -105,14 +107,14 @@ export class PassiveService {
   getPassivePoints(passiveWord: string) {
     var totalPoints = 0;
     totalPoints += passiveWord.length;
-    if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveScrabbleModule'))
+    if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'ScrPB'))
       totalPoints += this.wordsService.GetPointsLetters(passiveWord, true);
     totalPoints += this.gameService
       .game()
       .cards.filter((x) => x.bonusType === 'PassivePointsAmount')
       .reduce((total, card) => total + card.bonusAmount, 0);
     if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveLittleBonus'))
-      totalPoints += 5;
+      totalPoints += 2;
     if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveEnhancerEnhancerer'))
       totalPoints *= 1.25;
     if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveDontKnow'))
@@ -146,7 +148,7 @@ export class PassiveService {
       index <= this.gameService.game().passiveGenerators.length;
       index++
     ) {
-      if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveMoreModules')) {
+      if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'SynM')) {
         this.gameService.addGainedGeneratorsBoosted(index);
       } else {
         this.gameService.addGainedGenerators(index);

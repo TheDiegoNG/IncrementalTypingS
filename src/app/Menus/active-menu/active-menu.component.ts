@@ -29,7 +29,7 @@ export class ActiveMenuComponent {
 
   getVisibleScoreUpgrades() {
     const unlockedIds = this.gameService.game().upgrades.map(u => u.id);
-    const upgrades = this.upgradeService.getScoreUpgrades();
+    const upgrades = this.upgradeService.scoreUpgrades;
     const nextIndex = upgrades.findIndex(u => !unlockedIds.includes(u.id));
   
     return upgrades.map((u, i) => {

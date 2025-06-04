@@ -11,7 +11,7 @@ import { ChallengeType } from '../Classes/challenge';
   providedIn: 'root',
 })
 export class GameService {
-  game = signal(new Game(1e10, 'Current'));
+  game = signal(new Game(3e6, 'Current'));
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 
@@ -179,14 +179,13 @@ export class GameService {
 
   updatePrestige() {
     const game = this.game();
-    game.prestigePoints = Math.round(Math.cbrt(game.allTimePoints));
+    game.prestigePoints = Math.round(Math.cbrt(game.points));
     game.prestigeCount++;
     game.points = 0;
-    game.allTimePoints = 0;
     game.upgrades = [];
     game.maxLength = 4;
     game.bestWord = '';
-    const MUcosts = [50, 100, 500];
+    const MUcosts = [50, 500, 1000, 1000];
     game.multiUpgrades.forEach((multiUpgrade, index) => {
       multiUpgrade.count = 0;
       multiUpgrade.cost = MUcosts[index];

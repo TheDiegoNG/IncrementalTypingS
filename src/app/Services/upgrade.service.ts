@@ -22,6 +22,7 @@ export class UpgradeService {
   passiveUpgrades: Upgrade[] = [];
   prestigeUpgrades: Upgrade[] = [];
   scoreUpgrades: Upgrade[] = [];
+  passiveScoreUpgrades: Upgrade[] = [];
   lengthUpgradeBlocked = signal(false);
 
   constructor() {
@@ -47,7 +48,7 @@ export class UpgradeService {
       new Upgrade(
         '2nd Upgrade of this type',
         'x1.5 Points',
-        2_500,
+        5_000,
         'SecondUpgradePoints',
         'Score'
       )
@@ -56,7 +57,7 @@ export class UpgradeService {
       new Upgrade(
         'Your words value a bit more more, absolutely again',
         '+10 points per word',
-        10_000,
+        15_000,
         'WordsValueBitMoreMore',
         'Score'
       )
@@ -65,7 +66,7 @@ export class UpgradeService {
       new Upgrade(
         'Last Basic Upgrade! Your words value MORE, a bit more.',
         '+20 points per word',
-        10_000_000,
+        200_000,
         'LastBasic',
         'Score'
       )
@@ -106,7 +107,7 @@ export class UpgradeService {
       new Upgrade(
         'Letters per Value',
         'Your words are no longer just expressions — they become metrics of mastery. Each letter typed finds its weight in the great ledger of language, charting your fluency over time.',
-        500,
+        300,
         'LpV',
         'Starter',
         ['TB'],
@@ -132,7 +133,7 @@ export class UpgradeService {
       new Upgrade(
         'Mental Expansion',
         'The mind stretches, and so do your words. Where once meaning ended, now a single letter more can shape thought, expand expression, and push boundaries.',
-        6_000,
+        500,
         '+1WLI',
         'Starter',
         ['TB'],
@@ -146,13 +147,13 @@ export class UpgradeService {
       new Upgrade(
         `Echo Pattern`,
         'Repetition reveals rhythm. When letters echo within a word, they form patterns of power — familiar structures that amplify meaning through unity.',
-        250_000_000,
+        1_000,
         'saLW',
         'Starter',
         ['+1WLI'],
         450,
         100,
-        '1.5^[Groups of +1 Same Letter]',
+        '3.5^[Groups of +1 Same Letter]',
         ['diLW', 'xSlow', 'xPass/t', 'xSlow/cPrep']
       )
     );
@@ -160,13 +161,13 @@ export class UpgradeService {
       new Upgrade(
         `Lexical Diversity`,
         'Diversity shapes expression. Every unique letter adds a spark, a new angle to the word’s design — and with each difference, your potential multiplies.',
-        4_500_000_000,
+        1_250,
         'diLW',
         'Starter',
         ['+1WLI'],
         450,
         300,
-        '1.1^[Different Letters]',
+        '1.8^[Different Letters]',
         ['saLW', 'xFast', 'xPass/h', 'xPrec']
       )
     );
@@ -174,7 +175,7 @@ export class UpgradeService {
       new Upgrade(
         'Momentum Drive',
         'The faster you move, the more you gain. Momentum becomes power, and hesitation is your enemy. Each word typed reignites the flame of intensity.',
-        1000000,
+        50000,
         'xFast',
         'Starter',
         ['saLW'],
@@ -187,7 +188,7 @@ export class UpgradeService {
       new Upgrade(
         'Patience Multiplier',
         'Stillness holds strength. The longer you wait, the more the multiplier blooms — a quiet build-up of potential waiting to be released with the next word.',
-        1000000,
+        75000,
         'xSlow',
         'Starter',
         ['diLW'],
@@ -1092,106 +1093,1368 @@ export class UpgradeService {
     );
 
     //Passive Upgrade
-    this.createPassiveUpgrade(
+    this.createPassiveScoreUpgrade(
       new Upgrade(
         'You force the enhancer to be enhancerer',
         'x1.25 Points',
-        50_000,
+        100000,
         'PassiveEnhancerEnhancerer',
         'Passive'
       )
     );
-    this.createPassiveUpgrade(
+    this.createPassiveScoreUpgrade(
       new Upgrade(
         "Here's a little bonus for you",
-        '+5 points per Word',
-        200_000,
+        '+2 points per Word',
+        700000,
         'PassiveLittleBonus',
         'Passive'
       )
     );
-    this.createPassiveUpgrade(
+    this.createPassiveScoreUpgrade(
       new Upgrade(
         "I don't know exactly what to upgrade, I'm sorry",
         'x1.5 Points',
-        1_000_000,
+        4000000,
         'PassiveDontKnow',
         'Passive'
       )
     );
     this.createPassiveUpgrade(
       new Upgrade(
-        'Wow, it seems that they made a Scrabble <span class="highlight">module</span> for the enhancer too. Interesting',
-        'Every letter gets a value',
-        5_000_000,
-        'PassiveScrabbleModule',
-        'Passive'
+        `Whispers of Stillness`,
+        'Silence becomes strength. With each breath, the system hums with unseen energy, setting the stage for a flow of passive power.',
+        0,
+        'PrTB',
+        'Passive',
+        [],
+        200,
+        300,
+        'A feeling of silent potential'
       )
     );
     this.createPassiveUpgrade(
       new Upgrade(
-        'Horizontal scaling ftw',
-        '+1 Letter',
+        `Silent Lexicon`,
+        "Letters don't just count in words, but also in passive flow. Each rare letter adds power, even without active typing.",
         100_000_000,
-        'PassiveHorizontalScaling',
-        'Passive'
+        'ScrPB',
+        'Passive',
+        ['PrTB'],
+        200,
+        200,
+        'Scrabble bonuses now also apply to Passive Points.'
       )
     );
     this.createPassiveUpgrade(
       new Upgrade(
-        'More <span class="highlight">modules</span>! This time you found a synergy <span class="highlight">module</span>.',
-        'Every Generator Bought gives a Bonus to the other Generators!',
-        500_000_000,
-        'PassiveMoreModules',
-        'Passive'
-      )
-    );
-
-    this.createPassiveUpgrade(
-      new Upgrade(
-        'Passive Market',
-        'Now Passive Points are affected by the Market',
-        100_000_000_000_000_000,
-        'PassiveMarket',
-        'Passive'
-      )
-    );
-
-    //Prestige Upgrade
-    this.createPrestigeUpgrade(
-      new Upgrade(
-        'Welcome to Prestige! Take a free x2 multiplier',
-        'Yes',
-        10,
-        'PrestigeFreeMultiplier',
-        'Prestige'
-      )
-    );
-    this.createPrestigeUpgrade(
-      new Upgrade(
-        'The Gacha Gods have spoken',
-        '+2 Cards Per Roll',
-        50,
-        'PrestigeGachaGods',
-        'Prestige'
-      )
-    );
-    this.createPrestigeUpgrade(
-      new Upgrade(
-        'Better Scaling for MultiUpgrades!',
-        'Cost: ([AmountBought]/2)**(Math.log10([AmountBought]/2))',
+        `Silent Scholar`,
+        'Deep knowledge transcends the act of writing. Each Mastery level adds to your passive power.',
+        100_000_000,
+        'MastPB',
+        'Passive',
+        ['ScrPB'],
+        400,
         100,
-        'PrestigeBetterScaling',
-        'Prestige'
+        'Mastery bonuses now also apply to Passive Points.'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Legacy of Triumph`,
+        'Your accomplishments echo beyond their moment, amplifying even the passive. Each milestone fuels your progress.',
+        100_000_000,
+        'AchPB',
+        'Passive',
+        ['ScrPB'],
+        200,
+        100,
+        'Achievement bonuses now also apply to Passive Points.'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Silent Trade`,
+        'The market never sleeps. Fluctuations in the Market now resonate directly with your passive generation.',
+        100_000_000,
+        'MarkPB',
+        'Passive',
+        ['AchPB'],
+        0,
+        100,
+        'Market bonuses now also apply to Passive Points.'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Code of Flow`,
+        'Even the underlying code holds weight. The ASCII value of each word now influences your passive flow.',
+        100_000_000,
+        'AsciiPB',
+        'Passive',
+        ['MarkPB'],
+        0,
+        0,
+        'ASCII bonuses now also apply to Passive Points.'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Passive Word Stretch`,
+        'In the passive world, words grow longer, weaving new layers of hidden meaning. Each added letter amplifies the silent narrative.',
+        3e5,
+        'HorScal+',
+        'Passive',
+        ['PrTB'],
+        0,
+        300,
+        '+1 Letter to Generated Word'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Path of Clarity`,
+        'The line widens, giving more room to strike with precision. The Active Bar becomes more forgiving for those who watch closely.',
+        2e6,
+        'LBarSize+',
+        'Passive',
+        ['PrTB'],
+        0,
+        400,
+        'Longer area for Active Bar'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Path of Precision`,
+        'Further widening brings clarity to the path. Precision becomes easier to achieve as the Active Bar grows larger.',
+        100_000_000,
+        'LBarSize++',
+        'Passive',
+        ['LBarSize+'],
+        0,
+        500,
+        'Longer area for Active Bar'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Path of Mastery`,
+        'The path reaches its peak clarity. Every strike becomes more confident, each click more rewarding.',
+        100_000_000,
+        'LBarSize+++',
+        'Passive',
+        ['LBarSize++'],
+        0,
+        600,
+        'Longer area for Active Bar'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Edge of Perfection`,
+        'A hidden, narrow window reveals itself. Those who dare strike with perfect precision unlock a surge of passive power far beyond the norm.',
+        100_000_000,
+        'PrecBarCrit',
+        'Passive',
+        ['LBarSize+++'],
+        0,
+        700,
+        'A new area in the Active Bar appears'
+      )
+    );
+
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Gentle Decay`,
+        'The system softens its edge. The penalty for slipping to the sides becomes lighter, offering forgiveness for near-misses.',
+        100_000_000,
+        'NerfNerf',
+        'Passive',
+        ['PrecBarCrit'],
+        0,
+        800,
+        '-0.05 instead of -0.1 whenever the line touches the edges of the Active Bar'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Whispers of Speed`,
+        'The idle flow accelerates. Time bends to your favor as the bar fills faster, bringing each collection closer.',
+        100_000_000,
+        'FastB+',
+        'Passive',
+        ['PrTB'],
+        400,
+        400,
+        'Idle Bar fills 20% faster'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Pulse of Acceleration`,
+        "The rhythm quickens further. The bar's pace intensifies, drawing you into the rush of passive accumulation.",
+        100_000_000,
+        'FastB++',
+        'Passive',
+        ['FastB+'],
+        400,
+        500,
+        'Idle Bar fills 20% faster, again'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Torrent of Flow`,
+        'The bar surges with unmatched speed. Time and flow merge, propelling you toward a passive crescendo.',
+        100_000_000,
+        'FastB+++',
+        'Passive',
+        ['FastB++'],
+        400,
+        600,
+        'Idle Bar fills 20% faster, once again. This makes it twice faster than the original speed!'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Echo of Abundance`,
+        'Each completion brings not one, but two rewards. Your grasp on passive power expands as charges double with every harvest.',
+        100_000_000,
+        'Charge+',
+        'Passive',
+        ['FastB+++'],
+        400,
+        700,
+        '+1 Charges when collected'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Overdrive Surge`,
+        'In a fleeting burst, your passive power ignites. Collecting a charge unleashes a surge of x2 power, rewarding patience with an explosive climax.',
+        100_000_000,
+        'OvDriveBar',
+        'Passive',
+        ['Charge+'],
+        400,
+        800,
+        'Your multiplier charge gains a x2 bonus for 10 seconds before fully depleting when collected.'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Dual Flow`,
+        'Active clicks empower passive progress, and passive fills protect active flow. A hidden synergy emerges between the two bars.',
+        100_000_000,
+        'BarSyn',
+        'Passive',
+        ['OvDriveBar', 'NerfNerf'],
+        200,
+        900,
+        "Active clicks fill a percentage of the Idle Bar. The Idle Bar's fill percentage is the chance to avoid decay on Active edge hits."
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Efficient Blueprint`,
+        'The intricate design of your generators evolves, reducing the cost of higher tiers and paving the way for exponential growth.',
+        100_000_000,
+        'GenScalPlus',
+        'Passive',
+        ['BarSyn'],
+        200,
+        1000,
+        'Generator cost scaling is improved.'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Empowered Constructs`,
+        'Charges can now be assigned to specific generators, infusing them with raw potential and amplifying their output.',
+        100_000_000,
+        'GenCharge',
+        'Passive',
+        ['GenScalPlus'],
+        400,
+        1000,
+        'Assign charges to generators to overcharged them.'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Linked Engines`,
+        'Generators no longer operate in isolation. Each tier strengthens the others, creating a network of ascending power.',
+        100_000_000,
+        'SynGen',
+        'Passive',
+        ['GenScalPlus'],
+        200,
+        1100,
+        'Generators boost each other, with higher tiers providing a better bonus.'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Synergy Module Unlocked`,
+        'A hidden module awakens, allowing deeper optimization of generator synergies. Strategic improvements now await discovery.',
+        100_000_000,
+        'SynM',
+        'Passive',
+        ['SynGen'],
+        400,
+        1100,
+        'Unlock the Synergy Module!'
+      )
+    );
+    this.createPassiveUpgrade(
+      new Upgrade(
+        `Charge Ignition`,
+        'Every charge collected ignites your generators, flooding them with energy for a short but intense boost.',
+        100_000_000,
+        'GenCharBoost',
+        'Passive',
+        ['SynGen'],
+        200,
+        1200,
+        'Collecting a charge temporarily boosts generator output.'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Prestige Tree Beginning`,
+        'Here begins the cycle of ascent. This first node, like the seed of a vast tree, whispers of endless potential waiting to unfold. With each reset, its roots stretch deeper into the fabric of growth, preparing the way for your future.',
+        0,
+        'PrTB',
+        'Prestige',
+        [],
+        0,
+        0,
+        'A feeling of infinity'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Silent Legacy`,
+        'Your passive efforts become a hidden legacy, persisting across time. Even in new beginnings, their silent pulse remains, steady and unbroken.',
+        0,
+        'KeepPas',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Passive on Prestige'
       )
     );
     this.createPrestigeUpgrade(
       new Upgrade(
-        'It seems that the next time you Prestige you can bring the enhancer with you. But the upgrades must wear out',
-        'Keep your Passive Income (Not your upgrades) when Prestige! (PP resets too)',
-        500,
-        'PrestigeBringEnhancer',
-        'Prestige'
+        `Foundry Surge`,
+        'Each thousand echoes of Prestige fuels the fires of productivity. Passive points swell like molten metal in the heart of your forge, growing with every spark of progress.',
+        0,
+        'PrGenBulk',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        '+X% Passive Point per 1000 Prestige Points'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Precision Arc`,
+        'Your focus sharpens like a blade. The Active Bar responds, resonating with a higher, clearer multiplier — the mark of one who strikes with intent.',
+        0,
+        'ActBarMulti+',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Better Active Bar Multiplier'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Rhythmic Surge`,
+        'Each perfect strike upon the Active Bar sends ripples through the system. The rhythm of precision unlocks a chain of momentum, weaving a pattern of flawless power.',
+        0,
+        'ActBarPerf',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Gain a combo on consecutive successful Active Bar clicks'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Stillness Bloom`,
+        'In the quiet of the Idle Bar, power accumulates unseen. The multiplier blossoms gently, waiting to be claimed when the world awakens again.',
+        0,
+        'IdleBarMulti+',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Better Idle Bar Multiplier'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Silent Engines`,
+        'Your generators do not forget. Even through cycles of reset and rebirth, their quiet hum returns, ready to build anew from the depths.',
+        0,
+        'KeepGens',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Generators on Prestige'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Prestige-Driven Pulse`,
+        'Prestige becomes the lifeblood of your generators, infusing them with a pulse that beats faster, stronger, pushing output to new heights.',
+        0,
+        'GenPrSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Faster Generators based on Prestige Points'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Crystalline Memory`,
+        'Fragments of your past fill the Idle Bar even as you begin anew. The crystals glimmer with remembered strength, a reservoir waiting to be tapped.',
+        0,
+        'CrysCache',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'You keep a percentage of Crystal Charges on Prestige'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Flare of Continuity`,
+        "Overdrive's flame burns longer, its brilliance unbroken. Momentum surges forward, defying time's grasp, extending the reach of power.",
+        0,
+        'OvDriveBoost',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Overdrive Boost is extended'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Overflowing Crystal`,
+        "When the crystals overflow, they grant not just a single charge, but a cascade. Power multiplies, spilling beyond the vessel's edge.",
+        0,
+        'CrysOvFlow',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'You can gain more than one charge per fill'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Engine's Awakening`,
+        "Your generators awaken from slumber with renewed fervor. They surge forward, amplifying output in a wave of mechanical purpose.",
+        0,
+        'GenBoost',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Generator Boost'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Silent Synergy`,
+        'The stillness of the Idle Bar and the hum of generators find harmony. Together, they weave a tapestry of amplified, silent growth.',
+        0,
+        'IdleGenAmp',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Idle Multiplier boost based on Generators'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Whispers of Fortune`,
+        'The echoes of chance never fade. Even after rebirth, the threads of luck remain woven through your system, granting continuity to your pulls.',
+        0,
+        'KeepGacha',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Gacha on Prestige'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Overflowing Draw`,
+        'The deck brims with possibility, spilling over its edges. With each draw, the tides of fortune widen, offering more than ever before.',
+        0,
+        'CaAm+2',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        '+2 Cards per Roll'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Silent Dealer`,
+        'In the quiet passage of time, fortune stirs unseen. Every hour, a card is drawn from the void, a whisper of chance materialized.',
+        0,
+        'SilFort',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Generate 1 card every hour'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Fortune's Purge`,
+        "The shadows of ill fortune are cast aside. With each draw, the hand you're dealt becomes purer, more favorable to your journey.",
+        0,
+        'PrCardCleanse',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Less Negative Cards'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Overflowing Promise`,
+        'Your packs brim with latent energy, empowered by your Prestige. They spill forth extra cards, each a token of accumulated power.',
+        0,
+        'PackOvFlow',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        '+1 Card on Pack based on Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Hand of Stars`,
+        'The deck aligns in your favor. Each shuffle resonates with potential, drawing you closer to the rarest and most powerful cards.',
+        0,
+        'BetterCards',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'More probability for better cards'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Champion's Luck`,
+        'Your persistent pursuit of fortune hones your draws. With each pack opened, your skill and luck combine, pulling the best from the deck.',
+        0,
+        'HighRoller',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Better Cards based on Packs opened'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Convergence Ease`,
+        'Cards align more easily, merging with less resistance. The energies of combination flow smoother, unlocking potential with fewer pieces.',
+        0,
+        'MergeNerf',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'You need less cards to merge them'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Unbroken Deck`,
+        "Your packs remain intact through cycles of reset, their contents preserved as relics of fortune's favor.",
+        0,
+        'KeepPacks',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Packs on Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Prestige's Echo`,
+        "Prestige strengthens the silent dealer's hand. The number of cards drawn quietly increases, mirroring your rise in power.",
+        0,
+        'PrSilFort',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Generate more cards based on Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Whispering Ledger`,
+        'The ledger of language never fades. Even across resets, your mastery of Scrabble persists, echoing with the power of rare letters.',
+        0,
+        'KeepScr',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Scrabble on Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Gemstone Glyphs`,
+        'The rarest letters shine brightest, each a gem in the tapestry of language. Their glow intensifies, granting a surge of points that matches their rarity.',
+        0,
+        'ScrPow',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Better Boost to rarer characters'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Rare Glyph Cascade`,
+        'When rare letters align in succession, they form a chain of brilliance. Each connection magnifies their power, building an unbroken cascade of points.',
+        0,
+        'ScrRareChain',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Each consecutive word with rare Scrabble letters increases point gains'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Mosaic Verse`,
+        'The diversity of glyphs creates a mosaic of meaning. Words woven from rare and varied letters resonate with deeper strength, yielding higher rewards.',
+        0,
+        'ScrVariety',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'More unique letters based on Scrabble Tier gets a higher bonus'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Inferno of Letters`,
+        'Every rare letter fuels a growing fire. When the reservoir of value bursts, it ignites a surge of points, illuminating your progress.',
+        0,
+        'ScrFuel',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Unlock a bar that fills based on Scrabble value. When filled, trigger a boost.'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Silent Triumph`,
+        'The weight of your achievements feeds an unseen current. This steady pulse flows into your Passive systems, amplifying growth silently.',
+        0,
+        'PassAch',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Passive Boost from Achievements'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Prismatic Record`,
+        'Not all achievements gleam the same. The rarer and more luminous the milestone, the greater its resonance in your journey, magnifying your Prestige.',
+        0,
+        'QualPrAch',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Achievement Quality boosts Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Legacy's Gift`,
+        'Every achievement unlocks deeper understanding. Mastery itself accelerates under the glow of past triumphs, each lesson fueling sharper focus.',
+        0,
+        'AchMastXP',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Boost to Mastery XP based on Achievements'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Anchor of Equilibrium`,
+        'The tides of the Market settle, guided by unseen hands. Each rise and fall aligns more closely with order, creating a path of steady progress.',
+        0,
+        'MarkAnch',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Market fluctuation is more stable and consistent'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Vault of Echoes`,
+        "The Market's pulse echoes through time. Even as the world resets, its vault of influence remains, untouched and unyielding.",
+        0,
+        'KeepMark',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Market on Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Cascade of Ascent`,
+        'One rise begets another. As the Market surges, it carries with it an echo of momentum, triggering a cascade of gains.',
+        0,
+        'SurgeChain',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'When the market rises, triggers another complementary rise immediately'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Rebound of Fate`,
+        'When the Market stumbles thrice, fate intervenes. The fall is softened, rebounding with renewed force and purpose.',
+        0,
+        'MarkRebound',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Stabilizes and rebounds when falling 3 consecutive times'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Whisper of Resilience`,
+        "The Market's sharp edges are dulled by your mastery. What once was perilous becomes manageable, reducing the sting of misfortune.",
+        0,
+        'RiskMitigator',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Negative Market Events are reduced'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Pulse of Commerce`,
+        'Fortune flows quietly through the Market. Even when idle, the pulse of trade grants you bursts of unexpected wealth.',
+        0,
+        'TradeSurge',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Gain some points based on the Market from time to time'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Legacy of Trade`,
+        'Your accumulated Prestige fuels the engines of commerce. Each point echoes through the Market, compounding your gains with every ascent.',
+        0,
+        'MarkTierBoost',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Market gains are increased for every x Prestige Points earned'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Mark of Trial`,
+        'The echoes of your completed challenges persist. Even across cycles of renewal, your mark remains, unwavering and true.',
+        0,
+        'KeepChal',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Challenges on Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Steady Ascent`,
+        'With each challenge overcome, a new step on your path unfolds. These victories feed a silent current that strengthens your Passive flow.',
+        0,
+        'ChalPassTier',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'For every 10 challenges completed, you get a passive bonus'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Tide of Triumph`,
+        'Challenge completions ripple outward, weaving into the flow of Passive gains. Every step forward resonates with steady power.',
+        0,
+        'ChalPassFlow',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Passive Boost based on Challenge'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Trial's Grace`,
+        'A hidden thread of resilience grants you one more chance. The path ahead may falter, but you shall endure beyond the first fall.',
+        0,
+        '+1ChalLife',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        '+1 Life for Challenges'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Prestige Tribute`,
+        'Your victories in Challenges echo beyond the present. Each completed trial strengthens your claim to Prestige, leaving a mark of triumph.',
+        0,
+        'ChalPrBoost',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Prestige Point boost based on Challenge Completions'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Tangled Threads`,
+        'The energy of Challenges resonates through the world. Passive flows, Market tides, and the pulse of Cards all feel its subtle influence.',
+        0,
+        'ChalFusion',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Small bonus to Passive, Market and Cards'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Cycle Rewoven`,
+        'Your path through Challenges need not be final. The threads of fate can be unspooled and rewoven, allowing for fresh starts.',
+        0,
+        'ChalRespec',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'You can reset your challenge completions'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Echoes of Past Struggles`,
+        'The past is not forgotten. Even before this path was taken, your previous Challenges leave their mark, bestowing retroactive rewards.',
+        0,
+        'ChalRetro',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Retroactive bonus to all Challenges'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Ascendant Momentum`,
+        'Each consecutive triumph feeds the next. As the chain grows longer, your power swells, amplifying your journey.',
+        0,
+        'ChalChain',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Each consecutive challenge grants a stacking point bonus'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Sinbound Legacy`,
+        'The shadows of the Cardinal Sins linger, binding themselves to your journey. Even across resets, their imprint remains, daring you to push further.',
+        0,
+        'KeepCS',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Cardinal Sins'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Echo of Defiance`,
+        'A hidden spark ignites, granting you one more life in the depths of the Cardinal Sins. Even as you fall, the flame of resistance flickers on.',
+        0,
+        '+1CSLife',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        '+1 Life in Cardinal Sins'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Shard Infusion`,
+        'The Lexiconium Shards pulse with greater vigor, their essence resonating more powerfully with each challenge overcome.',
+        0,
+        'CSLexiBoost',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Lexiconium Shards boost'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Web of Sins`,
+        'Your mastery of the Cardinal Sins weaves a web of power. The further you venture, the more Lexiconium Shards echo back, amplifying your claim.',
+        0,
+        'CSinSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Lexi shards boost based on Cardinal Sins records'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Silent Concord`,
+        'The Lexiconium Shards hum with silent resonance, feeding strength into your Passive flow. Their quiet influence grows with every shard gathered.',
+        0,
+        'CSPassSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Lexiconium Shards boost Passive Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Pulse of Power`,
+        'The energy of Lexiconium Shards infuses your active efforts. Each word, each action surges with newfound potency, drawn from the Sins.',
+        0,
+        'CSActSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Lexiconium Shards boost Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Insightful Tithe`,
+        'The lessons of sin feed wisdom into mastery. As the shards accumulate, so too does your understanding, each fragment a spark of greater skill.',
+        0,
+        'CSMastSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Lexiconium Shards boost Mastery XP'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Legacy Tribute`,
+        'The Lexiconium Shards become more than tokens; they are tributes to your endurance, channeling into Prestige and fortifying your legacy.',
+        0,
+        'CSPrBonus',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Lexiconium Shards boost Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Enduring Blueprint`,
+        'The blueprint of your systems remains etched in eternity. Even through resets, your modules persist, ready to awaken anew with each return.',
+        0,
+        'KeepMod',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Modules on Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Glyph Weaver`,
+        'The system now weaves its own threads of knowledge. The Scrabble Module expands without intervention, drawing power with every moment passed.',
+        0,
+        'AutoScrMod',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Autobuy Scrabble Module Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Tides of Cost`,
+        'The currents of cost yield to your command. Each purchase now flows more smoothly, scaling in your favor.',
+        0,
+        'MuScal+',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Better Cost Scaling on Multiupgrades. Cost: ([AmountBought]/2)**(Math.log10([AmountBought]/2))'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Hands of Fate`,
+        'Automation whispers into the void. Multiupgrades now flow freely, weaving themselves into your systems without a single touch.',
+        0,
+        'AutoMulti',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Autobuy Multiupgrades'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Flare of Rebirth`,
+        'In the instant of reset, a spark ignites. A burst of multiplier energy surges forth, propelling you into your next journey.',
+        0,
+        'PrTempB',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Temporary Multiplier when Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Point Echo`,
+        'Your collected essence echoes across resets. Even as you begin anew, a fragment of your past clings to you, carrying forward a fraction of your points.',
+        0,
+        'PrNexus',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        '0.1% of Points on Prestige Reset'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Letters of Momentum`,
+        'The faster your thoughts race across the page, the greater your power surges. Momentum is rewarded, translating speed into strength.',
+        0,
+        'LpVMulti',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Multiplier on Letter Per Second'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Convergence Pulse`,
+        'All paths converge into a singular surge. Every multiplier resonates louder, their combined force magnified with each fragment of Prestige.',
+        0,
+        'PowSurge',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'All multipliers +x% per 1000 Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Glyph Flood`,
+        'The sheer weight of your words crushes resistance. The more letters you conjure, the more your power swells.',
+        0,
+        'LetCountB',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Multiplier on Letter Count'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Blade of Precision`,
+        'With every sharp stroke, your criticals strike deeper, slicing through resistance with amplified force.',
+        0,
+        'CritMultiB',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Boost Critical Multiplier'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Rhythm of Resolve`,
+        'As your words flow uninterrupted, momentum builds. But break the rhythm, and the pulse dissipates into silence.',
+        0,
+        'WordPulse',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Multiplier on sustained words typed, resets after 10 seconds'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Echoes of Length`,
+        'Your words stretch into the void, echoing louder with each extra letter. Prestige weaves longer threads of expression.',
+        0,
+        'WLPrSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Words count as longer based on Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Prestige Bloom`,
+        'Your Prestige Points bloom like unseen flowers, unfolding quietly into points that surge across every system.',
+        0,
+        'PrPSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Points boost based on Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Dual Path Memory`,
+        'The dual pulse of activity and stillness remains unbroken. Even through resets, both sides of your system hum quietly with power.',
+        0,
+        'KeepAct/Idle',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Keep Act/Idle on Prestige'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Glyph Legacy`,
+        'Every word typed leaves a mark, a glyph carved into your Prestige. The echoes of your efforts cascade into lasting strength.',
+        0,
+        'WTPrSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Words Typed boosts Prestige Points'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Epoch Surge`,
+        'Each Era fuels your journey forward. Their weight accumulates, cascading into a surge of points that ripples through the system.',
+        0,
+        'EraBoost',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Points boost based on Eras'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Era Crafting`,
+        'You shape the future with the flames of Prestige. The next Era surges with crafted strength, forged from your accumulated power.',
+        0,
+        'EraForge',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Allocate Prestige Points to boost unlocked Eras'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Era Ascendancy`,
+        'The strength of each Era grows sharper, its bonus resonating deeper into your systems with every moment of progress.',
+        0,
+        'EraBetB',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Era strength boost'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Era Harmony`,
+        'All systems align under the banner of the current Era. Their rhythms merge, amplifying one another in a unified surge of growth.',
+        0,
+        'EraSyn',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Boost to everything based on Era'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Era Catalyst`,
+        'The more Eras you cross, the greater the Prestige Points you claim. Progress accelerates, driven by the momentum of past triumphs.',
+        0,
+        'RapidAsc',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Prestige Points boost based on Era'
+      )
+    );
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Temporal Surge`,
+        'The path to Prestige bends and shortens. Each Era makes your climb more efficient, smoothing the journey ahead.',
+        0,
+        'EraRush',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Better formula for earning Prestige Points based on Eras'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Chrono Horizon`,
+        'Beyond the known Eras lies a horizon of possibilities. The cost of reaching them lightens, drawing the future closer.',
+        0,
+        'EraFuture',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Eras are cheaper'
+      )
+    );
+
+    this.createPrestigeUpgrade(
+      new Upgrade(
+        `Era Resonance`,
+        'The fabric of the current Era vibrates with energy. Temporary pulses of power surge through your system, granting fleeting but potent bonuses.',
+        0,
+        'EraPulse',
+        'Prestige',
+        ['PrTB'],
+        0,
+        0,
+        'Era events with temporary bonuses'
       )
     );
   }
@@ -1222,6 +2485,10 @@ export class UpgradeService {
     this.mightyUpgrades.push(upgrade);
   }
 
+  createPassiveScoreUpgrade(upgrade: Upgrade) {
+    this.passiveScoreUpgrades.push(upgrade);
+  }
+
   createPassiveUpgrade(upgrade: Upgrade) {
     this.passiveUpgrades.push(upgrade);
   }
@@ -1229,39 +2496,6 @@ export class UpgradeService {
   createPrestigeUpgrade(upgrade: Upgrade) {
     this.prestigeUpgrades.push(upgrade);
   }
-
-  getScoreUpgrades(): Upgrade[] {
-    return this.scoreUpgrades;
-  }
-
-  getStarterUpgrades(): Upgrade[] {
-    return this.starterUpgrades;
-  }
-
-  getExplorerUpgrades(): Upgrade[] {
-    return this.explorerUpgrades;
-  }
-
-  getMasterUpgrades(): Upgrade[] {
-    return this.masterUpgrades;
-  }
-
-  getGrandMasterUpgrades(): Upgrade[] {
-    return this.grandMasterUpgrades;
-  }
-
-  getMightyUpgrades(): Upgrade[] {
-    return this.mightyUpgrades;
-  }
-
-  getPassiveUpgrades(): Upgrade[] {
-    return this.passiveUpgrades;
-  }
-
-  getPrestigeUpgrades(): Upgrade[] {
-    return this.prestigeUpgrades;
-  }
-
   getScoreUpgrade(upgradeType: eIdUpgrade) {
     const upgrade = this.scoreUpgrades.find((x) => x.id === upgradeType);
     if (!upgrade) return;
@@ -1275,6 +2509,26 @@ export class UpgradeService {
       }));
       this.gameService.addUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
+    }
+  }
+
+  getPassiveScoreUpgrade(upgradeType: eIdUpgrade) {
+    const upgrade = this.passiveScoreUpgrades.find((x) => x.id === upgradeType);
+    if (!upgrade) return;
+    if (
+      !this.gameService
+        .game()
+        .passiveUpgrades.some((x) => x.id == upgradeType) &&
+      this.gameService.game().passivePoints >= upgrade.cost
+    ) {
+      this.gameService.game.update((game) => ({
+        ...game,
+        passivePoints: game.passivePoints - upgrade.cost,
+      }));
+      this.gameService.addPassiveUpgrade(upgrade);
+      this.timerService.logGameTimer(
+        `Obtained Passive Upgrade: ${upgrade.name}"`
+      );
     }
   }
 
@@ -1298,7 +2552,7 @@ export class UpgradeService {
         this.layoutService.comboCounterVisible.set(true);
       }
       if (upgradeType === 'xPass/t') {
-        this.passiveService.passBarIdleProgress.set(1)
+        this.passiveService.passBarIdleProgress.set(1);
       }
       if (upgradeType === 'PaE') {
         if (!this.gameService.game().passiveGenerators.some((x) => x.id == 1)) {
@@ -1421,10 +2675,10 @@ export class UpgradeService {
       }));
       this.gameService.addPassiveUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
-      if (upgradeType == 'PassiveHorizontalScaling')
+      if (upgradeType === 'HorScal+')
         this.gameService.game.update((game) => ({
           ...game,
-          passiveLength: game.passiveLength++,
+          passiveLength: ++game.passiveLength,
         }));
     }
   }
@@ -1464,6 +2718,8 @@ export class UpgradeService {
         return this.getGrandMasterUpgrade(upgradeId);
       case 'Mighty':
         return this.getMightyUpgrade(upgradeId);
+      case 'Passive':
+        return this.getPassiveUpgrade(upgradeId);
       default:
         throw new Error('Unknown upgrade branch: ' + branch);
     }

@@ -11,7 +11,7 @@ export class MenuService {
     return [
       { id: 'active', visible: true },
       { id: 'passive', visible: game.upgrades.some(x => x.id === "PaE") },
-      { id: 'upgrades', visible: game.allTimePoints >= 50 },
+      { id: 'upgrades', visible: game.allTimePoints >= 700 },
       { id: 'cards', visible: game.upgrades.some(x => x.id === "Gacha") },
       { id: 'modules', visible: game.upgrades.some(x => x.id === "Mod") },
       { id: 'mastery', visible: game.upgrades.some(x => x.id === "Mast") },

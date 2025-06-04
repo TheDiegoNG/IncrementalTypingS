@@ -20,5 +20,9 @@ export class OverlayService {
     );
   });
 
+  clearCards() {
+    this.cards.set([]);
+  }
+
   constructor() {}
 }

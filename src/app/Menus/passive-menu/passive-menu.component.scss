@@ -36,8 +36,97 @@
   font-size: var(--small-custom-text);
 }
 
-.passive-menu {
+.passive-points-gameplay {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 7;
+}
+
+.passive-upgrade-wrapper {
+  flex: 3;
+}
+
+.upgrades-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upgrade-square {
+  font-size: var(--small-custom-text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-radius: 0.5rem;
+  border: 0.25rem solid var(--primary-400);
+  max-width: 20dvw;
+  color: var(--black-900);
+}
+
+.upgrade-name-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  min-height: 3rem;
+}
+
+.upgrade-name {
+  text-align: start;
+}
+
+.upgrade-description-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.buy-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buy-button {
+  background-color: var(--black-900);
+  border-radius: 0.5rem;
+  max-width: 7rem;
+  float: right;
+  aspect-ratio: 2/1;
+}
+
+.upgrade-cost {
+  font-size: var(--xsmall-custom-text);
+}
+
+.upgrade-information {
+  display: flex;
+  justify-content: space-between;
+}
+
+.equal-height {
+  flex: 1;
+}
+
+.inactive {
+  background-image: linear-gradient(to bottom, var(--primary-200) 50%, var(--primary-300) 50%, var(--primary-300) 100%);
+}
+
+.active {
+  color: white;
+  background-image: linear-gradient(to bottom, var(--green) 50%, var(--dark-green) 50%, var(--dark-green) 100%);
+}
+
+.upgrade-square.locked {
+filter: grayscale(100%);
+cursor: not-allowed;
+}
+.upgrade-square.locked:hover {
+transform: none; /* Desactiva cualquier efecto hover */
+}
+
+.passive-menu {
+  display: flex;
+  justify-content: space-around;
 }

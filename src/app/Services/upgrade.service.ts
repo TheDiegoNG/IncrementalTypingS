@@ -1125,7 +1125,7 @@ export class UpgradeService {
         `Whispers of Stillness`,
         'Silence becomes strength. With each breath, the system hums with unseen energy, setting the stage for a flow of passive power.',
         0,
-        'PrTB',
+        'PTB',
         'Passive',
         [],
         200,
@@ -1140,7 +1140,7 @@ export class UpgradeService {
         100_000_000,
         'ScrPB',
         'Passive',
-        ['PrTB'],
+        ['PTB'],
         200,
         200,
         'Scrabble bonuses now also apply to Passive Points.'
@@ -1207,7 +1207,7 @@ export class UpgradeService {
         3e5,
         'HorScal+',
         'Passive',
-        ['PrTB'],
+        ['PTB'],
         0,
         300,
         '+1 Letter to Generated Word'
@@ -1221,7 +1221,7 @@ export class UpgradeService {
         2e6,
         'LBarSize+',
         'Passive',
-        ['PrTB'],
+        ['PTB'],
         0,
         400,
         'Longer area for Active Bar'
@@ -1290,7 +1290,7 @@ export class UpgradeService {
         100_000_000,
         'FastB+',
         'Passive',
-        ['PrTB'],
+        ['PTB'],
         400,
         400,
         'Idle Bar fills 20% faster'
@@ -1450,7 +1450,7 @@ export class UpgradeService {
         'Prestige',
         ['PrTB'],
         0,
-        0,
+        100,
         'Keep Passive on Prestige'
       )
     );
@@ -1461,9 +1461,9 @@ export class UpgradeService {
         0,
         'PrGenBulk',
         'Prestige',
-        ['PrTB'],
+        ['KeepPas'],
         0,
-        0,
+        200,
         '+X% Passive Point per 1000 Prestige Points'
       )
     );
@@ -1475,9 +1475,9 @@ export class UpgradeService {
         0,
         'ActBarMulti+',
         'Prestige',
-        ['PrTB'],
+        ['PrGenBulk'],
         0,
-        0,
+        300,
         'Better Active Bar Multiplier'
       )
     );
@@ -1489,9 +1489,9 @@ export class UpgradeService {
         0,
         'ActBarPerf',
         'Prestige',
-        ['PrTB'],
+        ['ActBarMulti+'],
         0,
-        0,
+        400,
         'Gain a combo on consecutive successful Active Bar clicks'
       )
     );
@@ -1503,9 +1503,9 @@ export class UpgradeService {
         0,
         'IdleBarMulti+',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrGenBulk'],
+        200,
+        300,
         'Better Idle Bar Multiplier'
       )
     );
@@ -1517,9 +1517,9 @@ export class UpgradeService {
         0,
         'KeepGens',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ActBarMulti+','IdleBarMulti+'],
+        200,
+        400,
         'Keep Generators on Prestige'
       )
     );
@@ -1531,9 +1531,9 @@ export class UpgradeService {
         0,
         'GenPrSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepGens'],
+        200,
+        500,
         'Faster Generators based on Prestige Points'
       )
     );
@@ -1545,9 +1545,9 @@ export class UpgradeService {
         0,
         'CrysCache',
         'Prestige',
-        ['PrTB'],
+        ['GenPrSyn'],
         0,
-        0,
+        500,
         'You keep a percentage of Crystal Charges on Prestige'
       )
     );
@@ -1559,9 +1559,9 @@ export class UpgradeService {
         0,
         'OvDriveBoost',
         'Prestige',
-        ['PrTB'],
+        ['CrysCache'],
         0,
-        0,
+        600,
         'Overdrive Boost is extended'
       )
     );
@@ -1573,9 +1573,9 @@ export class UpgradeService {
         0,
         'CrysOvFlow',
         'Prestige',
-        ['PrTB'],
+        ['OvDriveBoost'],
         0,
-        0,
+        700,
         'You can gain more than one charge per fill'
       )
     );
@@ -1587,9 +1587,9 @@ export class UpgradeService {
         0,
         'GenBoost',
         'Prestige',
-        ['PrTB'],
+        ['CrysOvFlow'],
         0,
-        0,
+        800,
         'Generator Boost'
       )
     );
@@ -1601,9 +1601,9 @@ export class UpgradeService {
         0,
         'IdleGenAmp',
         'Prestige',
-        ['PrTB'],
+        ['GenBoost'],
         0,
-        0,
+        900,
         'Idle Multiplier boost based on Generators'
       )
     );
@@ -1615,9 +1615,9 @@ export class UpgradeService {
         0,
         'KeepGacha',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrTempB'],
+        400,
+        200,
         'Keep Gacha on Prestige'
       )
     );
@@ -1629,9 +1629,9 @@ export class UpgradeService {
         0,
         'CaAm+2',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepGacha'],
+        400,
+        300,
         '+2 Cards per Roll'
       )
     );
@@ -1642,9 +1642,9 @@ export class UpgradeService {
         0,
         'SilFort',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CaAm+2'],
+        400,
+        400,
         'Generate 1 card every hour'
       )
     );
@@ -1655,9 +1655,9 @@ export class UpgradeService {
         0,
         'PrCardCleanse',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CaAm+2'],
+        600,
+        300,
         'Less Negative Cards'
       )
     );
@@ -1668,9 +1668,9 @@ export class UpgradeService {
         0,
         'PackOvFlow',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrCardCleanse'],
+        800,
+        300,
         '+1 Card on Pack based on Prestige Points'
       )
     );
@@ -1681,9 +1681,9 @@ export class UpgradeService {
         0,
         'BetterCards',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrCardCleanse'],
+        600,
+        400,
         'More probability for better cards'
       )
     );
@@ -1695,9 +1695,9 @@ export class UpgradeService {
         0,
         'HighRoller',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['BetterCards'],
+        400,
+        600,
         'Better Cards based on Packs opened'
       )
     );
@@ -1708,9 +1708,9 @@ export class UpgradeService {
         0,
         'MergeNerf',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['HighRoller'],
+        400,
+        700,
         'You need less cards to merge them'
       )
     );
@@ -1721,9 +1721,9 @@ export class UpgradeService {
         0,
         'KeepPacks',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['MergeNerf'],
+        200,
+        700,
         'Keep Packs on Prestige'
       )
     );
@@ -1734,9 +1734,9 @@ export class UpgradeService {
         0,
         'PrSilFort',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['MergeNerf'],
+        400,
+        800,
         'Generate more cards based on Prestige Points'
       )
     );
@@ -1747,8 +1747,8 @@ export class UpgradeService {
         0,
         'KeepScr',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['PrNexus'],
+        800,
         0,
         'Keep Scrabble on Prestige'
       )
@@ -1760,8 +1760,8 @@ export class UpgradeService {
         0,
         'ScrPow',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['KeepScr'],
+        1000,
         0,
         'Better Boost to rarer characters'
       )
@@ -1773,8 +1773,8 @@ export class UpgradeService {
         0,
         'ScrRareChain',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['ScrPow'],
+        1200,
         0,
         'Each consecutive word with rare Scrabble letters increases point gains'
       )
@@ -1786,9 +1786,9 @@ export class UpgradeService {
         0,
         'ScrVariety',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ScrRareChain'],
+        1400,
+        100,
         'More unique letters based on Scrabble Tier gets a higher bonus'
       )
     );
@@ -1799,9 +1799,9 @@ export class UpgradeService {
         0,
         'ScrFuel',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ScrVariety'],
+        1400,
+        200,
         'Unlock a bar that fills based on Scrabble value. When filled, trigger a boost.'
       )
     );
@@ -1812,9 +1812,9 @@ export class UpgradeService {
         0,
         'PassAch',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrNexus'],
+        1000,
+        100,
         'Passive Boost from Achievements'
       )
     );
@@ -1825,9 +1825,9 @@ export class UpgradeService {
         0,
         'QualPrAch',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PassAch'],
+        1200,
+        100,
         'Achievement Quality boosts Prestige Points'
       )
     );
@@ -1838,9 +1838,9 @@ export class UpgradeService {
         0,
         'AchMastXP',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PassAch'],
+        1200,
+        200,
         'Boost to Mastery XP based on Achievements'
       )
     );
@@ -1851,9 +1851,9 @@ export class UpgradeService {
         0,
         'MarkAnch',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CritMultiB'],
+        800,
+        400,
         'Market fluctuation is more stable and consistent'
       )
     );
@@ -1864,9 +1864,9 @@ export class UpgradeService {
         0,
         'KeepMark',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['MarkAnch'],
+        800,
+        500  ,
         'Keep Market on Prestige'
       )
     );
@@ -1877,9 +1877,9 @@ export class UpgradeService {
         0,
         'SurgeChain',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepMark'],
+        600,
+        500,
         'When the market rises, triggers another complementary rise immediately'
       )
     );
@@ -1890,9 +1890,9 @@ export class UpgradeService {
         0,
         'MarkRebound',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepMark'],
+        600,
+        600,
         'Stabilizes and rebounds when falling 3 consecutive times'
       )
     );
@@ -1903,9 +1903,9 @@ export class UpgradeService {
         0,
         'RiskMitigator',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepMark'],
+        800,
+        600,
         'Negative Market Events are reduced'
       )
     );
@@ -1916,9 +1916,9 @@ export class UpgradeService {
         0,
         'TradeSurge',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['RiskMitigator'],
+        800,
+        700,
         'Gain some points based on the Market from time to time'
       )
     );
@@ -1929,9 +1929,9 @@ export class UpgradeService {
         0,
         'MarkTierBoost',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['TradeSurge'],
+        800,
+        800,
         'Market gains are increased for every x Prestige Points earned'
       )
     );
@@ -1942,9 +1942,9 @@ export class UpgradeService {
         0,
         'KeepChal',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CritMultiB'],
+        1000,
+        400,
         'Keep Challenges on Prestige'
       )
     );
@@ -1955,9 +1955,9 @@ export class UpgradeService {
         0,
         'ChalPassTier',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepChal'],
+        1000,
+        500,
         'For every 10 challenges completed, you get a passive bonus'
       )
     );
@@ -1968,9 +1968,9 @@ export class UpgradeService {
         0,
         'ChalPassFlow',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalPassTier'],
+        1200,
+        500,
         'Passive Boost based on Challenge'
       )
     );
@@ -1981,9 +1981,9 @@ export class UpgradeService {
         0,
         '+1ChalLife',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalPassFlow'],
+        1200,
+        400,
         '+1 Life for Challenges'
       )
     );
@@ -1994,9 +1994,9 @@ export class UpgradeService {
         0,
         'ChalPrBoost',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalPassTier'],
+        1000,
+        600,
         'Prestige Point boost based on Challenge Completions'
       )
     );
@@ -2007,9 +2007,9 @@ export class UpgradeService {
         0,
         'ChalFusion',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalPrBoost'],
+        1000,
+        700,
         'Small bonus to Passive, Market and Cards'
       )
     );
@@ -2020,9 +2020,9 @@ export class UpgradeService {
         0,
         'ChalRespec',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalFusion'],
+        1200,
+        700,
         'You can reset your challenge completions'
       )
     );
@@ -2033,9 +2033,9 @@ export class UpgradeService {
         0,
         'ChalRetro',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalFusion'],
+        1000,
+        800,
         'Retroactive bonus to all Challenges'
       )
     );
@@ -2046,9 +2046,9 @@ export class UpgradeService {
         0,
         'ChalChain',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['ChalRetro'],
+        1200,
+        800,
         'Each consecutive challenge grants a stacking point bonus'
       )
     );
@@ -2059,9 +2059,9 @@ export class UpgradeService {
         0,
         'KeepCS',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['WLPrSyn'],
+        1400,
+        400,
         'Keep Cardinal Sins'
       )
     );
@@ -2072,9 +2072,9 @@ export class UpgradeService {
         0,
         '+1CSLife',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepCS'],
+        1600,
+        400,
         '+1 Life in Cardinal Sins'
       )
     );
@@ -2085,9 +2085,9 @@ export class UpgradeService {
         0,
         'CSLexiBoost',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepCS'],
+        1400,
+        500,
         'Lexiconium Shards boost'
       )
     );
@@ -2098,9 +2098,9 @@ export class UpgradeService {
         0,
         'CSinSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CSLexiBoost'],
+        1400,
+        600,
         'Lexi shards boost based on Cardinal Sins records'
       )
     );
@@ -2111,9 +2111,9 @@ export class UpgradeService {
         0,
         'CSPassSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CSinSyn'],
+        1200,
+        600,
         'Lexiconium Shards boost Passive Points'
       )
     );
@@ -2124,9 +2124,9 @@ export class UpgradeService {
         0,
         'CSActSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CSinSyn'],
+        1400,
+        700,
         'Lexiconium Shards boost Points'
       )
     );
@@ -2137,9 +2137,9 @@ export class UpgradeService {
         0,
         'CSMastSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CSActSyn'],
+        1400,
+        800,
         'Lexiconium Shards boost Mastery XP'
       )
     );
@@ -2150,9 +2150,9 @@ export class UpgradeService {
         0,
         'CSPrBonus',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CSMastSyn'],
+        1400,
+        900,
         'Lexiconium Shards boost Prestige Points'
       )
     );
@@ -2163,9 +2163,9 @@ export class UpgradeService {
         0,
         'KeepMod',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepAct/Idle'],
+        2000,
+        500,
         'Keep Modules on Prestige'
       )
     );
@@ -2176,9 +2176,9 @@ export class UpgradeService {
         0,
         'AutoScrMod',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepMod'],
+        2000,
+        600,
         'Autobuy Scrabble Module Points'
       )
     );
@@ -2190,7 +2190,7 @@ export class UpgradeService {
         'MuScal+',
         'Prestige',
         ['PrTB'],
-        0,
+        200,
         0,
         'Better Cost Scaling on Multiupgrades. Cost: ([AmountBought]/2)**(Math.log10([AmountBought]/2))'
       )
@@ -2202,8 +2202,8 @@ export class UpgradeService {
         0,
         'AutoMulti',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['MuScal+'],
+        400,
         0,
         'Autobuy Multiupgrades'
       )
@@ -2215,9 +2215,9 @@ export class UpgradeService {
         0,
         'PrTempB',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['MuScal+'],
+        400,
+        100,
         'Temporary Multiplier when Prestige'
       )
     );
@@ -2228,9 +2228,9 @@ export class UpgradeService {
         0,
         'PrNexus',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrTempB'],
+        600,
+        100,
         '0.1% of Points on Prestige Reset'
       )
     );
@@ -2241,9 +2241,9 @@ export class UpgradeService {
         0,
         'LpVMulti',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrTempB'],
+        600,
+        200,
         'Multiplier on Letter Per Second'
       )
     );
@@ -2254,9 +2254,9 @@ export class UpgradeService {
         0,
         'PowSurge',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['LpVMulti'],
+        800,
+        200,
         'All multipliers +x% per 1000 Prestige Points'
       )
     );
@@ -2267,9 +2267,9 @@ export class UpgradeService {
         0,
         'LetCountB',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PowSurge'],
+        1000,
+        200,
         'Multiplier on Letter Count'
       )
     );
@@ -2280,9 +2280,9 @@ export class UpgradeService {
         0,
         'CritMultiB',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PowSurge'],
+        1000,
+        300,
         'Boost Critical Multiplier'
       )
     );
@@ -2293,22 +2293,22 @@ export class UpgradeService {
         0,
         'WordPulse',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['CritMultiB'],
+        1200,
+        300,
         'Multiplier on sustained words typed, resets after 10 seconds'
       )
     );
     this.createPrestigeUpgrade(
       new Upgrade(
-        `Echoes of Length`,
+        `Echoes of Length`, 
         'Your words stretch into the void, echoing louder with each extra letter. Prestige weaves longer threads of expression.',
         0,
         'WLPrSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['WordPulse'],
+        1400,
+        300,
         'Words count as longer based on Prestige Points'
       )
     );
@@ -2319,9 +2319,9 @@ export class UpgradeService {
         0,
         'PrPSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['WLPrSyn'],
+        1600,
+        300,
         'Points boost based on Prestige Points'
       )
     );
@@ -2332,9 +2332,9 @@ export class UpgradeService {
         0,
         'KeepAct/Idle',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['PrPSyn'],
+        1800,
+        300,
         'Keep Act/Idle on Prestige'
       )
     );
@@ -2345,9 +2345,9 @@ export class UpgradeService {
         0,
         'WTPrSyn',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['KeepAct/Idle'],
+        1800,
+        200,
         'Words Typed boosts Prestige Points'
       )
     );
@@ -2358,9 +2358,9 @@ export class UpgradeService {
         0,
         'EraBoost',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['WTPrSyn'],
+        1800,
+        100,
         'Points boost based on Eras'
       )
     );
@@ -2371,9 +2371,9 @@ export class UpgradeService {
         0,
         'EraForge',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['EraBoost'],
+        1600,
+        200,
         'Allocate Prestige Points to boost unlocked Eras'
       )
     );
@@ -2384,9 +2384,9 @@ export class UpgradeService {
         0,
         'EraBetB',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['EraBoost'],
+        1600,
+        100,
         'Era strength boost'
       )
     );
@@ -2397,8 +2397,8 @@ export class UpgradeService {
         0,
         'EraSyn',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['EraBoost'],
+        1600,
         0,
         'Boost to everything based on Era'
       )
@@ -2410,8 +2410,8 @@ export class UpgradeService {
         0,
         'RapidAsc',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['EraBoost'],
+        1800,
         0,
         'Prestige Points boost based on Era'
       )
@@ -2423,8 +2423,8 @@ export class UpgradeService {
         0,
         'EraRush',
         'Prestige',
-        ['PrTB'],
-        0,
+        ['EraBoost'],
+        2000,
         0,
         'Better formula for earning Prestige Points based on Eras'
       )
@@ -2437,9 +2437,9 @@ export class UpgradeService {
         0,
         'EraFuture',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['EraBoost'],
+        2000,
+        100,
         'Eras are cheaper'
       )
     );
@@ -2451,9 +2451,9 @@ export class UpgradeService {
         0,
         'EraPulse',
         'Prestige',
-        ['PrTB'],
-        0,
-        0,
+        ['EraBoost'],
+        2000,
+        200,
         'Era events with temporary bonuses'
       )
     );

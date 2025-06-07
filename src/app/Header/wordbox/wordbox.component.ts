@@ -13,6 +13,7 @@ import { GameService } from '../../Services/game.service';
 // import { SaveService } from '../../Services/save.service';
 import { WordsService } from '../../Services/words.service';
 import { MessageService } from 'primeng/api';
+import { Toast } from 'primeng/toast'
 // import {
 //   ChallengesService,
 //   language,
@@ -20,22 +21,23 @@ import { MessageService } from 'primeng/api';
 import { GameUtils } from '../../Utils/gameUtils';
 import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../../Services/layout.service';
-import { timestamp } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { TimerService } from '../../Services/timer.service';
+import { SaveService } from '../../Services/save.service';
 
 @Component({
   selector: 'app-wordbox',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, Toast],
   templateUrl: './wordbox.component.html',
   styleUrls: ['./wordbox.component.scss'],
+  providers: [MessageService]
 })
 export class WordboxComponent {
   wordService = inject(WordsService);
   layoutService = inject(LayoutService);
   gameService = inject(GameService);
   timerService = inject(TimerService)
-  // saveService = inject(SaveService);
+  saveService = inject(SaveService);
   // messageService = inject(MessageService);
   // challengeService = inject(ChallengesService);
   startTime = Date.now();
@@ -50,7 +52,7 @@ export class WordboxComponent {
 
   // language: language = 'English ';
 
-  constructor() {
+  constructor(private messageService: MessageService) {
     // this.challengeService
     //   .getLanguage()
     //   .subscribe((language) => (this.language = language));
@@ -84,8 +86,6 @@ export class WordboxComponent {
 
     
   }
-
-  gameUtils = new GameUtils();
   comboCounter = computed(() => this.gameService.game().wordCounterPerfection);
 
   mockTyping() {
@@ -158,51 +158,50 @@ export class WordboxComponent {
         .game()
         .multiUpgrades.find((x) => x.id == 'MultiUpgradeCritChance')?.count ??
         0);
-    console.log('Crit chance: ', critChance);
     this.wordService.critical.set(
       Math.floor(Math.random() * 100) <= critChance
     );
   }
 
   saveGame() {
-    // this.saveService.saveGame();
-    // this.messageService.add({
-    //   severity: 'info',
-    //   summary: 'Saved!',
-    //   life: 1000,
-    //   contentStyleClass: 'my-toast',
-    // });
+    this.saveService.saveGame();
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Saved!',
+      life: 3000,
+      contentStyleClass: 'my-toast',
+    });
   }
 
-  // loadGame(event: Event) {
-  //   const el = event.target as HTMLInputElement;
-  //   const file = el.files?.[0];
-  //   if (!file) return;
-  //   const fileReader = new FileReader();
-  //   fileReader.onload = async (event) => {
-  //     const encodedString = event.target?.result as string;
-  //     if (!encodedString) return;
-  //     const decodedString = await this.saveService.decode(encodedString);
-  //     this.saveService.loadGame(decodedString);
-  //   };
-  //   fileReader.readAsText(file);
-  //   this.messageService.add({
-  //     severity: 'info',
-  //     summary: 'Loaded!',
-  //     life: 1000,
-  //     contentStyleClass: 'my-toast',
-  //   });
-  // }
+  loadGame(event: Event) {
+    const el = event.target as HTMLInputElement;
+    const file = el.files?.[0];
+    if (!file) return;
+    const fileReader = new FileReader();
+    fileReader.onload = async (event) => {
+      const encodedString = event.target?.result as string;
+      if (!encodedString) return;
+      const decodedString = await this.saveService.decode(encodedString);
+      this.saveService.loadGame(decodedString);
+    };
+    fileReader.readAsText(file);
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Loaded!',
+      life: 1000,
+      contentStyleClass: 'my-toast',
+    });
+  }
 
   logGame() {
     console.log('Current Game: ', this.gameService.game());
     console.log('Challenge Game: ', this.gameService.challengeGame());
     console.log('Active Game: ', this.gameService.activeGame());
-    // this.messageService.add({
-    //   severity: 'info',
-    //   summary: 'Logged!',
-    //   life: 1000,
-    //   contentStyleClass: 'my-toast',
-    // });
+    this.messageService.add({
+      severity: 'info',
+      summary: 'Logged!',
+      life: 1000,
+      contentStyleClass: 'my-toast',
+    });
   }
 }

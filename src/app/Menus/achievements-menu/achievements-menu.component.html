@@ -1,5 +1,13 @@
 <section id="achievementsMenu" class="menu">
     <div id="achievementContainer" class="achievementContainer">
+      @for (achievement of this.achievementService.achievements; track $index) {
+        <mat-card class="achievement" appearance="outlined">
+          <mat-card-header>
+            <mat-card-title>Shiba Inu</mat-card-title>
+          </mat-card-header>
+          <mat-card-content></mat-card-content>
+        </mat-card>
+      }
       <div
         *ngFor="let achievement of this.achievementService.achievements"
         [ngClass]="isUnlocked(achievement.id)"

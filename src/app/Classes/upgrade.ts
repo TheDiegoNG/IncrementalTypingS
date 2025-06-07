@@ -178,6 +178,7 @@ export type eIdUpgrade =
   | 'MultiUpgradeCritMulti'
   | 'MultiUpgradePointsMult'
   | 'TreeBeginning'
+  | 'PTB'
   | 'PrTB'
   | 'KeepPas'
   | 'PrGenBulk'

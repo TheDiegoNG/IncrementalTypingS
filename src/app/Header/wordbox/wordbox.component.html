@@ -1,3 +1,4 @@
+<p-toast />
 <div id="wordWrapper" class="word-wrapper">
   @if(this.layoutService.comboCounterVisible()) {
   <p id="comboCounter" class="combo-counter">
@@ -5,7 +6,7 @@
   </p>
   } @if(this.layoutService.lettersPerSecondVisible()) {
   <p id="lettersPerSecond" class="letters-per-second">
-    LPS: {{ lettersPerSecond() | number:'1.1' }}
+    LPS: {{ lettersPerSecond() | number : "1.1" }}
   </p>
   }
   <input
@@ -16,7 +17,10 @@
     [(ngModel)]="inputValue"
     (input)="checkWord()"
   />
-  <div id="gameButtonWrapper" class="game-button-wrapper hover-effect-container">
+  <div
+    id="gameButtonWrapper"
+    class="game-button-wrapper hover-effect-container"
+  >
     <button
       id="saveButton"
       class="game-button hover-effect-child"
@@ -24,19 +28,19 @@
     >
       Save
     </button>
-    <!-- <input
+    <input
       type="file"
       #fileInput
       style="display: none"
       (change)="loadGame($event)"
-    /> -->
-    <!-- <button
+    />
+    <button
       id="loadButton"
       class="game-button hover-effect-child"
       (click)="fileInput.click()"
     >
       Load
-    </button> -->
+    </button>
     <button
       id="logButton"
       class="game-button hover-effect-child"

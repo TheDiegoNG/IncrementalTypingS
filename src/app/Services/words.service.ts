@@ -632,7 +632,6 @@ export class WordsService {
   */
 
   this.lastWordTime = Date.now();
-    console.log('Guessed word: ', word);
     this.wordBonus = '';
     let totalPoints = 0;
     let bonusMainSum = 0; //For bonusesValues[0] and bonusesSumsValues[0]
@@ -712,7 +711,6 @@ export class WordsService {
       this.updateSumBonus('CardPointsAmount', cardResultSum[0]);
       // bonusSumsValues.push(cardResultSum[0]);
     }
-    console.log('Bonus Sums Values: ', this.bonusSignal());
     this.updateBonus(
       'Sums',
       Object.values(this.bonusSumSignal()).reduce((a, b) => a + b, 0)
@@ -722,7 +720,6 @@ export class WordsService {
       (a, b) => a + b,
       0
     );
-    console.log('Bonus Values init: ', this.bonusSignal());
     if (totalPoints < 1) totalPoints = 1;
 
     if (
@@ -876,20 +873,11 @@ export class WordsService {
             .game()
             .multiUpgrades.find((x) => x.id == 'MultiUpgradeCritMulti')
             ?.count ?? 0);
-      console.log('Crit Multi: ', critMulti);
       totalPoints *= critMulti;
       this.wordBonus += `x${critMulti} (CRITICAL)`;
       this.updateBonus('Crit', critMulti);
       // bonusValues.push(critMulti);
     }
-    console.log(
-      'Bonus Values Final: ',
-      this.bonusSignal(),
-      'Bonus Sums Values: ',
-      this.bonusSumSignal()
-    );
-    console.log('Total Points: ', totalPoints);
-    console.log('Words Amount: ', this.gameService.game().wordsAmount);
 
     this.gameService.game.update((game) => ({
       ...game,
@@ -915,7 +903,6 @@ export class WordsService {
       bonusValues: this.bonusSignal(),
       bonusSumsValues: this.bonusSumSignal(),
     }));
-    console.log(this.bonusSignal());
   }
 
   GetPointsLetters(word: string, passive: boolean = false) {

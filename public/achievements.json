@@ -1,0 +1,422 @@
+[
+  {
+    "name": "First Scribble",
+    "description": "Write your first word. Congratulations! You know how to write!",
+    "id": 1,
+    "target": 1,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Decalexicographer",
+    "description": "Write 10 words. Pay attention, it seems that you are close to your first upgrade",
+    "id": 2,
+    "target": 10,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Quinquagenarian Scribe",
+    "description": "Write 50 words",
+    "id": 3,
+    "target": 50,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Epic 69er",
+    "description": "Write 69 words. Nice",
+    "id": 37,
+    "target": 69,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Centennial Lexiconist",
+    "description": "Write 100 words",
+    "id": 4,
+    "target": 100,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Palindrome Prodigy",
+    "description": "Write 121 words",
+    "id": 41,
+    "target": 121,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Quadratopus Scribe",
+    "description": "Write 250 words",
+    "id": 5,
+    "target": 250,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Blaze It Bard",
+    "description": "Write 420 words",
+    "id": 38,
+    "target": 420,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Quingentenary Scriptor",
+    "description": "Write 500 words",
+    "id": 6,
+    "target": 500,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Demonic Scribe",
+    "description": "Write 666 words",
+    "id": 42,
+    "target": 666,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Lucky Seven Lexicographer",
+    "description": "Write 777 words",
+    "id": 39,
+    "target": 777,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Millenium Maestro",
+    "description": "Write 1000 words",
+    "id": 7,
+    "target": 1000,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Golden Ratio Scribe",
+    "description": "Write 1618 words",
+    "id": 40,
+    "target": 1618,
+    "property": "wordsAmount"
+  },
+  {
+    "name": "Initiate Explorer",
+    "description": "Save 100 points",
+    "id": 8,
+    "target": 100,
+    "property": "points"
+  },
+  {
+    "name": "Exemplary Attainer",
+    "description": "Save 500 points",
+    "id": 9,
+    "target": 500,
+    "property": "points"
+  },
+  {
+    "name": "Milestone Achiever",
+    "description": "Save 2000 points",
+    "id": 10,
+    "target": 2000,
+    "property": "points"
+  },
+  {
+    "name": "Ascendant Achiever",
+    "description": "Save 8000 points",
+    "id": 11,
+    "target": 8000,
+    "property": "points"
+  },
+  {
+    "name": "Pinnacle Reacher",
+    "description": "Save 15000 points",
+    "id": 12,
+    "target": 15000,
+    "property": "points"
+  },
+  {
+    "name": "Epic Conqueror",
+    "description": "Save 40000 points",
+    "id": 13,
+    "target": 40000,
+    "property": "points"
+  },
+  {
+    "name": "Illustrious Achiever",
+    "description": "Save 80000 points",
+    "id": 14,
+    "target": 80000,
+    "property": "points"
+  },
+  {
+    "name": "Prestigious Attainer",
+    "description": "Save 125000 points",
+    "id": 15,
+    "target": 125000,
+    "property": "points"
+  },
+  {
+    "name": "Zenith Attainer",
+    "description": "Save 250000 points",
+    "id": 16,
+    "target": 250000,
+    "property": "points"
+  },
+  {
+    "name": "Distinguished Master",
+    "description": "Save 500000 points",
+    "id": 17,
+    "target": 500000,
+    "property": "points"
+  },
+  {
+    "name": "Apex Achiever",
+    "description": "Save 1000000 points",
+    "id": 18,
+    "target": 1000000,
+    "property": "points"
+  },
+  {
+    "name": "Eminent Attainer",
+    "description": "Save 3000000 points",
+    "id": 19,
+    "target": 3000000,
+    "property": "points"
+  },
+  {
+    "name": "Legacy Builder",
+    "description": "Save 10000000 points",
+    "id": 20,
+    "target": 10000000,
+    "property": "points"
+  },
+  {
+    "name": "Venerable Attainer",
+    "description": "Save 50000000 points",
+    "id": 21,
+    "target": 50000000,
+    "property": "points"
+  },
+  {
+    "name": "Currency Collector",
+    "description": "Reach 10000 Passive Points",
+    "id": 22,
+    "target": 10000,
+    "property": "passivePoints"
+  },
+  {
+    "name": "Wealth Accumulator",
+    "description": "Reach 200000 Passive Points",
+    "id": 23,
+    "target": 200000,
+    "property": "passivePoints"
+  },
+  {
+    "name": "Millionaire Aspirant",
+    "description": "Reach 5000000 Passive Points",
+    "id": 24,
+    "target": 5000000,
+    "property": "passivePoints"
+  },
+  {
+    "name": "Tycoon Trailblazer",
+    "description": "Reach 100000000 Passive Points",
+    "id": 25,
+    "target": 100000000,
+    "property": "passivePoints"
+  },
+  {
+    "name": "Card Initiate",
+    "description": "You bought your first pack!",
+    "id": 26,
+    "target": 10,
+    "property": "cardsAmount"
+  },
+  {
+    "name": "Card Enthusiast",
+    "description": "Have 50 Cards",
+    "id": 27,
+    "target": 50,
+    "property": "cardsAmount"
+  },
+  {
+    "name": "Strategic Scholar",
+    "description": "Have 100 Cards",
+    "id": 28,
+    "target": 100,
+    "property": "cardsAmount"
+  },
+  {
+    "name": "Epic Card Hoarder",
+    "description": "Have 500 Cards",
+    "id": 47,
+    "target": 500,
+    "property": "cardsAmount"
+  },
+  {
+    "name": "Deck Diversifier",
+    "description": "Collect cards from 4 different Tiers",
+    "id": 46,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Octo-Collector Maestro",
+    "description": "Collect cards from 8 different Tiers",
+    "id": 55,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Master of All Trades",
+    "description": "Collect cards from every Tier",
+    "id": 56,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Legendary Card Archivist",
+    "description": "Collect 10 legendary cards",
+    "id": 48,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Card Fusion Alchemist",
+    "description": "Merge cards 10 times",
+    "id": 49,
+    "target": 10,
+    "property": "mergeCount"
+  },
+  {
+    "name": "Card Fusion Maestro",
+    "description": "Merge cards 50 times",
+    "id": 51,
+    "target": 50,
+    "property": "mergeCount"
+  },
+  {
+    "name": "Divine Interventionist",
+    "description": "Obtain a Divine Card",
+    "id": 50,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Challenge Novice",
+    "description": "Complete your first challenge",
+    "id": 29,
+    "target": 1,
+    "property": "challengesAmount"
+  },
+  {
+    "name": "Challenge Conqueror",
+    "description": "Complete 5 challenges",
+    "id": 30,
+    "target": 5,
+    "property": "challengesAmount"
+  },
+  {
+    "name": "Prestige Pioneer",
+    "description": "Prestige for the first time",
+    "id": 31,
+    "target": 1,
+    "property": "prestigeCount"
+  },
+  {
+    "name": "Rebirth Recruit",
+    "description": "Prestige 5 times",
+    "id": 52,
+    "target": 5,
+    "property": "prestigeCount"
+  },
+  {
+    "name": "Quantum Resetter",
+    "description": "Prestige 10 times",
+    "id": 53,
+    "target": 10,
+    "property": "prestigeCount"
+  },
+  {
+    "name": "Point Purveyor",
+    "description": "Have 100 Prestige Points",
+    "id": 32,
+    "target": 100,
+    "property": "prestigePoints"
+  },
+  {
+    "name": "Quantum Quantumizer",
+    "description": "Have 250 Prestige Points",
+    "id": 33,
+    "target": 250,
+    "property": "prestigePoints"
+  },
+  {
+    "name": "Eternal Point Maven",
+    "description": "Have 500 Prestige Points",
+    "id": 34,
+    "target": 500,
+    "property": "prestigePoints"
+  },
+  {
+    "name": "10-letter Word",
+    "description": "Write a 10-letter word",
+    "id": 35,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Best Word",
+    "description": "Write the best word possible",
+    "id": 36,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Word Virtuoso",
+    "description": "Write 10 words without any errors",
+    "id": 57,
+    "target": 10,
+    "property": "wordCounterPerfection"
+  },
+  {
+    "name": "Linguistic Maestro",
+    "description": "Write 30 words without any errors",
+    "id": 58,
+    "target": 30,
+    "property": "wordCounterPerfection"
+  },
+  {
+    "name": "Supreme Scribbler",
+    "description": "Write 60 words without any errors",
+    "id": 59,
+    "target": 60,
+    "property": "wordCounterPerfection"
+  },
+  {
+    "name": "Word Ascendant",
+    "description": "Write 100 words without any errors",
+    "id": 60,
+    "target": 100,
+    "property": "wordCounterPerfection"
+  },
+  {
+    "name": "Consonant Collector",
+    "description": "Write a word that contains 5 consecutive consonants",
+    "id": 43,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Vowel Voyager",
+    "description": "Write a word that contains 4 consecutive vowels",
+    "id": 44,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "Palindrome Searcher",
+    "description": "Write a palindrome word",
+    "id": 45,
+    "target": 1,
+    "property": "Other"
+  },
+  {
+    "name": "The Cycle Continues",
+    "description": "Merge Omnipotent Cards",
+    "id": 54,
+    "target": 1,
+    "property": "Other"
+  }
+]

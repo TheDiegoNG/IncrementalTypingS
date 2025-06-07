@@ -73,7 +73,7 @@ export class UpgradeService {
     );
     this.createScoreUpgrade(
       new Upgrade(
-        `Lets go back to the basics`,
+        `Let's go back to the basics`,
         'x3 Points!',
         600_000_000,
         'IntermediateBasicsOne',
@@ -82,7 +82,7 @@ export class UpgradeService {
     );
     this.createScoreUpgrade(
       new Upgrade(
-        `Lets go back to the basics v2`,
+        `Let's go back to the basics v2`,
         '+25 Points per Word',
         6_000_000_000,
         'IntermediateBasicsTwo',

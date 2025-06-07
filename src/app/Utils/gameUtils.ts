@@ -85,7 +85,7 @@ export class GameUtils {
         ["Divine"]: 128,
         ["Ultimate"]: 256,
         ["Infinite"]: 512,
-        ["Omnipotent"]: 1028
+        ["Omnipotent"]: 1024
 
       };
       return game.cards.map((x) => cardValueMap[x.type]).reduce((a, b) => a + b, 1);

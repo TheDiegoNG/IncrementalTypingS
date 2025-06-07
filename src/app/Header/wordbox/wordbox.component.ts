@@ -115,17 +115,17 @@ export class WordboxComponent {
 
   async checkWord() {
     if (this.languageService.language() === 'Japanese') {
-      const japaneseMap = await this.gameUtils.getJapaneseMap();
+      const japaneseMap = await GameUtils.getJapaneseMap();
       const regex = new RegExp(Object.keys(japaneseMap).join('|'), 'g');
       this.inputValue.set(this.inputValue().replace(regex, (x) => japaneseMap[x]));
     }
     if (this.languageService.language() === 'Russian') {
-      const russianMap = await this.gameUtils.getRussianCyrillicMap();
+      const russianMap = await GameUtils.getRussianCyrillicMap();
       const regex = new RegExp(Object.keys(russianMap).join('|'), 'g');
       this.inputValue.set(this.inputValue().replace(regex, (x) => russianMap[x]));
     }
     if (this.languageService.language() === 'Amharic') {
-      const amharicMap = await this.gameUtils.getAmharicMap();
+      const amharicMap = await GameUtils.getAmharicMap();
       const regex = new RegExp(Object.keys(amharicMap).join('|'), 'g');
       this.inputValue.set(this.inputValue().replace(regex, (x) => amharicMap[x]));
     }

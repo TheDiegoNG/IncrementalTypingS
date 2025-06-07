@@ -2,6 +2,7 @@ import { Upgrade } from './upgrade';
 
 describe('Upgrade', () => {
   it('should create an instance', () => {
-    expect(new Upgrade()).toBeTruthy();
+    const upg = new Upgrade('Test', 'desc', 1, 'FirstUpgradePoints', 'Starter');
+    expect(upg).toBeTruthy();
   });
 });

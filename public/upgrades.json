@@ -1,0 +1,95 @@
+[
+  {
+    "name": "First Upgrade of them all",
+    "description": "x1.3 Points",
+    "cost": 50,
+    "id": "FirstUpgradePoints",
+    "branch": "Score"
+  },
+  {
+    "name": "Your words value a little bit more, absolutely",
+    "description": "+4 Points per Word",
+    "cost": 200,
+    "id": "WordsValueBitMore",
+    "branch": "Score"
+  },
+  {
+    "name": "2nd Upgrade of this type",
+    "description": "x1.5 Points",
+    "cost": 5000,
+    "id": "SecondUpgradePoints",
+    "branch": "Score"
+  },
+  {
+    "name": "Your words value a bit more more, absolutely again",
+    "description": "+10 points per word",
+    "cost": 15000,
+    "id": "WordsValueBitMoreMore",
+    "branch": "Score"
+  },
+  {
+    "name": "Last Basic Upgrade! Your words value MORE, a bit more.",
+    "description": "+20 points per word",
+    "cost": 200000,
+    "id": "LastBasic",
+    "branch": "Score"
+  },
+  {
+    "name": "Let's go back to the basics",
+    "description": "x3 Points!",
+    "cost": 600000000,
+    "id": "IntermediateBasicsOne",
+    "branch": "Score"
+  },
+  {
+    "name": "Let's go back to the basics v2",
+    "description": "+25 Points per Word",
+    "cost": 6000000000,
+    "id": "IntermediateBasicsTwo",
+    "branch": "Score"
+  },
+  {
+    "name": "The Beginning",
+    "description": "The first root, as this upgrade, begins this journey. Here, your will to grow manifests as potential yet untouched. ",
+    "cost": 0,
+    "id": "TB",
+    "branch": "Starter",
+    "parents": [],
+    "x": 150,
+    "y": 100,
+    "bonus": "A feeling of determination"
+  },
+  {
+    "name": "Letters per Value",
+    "description": "Your words are no longer just expressions — they become metrics of mastery. Each letter typed finds its weight in the great ledger of language, charting your fluency over time.",
+    "cost": 300,
+    "id": "LpV",
+    "branch": "Starter",
+    "parents": ["TB"],
+    "x": 300,
+    "y": 100,
+    "bonus": "Unlock a Letters per Minute"
+  },
+  {
+    "name": "Passive Word Enhancer",
+    "description": "Words now echo even in silence. The roots of language dig deeper, drawing meaning even from stillness. You've taken your first step into unseen productivity",
+    "cost": 1500,
+    "id": "PaE",
+    "branch": "Starter",
+    "parents": ["TB"],
+    "x": 150,
+    "y": 200,
+    "bonus": "Unlock Passive Points generation"
+  },
+  {
+    "name": "Mental Expansion",
+    "description": "The mind stretches, and so do your words. Where once meaning ended, now a single letter more can shape thought, expand expression, and push boundaries.",
+    "cost": 500,
+    "id": "+1WLI",
+    "branch": "Starter",
+    "parents": ["TB"],
+    "x": 300,
+    "y": 200,
+    "bonus": "Word Length + 1"
+  }
+]

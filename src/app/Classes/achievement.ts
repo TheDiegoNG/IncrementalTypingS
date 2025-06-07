@@ -6,18 +6,21 @@ export class Achievement {
   description: string;
   target: number;
   property: keyof Game | 'Other';
+  group?: string;
 
   constructor(
     achievementName: string,
     achievementDesc: string,
     achievementNumber: number,
     target: number,
-    property: keyof Game | 'Other'
+    property: keyof Game | 'Other',
+    group?: string
   ) {
     this.id = achievementNumber;
     this.name = achievementName;
     this.description = achievementDesc;
     this.property = property;
     this.target = target;
+    this.group = group;
   }
 }

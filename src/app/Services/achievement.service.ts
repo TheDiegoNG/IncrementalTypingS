@@ -556,9 +556,42 @@ export class AchievementService {
       return acc;
     }, {} as { [group: string]: Achievement[] });
   }
-  
+
 
   createAchievement(achievement: Achievement) {
+    if (!achievement.group) {
+      switch (achievement.property) {
+        case 'wordsAmount':
+          achievement.group = 'Words Amount';
+          break;
+        case 'points':
+          achievement.group = 'Points';
+          break;
+        case 'passivePoints':
+          achievement.group = 'Passive Points';
+          break;
+        case 'cardsAmount':
+          achievement.group = 'Cards Amount';
+          break;
+        case 'mergeCount':
+          achievement.group = 'Merge Count';
+          break;
+        case 'challengesAmount':
+          achievement.group = 'Challenges Amount';
+          break;
+        case 'prestigeCount':
+          achievement.group = 'Prestige Count';
+          break;
+        case 'prestigePoints':
+          achievement.group = 'Prestige Points';
+          break;
+        case 'wordCounterPerfection':
+          achievement.group = 'Word Counter Perfection';
+          break;
+        default:
+          achievement.group = 'Other';
+      }
+    }
     this.achievements.push(achievement);
   }
 

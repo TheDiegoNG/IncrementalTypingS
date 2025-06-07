@@ -1,0 +1,2320 @@
+[
+  {
+    "name": "First Upgrade of them all",
+    "description": "x1.3 Points",
+    "cost": 50,
+    "id": "FirstUpgradePoints",
+    "branch": "Score"
+  },
+  {
+    "name": "Your words value a little bit more, absolutely",
+    "description": "+4 Points per Word",
+    "cost": 200,
+    "id": "WordsValueBitMore",
+    "branch": "Score"
+  },
+  {
+    "name": "2nd Upgrade of this type",
+    "description": "x1.5 Points",
+    "cost": 5000,
+    "id": "SecondUpgradePoints",
+    "branch": "Score"
+  },
+  {
+    "name": "Your words value a bit more more, absolutely again",
+    "description": "+10 points per word",
+    "cost": 15000,
+    "id": "WordsValueBitMoreMore",
+    "branch": "Score"
+  },
+  {
+    "name": "Last Basic Upgrade! Your words value MORE, a bit more.",
+    "description": "+20 points per word",
+    "cost": 200000,
+    "id": "LastBasic",
+    "branch": "Score"
+  },
+  {
+    "name": "Let's go back to the basics",
+    "description": "x3 Points!",
+    "cost": 600000000,
+    "id": "IntermediateBasicsOne",
+    "branch": "Score"
+  },
+  {
+    "name": "Let's go back to the basics v2",
+    "description": "+25 Points per Word",
+    "cost": 6000000000,
+    "id": "IntermediateBasicsTwo",
+    "branch": "Score"
+  },
+  {
+    "name": "The Beginning",
+    "description": "The first root, as this upgrade, begins this journey. Here, your will to grow manifests as potential yet untouched. ",
+    "cost": 0,
+    "id": "TB",
+    "branch": "Starter",
+    "x": 150,
+    "y": 100,
+    "bonus": "A feeling of determination"
+  },
+  {
+    "name": "Letters per Value",
+    "description": "Your words are no longer just expressions — they become metrics of mastery. Each letter typed finds its weight in the great ledger of language, charting your fluency over time.",
+    "cost": 300,
+    "id": "LpV",
+    "branch": "Starter",
+    "parents": [
+      "TB"
+    ],
+    "x": 300,
+    "y": 100,
+    "bonus": "Unlock a Letters per Minute"
+  },
+  {
+    "name": "Passive Word Enhancer",
+    "description": "Words now echo even in silence. The roots of language dig deeper, drawing meaning even from stillness. You've taken your first step into unseen productivity",
+    "cost": 1500,
+    "id": "PaE",
+    "branch": "Starter",
+    "parents": [
+      "TB"
+    ],
+    "x": 150,
+    "y": 200,
+    "bonus": "Unlock Passive Points generation"
+  },
+  {
+    "name": "Mental Expansion",
+    "description": "The mind stretches, and so do your words. Where once meaning ended, now a single letter more can shape thought, expand expression, and push boundaries.",
+    "cost": 500,
+    "id": "+1WLI",
+    "branch": "Starter",
+    "parents": [
+      "TB"
+    ],
+    "x": 300,
+    "y": 200,
+    "bonus": "Word Length + 1"
+  },
+  {
+    "name": "Echo Pattern",
+    "description": "Repetition reveals rhythm. When letters echo within a word, they form patterns of power — familiar structures that amplify meaning through unity.",
+    "cost": 1000,
+    "id": "saLW",
+    "branch": "Starter",
+    "parents": [
+      "+1WLI"
+    ],
+    "x": 450,
+    "y": 100,
+    "bonus": "3.5^[Groups of +1 Same Letter]",
+    "excludes": [
+      "diLW",
+      "xSlow",
+      "xPass/t",
+      "xSlow/cPrep"
+    ]
+  },
+  {
+    "name": "Lexical Diversity",
+    "description": "Diversity shapes expression. Every unique letter adds a spark, a new angle to the word’s design — and with each difference, your potential multiplies.",
+    "cost": 1250,
+    "id": "diLW",
+    "branch": "Starter",
+    "parents": [
+      "+1WLI"
+    ],
+    "x": 450,
+    "y": 300,
+    "bonus": "1.8^[Different Letters]",
+    "excludes": [
+      "saLW",
+      "xFast",
+      "xPass/h",
+      "xPrec"
+    ]
+  },
+  {
+    "name": "Momentum Drive",
+    "description": "The faster you move, the more you gain. Momentum becomes power, and hesitation is your enemy. Each word typed reignites the flame of intensity.",
+    "cost": 50000,
+    "id": "xFast",
+    "branch": "Starter",
+    "parents": [
+      "saLW"
+    ],
+    "x": 600,
+    "y": 100,
+    "bonus": "x5 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Patience Multiplier",
+    "description": "Stillness holds strength. The longer you wait, the more the multiplier blooms — a quiet build-up of potential waiting to be released with the next word.",
+    "cost": 75000,
+    "id": "xSlow",
+    "branch": "Starter",
+    "parents": [
+      "diLW"
+    ],
+    "x": 600,
+    "y": 300,
+    "bonus": "x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Precision Harvest",
+    "description": "Precision breeds reward. Strike the rhythm of the bar at its peak, and watch passive power surge. But miss... and the silence will cost you.",
+    "cost": 1000000,
+    "id": "xPass/h",
+    "branch": "Starter",
+    "parents": [
+      "xFast"
+    ],
+    "x": 750,
+    "y": 100,
+    "bonus": "Unlock a bar in the Passive Menu that boosts your Passive Points when clicked correctly. If not, then you lose points"
+  },
+  {
+    "name": "Passive Rainfall",
+    "description": "Patience becomes production. By allowing time to flow uninterrupted, your passive points accumulate like rain in a still pool.",
+    "cost": 1000000,
+    "id": "xPass/t",
+    "branch": "Starter",
+    "parents": [
+      "xSlow"
+    ],
+    "x": 750,
+    "y": 300,
+    "bonus": "Get an increasing Passive Points Multiplier"
+  },
+  {
+    "name": "Flawless Focus",
+    "description": "Perfection sharpens progress. With every word typed flawlessly, your focus is rewarded — building momentum through mastery.",
+    "cost": 1000000,
+    "id": "xPrec",
+    "branch": "Starter",
+    "parents": [
+      "xPass/h"
+    ],
+    "x": 900,
+    "y": 100,
+    "bonus": "You get a combo on words perfectly typed. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Combo Resonance",
+    "description": "Momentum echoes through your systems. A strong combo sends ripples outward, empowering other multipliers in your arsenal.",
+    "cost": 1000000,
+    "id": "xSlow/cPrep",
+    "branch": "Starter",
+    "parents": [
+      "xPass/t"
+    ],
+    "x": 900,
+    "y": 300,
+    "bonus": "Your Passive Points multiplier gets propagated to other multipliers"
+  },
+  {
+    "name": "Unlock Gacha",
+    "description": "Fortune spins in your favor — or against it. With a roll of fate, you unlock the unpredictable. Risk and reward merge in the great game of chance.",
+    "cost": 100000,
+    "id": "Gacha",
+    "branch": "Starter",
+    "parents": [
+      "xPrec",
+      "xSlow/cPrep"
+    ],
+    "x": 1000,
+    "y": 200,
+    "bonus": "Unlock Gacha",
+    "unlockType": "ANY"
+  },
+  {
+    "name": "Card Chorus",
+    "description": "Each card held whispers its own power. The more you gather, the louder the chorus of influence — quantity becomes strength.",
+    "cost": 10000000000,
+    "id": "xcaAm",
+    "branch": "Starter",
+    "parents": [
+      "Gacha"
+    ],
+    "x": 1100,
+    "y": 100,
+    "bonus": "xSqrt([CardAmount])"
+  },
+  {
+    "name": "Lexical Reach",
+    "description": "The shape of thought stretches. Words now extend beyond their former bounds, allowing for longer, more potent expressions.",
+    "cost": 100000,
+    "id": "+1WLII",
+    "branch": "Explorer",
+    "parents": [
+      "Gacha"
+    ],
+    "x": 1200,
+    "y": 200,
+    "bonus": "Word Length + 1"
+  },
+  {
+    "name": "Milestone Power",
+    "description": "Your accomplishments no longer sit silent — they empower your every word. Each milestone adds weight to your progress.",
+    "cost": 6000,
+    "id": "Ach",
+    "branch": "Explorer",
+    "parents": [
+      "+1WLII"
+    ],
+    "x": 1200,
+    "y": 300,
+    "bonus": "x[AchievementAmount]/10"
+  },
+  {
+    "name": "Achievement Momentum",
+    "description": "Success feeds on itself. Achievements earned in succession create a current — the faster you rise, the stronger the surge.",
+    "cost": 6000,
+    "id": "comboAch",
+    "branch": "Explorer",
+    "parents": [
+      "Ach"
+    ],
+    "x": 1200,
+    "y": 400,
+    "bonus": "You get a combo on Achievements. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Merit Multiplier",
+    "description": "Not all triumphs are equal. The rarer the feat, the greater the echo in your multiplier — excellence now truly counts.",
+    "cost": 6000,
+    "id": "MileRes",
+    "branch": "Explorer",
+    "parents": [
+      "Ach"
+    ],
+    "x": 1350,
+    "y": 400,
+    "bonus": "Your achievements value more based on how hard they are. [Achievement]x[Quality]"
+  },
+  {
+    "name": "Unlock Scrabble",
+    "description": "Each letter now bears its true value. You unlock the linguistic ledger — where rarity becomes reward.",
+    "cost": 40000,
+    "id": "Scr",
+    "branch": "Explorer",
+    "parents": [
+      "+1WLII"
+    ],
+    "x": 1350,
+    "y": 200,
+    "bonus": "Every letter has a value based on Scrabble."
+  },
+  {
+    "name": "Scrabble Module",
+    "description": "You now wield the power of linguistic weight. The Scrabble Module converts each letter's worth into point potential.",
+    "cost": 40000,
+    "id": "ScrM",
+    "branch": "Explorer",
+    "parents": [
+      "Scr"
+    ],
+    "x": 1350,
+    "y": 100,
+    "bonus": "You obtain the Scrabble Module!"
+  },
+  {
+    "name": "Rare Glyph Pulse",
+    "description": "When you call upon the obscure, the system rewards you. Uncommon letters spark bursts of scoring brilliance.",
+    "cost": 40000,
+    "id": "ScrS",
+    "branch": "Explorer",
+    "parents": [
+      "Scr"
+    ],
+    "x": 1500,
+    "y": 100,
+    "bonus": "Typing a word with an uncommon letter gives a temporary bonus. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Echo Memory",
+    "description": "The past shapes the present. The Scrabble weight of your last ten words echoes into your next — a cascade of cumulative strength.",
+    "cost": 40000,
+    "id": "LetPo",
+    "branch": "Explorer",
+    "parents": [
+      "Scr"
+    ],
+    "x": 1500,
+    "y": 200,
+    "bonus": "You get a percentage of your Total Points based on your last 10 words typed by their values in Scrabble. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Stretch Multiplier",
+    "description": "Longer thoughts yield greater power. The stretch of a word is now mirrored in the growth of your reward.",
+    "cost": 40000,
+    "id": "xWL",
+    "branch": "Explorer",
+    "parents": [
+      "+1WLII"
+    ],
+    "x": 1350,
+    "y": 300,
+    "bonus": "x[Word Length]"
+  },
+  {
+    "name": "Branch Access",
+    "description": "You gaze across the divide and unlock what once was closed. Another path lies open — new strategies await.",
+    "cost": 40000,
+    "id": "Act/IdleI",
+    "branch": "Explorer",
+    "parents": [
+      "xWL"
+    ],
+    "x": 1500,
+    "y": 400,
+    "bonus": "You can purchase the branch that you didn't choose"
+  },
+  {
+    "name": "Unlock Mastery",
+    "description": "Beyond repetition lies understanding. You now tap into the deeper layers of the alphabet — each letter becomes a skill to refine.",
+    "cost": 40000,
+    "id": "Mast",
+    "branch": "Explorer",
+    "parents": [
+      "xWL"
+    ],
+    "x": 1800,
+    "y": 200,
+    "bonus": "Unlock Mastery"
+  },
+  {
+    "name": "Enhance Alpha",
+    "description": "You deepen your understanding of the Alpha set. The first letters of knowledge sharpen under your hand, becoming more precise, more powerful.",
+    "cost": 40000,
+    "id": "EnhAlpha",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1650,
+    "y": 150,
+    "bonus": "You get more Alpha levels based on... x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Beta",
+    "description": "The second glyphs awaken. Letters once overlooked now reveal their strength, and your fluency with Beta flourishes with every use.",
+    "cost": 40000,
+    "id": "EnhBeta",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1800,
+    "y": 50,
+    "bonus": "You get more Beta levels based on... x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Gamma",
+    "description": "Gamma surges with untapped energy. These letters carry rhythm and resistance — mastering them unlocks new depths in your linguistic arsenal.",
+    "cost": 40000,
+    "id": "EnhGamma",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1950,
+    "y": 150,
+    "bonus": "You get more Gamma levels based on... x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Delta",
+    "description": "Delta flows like a river of nuance. These letters bend, echo, and build — strengthening this group shapes the tempo of your thoughts.",
+    "cost": 40000,
+    "id": "EnhDelta",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1875,
+    "y": 300,
+    "bonus": "You get more Delta levels based on... x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Epsilon",
+    "description": "The final glyphs whisper from the edge of silence. Enhance Epsilon to command rare forms, quiet symbols, and the end of the alphabetic spectrum.",
+    "cost": 40000,
+    "id": "EnhEpsilon",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1725,
+    "y": 300,
+    "bonus": "You get more Epsilon levels based on... x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Lexical Stretch",
+    "description": "Your words stretch once more. Another letter joins the symphony, expanding your reach and your voice.",
+    "cost": 40000,
+    "id": "+1WLIII",
+    "branch": "Master",
+    "parents": [
+      "EnhAlpha",
+      "EnhBeta",
+      "EnhGamma",
+      "EnhDelta",
+      "EnhEpsilon"
+    ],
+    "x": 1875,
+    "y": 500,
+    "bonus": "Word Length + 1"
+  },
+  {
+    "name": "Unlock Second Pack",
+    "description": "Beyond the first deck lies deeper opportunity. Another set of powers now awaits your draw.",
+    "cost": 20000000000000,
+    "id": "2ndP",
+    "branch": "Master",
+    "parents": [
+      "+1WLIII"
+    ],
+    "x": 1800,
+    "y": 600,
+    "bonus": "You can purchase the second Cards Pack"
+  },
+  {
+    "name": "Merge Module",
+    "description": "Fusion becomes possible. Through the Merge Module, your cards may unite — becoming greater than the sum of their parts.",
+    "cost": 50000000000000,
+    "id": "MergM",
+    "branch": "Master",
+    "parents": [
+      "2ndP"
+    ],
+    "x": 1875,
+    "y": 700,
+    "bonus": "You obtain the Merge Module! You still don't know what to do with these"
+  },
+  {
+    "name": "Card Synergy Multiplier",
+    "description": "It's not just the amount — it's the essence. The quality of your cards now amplifies their quantity's worth.",
+    "cost": 1500000000000,
+    "id": "caQual",
+    "branch": "Master",
+    "parents": [
+      "2ndP"
+    ],
+    "x": 1650,
+    "y": 500,
+    "bonus": "The cards quality amplifies the Card Multiplier Amount. [Card]x[Quality]"
+  },
+  {
+    "name": "Unlock Market",
+    "description": "You now enter the shifting realm of value and risk. The Market awakens — dynamic, unpredictable, rewarding.",
+    "cost": 10000000000000,
+    "id": "Mark",
+    "branch": "Master",
+    "parents": [
+      "2ndP"
+    ],
+    "x": 1650,
+    "y": 700,
+    "bonus": "Unlock Market"
+  },
+  {
+    "name": "Branch Nexus",
+    "description": "What once was locked is now open. You gain the ability to traverse paths you previously abandoned.",
+    "cost": 10000000000000,
+    "id": "Act/IdleII",
+    "branch": "Master",
+    "parents": [
+      "Mark"
+    ],
+    "x": 1650,
+    "y": 800,
+    "bonus": "You can purchase the upgrades that you didn't choose."
+  },
+  {
+    "name": "High Stakes Draw",
+    "description": "The edge sharpens. You now walk a higher-risk path — with greater odds of power, but darker shadows.",
+    "cost": 10000000000000,
+    "id": "All-In",
+    "branch": "Master",
+    "parents": [
+      "Mark"
+    ],
+    "x": 1500,
+    "y": 600,
+    "bonus": "Better chance for Negative and Better cards."
+  },
+  {
+    "name": "Safe Pull",
+    "description": "Caution guides your draw. Negative cards are shielded, but so are the heights of greatness.",
+    "cost": 10000000000000,
+    "id": "InsideI",
+    "branch": "Master",
+    "parents": [
+      "Mark"
+    ],
+    "x": 1500,
+    "y": 800,
+    "bonus": "You cannot get Negative cards, but you get worse cards"
+  },
+  {
+    "name": "Volatility Surge",
+    "description": "The market trembles with chaotic energy. Rewards may spike — or crash — with every fluctuation.",
+    "cost": 10000000000000,
+    "id": "Crypto",
+    "branch": "Master",
+    "parents": [
+      "All-In"
+    ],
+    "x": 1350,
+    "y": 600,
+    "bonus": "The Word Market increases and decreases with greater volatility"
+  },
+  {
+    "name": "Market Stabilizer",
+    "description": "Balance returns. The market calms, offering slower but safer growth.",
+    "cost": 10000000000000,
+    "id": "RealEstate",
+    "branch": "Master",
+    "parents": [
+      "InsideI"
+    ],
+    "x": 1350,
+    "y": 800,
+    "bonus": "The Word Market is less volatile"
+  },
+  {
+    "name": "Volatile Burst",
+    "description": "For a time, the market flares with instability. Tread carefully — or profit wildly.",
+    "cost": 10000000000000,
+    "id": "VolatileM",
+    "branch": "Master",
+    "parents": [
+      "Crypto"
+    ],
+    "x": 1200,
+    "y": 600,
+    "bonus": "You can get temporary boosts to the Market volatility"
+  },
+  {
+    "name": "Market Freeze Up",
+    "description": "For a brief window, the market holds its breath. No decline, only opportunity.",
+    "cost": 10000000000000,
+    "id": "BullM",
+    "branch": "Master",
+    "parents": [
+      "RealEstate"
+    ],
+    "x": 1200,
+    "y": 800,
+    "bonus": "From time to time, the Market cannot decrease at all"
+  },
+  {
+    "name": "Chance Surge on Word",
+    "description": "With every word, fate rolls the dice. Sometimes, fortune grants you a flash of total power.",
+    "cost": 10000000000000,
+    "id": "ShadF",
+    "branch": "Master",
+    "parents": [
+      "VolatileM"
+    ],
+    "x": 1050,
+    "y": 600,
+    "bonus": "You have a chance of getting a percentage of your Total Points on Word Typed"
+  },
+  {
+    "name": "Drip of Totality",
+    "description": "With each word, a fraction of your total flows back — a subtle, steady stream of accumulated potential.",
+    "cost": 10000000000000,
+    "id": "DiviTr",
+    "branch": "Master",
+    "parents": [
+      "BullM"
+    ],
+    "x": 1050,
+    "y": 800,
+    "bonus": "You get a reduced percentage of your total Points on Word Typed"
+  },
+  {
+    "name": "Half-Curse Handling",
+    "description": "The sting of misfortune is dulled. Though darkness still touches your cards, its grip weakens — and with it, your resilience grows.",
+    "cost": 500000000000,
+    "id": "TaxEv",
+    "branch": "Master",
+    "parents": [
+      "ShadF",
+      "DiviTr"
+    ],
+    "x": 900,
+    "y": 700,
+    "bonus": "Negative Cards effects are halved",
+    "unlockType": "ANY"
+  },
+  {
+    "name": "Lexical Extension",
+    "description": "The line between limitation and expression shifts once more. A single letter longer, and your words gain new dimensions.",
+    "cost": 100000000000000000,
+    "id": "+1WLIV",
+    "branch": "GrandMaster",
+    "parents": [
+      "TaxEv"
+    ],
+    "x": 750,
+    "y": 800,
+    "bonus": "Word Length + 1"
+  },
+  {
+    "name": "Unlock Cardinal Sins",
+    "description": "You now step into forbidden territory. The Cardinal Sins awaken — trials of vice and virtue, where power is paid for in pain.",
+    "cost": 100000000000000000,
+    "id": "CardSins",
+    "branch": "GrandMaster",
+    "parents": [
+      "+1WLIV"
+    ],
+    "x": 450,
+    "y": 1100,
+    "bonus": "Unlock Cardinal Sins"
+  },
+  {
+    "name": "Tame the Pride",
+    "description": "Perfection is no longer demanded, only encouraged. The edge of arrogance softens, giving you room to stumble and rise again.",
+    "cost": 100000000000000000,
+    "id": "CSPride",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 450,
+    "y": 900,
+    "bonus": "You have a 50% of not exiting the challenge on Wrong Word Typed while on CSPride"
+  },
+  {
+    "name": "Quiet the Desire",
+    "description": "The temptations dim. What once glowed with reckless allure now flickers gently — easier to resist, and harder to fall for.",
+    "cost": 100000000000000000,
+    "id": "CSLust",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 300,
+    "y": 1300,
+    "bonus": "2 Bad Wheel Slots less while on CSLust"
+  },
+  {
+    "name": "Restrain the Appetite",
+    "description": "Our hunger slows, and the urgency fades. Gluttony loses its grip, allowing for measured consumption and steadier control.",
+    "cost": 100000000000000000,
+    "id": "CSGluttony",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 450,
+    "y": 1300,
+    "bonus": "You have more time for purchasing upgrades while on CSGluttony. 3 sec to 5 sec."
+  },
+  {
+    "name": "Silence the Envy",
+    "description": "The gnawing jealousy retreats. The shadows that once stole from you now waver — their touch less constant, their sting less sharp.",
+    "cost": 100000000000000000,
+    "id": "CSEnvy",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 200,
+    "y": 1100,
+    "bonus": "Your points get reduced less. Instead of 0 you get ^0.5"
+  },
+  {
+    "name": "Calm the Wrath",
+    "description": "The chaos quiets. The fury that once chased your every move now hesitates, giving you space to breathe and outmaneuver the storm.",
+    "cost": 100000000000000000,
+    "id": "CSWrath",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 200,
+    "y": 1000,
+    "bonus": "You don't get ads anymore. You get letters added less frequently"
+  },
+  {
+    "name": "Shake the Sloth",
+    "description": "Stillness no longer binds you as tightly. The weight of delay lightens, granting momentum where lethargy once ruled.",
+    "cost": 100000000000000000,
+    "id": "CSSloth",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 200,
+    "y": 1200,
+    "bonus": "You have to wait less for the next upgrade. From 10 sec to 5 sec."
+  },
+  {
+    "name": "Diminish the Greed",
+    "description": "The curve of loss becomes less cruel. Though Greed still takes, it takes less — letting you grow even within its grasp.",
+    "cost": 100000000000000000,
+    "id": "CSGreed",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 300,
+    "y": 900,
+    "bonus": "Your score gets reduced less. From ^0.5 to ^0.75"
+  },
+  {},
+  {
+    "name": "Unlock Challenges",
+    "description": "You step into structured trials. Challenges test your precision, speed, and adaptability — offering great reward to the prepared.",
+    "cost": 5000000,
+    "id": "Chal",
+    "branch": "GrandMaster",
+    "parents": [
+      "+1WLIV"
+    ],
+    "x": 750,
+    "y": 700,
+    "bonus": "Unlock Challenges"
+  },
+  {
+    "name": "Challenge Investment",
+    "description": "Every trial strengthens your foundation. The more challenges you overcome, the stronger your passive power becomes.",
+    "cost": 5000000,
+    "id": "ChalInv",
+    "branch": "GrandMaster",
+    "parents": [
+      "Chal"
+    ],
+    "x": 750,
+    "y": 600,
+    "bonus": "x[ChalAmount]"
+  },
+  {
+    "name": "Challenge Module",
+    "description": "You gain access to specialized challenge mechanics. Fine-tune your approach, control your fate.",
+    "cost": 5000000,
+    "id": "ChalM",
+    "branch": "GrandMaster",
+    "parents": [
+      "Chal"
+    ],
+    "x": 600,
+    "y": 700,
+    "bonus": "You obtain the Merge Module!. You start to feel uneasy from just seeing them."
+  },
+  {
+    "name": "Challenge Dividends",
+    "description": "Each challenge feeds your growth. Their echoes now return as dividends — point bonuses granted through perseverance.",
+    "cost": 5000000,
+    "id": "ChalDiv",
+    "branch": "GrandMaster",
+    "parents": [
+      "ChalM"
+    ],
+    "x": 600,
+    "y": 600,
+    "bonus": "Percentage of TotalPoints based on Challenge Completions on Word Typed"
+  },
+  {
+    "name": "Challenge Preparation",
+    "description": "Calm before the storm. A moment of heightened focus grants you a powerful boost at the challenge's start.",
+    "cost": 5000000,
+    "id": "ChalPrep",
+    "branch": "GrandMaster",
+    "parents": [
+      "ChalM"
+    ],
+    "x": 450,
+    "y": 700,
+    "bonus": "You start every challenge with a temporary boost"
+  },
+  {
+    "name": "Challenge Holy",
+    "description": "As failure draws near, a divine spark shields you. A single mistake does not spell the end — not this time.",
+    "cost": 5000000,
+    "id": "ChalHoly",
+    "branch": "GrandMaster",
+    "parents": [
+      "ChalPrep"
+    ],
+    "x": 450,
+    "y": 800,
+    "bonus": "You get +1 Life on every challenge"
+  },
+  {
+    "name": "Challenge Advancement",
+    "description": "Mastery in speed rewards you twice. Complete a challenge with swift precision, and your victory echoes further.",
+    "cost": 5000000,
+    "id": "ChalAdv",
+    "branch": "GrandMaster",
+    "parents": [
+      "ChalPrep"
+    ],
+    "x": 300,
+    "y": 700,
+    "bonus": "You can get multiple completions based on how fast you complete a challenge"
+  },
+  {
+    "name": "Time Bending",
+    "description": "You stretch the seconds. Time flows slower within the challenge, giving you the clarity to succeed.",
+    "cost": 5000000,
+    "id": "TimeBend",
+    "branch": "GrandMaster",
+    "parents": [
+      "ChalAdv"
+    ],
+    "x": 300,
+    "y": 600,
+    "bonus": "Every challenge completed adds 10 seconds to every Challenge"
+  },
+  {
+    "name": "Challenge Nerf",
+    "description": "The burden lightens. Your challenges become gentler, their demands eased — not erased, just softened.",
+    "cost": 5000000,
+    "id": "ChalNerf",
+    "branch": "GrandMaster",
+    "parents": [
+      "ChalAdv"
+    ],
+    "x": 150,
+    "y": 700,
+    "bonus": "Every challenge completed reduces the Challenge objective by 5%"
+  },
+  {
+    "name": "Word Extension",
+    "description": "Once again, the boundaries shift. A single extra letter reshapes how your words connect with the system.",
+    "cost": 5000000,
+    "id": "+1WLV",
+    "branch": "GrandMaster",
+    "parents": [
+      "CardSins"
+    ],
+    "x": 750,
+    "y": 1000,
+    "bonus": "Word Length + 1"
+  },
+  {
+    "name": "Unlock Modules",
+    "description": "Complex systems awaken. You unlock the capacity to specialize and upgrade deeply through modular mechanics.",
+    "cost": 100000000,
+    "id": "Mod",
+    "branch": "Mighty",
+    "parents": [
+      "+1WLV"
+    ],
+    "x": 750,
+    "y": 1100,
+    "bonus": "Unlock Modules"
+  },
+  {
+    "name": "Length via Letter Value",
+    "description": "Each rare letter now carries more weight. Your word length increases with the density of its Scrabble points.",
+    "cost": 100000000,
+    "id": "WLPerScr",
+    "branch": "Mighty",
+    "parents": [
+      "Mod"
+    ],
+    "x": 900,
+    "y": 1000,
+    "bonus": "Words act as if they were longer based on Scrabble Points"
+  },
+  {
+    "name": "Achievement-Weighted Letters",
+    "description": "The more you achieve, the more your letters are worth. Scrabble points scale with your journey.",
+    "cost": 100000000,
+    "id": "ScrPerAch",
+    "branch": "Mighty",
+    "parents": [
+      "WLPerScr"
+    ],
+    "x": 1050,
+    "y": 1000,
+    "bonus": "Scrabble Points count as if they were more based on your Achievements"
+  },
+  {
+    "name": "Mastery-Fueled Achievements",
+    "description": "Deep knowledge refines your milestones. The stronger your Mastery, the more meaningful your Achievements become.",
+    "cost": 100000000,
+    "id": "AchPerMast",
+    "branch": "Mighty",
+    "parents": [
+      "ScrPerAch"
+    ],
+    "x": 1200,
+    "y": 1000,
+    "bonus": "Achievements worth more based on your Mastery Levels"
+  },
+  {
+    "name": "Length to Mastery",
+    "description": "Longer words carry deeper lessons. Your mastery grows faster the further your expression stretches.",
+    "cost": 100000000,
+    "id": "MastPerWL",
+    "branch": "Mighty",
+    "parents": [
+      "AchPerMast"
+    ],
+    "x": 1350,
+    "y": 1000,
+    "bonus": "Mastery EXP multiplier based on Word Length"
+  },
+  {
+    "name": "Doubled Length Recognition",
+    "description": "Your words now resonate with double strength. Each letter counts twice, reshaping your entire structure of gain.",
+    "cost": 100000000,
+    "id": "WLx2",
+    "branch": "Mighty",
+    "parents": [
+      "Mod"
+    ],
+    "x": 900,
+    "y": 1200,
+    "bonus": "Words act as if they were twice longer"
+  },
+  {
+    "name": "Scrabble Synergy",
+    "description": "The more you invest in the Scrabble Module, the more your letters align. Every upgrade compounds your letter-based output.",
+    "cost": 100000000,
+    "id": "ScrSy",
+    "branch": "Mighty",
+    "parents": [
+      "WLx2"
+    ],
+    "x": 1050,
+    "y": 1200,
+    "bonus": "You get more Scrabble Points based on your total amount of Scrabble Module Upgrades"
+  },
+  {
+    "name": "Foundational Recognition",
+    "description": "Even your smallest victories now stand taller. The base value of all achievements rises by two.",
+    "cost": 100000000,
+    "id": "AchBase+2",
+    "branch": "Mighty",
+    "parents": [
+      "ScrSy"
+    ],
+    "x": 1200,
+    "y": 1200,
+    "bonus": "Your achievements base value is increased by 2"
+  },
+  {
+    "name": "Mastery Feedback",
+    "description": "Your growth feeds itself. The more mastery you have, the faster you continue mastering — a self-sustaining cycle.",
+    "cost": 100000000,
+    "id": "MastSy",
+    "branch": "Mighty",
+    "parents": [
+      "AchBase+2"
+    ],
+    "x": 1350,
+    "y": 1200,
+    "bonus": "You get more Mastery EXP based on your Mastery Levels"
+  },
+  {
+    "name": "You force the enhancer to be enhancerer",
+    "description": "x1.25 Points",
+    "cost": 100000,
+    "id": "PassiveEnhancerEnhancerer",
+    "branch": "Passive"
+  },
+  {
+    "name": "Here's a little bonus for you",
+    "description": "+2 points per Word",
+    "cost": 700000,
+    "id": "PassiveLittleBonus",
+    "branch": "Passive"
+  },
+  {
+    "name": "I don't know exactly what to upgrade, I'm sorry",
+    "description": "x1.5 Points",
+    "cost": 4000000,
+    "id": "PassiveDontKnow",
+    "branch": "Passive"
+  },
+  {
+    "name": "Whispers of Stillness",
+    "description": "Silence becomes strength. With each breath, the system hums with unseen energy, setting the stage for a flow of passive power.",
+    "cost": 0,
+    "id": "PTB",
+    "branch": "Passive",
+    "x": 200,
+    "y": 300,
+    "bonus": "A feeling of silent potential"
+  },
+  {
+    "name": "Silent Lexicon",
+    "description": "Letters don't just count in words, but also in passive flow. Each rare letter adds power, even without active typing.",
+    "cost": 100000000,
+    "id": "ScrPB",
+    "branch": "Passive",
+    "parents": [
+      "PTB"
+    ],
+    "x": 200,
+    "y": 200,
+    "bonus": "Scrabble bonuses now also apply to Passive Points."
+  },
+  {
+    "name": "Silent Scholar",
+    "description": "Deep knowledge transcends the act of writing. Each Mastery level adds to your passive power.",
+    "cost": 100000000,
+    "id": "MastPB",
+    "branch": "Passive",
+    "parents": [
+      "ScrPB"
+    ],
+    "x": 400,
+    "y": 100,
+    "bonus": "Mastery bonuses now also apply to Passive Points."
+  },
+  {
+    "name": "Legacy of Triumph",
+    "description": "Your accomplishments echo beyond their moment, amplifying even the passive. Each milestone fuels your progress.",
+    "cost": 100000000,
+    "id": "AchPB",
+    "branch": "Passive",
+    "parents": [
+      "ScrPB"
+    ],
+    "x": 200,
+    "y": 100,
+    "bonus": "Achievement bonuses now also apply to Passive Points."
+  },
+  {
+    "name": "Silent Trade",
+    "description": "The market never sleeps. Fluctuations in the Market now resonate directly with your passive generation.",
+    "cost": 100000000,
+    "id": "MarkPB",
+    "branch": "Passive",
+    "parents": [
+      "AchPB"
+    ],
+    "y": 100,
+    "bonus": "Market bonuses now also apply to Passive Points."
+  },
+  {
+    "name": "Code of Flow",
+    "description": "Even the underlying code holds weight. The ASCII value of each word now influences your passive flow.",
+    "cost": 100000000,
+    "id": "AsciiPB",
+    "branch": "Passive",
+    "parents": [
+      "MarkPB"
+    ],
+    "bonus": "ASCII bonuses now also apply to Passive Points."
+  },
+  {
+    "name": "Passive Word Stretch",
+    "description": "In the passive world, words grow longer, weaving new layers of hidden meaning. Each added letter amplifies the silent narrative.",
+    "cost": 300000,
+    "id": "HorScal+",
+    "branch": "Passive",
+    "parents": [
+      "PTB"
+    ],
+    "y": 300,
+    "bonus": "+1 Letter to Generated Word"
+  },
+  {
+    "name": "Path of Clarity",
+    "description": "The line widens, giving more room to strike with precision. The Active Bar becomes more forgiving for those who watch closely.",
+    "cost": 2000000,
+    "id": "LBarSize+",
+    "branch": "Passive",
+    "parents": [
+      "PTB"
+    ],
+    "y": 400,
+    "bonus": "Longer area for Active Bar"
+  },
+  {
+    "name": "Path of Precision",
+    "description": "Further widening brings clarity to the path. Precision becomes easier to achieve as the Active Bar grows larger.",
+    "cost": 100000000,
+    "id": "LBarSize++",
+    "branch": "Passive",
+    "parents": [
+      "LBarSize+"
+    ],
+    "y": 500,
+    "bonus": "Longer area for Active Bar"
+  },
+  {
+    "name": "Path of Mastery",
+    "description": "The path reaches its peak clarity. Every strike becomes more confident, each click more rewarding.",
+    "cost": 100000000,
+    "id": "LBarSize+++",
+    "branch": "Passive",
+    "parents": [
+      "LBarSize++"
+    ],
+    "y": 600,
+    "bonus": "Longer area for Active Bar"
+  },
+  {
+    "name": "Edge of Perfection",
+    "description": "A hidden, narrow window reveals itself. Those who dare strike with perfect precision unlock a surge of passive power far beyond the norm.",
+    "cost": 100000000,
+    "id": "PrecBarCrit",
+    "branch": "Passive",
+    "parents": [
+      "LBarSize+++"
+    ],
+    "y": 700,
+    "bonus": "A new area in the Active Bar appears"
+  },
+  {
+    "name": "Gentle Decay",
+    "description": "The system softens its edge. The penalty for slipping to the sides becomes lighter, offering forgiveness for near-misses.",
+    "cost": 100000000,
+    "id": "NerfNerf",
+    "branch": "Passive",
+    "parents": [
+      "PrecBarCrit"
+    ],
+    "y": 800,
+    "bonus": "-0.05 instead of -0.1 whenever the line touches the edges of the Active Bar"
+  },
+  {
+    "name": "Whispers of Speed",
+    "description": "The idle flow accelerates. Time bends to your favor as the bar fills faster, bringing each collection closer.",
+    "cost": 100000000,
+    "id": "FastB+",
+    "branch": "Passive",
+    "parents": [
+      "PTB"
+    ],
+    "x": 400,
+    "y": 400,
+    "bonus": "Idle Bar fills 20% faster"
+  },
+  {
+    "name": "Pulse of Acceleration",
+    "description": "The rhythm quickens further. The bar's pace intensifies, drawing you into the rush of passive accumulation.",
+    "cost": 100000000,
+    "id": "FastB++",
+    "branch": "Passive",
+    "parents": [
+      "FastB+"
+    ],
+    "x": 400,
+    "y": 500,
+    "bonus": "Idle Bar fills 20% faster, again"
+  },
+  {
+    "name": "Torrent of Flow",
+    "description": "The bar surges with unmatched speed. Time and flow merge, propelling you toward a passive crescendo.",
+    "cost": 100000000,
+    "id": "FastB+++",
+    "branch": "Passive",
+    "parents": [
+      "FastB++"
+    ],
+    "x": 400,
+    "y": 600,
+    "bonus": "Idle Bar fills 20% faster, once again. This makes it twice faster than the original speed!"
+  },
+  {
+    "name": "Echo of Abundance",
+    "description": "Each completion brings not one, but two rewards. Your grasp on passive power expands as charges double with every harvest.",
+    "cost": 100000000,
+    "id": "Charge+",
+    "branch": "Passive",
+    "parents": [
+      "FastB+++"
+    ],
+    "x": 400,
+    "y": 700,
+    "bonus": "+1 Charges when collected"
+  },
+  {
+    "name": "Overdrive Surge",
+    "description": "In a fleeting burst, your passive power ignites. Collecting a charge unleashes a surge of x2 power, rewarding patience with an explosive climax.",
+    "cost": 100000000,
+    "id": "OvDriveBar",
+    "branch": "Passive",
+    "parents": [
+      "Charge+"
+    ],
+    "x": 400,
+    "y": 800,
+    "bonus": "Your multiplier charge gains a x2 bonus for 10 seconds before fully depleting when collected."
+  },
+  {
+    "name": "Dual Flow",
+    "description": "Active clicks empower passive progress, and passive fills protect active flow. A hidden synergy emerges between the two bars.",
+    "cost": 100000000,
+    "id": "BarSyn",
+    "branch": "Passive",
+    "parents": [
+      "OvDriveBar",
+      "NerfNerf"
+    ],
+    "x": 200,
+    "y": 900,
+    "bonus": "Active clicks fill a percentage of the Idle Bar. The Idle Bar's fill percentage is the chance to avoid decay on Active edge hits."
+  },
+  {
+    "name": "Efficient Blueprint",
+    "description": "The intricate design of your generators evolves, reducing the cost of higher tiers and paving the way for exponential growth.",
+    "cost": 100000000,
+    "id": "GenScalPlus",
+    "branch": "Passive",
+    "parents": [
+      "BarSyn"
+    ],
+    "x": 200,
+    "y": 1000,
+    "bonus": "Generator cost scaling is improved."
+  },
+  {
+    "name": "Empowered Constructs",
+    "description": "Charges can now be assigned to specific generators, infusing them with raw potential and amplifying their output.",
+    "cost": 100000000,
+    "id": "GenCharge",
+    "branch": "Passive",
+    "parents": [
+      "GenScalPlus"
+    ],
+    "x": 400,
+    "y": 1000,
+    "bonus": "Assign charges to generators to overcharged them."
+  },
+  {
+    "name": "Linked Engines",
+    "description": "Generators no longer operate in isolation. Each tier strengthens the others, creating a network of ascending power.",
+    "cost": 100000000,
+    "id": "SynGen",
+    "branch": "Passive",
+    "parents": [
+      "GenScalPlus"
+    ],
+    "x": 200,
+    "y": 1100,
+    "bonus": "Generators boost each other, with higher tiers providing a better bonus."
+  },
+  {
+    "name": "Synergy Module Unlocked",
+    "description": "A hidden module awakens, allowing deeper optimization of generator synergies. Strategic improvements now await discovery.",
+    "cost": 100000000,
+    "id": "SynM",
+    "branch": "Passive",
+    "parents": [
+      "SynGen"
+    ],
+    "x": 400,
+    "y": 1100,
+    "bonus": "Unlock the Synergy Module!"
+  },
+  {
+    "name": "Charge Ignition",
+    "description": "Every charge collected ignites your generators, flooding them with energy for a short but intense boost.",
+    "cost": 100000000,
+    "id": "GenCharBoost",
+    "branch": "Passive",
+    "parents": [
+      "SynGen"
+    ],
+    "x": 200,
+    "y": 1200,
+    "bonus": "Collecting a charge temporarily boosts generator output."
+  },
+  {
+    "name": "Prestige Tree Beginning",
+    "description": "Here begins the cycle of ascent. This first node, like the seed of a vast tree, whispers of endless potential waiting to unfold. With each reset, its roots stretch deeper into the fabric of growth, preparing the way for your future.",
+    "cost": 0,
+    "id": "PrTB",
+    "branch": "Prestige",
+    "bonus": "A feeling of infinity"
+  },
+  {
+    "name": "Silent Legacy",
+    "description": "Your passive efforts become a hidden legacy, persisting across time. Even in new beginnings, their silent pulse remains, steady and unbroken.",
+    "cost": 0,
+    "id": "KeepPas",
+    "branch": "Prestige",
+    "parents": [
+      "PrTB"
+    ],
+    "y": 100,
+    "bonus": "Keep Passive on Prestige"
+  },
+  {
+    "name": "Foundry Surge",
+    "description": "Each thousand echoes of Prestige fuels the fires of productivity. Passive points swell like molten metal in the heart of your forge, growing with every spark of progress.",
+    "cost": 0,
+    "id": "PrGenBulk",
+    "branch": "Prestige",
+    "parents": [
+      "KeepPas"
+    ],
+    "y": 200,
+    "bonus": "+X% Passive Point per 1000 Prestige Points"
+  },
+  {
+    "name": "Precision Arc",
+    "description": "Your focus sharpens like a blade. The Active Bar responds, resonating with a higher, clearer multiplier — the mark of one who strikes with intent.",
+    "cost": 0,
+    "id": "ActBarMulti+",
+    "branch": "Prestige",
+    "parents": [
+      "PrGenBulk"
+    ],
+    "y": 300,
+    "bonus": "Better Active Bar Multiplier"
+  },
+  {
+    "name": "Rhythmic Surge",
+    "description": "Each perfect strike upon the Active Bar sends ripples through the system. The rhythm of precision unlocks a chain of momentum, weaving a pattern of flawless power.",
+    "cost": 0,
+    "id": "ActBarPerf",
+    "branch": "Prestige",
+    "parents": [
+      "ActBarMulti+"
+    ],
+    "y": 400,
+    "bonus": "Gain a combo on consecutive successful Active Bar clicks"
+  },
+  {
+    "name": "Stillness Bloom",
+    "description": "In the quiet of the Idle Bar, power accumulates unseen. The multiplier blossoms gently, waiting to be claimed when the world awakens again.",
+    "cost": 0,
+    "id": "IdleBarMulti+",
+    "branch": "Prestige",
+    "parents": [
+      "PrGenBulk"
+    ],
+    "x": 200,
+    "y": 300,
+    "bonus": "Better Idle Bar Multiplier"
+  },
+  {
+    "name": "Silent Engines",
+    "description": "Your generators do not forget. Even through cycles of reset and rebirth, their quiet hum returns, ready to build anew from the depths.",
+    "cost": 0,
+    "id": "KeepGens",
+    "branch": "Prestige",
+    "parents": [
+      "ActBarMulti+",
+      "IdleBarMulti+"
+    ],
+    "x": 200,
+    "y": 400,
+    "bonus": "Keep Generators on Prestige"
+  },
+  {
+    "name": "Prestige-Driven Pulse",
+    "description": "Prestige becomes the lifeblood of your generators, infusing them with a pulse that beats faster, stronger, pushing output to new heights.",
+    "cost": 0,
+    "id": "GenPrSyn",
+    "branch": "Prestige",
+    "parents": [
+      "KeepGens"
+    ],
+    "x": 200,
+    "y": 500,
+    "bonus": "Faster Generators based on Prestige Points"
+  },
+  {
+    "name": "Crystalline Memory",
+    "description": "Fragments of your past fill the Idle Bar even as you begin anew. The crystals glimmer with remembered strength, a reservoir waiting to be tapped.",
+    "cost": 0,
+    "id": "CrysCache",
+    "branch": "Prestige",
+    "parents": [
+      "GenPrSyn"
+    ],
+    "y": 500,
+    "bonus": "You keep a percentage of Crystal Charges on Prestige"
+  },
+  {
+    "name": "Flare of Continuity",
+    "description": "Overdrive's flame burns longer, its brilliance unbroken. Momentum surges forward, defying time's grasp, extending the reach of power.",
+    "cost": 0,
+    "id": "OvDriveBoost",
+    "branch": "Prestige",
+    "parents": [
+      "CrysCache"
+    ],
+    "y": 600,
+    "bonus": "Overdrive Boost is extended"
+  },
+  {
+    "name": "Overflowing Crystal",
+    "description": "When the crystals overflow, they grant not just a single charge, but a cascade. Power multiplies, spilling beyond the vessel's edge.",
+    "cost": 0,
+    "id": "CrysOvFlow",
+    "branch": "Prestige",
+    "parents": [
+      "OvDriveBoost"
+    ],
+    "y": 700,
+    "bonus": "You can gain more than one charge per fill"
+  },
+  {
+    "name": "Engine's Awakening",
+    "description": "Your generators awaken from slumber with renewed fervor. They surge forward, amplifying output in a wave of mechanical purpose.",
+    "cost": 0,
+    "id": "GenBoost",
+    "branch": "Prestige",
+    "parents": [
+      "CrysOvFlow"
+    ],
+    "y": 800,
+    "bonus": "Generator Boost"
+  },
+  {
+    "name": "Silent Synergy",
+    "description": "The stillness of the Idle Bar and the hum of generators find harmony. Together, they weave a tapestry of amplified, silent growth.",
+    "cost": 0,
+    "id": "IdleGenAmp",
+    "branch": "Prestige",
+    "parents": [
+      "GenBoost"
+    ],
+    "y": 900,
+    "bonus": "Idle Multiplier boost based on Generators"
+  },
+  {
+    "name": "Whispers of Fortune",
+    "description": "The echoes of chance never fade. Even after rebirth, the threads of luck remain woven through your system, granting continuity to your pulls.",
+    "cost": 0,
+    "id": "KeepGacha",
+    "branch": "Prestige",
+    "parents": [
+      "PrTempB"
+    ],
+    "x": 400,
+    "y": 200,
+    "bonus": "Keep Gacha on Prestige"
+  },
+  {
+    "name": "Overflowing Draw",
+    "description": "The deck brims with possibility, spilling over its edges. With each draw, the tides of fortune widen, offering more than ever before.",
+    "cost": 0,
+    "id": "CaAm+2",
+    "branch": "Prestige",
+    "parents": [
+      "KeepGacha"
+    ],
+    "x": 400,
+    "y": 300,
+    "bonus": "+2 Cards per Roll"
+  },
+  {
+    "name": "Silent Dealer",
+    "description": "In the quiet passage of time, fortune stirs unseen. Every hour, a card is drawn from the void, a whisper of chance materialized.",
+    "cost": 0,
+    "id": "SilFort",
+    "branch": "Prestige",
+    "parents": [
+      "CaAm+2"
+    ],
+    "x": 400,
+    "y": 400,
+    "bonus": "Generate 1 card every hour"
+  },
+  {
+    "name": "Fortune's Purge",
+    "description": "The shadows of ill fortune are cast aside. With each draw, the hand you're dealt becomes purer, more favorable to your journey.",
+    "cost": 0,
+    "id": "PrCardCleanse",
+    "branch": "Prestige",
+    "parents": [
+      "CaAm+2"
+    ],
+    "x": 600,
+    "y": 300,
+    "bonus": "Less Negative Cards"
+  },
+  {
+    "name": "Overflowing Promise",
+    "description": "Your packs brim with latent energy, empowered by your Prestige. They spill forth extra cards, each a token of accumulated power.",
+    "cost": 0,
+    "id": "PackOvFlow",
+    "branch": "Prestige",
+    "parents": [
+      "PrCardCleanse"
+    ],
+    "x": 800,
+    "y": 300,
+    "bonus": "+1 Card on Pack based on Prestige Points"
+  },
+  {
+    "name": "Hand of Stars",
+    "description": "The deck aligns in your favor. Each shuffle resonates with potential, drawing you closer to the rarest and most powerful cards.",
+    "cost": 0,
+    "id": "BetterCards",
+    "branch": "Prestige",
+    "parents": [
+      "PrCardCleanse"
+    ],
+    "x": 600,
+    "y": 400,
+    "bonus": "More probability for better cards"
+  },
+  {
+    "name": "Champion's Luck",
+    "description": "Your persistent pursuit of fortune hones your draws. With each pack opened, your skill and luck combine, pulling the best from the deck.",
+    "cost": 0,
+    "id": "HighRoller",
+    "branch": "Prestige",
+    "parents": [
+      "BetterCards"
+    ],
+    "x": 400,
+    "y": 600,
+    "bonus": "Better Cards based on Packs opened"
+  },
+  {
+    "name": "Convergence Ease",
+    "description": "Cards align more easily, merging with less resistance. The energies of combination flow smoother, unlocking potential with fewer pieces.",
+    "cost": 0,
+    "id": "MergeNerf",
+    "branch": "Prestige",
+    "parents": [
+      "HighRoller"
+    ],
+    "x": 400,
+    "y": 700,
+    "bonus": "You need less cards to merge them"
+  },
+  {
+    "name": "Unbroken Deck",
+    "description": "Your packs remain intact through cycles of reset, their contents preserved as relics of fortune's favor.",
+    "cost": 0,
+    "id": "KeepPacks",
+    "branch": "Prestige",
+    "parents": [
+      "MergeNerf"
+    ],
+    "x": 200,
+    "y": 700,
+    "bonus": "Keep Packs on Prestige"
+  },
+  {
+    "name": "Prestige's Echo",
+    "description": "Prestige strengthens the silent dealer's hand. The number of cards drawn quietly increases, mirroring your rise in power.",
+    "cost": 0,
+    "id": "PrSilFort",
+    "branch": "Prestige",
+    "parents": [
+      "MergeNerf"
+    ],
+    "x": 400,
+    "y": 800,
+    "bonus": "Generate more cards based on Prestige Points"
+  },
+  {
+    "name": "Whispering Ledger",
+    "description": "The ledger of language never fades. Even across resets, your mastery of Scrabble persists, echoing with the power of rare letters.",
+    "cost": 0,
+    "id": "KeepScr",
+    "branch": "Prestige",
+    "parents": [
+      "PrNexus"
+    ],
+    "x": 800,
+    "bonus": "Keep Scrabble on Prestige"
+  },
+  {
+    "name": "Gemstone Glyphs",
+    "description": "The rarest letters shine brightest, each a gem in the tapestry of language. Their glow intensifies, granting a surge of points that matches their rarity.",
+    "cost": 0,
+    "id": "ScrPow",
+    "branch": "Prestige",
+    "parents": [
+      "KeepScr"
+    ],
+    "x": 1000,
+    "bonus": "Better Boost to rarer characters"
+  },
+  {
+    "name": "Rare Glyph Cascade",
+    "description": "When rare letters align in succession, they form a chain of brilliance. Each connection magnifies their power, building an unbroken cascade of points.",
+    "cost": 0,
+    "id": "ScrRareChain",
+    "branch": "Prestige",
+    "parents": [
+      "ScrPow"
+    ],
+    "x": 1200,
+    "bonus": "Each consecutive word with rare Scrabble letters increases point gains"
+  },
+  {
+    "name": "Mosaic Verse",
+    "description": "The diversity of glyphs creates a mosaic of meaning. Words woven from rare and varied letters resonate with deeper strength, yielding higher rewards.",
+    "cost": 0,
+    "id": "ScrVariety",
+    "branch": "Prestige",
+    "parents": [
+      "ScrRareChain"
+    ],
+    "x": 1400,
+    "y": 100,
+    "bonus": "More unique letters based on Scrabble Tier gets a higher bonus"
+  },
+  {
+    "name": "Inferno of Letters",
+    "description": "Every rare letter fuels a growing fire. When the reservoir of value bursts, it ignites a surge of points, illuminating your progress.",
+    "cost": 0,
+    "id": "ScrFuel",
+    "branch": "Prestige",
+    "parents": [
+      "ScrVariety"
+    ],
+    "x": 1400,
+    "y": 200,
+    "bonus": "Unlock a bar that fills based on Scrabble value. When filled, trigger a boost."
+  },
+  {
+    "name": "Silent Triumph",
+    "description": "The weight of your achievements feeds an unseen current. This steady pulse flows into your Passive systems, amplifying growth silently.",
+    "cost": 0,
+    "id": "PassAch",
+    "branch": "Prestige",
+    "parents": [
+      "PrNexus"
+    ],
+    "x": 1000,
+    "y": 100,
+    "bonus": "Passive Boost from Achievements"
+  },
+  {
+    "name": "Prismatic Record",
+    "description": "Not all achievements gleam the same. The rarer and more luminous the milestone, the greater its resonance in your journey, magnifying your Prestige.",
+    "cost": 0,
+    "id": "QualPrAch",
+    "branch": "Prestige",
+    "parents": [
+      "PassAch"
+    ],
+    "x": 1200,
+    "y": 100,
+    "bonus": "Achievement Quality boosts Prestige Points"
+  },
+  {
+    "name": "Legacy's Gift",
+    "description": "Every achievement unlocks deeper understanding. Mastery itself accelerates under the glow of past triumphs, each lesson fueling sharper focus.",
+    "cost": 0,
+    "id": "AchMastXP",
+    "branch": "Prestige",
+    "parents": [
+      "PassAch"
+    ],
+    "x": 1200,
+    "y": 200,
+    "bonus": "Boost to Mastery XP based on Achievements"
+  },
+  {
+    "name": "Anchor of Equilibrium",
+    "description": "The tides of the Market settle, guided by unseen hands. Each rise and fall aligns more closely with order, creating a path of steady progress.",
+    "cost": 0,
+    "id": "MarkAnch",
+    "branch": "Prestige",
+    "parents": [
+      "CritMultiB"
+    ],
+    "x": 800,
+    "y": 400,
+    "bonus": "Market fluctuation is more stable and consistent"
+  },
+  {
+    "name": "Vault of Echoes",
+    "description": "The Market's pulse echoes through time. Even as the world resets, its vault of influence remains, untouched and unyielding.",
+    "cost": 0,
+    "id": "KeepMark",
+    "branch": "Prestige",
+    "parents": [
+      "MarkAnch"
+    ],
+    "x": 800,
+    "y": 500,
+    "bonus": "Keep Market on Prestige"
+  },
+  {
+    "name": "Cascade of Ascent",
+    "description": "One rise begets another. As the Market surges, it carries with it an echo of momentum, triggering a cascade of gains.",
+    "cost": 0,
+    "id": "SurgeChain",
+    "branch": "Prestige",
+    "parents": [
+      "KeepMark"
+    ],
+    "x": 600,
+    "y": 500,
+    "bonus": "When the market rises, triggers another complementary rise immediately"
+  },
+  {
+    "name": "Rebound of Fate",
+    "description": "When the Market stumbles thrice, fate intervenes. The fall is softened, rebounding with renewed force and purpose.",
+    "cost": 0,
+    "id": "MarkRebound",
+    "branch": "Prestige",
+    "parents": [
+      "KeepMark"
+    ],
+    "x": 600,
+    "y": 600,
+    "bonus": "Stabilizes and rebounds when falling 3 consecutive times"
+  },
+  {
+    "name": "Whisper of Resilience",
+    "description": "The Market's sharp edges are dulled by your mastery. What once was perilous becomes manageable, reducing the sting of misfortune.",
+    "cost": 0,
+    "id": "RiskMitigator",
+    "branch": "Prestige",
+    "parents": [
+      "KeepMark"
+    ],
+    "x": 800,
+    "y": 600,
+    "bonus": "Negative Market Events are reduced"
+  },
+  {
+    "name": "Pulse of Commerce",
+    "description": "Fortune flows quietly through the Market. Even when idle, the pulse of trade grants you bursts of unexpected wealth.",
+    "cost": 0,
+    "id": "TradeSurge",
+    "branch": "Prestige",
+    "parents": [
+      "RiskMitigator"
+    ],
+    "x": 800,
+    "y": 700,
+    "bonus": "Gain some points based on the Market from time to time"
+  },
+  {
+    "name": "Legacy of Trade",
+    "description": "Your accumulated Prestige fuels the engines of commerce. Each point echoes through the Market, compounding your gains with every ascent.",
+    "cost": 0,
+    "id": "MarkTierBoost",
+    "branch": "Prestige",
+    "parents": [
+      "TradeSurge"
+    ],
+    "x": 800,
+    "y": 800,
+    "bonus": "Market gains are increased for every x Prestige Points earned"
+  },
+  {
+    "name": "Mark of Trial",
+    "description": "The echoes of your completed challenges persist. Even across cycles of renewal, your mark remains, unwavering and true.",
+    "cost": 0,
+    "id": "KeepChal",
+    "branch": "Prestige",
+    "parents": [
+      "CritMultiB"
+    ],
+    "x": 1000,
+    "y": 400,
+    "bonus": "Keep Challenges on Prestige"
+  },
+  {
+    "name": "Steady Ascent",
+    "description": "With each challenge overcome, a new step on your path unfolds. These victories feed a silent current that strengthens your Passive flow.",
+    "cost": 0,
+    "id": "ChalPassTier",
+    "branch": "Prestige",
+    "parents": [
+      "KeepChal"
+    ],
+    "x": 1000,
+    "y": 500,
+    "bonus": "For every 10 challenges completed, you get a passive bonus"
+  },
+  {
+    "name": "Tide of Triumph",
+    "description": "Challenge completions ripple outward, weaving into the flow of Passive gains. Every step forward resonates with steady power.",
+    "cost": 0,
+    "id": "ChalPassFlow",
+    "branch": "Prestige",
+    "parents": [
+      "ChalPassTier"
+    ],
+    "x": 1200,
+    "y": 500,
+    "bonus": "Passive Boost based on Challenge"
+  },
+  {
+    "name": "Trial's Grace",
+    "description": "A hidden thread of resilience grants you one more chance. The path ahead may falter, but you shall endure beyond the first fall.",
+    "cost": 0,
+    "id": "+1ChalLife",
+    "branch": "Prestige",
+    "parents": [
+      "ChalPassFlow"
+    ],
+    "x": 1200,
+    "y": 400,
+    "bonus": "+1 Life for Challenges"
+  },
+  {
+    "name": "Prestige Tribute",
+    "description": "Your victories in Challenges echo beyond the present. Each completed trial strengthens your claim to Prestige, leaving a mark of triumph.",
+    "cost": 0,
+    "id": "ChalPrBoost",
+    "branch": "Prestige",
+    "parents": [
+      "ChalPassTier"
+    ],
+    "x": 1000,
+    "y": 600,
+    "bonus": "Prestige Point boost based on Challenge Completions"
+  },
+  {
+    "name": "Tangled Threads",
+    "description": "The energy of Challenges resonates through the world. Passive flows, Market tides, and the pulse of Cards all feel its subtle influence.",
+    "cost": 0,
+    "id": "ChalFusion",
+    "branch": "Prestige",
+    "parents": [
+      "ChalPrBoost"
+    ],
+    "x": 1000,
+    "y": 700,
+    "bonus": "Small bonus to Passive, Market and Cards"
+  },
+  {
+    "name": "Cycle Rewoven",
+    "description": "Your path through Challenges need not be final. The threads of fate can be unspooled and rewoven, allowing for fresh starts.",
+    "cost": 0,
+    "id": "ChalRespec",
+    "branch": "Prestige",
+    "parents": [
+      "ChalFusion"
+    ],
+    "x": 1200,
+    "y": 700,
+    "bonus": "You can reset your challenge completions"
+  },
+  {
+    "name": "Echoes of Past Struggles",
+    "description": "The past is not forgotten. Even before this path was taken, your previous Challenges leave their mark, bestowing retroactive rewards.",
+    "cost": 0,
+    "id": "ChalRetro",
+    "branch": "Prestige",
+    "parents": [
+      "ChalFusion"
+    ],
+    "x": 1000,
+    "y": 800,
+    "bonus": "Retroactive bonus to all Challenges"
+  },
+  {
+    "name": "Ascendant Momentum",
+    "description": "Each consecutive triumph feeds the next. As the chain grows longer, your power swells, amplifying your journey.",
+    "cost": 0,
+    "id": "ChalChain",
+    "branch": "Prestige",
+    "parents": [
+      "ChalRetro"
+    ],
+    "x": 1200,
+    "y": 800,
+    "bonus": "Each consecutive challenge grants a stacking point bonus"
+  },
+  {
+    "name": "Sinbound Legacy",
+    "description": "The shadows of the Cardinal Sins linger, binding themselves to your journey. Even across resets, their imprint remains, daring you to push further.",
+    "cost": 0,
+    "id": "KeepCS",
+    "branch": "Prestige",
+    "parents": [
+      "WLPrSyn"
+    ],
+    "x": 1400,
+    "y": 400,
+    "bonus": "Keep Cardinal Sins"
+  },
+  {
+    "name": "Echo of Defiance",
+    "description": "A hidden spark ignites, granting you one more life in the depths of the Cardinal Sins. Even as you fall, the flame of resistance flickers on.",
+    "cost": 0,
+    "id": "+1CSLife",
+    "branch": "Prestige",
+    "parents": [
+      "KeepCS"
+    ],
+    "x": 1600,
+    "y": 400,
+    "bonus": "+1 Life in Cardinal Sins"
+  },
+  {
+    "name": "Shard Infusion",
+    "description": "The Lexiconium Shards pulse with greater vigor, their essence resonating more powerfully with each challenge overcome.",
+    "cost": 0,
+    "id": "CSLexiBoost",
+    "branch": "Prestige",
+    "parents": [
+      "KeepCS"
+    ],
+    "x": 1400,
+    "y": 500,
+    "bonus": "Lexiconium Shards boost"
+  },
+  {
+    "name": "Web of Sins",
+    "description": "Your mastery of the Cardinal Sins weaves a web of power. The further you venture, the more Lexiconium Shards echo back, amplifying your claim.",
+    "cost": 0,
+    "id": "CSinSyn",
+    "branch": "Prestige",
+    "parents": [
+      "CSLexiBoost"
+    ],
+    "x": 1400,
+    "y": 600,
+    "bonus": "Lexi shards boost based on Cardinal Sins records"
+  },
+  {
+    "name": "Silent Concord",
+    "description": "The Lexiconium Shards hum with silent resonance, feeding strength into your Passive flow. Their quiet influence grows with every shard gathered.",
+    "cost": 0,
+    "id": "CSPassSyn",
+    "branch": "Prestige",
+    "parents": [
+      "CSinSyn"
+    ],
+    "x": 1200,
+    "y": 600,
+    "bonus": "Lexiconium Shards boost Passive Points"
+  },
+  {
+    "name": "Pulse of Power",
+    "description": "The energy of Lexiconium Shards infuses your active efforts. Each word, each action surges with newfound potency, drawn from the Sins.",
+    "cost": 0,
+    "id": "CSActSyn",
+    "branch": "Prestige",
+    "parents": [
+      "CSinSyn"
+    ],
+    "x": 1400,
+    "y": 700,
+    "bonus": "Lexiconium Shards boost Points"
+  },
+  {
+    "name": "Insightful Tithe",
+    "description": "The lessons of sin feed wisdom into mastery. As the shards accumulate, so too does your understanding, each fragment a spark of greater skill.",
+    "cost": 0,
+    "id": "CSMastSyn",
+    "branch": "Prestige",
+    "parents": [
+      "CSActSyn"
+    ],
+    "x": 1400,
+    "y": 800,
+    "bonus": "Lexiconium Shards boost Mastery XP"
+  },
+  {
+    "name": "Legacy Tribute",
+    "description": "The Lexiconium Shards become more than tokens; they are tributes to your endurance, channeling into Prestige and fortifying your legacy.",
+    "cost": 0,
+    "id": "CSPrBonus",
+    "branch": "Prestige",
+    "parents": [
+      "CSMastSyn"
+    ],
+    "x": 1400,
+    "y": 900,
+    "bonus": "Lexiconium Shards boost Prestige Points"
+  },
+  {
+    "name": "Enduring Blueprint",
+    "description": "The blueprint of your systems remains etched in eternity. Even through resets, your modules persist, ready to awaken anew with each return.",
+    "cost": 0,
+    "id": "KeepMod",
+    "branch": "Prestige",
+    "parents": [
+      "KeepAct/Idle"
+    ],
+    "x": 2000,
+    "y": 500,
+    "bonus": "Keep Modules on Prestige"
+  },
+  {
+    "name": "Glyph Weaver",
+    "description": "The system now weaves its own threads of knowledge. The Scrabble Module expands without intervention, drawing power with every moment passed.",
+    "cost": 0,
+    "id": "AutoScrMod",
+    "branch": "Prestige",
+    "parents": [
+      "KeepMod"
+    ],
+    "x": 2000,
+    "y": 600,
+    "bonus": "Autobuy Scrabble Module Points"
+  },
+  {
+    "name": "Tides of Cost",
+    "description": "The currents of cost yield to your command. Each purchase now flows more smoothly, scaling in your favor.",
+    "cost": 0,
+    "id": "MuScal+",
+    "branch": "Prestige",
+    "parents": [
+      "PrTB"
+    ],
+    "x": 200,
+    "bonus": "Better Cost Scaling on Multiupgrades. Cost: ([AmountBought]/2)**(Math.log10([AmountBought]/2))"
+  },
+  {
+    "name": "Hands of Fate",
+    "description": "Automation whispers into the void. Multiupgrades now flow freely, weaving themselves into your systems without a single touch.",
+    "cost": 0,
+    "id": "AutoMulti",
+    "branch": "Prestige",
+    "parents": [
+      "MuScal+"
+    ],
+    "x": 400,
+    "bonus": "Autobuy Multiupgrades"
+  },
+  {
+    "name": "Flare of Rebirth",
+    "description": "In the instant of reset, a spark ignites. A burst of multiplier energy surges forth, propelling you into your next journey.",
+    "cost": 0,
+    "id": "PrTempB",
+    "branch": "Prestige",
+    "parents": [
+      "MuScal+"
+    ],
+    "x": 400,
+    "y": 100,
+    "bonus": "Temporary Multiplier when Prestige"
+  },
+  {
+    "name": "Point Echo",
+    "description": "Your collected essence echoes across resets. Even as you begin anew, a fragment of your past clings to you, carrying forward a fraction of your points.",
+    "cost": 0,
+    "id": "PrNexus",
+    "branch": "Prestige",
+    "parents": [
+      "PrTempB"
+    ],
+    "x": 600,
+    "y": 100,
+    "bonus": "0.1% of Points on Prestige Reset"
+  },
+  {
+    "name": "Letters of Momentum",
+    "description": "The faster your thoughts race across the page, the greater your power surges. Momentum is rewarded, translating speed into strength.",
+    "cost": 0,
+    "id": "LpVMulti",
+    "branch": "Prestige",
+    "parents": [
+      "PrTempB"
+    ],
+    "x": 600,
+    "y": 200,
+    "bonus": "Multiplier on Letter Per Second"
+  },
+  {
+    "name": "Convergence Pulse",
+    "description": "All paths converge into a singular surge. Every multiplier resonates louder, their combined force magnified with each fragment of Prestige.",
+    "cost": 0,
+    "id": "PowSurge",
+    "branch": "Prestige",
+    "parents": [
+      "LpVMulti"
+    ],
+    "x": 800,
+    "y": 200,
+    "bonus": "All multipliers +x% per 1000 Prestige Points"
+  },
+  {
+    "name": "Glyph Flood",
+    "description": "The sheer weight of your words crushes resistance. The more letters you conjure, the more your power swells.",
+    "cost": 0,
+    "id": "LetCountB",
+    "branch": "Prestige",
+    "parents": [
+      "PowSurge"
+    ],
+    "x": 1000,
+    "y": 200,
+    "bonus": "Multiplier on Letter Count"
+  },
+  {
+    "name": "Blade of Precision",
+    "description": "With every sharp stroke, your criticals strike deeper, slicing through resistance with amplified force.",
+    "cost": 0,
+    "id": "CritMultiB",
+    "branch": "Prestige",
+    "parents": [
+      "PowSurge"
+    ],
+    "x": 1000,
+    "y": 300,
+    "bonus": "Boost Critical Multiplier"
+  },
+  {
+    "name": "Rhythm of Resolve",
+    "description": "As your words flow uninterrupted, momentum builds. But break the rhythm, and the pulse dissipates into silence.",
+    "cost": 0,
+    "id": "WordPulse",
+    "branch": "Prestige",
+    "parents": [
+      "CritMultiB"
+    ],
+    "x": 1200,
+    "y": 300,
+    "bonus": "Multiplier on sustained words typed, resets after 10 seconds"
+  },
+  {
+    "name": "Echoes of Length",
+    "description": "Your words stretch into the void, echoing louder with each extra letter. Prestige weaves longer threads of expression.",
+    "cost": 0,
+    "id": "WLPrSyn",
+    "branch": "Prestige",
+    "parents": [
+      "WordPulse"
+    ],
+    "x": 1400,
+    "y": 300,
+    "bonus": "Words count as longer based on Prestige Points"
+  },
+  {
+    "name": "Prestige Bloom",
+    "description": "Your Prestige Points bloom like unseen flowers, unfolding quietly into points that surge across every system.",
+    "cost": 0,
+    "id": "PrPSyn",
+    "branch": "Prestige",
+    "parents": [
+      "WLPrSyn"
+    ],
+    "x": 1600,
+    "y": 300,
+    "bonus": "Points boost based on Prestige Points"
+  },
+  {
+    "name": "Dual Path Memory",
+    "description": "The dual pulse of activity and stillness remains unbroken. Even through resets, both sides of your system hum quietly with power.",
+    "cost": 0,
+    "id": "KeepAct/Idle",
+    "branch": "Prestige",
+    "parents": [
+      "PrPSyn"
+    ],
+    "x": 1800,
+    "y": 300,
+    "bonus": "Keep Act/Idle on Prestige"
+  },
+  {
+    "name": "Glyph Legacy",
+    "description": "Every word typed leaves a mark, a glyph carved into your Prestige. The echoes of your efforts cascade into lasting strength.",
+    "cost": 0,
+    "id": "WTPrSyn",
+    "branch": "Prestige",
+    "parents": [
+      "KeepAct/Idle"
+    ],
+    "x": 1800,
+    "y": 200,
+    "bonus": "Words Typed boosts Prestige Points"
+  },
+  {
+    "name": "Epoch Surge",
+    "description": "Each Era fuels your journey forward. Their weight accumulates, cascading into a surge of points that ripples through the system.",
+    "cost": 0,
+    "id": "EraBoost",
+    "branch": "Prestige",
+    "parents": [
+      "WTPrSyn"
+    ],
+    "x": 1800,
+    "y": 100,
+    "bonus": "Points boost based on Eras"
+  },
+  {
+    "name": "Era Crafting",
+    "description": "You shape the future with the flames of Prestige. The next Era surges with crafted strength, forged from your accumulated power.",
+    "cost": 0,
+    "id": "EraForge",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 1600,
+    "y": 200,
+    "bonus": "Allocate Prestige Points to boost unlocked Eras"
+  },
+  {
+    "name": "Era Ascendancy",
+    "description": "The strength of each Era grows sharper, its bonus resonating deeper into your systems with every moment of progress.",
+    "cost": 0,
+    "id": "EraBetB",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 1600,
+    "y": 100,
+    "bonus": "Era strength boost"
+  },
+  {
+    "name": "Era Harmony",
+    "description": "All systems align under the banner of the current Era. Their rhythms merge, amplifying one another in a unified surge of growth.",
+    "cost": 0,
+    "id": "EraSyn",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 1600,
+    "bonus": "Boost to everything based on Era"
+  },
+  {
+    "name": "Era Catalyst",
+    "description": "The more Eras you cross, the greater the Prestige Points you claim. Progress accelerates, driven by the momentum of past triumphs.",
+    "cost": 0,
+    "id": "RapidAsc",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 1800,
+    "bonus": "Prestige Points boost based on Era"
+  },
+  {
+    "name": "Temporal Surge",
+    "description": "The path to Prestige bends and shortens. Each Era makes your climb more efficient, smoothing the journey ahead.",
+    "cost": 0,
+    "id": "EraRush",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 2000,
+    "bonus": "Better formula for earning Prestige Points based on Eras"
+  },
+  {
+    "name": "Chrono Horizon",
+    "description": "Beyond the known Eras lies a horizon of possibilities. The cost of reaching them lightens, drawing the future closer.",
+    "cost": 0,
+    "id": "EraFuture",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 2000,
+    "y": 100,
+    "bonus": "Eras are cheaper"
+  },
+  {
+    "name": "Era Resonance",
+    "description": "The fabric of the current Era vibrates with energy. Temporary pulses of power surge through your system, granting fleeting but potent bonuses.",
+    "cost": 0,
+    "id": "EraPulse",
+    "branch": "Prestige",
+    "parents": [
+      "EraBoost"
+    ],
+    "x": 2000,
+    "y": 200,
+    "bonus": "Era events with temporary bonuses"
+  }
+]

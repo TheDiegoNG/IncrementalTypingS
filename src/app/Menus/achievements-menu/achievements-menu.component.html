@@ -1,29 +1,21 @@
 <section id="achievementsMenu" class="menu">
-    <div id="achievementContainer" class="achievementContainer">
-      @for (achievement of this.achievementService.achievements; track $index) {
-        <mat-card class="achievement" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>Shiba Inu</mat-card-title>
-          </mat-card-header>
-          <mat-card-content></mat-card-content>
-        </mat-card>
-      }
-      <div
-        *ngFor="let achievement of this.achievementService.achievements"
-        [ngClass]="isUnlocked(achievement.id)"
-        class="achievement"
-        [attr.data-tooltip]="achievement.description"
-      >
-        {{ achievement.name }}
-        <div
-          class="progress-bar"
-          [style.width.%]="getAchievementProgress(achievement)"
-          [ngClass]="{
-            hidden: getAchievementProgress(achievement) === 0,
-            completed: getAchievementProgress(achievement) === 100
-          }"
-        ></div>
+  <div id="achievementContainer" class="achievementContainer">
+    @for (achievement of this.achievementService.groupedAchievements | keyvalue;
+    track $index) {
+    <app-achievement-card
+      [groupName]="achievement.key"
+      [achievements]="achievement.value"
+      [currentValue]="getPlayerValueFor(achievement.value[0].property)"
+    ></app-achievement-card>
+    } @for (achievement of this.achievementService.individualAchievements; track
+    $index) { 
+      <div class="achievement-individual">
+        <mat-card-title>{{ achievement.name }}</mat-card-title>
+        <mat-card-subtitle>{{ achievement.description }}</mat-card-subtitle>
+        <div class="achievement-individual-status">
+          {{ getAchievementProgress(achievement) === 100 ? "Unlocked" : "Locked" }}
+        </div>
       </div>
-    </div>
-  </section>
-  
+      }
+  </div>
+</section>

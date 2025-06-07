@@ -549,14 +549,19 @@ export class AchievementService {
   }
 
   get groupedAchievements(): { [group: string]: Achievement[] } {
-    return this.achievements.reduce((acc, achievement) => {
-      const group = achievement.group ?? 'Other';
-      acc[group] = acc[group] ?? [];
-      acc[group].push(achievement);
-      return acc;
-    }, {} as { [group: string]: Achievement[] });
+    return this.achievements
+      .filter(a => a.group && a.group !== 'Other')
+      .reduce((acc, achievement) => {
+        const group = achievement.group!;
+        acc[group] = acc[group] ?? [];
+        acc[group].push(achievement);
+        return acc;
+      }, {} as { [group: string]: Achievement[] });
   }
 
+  get individualAchievements(): Achievement[] {
+    return this.achievements.filter(a => a.group === 'Other');
+  }
 
   createAchievement(achievement: Achievement) {
     if (!achievement.group) {

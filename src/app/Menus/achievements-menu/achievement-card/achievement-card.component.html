@@ -1,0 +1,13 @@
+<mat-card class="achievement-card">
+    <mat-card-title>{{ groupName }}</mat-card-title>
+    <mat-card-subtitle>{{ lastUnlockedAchievement?.name ?? 'No achievements yet' }}</mat-card-subtitle>
+  
+    <mat-progress-bar
+    [value]="progressPercent"
+    mode="determinate"
+    color="accent"
+  ></mat-progress-bar>
+    <div class="achievement-count">
+      {{ unlockedCount }}/{{ totalCount }}
+    </div>
+  </mat-card>

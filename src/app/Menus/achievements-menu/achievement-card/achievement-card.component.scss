@@ -1,0 +1,28 @@
+@import '../../../../shared/shared.scss';
+.achievement-card {
+    margin: 1rem;
+    text-align: center;
+    background-color: var(--primary-300);
+  
+    mat-card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+  
+    mat-card-subtitle {
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+  
+    mat-progress-bar {
+      margin-top: 0.5rem;
+      height: 10px;
+      border-radius: 5px;
+    }
+  
+    .achievement-count {
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+  }
+  

@@ -56,19 +56,15 @@
   width: 80%;
 }
 
-.progress-bar {
+.achievement-individual {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: var(--primary-400);
+  border-radius: 1rem;
+}
+
+.achievement-individual-status {
   margin-top: 0.5rem;
-  height: 0.5rem;
-  background: linear-gradient(to right, var(--primary-900), var(--primary-700));
-  border: 1px solid black;
-}
-
-.progress-bar.hidden {
-  display: none;
-}
-
-.progress-bar.completed {
-  background: linear-gradient(to right, var(--green), var(--black-900), var(--green));
-  background-size: 200%;
-  animation: background-pan 2s linear infinite;
+  font-weight: bold;
+  color: #999;
 }

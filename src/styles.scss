@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import url("https://fonts.googleapis.com/css2?family=Karla:wght@300&family=Montserrat:wght@100;400;600&family=Nabla&family=Raleway:wght@100&family=Saira+Condensed:wght@900&family=Source+Code+Pro&display=swap");
 // @import '~primeng/resources/themes/saga-blue/theme.css';
 // @import 'primeng/resources/primeng.min.css';
 // @import './toast-styles';
+
+@font-face {
+  font-family: 'MontserratLocal';
+  src: url('/fonts/montserrat-v30-cyrillic_latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 html {
     width: 100%;
@@ -30,8 +37,8 @@ html {
     --light-yellow: rgb(255, 255, 237);
     --goldenrod: rgb(218, 165, 32);
     --dark-brown: rgb(92, 64, 51);
-    --primary-font: "Montserrat", sans-serif;
-    --secondary-font: 'Karla', sans-serif;
+    --primary-font: "MontserratLocal", sans-serif;
+    --secondary-font: 'MontserratLocal', sans-serif;
     --primary-900: hsl(214, 41%, 10%);
     --primary-800: hsl(214, 41%, 20%);
     --primary-700: hsl(214, 41%, 30%);

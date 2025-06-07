@@ -23,6 +23,7 @@ import { LayoutService } from '../../Services/layout.service';
 import { timestamp } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { TimerService } from '../../Services/timer.service';
+import { LanguageService } from '../../Services/language.service';
 
 @Component({
   selector: 'app-wordbox',
@@ -35,6 +36,7 @@ export class WordboxComponent {
   layoutService = inject(LayoutService);
   gameService = inject(GameService);
   timerService = inject(TimerService)
+  languageService = inject(LanguageService);
   // saveService = inject(SaveService);
   // messageService = inject(MessageService);
   // challengeService = inject(ChallengesService);
@@ -111,22 +113,22 @@ export class WordboxComponent {
     }, 400)
   }
 
-  checkWord() {
-    // if (this.language === 'Japanese') {
-    //   const japaneseMap = this.gameUtils.getJapaneseMap();
-    //   const regex = new RegExp(Object.keys(japaneseMap).join('|'), 'g');
-    //   this.inputValue = this.inputValue.replace(regex, (x) => japaneseMap[x]);
-    // }
-    // if (this.language === 'Russian') {
-    //   const russianMap = this.gameUtils.getRussianCyrillicMap();
-    //   const regex = new RegExp(Object.keys(russianMap).join('|'), 'g');
-    //   this.inputValue = this.inputValue.replace(regex, (x) => russianMap[x]);
-    // }
-    // if (this.language === 'Amharic') {
-    //   const amharicMap = this.gameUtils.getAmharicMap();
-    //   const regex = new RegExp(Object.keys(amharicMap).join('|'), 'g');
-    //   this.inputValue = this.inputValue.replace(regex, (x) => amharicMap[x]);
-    // }
+  async checkWord() {
+    if (this.languageService.language() === 'Japanese') {
+      const japaneseMap = await this.gameUtils.getJapaneseMap();
+      const regex = new RegExp(Object.keys(japaneseMap).join('|'), 'g');
+      this.inputValue.set(this.inputValue().replace(regex, (x) => japaneseMap[x]));
+    }
+    if (this.languageService.language() === 'Russian') {
+      const russianMap = await this.gameUtils.getRussianCyrillicMap();
+      const regex = new RegExp(Object.keys(russianMap).join('|'), 'g');
+      this.inputValue.set(this.inputValue().replace(regex, (x) => russianMap[x]));
+    }
+    if (this.languageService.language() === 'Amharic') {
+      const amharicMap = await this.gameUtils.getAmharicMap();
+      const regex = new RegExp(Object.keys(amharicMap).join('|'), 'g');
+      this.inputValue.set(this.inputValue().replace(regex, (x) => amharicMap[x]));
+    }
     this.gameService.game.update((game) => ({
       ...game,
       letterCounter: ++game.letterCounter,

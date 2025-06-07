@@ -12,7 +12,7 @@ export class AchievementService {
   gameService = inject(GameService);
   // messageService = inject(MessageService);
   achievements: Achievement[] = [];
-  private intervalId;
+  private intervalId: ReturnType<typeof setInterval> | null = null;;
 
   constructor() {
     this.loadAchievements();
@@ -23,7 +23,7 @@ export class AchievementService {
     const list: AchievementJson[] = await response.json();
     for (const a of list) {
       this.createAchievement(
-        new Achievement(a.name, a.description, a.id, a.target, a.property)
+        new Achievement(a.name, a.description, a.id, a.target, a.property, false)
       );
     }
 
@@ -33,7 +33,9 @@ export class AchievementService {
   }
 
   ngOnDestroy() {
-    clearInterval(this.intervalId);
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+    }
   }
 
   get groupedAchievements(): { [group: string]: Achievement[] } {
@@ -182,6 +184,12 @@ export class AchievementService {
     //   life: 3000,
     //   contentStyleClass: 'my-toast',
     // });
+  }
+
+  revealAchievementGroup(groupName: string) {
+    this.achievements
+      .filter(a => a.group === groupName)
+      .forEach(a => a.revealed = true);
   }
 }
 

@@ -37,4 +37,8 @@ export class AchievementsMenuComponent {
     }
     return target;
   }
+
+  hasRevealedAchievements(achievements: Achievement[]): boolean {
+    return achievements.some(a => a.revealed);
+  }
 }

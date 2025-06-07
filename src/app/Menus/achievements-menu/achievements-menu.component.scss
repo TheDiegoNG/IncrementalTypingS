@@ -10,6 +10,15 @@
   padding: 1rem 1rem;
 }
 
+.hidden-achievement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-900);
+  border-radius: 1rem;
+  aspect-ratio: 3/2;
+}
+
 .achievement {
   display: flex;
   flex-direction: column;

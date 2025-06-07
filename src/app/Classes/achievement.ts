@@ -7,6 +7,7 @@ export class Achievement {
   target: number;
   property: keyof Game | 'Other';
   group?: string;
+  revealed: boolean = false;
 
   constructor(
     achievementName: string,
@@ -14,7 +15,8 @@ export class Achievement {
     achievementNumber: number,
     target: number,
     property: keyof Game | 'Other',
-    group?: string
+    revealed: boolean,
+    group?: string,
   ) {
     this.id = achievementNumber;
     this.name = achievementName;
@@ -22,5 +24,6 @@ export class Achievement {
     this.property = property;
     this.target = target;
     this.group = group;
+    this.revealed = revealed
   }
 }

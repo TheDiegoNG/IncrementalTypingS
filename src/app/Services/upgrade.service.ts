@@ -6,6 +6,20 @@ import { eIdUpgrade, Upgrade, UnlockType } from '../Classes/upgrade';
 import { TimerService } from './timer.service';
 import { GameUtils } from '../Utils/gameUtils';
 
+interface UpgradeJson {
+  name: string;
+  description: string;
+  cost: number;
+  id: eIdUpgrade;
+  branch: Upgrade['branch'];
+  parents?: eIdUpgrade[];
+  x?: number;
+  y?: number;
+  bonus?: string;
+  excludes?: eIdUpgrade[];
+  unlockType?: UnlockType;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -75,20 +89,6 @@ export class UpgradeService {
       }
     }
   }
-
-interface UpgradeJson {
-  name: string;
-  description: string;
-  cost: number;
-  id: eIdUpgrade;
-  branch: Upgrade['branch'];
-  parents?: eIdUpgrade[];
-  x?: number;
-  y?: number;
-  bonus?: string;
-  excludes?: eIdUpgrade[];
-  unlockType?: UnlockType;
-}
 
   gameUtils = new GameUtils();
 

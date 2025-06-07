@@ -346,7 +346,12 @@ export class CardService {
 
       this.gameService.game().cards.push(card);
       this.gameService.game.update((game) => ({ ...game, cards: game.cards, cardsAmount: ++game.cardsAmount }));
+      
+      if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Card Initiate")) {
+        this.achievementService.revealAchievementGroup("Cards Amount")
+      }
       //TODO: TAX EVASION
+
 
       switch (card.bonusType) {
         case 'PassivePointsSpeed':
@@ -515,6 +520,10 @@ export class CardService {
       ],
       mergeCount: game.mergeCount + 1,
     }));
+
+    if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Card Fusion Initiate")) {
+      this.achievementService.revealAchievementGroup("Merge Count")
+    }
   }
 
   removeExact<T>(list: T[], targets: T[]): T[] {

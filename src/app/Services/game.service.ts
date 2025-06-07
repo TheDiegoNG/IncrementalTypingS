@@ -11,7 +11,7 @@ import { ChallengeType } from '../Classes/challenge';
   providedIn: 'root',
 })
 export class GameService {
-  game = signal(new Game(0, 'Current'));
+  game = signal(new Game(1e10, 'Current'));
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 

@@ -4,6 +4,7 @@ import { GameService } from './game.service';
 import { Generator } from '../Classes/generator';
 import { GameUtils } from '../Utils/gameUtils';
 import { WordsService } from './words.service';
+import { AchievementService } from './achievement.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class PassiveService {
   gameService = inject(GameService);
   activeService = inject(ActiveService);
   wordsService = inject(WordsService);
+  achievementService = inject(AchievementService)
   generators: Generator[] = [];
   intervalId: ReturnType<typeof setInterval> | null = null;
   barUpdateInterval = 20; // ms
@@ -129,6 +131,9 @@ export class PassiveService {
         ...game,
         passivePoints: game.passivePoints + points,
       }));
+    if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Passive Point Initiate")) {
+      this.achievementService.revealAchievementGroup("Passive Points")
+    }
   }
   getPassivePoints(passiveWord: string) {
     var totalPoints = 0;

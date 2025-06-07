@@ -1,21 +1,31 @@
 <section id="achievementsMenu" class="menu">
+  
   <div id="achievementContainer" class="achievementContainer">
-    @for (achievement of this.achievementService.groupedAchievements | keyvalue;
+    @for (group of this.achievementService.groupedAchievements | keyvalue;
     track $index) {
-    <app-achievement-card
-      [groupName]="achievement.key"
-      [achievements]="achievement.value"
-      [currentValue]="getPlayerValueFor(achievement.value[0].property)"
-    ></app-achievement-card>
+      @if(hasRevealedAchievements(group.value)) {
+        <app-achievement-card
+        [groupName]="group.key"
+        [achievements]="group.value"
+        [currentValue]="getPlayerValueFor(group.value[0].property)"
+        ></app-achievement-card>
+      } @else {
+        <div class="hidden-achievement">???</div>
+      }
     } @for (achievement of this.achievementService.individualAchievements; track
     $index) { 
-      <div class="achievement-individual">
-        <mat-card-title>{{ achievement.name }}</mat-card-title>
-        <mat-card-subtitle>{{ achievement.description }}</mat-card-subtitle>
-        <div class="achievement-individual-status">
-          {{ getAchievementProgress(achievement) === 100 ? "Unlocked" : "Locked" }}
+      @if(achievement.revealed) {
+
+        <div class="achievement-individual">
+          <mat-card-title>{{ achievement.name }}</mat-card-title>
+          <mat-card-subtitle>{{ achievement.description }}</mat-card-subtitle>
+          <div class="achievement-individual-status">
+            {{ getAchievementProgress(achievement) === 100 ? "Unlocked" : "Locked" }}
+          </div>
         </div>
-      </div>
+      } @else {
+        <div class="hidden-achievement">???</div>
       }
+    }
   </div>
 </section>

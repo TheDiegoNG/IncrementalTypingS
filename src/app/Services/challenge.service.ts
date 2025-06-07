@@ -6,6 +6,7 @@ import { LayoutService } from './layout.service';
 import { OverlayService } from './overlay.service';
 import { PrestigeService } from './prestige.service';
 import { Language, LanguageService } from './language.service';
+import { AchievementService } from './achievement.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,8 @@ export class ChallengesService {
   prestigeService = inject(PrestigeService);
   layoutService = inject(LayoutService);
   overlayService = inject(OverlayService);
-  languageService = inject(LanguageService)
+  languageService = inject(LanguageService);
+  achievementService = inject(AchievementService)
 
   challenges: Challenge[] = [];
   intervalId: ReturnType<typeof setInterval> | null = null;
@@ -84,6 +86,9 @@ export class ChallengesService {
                 game.rollsAmount +
                 game.challenges.find((x) => x.type == challengeType)!.amount,
             }));
+            if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Challenge Novice")) {
+              this.achievementService.revealAchievementGroup("Challenges Amount")
+            }
             clearInterval(this.intervalId!);
             this.exitChallenge(challengeType);
           } else if (

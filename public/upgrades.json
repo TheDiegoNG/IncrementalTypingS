@@ -54,6 +54,7 @@
     "cost": 0,
     "id": "TB",
     "branch": "Starter",
+    "parents": [],
     "x": 150,
     "y": 100,
     "bonus": "A feeling of determination"
@@ -64,9 +65,7 @@
     "cost": 300,
     "id": "LpV",
     "branch": "Starter",
-    "parents": [
-      "TB"
-    ],
+    "parents": ["TB"],
     "x": 300,
     "y": 100,
     "bonus": "Unlock a Letters per Minute"
@@ -77,9 +76,7 @@
     "cost": 1500,
     "id": "PaE",
     "branch": "Starter",
-    "parents": [
-      "TB"
-    ],
+    "parents": ["TB"],
     "x": 150,
     "y": 200,
     "bonus": "Unlock Passive Points generation"

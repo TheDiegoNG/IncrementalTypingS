@@ -548,6 +548,16 @@ export class AchievementService {
     clearInterval(this.intervalId);
   }
 
+  get groupedAchievements(): { [group: string]: Achievement[] } {
+    return this.achievements.reduce((acc, achievement) => {
+      const group = achievement.group ?? 'Other';
+      acc[group] = acc[group] ?? [];
+      acc[group].push(achievement);
+      return acc;
+    }, {} as { [group: string]: Achievement[] });
+  }
+  
+
   createAchievement(achievement: Achievement) {
     this.achievements.push(achievement);
   }

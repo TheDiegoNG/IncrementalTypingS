@@ -1,7 +1,8 @@
-import { Card } from './card';
+import { Card, CardType, BonusType } from './card';
 
 describe('Card', () => {
   it('should create an instance', () => {
-    expect(new Card()).toBeTruthy();
+    const card = new Card('Test Card', 'Common' as CardType, 'PointsAmount' as BonusType, 1);
+    expect(card).toBeTruthy();
   });
 });

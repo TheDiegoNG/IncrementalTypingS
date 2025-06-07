@@ -2,6 +2,7 @@ import { Generator } from './generator';
 
 describe('Generator', () => {
   it('should create an instance', () => {
-    expect(new Generator()).toBeTruthy();
+    const gen = new Generator('Gen', 10, 1);
+    expect(gen).toBeTruthy();
   });
 });

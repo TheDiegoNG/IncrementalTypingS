@@ -2,6 +2,7 @@ import { Mastery } from './mastery';
 
 describe('Mastery', () => {
   it('should create an instance', () => {
-    expect(new Mastery()).toBeTruthy();
+    const mas = new Mastery('Alpha', ['a']);
+    expect(mas).toBeTruthy();
   });
 });

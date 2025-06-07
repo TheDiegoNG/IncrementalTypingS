@@ -1,7 +1,15 @@
-import { Challenge } from './challenge';
+import { Challenge, ChallengeType } from './challenge';
 
 describe('Challenge', () => {
   it('should create an instance', () => {
-    expect(new Challenge()).toBeTruthy();
+    const chal = new Challenge(
+      'Accuracy' as ChallengeType,
+      'Test challenge',
+      'Reward',
+      60,
+      10,
+      5
+    );
+    expect(chal).toBeTruthy();
   });
 });

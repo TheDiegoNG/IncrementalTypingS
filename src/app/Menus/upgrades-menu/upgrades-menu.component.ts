@@ -42,6 +42,10 @@ export class UpgradesMenuComponent {
     return this.upgradeService.passiveUpgrades.find((u) => u.id === id);
   }
 
+  getPrestigeUpgradeById(id: string): Upgrade | undefined {
+    return this.upgradeService.prestigeUpgrades.find((u) => u.id === id);
+  }
+
   canUnlock(upgrade: Upgrade): boolean {
     if (upgrade.parents.length === 0) {
       return true; // upgrades sin padres siempre están desbloqueables
@@ -63,7 +67,7 @@ export class UpgradesMenuComponent {
   }
 
   isUnlocked(id: eIdUpgrade): boolean {
-    const upgrades = this.gameService.game().upgrades.concat(this.gameService.game().passiveUpgrades)
+    const upgrades = this.gameService.game().upgrades.concat(this.gameService.game().passiveUpgrades.concat(this.gameService.game().prestigeUpgrades))
     return upgrades.some(u => u.id === id);
   }
 

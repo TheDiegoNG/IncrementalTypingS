@@ -11,11 +11,15 @@ import { ChallengeType } from '../Classes/challenge';
   providedIn: 'root',
 })
 export class GameService {
-  game = signal(new Game(3e6, 'Current'));
+  game = signal(new Game(0, 'Current'));
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 
   constructor() {
+  }
+
+  loadGame(game: Game) {
+    this.game.set(game)
   }
 
 

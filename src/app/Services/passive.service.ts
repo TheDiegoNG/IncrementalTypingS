@@ -14,6 +14,11 @@ export class PassiveService {
   wordsService = inject(WordsService);
   generators: Generator[] = [];
   intervalId: ReturnType<typeof setInterval> | null = null;
+  barUpdateInterval = 20; // ms
+  useAnimationFrame = true;
+  animationFrameId: number | null = null;
+  idleIntervalId: ReturnType<typeof setInterval> | null = null;
+  activeIntervalId: ReturnType<typeof setInterval> | null = null;
   passiveWord = signal('');
   passiveRate = computed(() => this.gameService.game().passiveRate);
 
@@ -39,27 +44,7 @@ export class PassiveService {
       }, rate);
     });
 
-    setInterval(() => {
-      let newProgress = this.passBarIdleProgress() + this.passBarIdleSpeed;
-        this.wordsService.barIdleMultiplier.set(newProgress);
-      
-      this.passBarIdleProgress.set(newProgress);
-    }, 20);
-
-    setInterval(() => {
-
-      let newPos = this.passBarActPosition() + this.passBarActDirection() * this.passBarActSpeed;
-      if (newPos >= 1) {
-        newPos = 1;
-        this.passBarActDirection.set(-1);
-        this.decreaseMultiplier(); // toca el extremo derecho
-      } else if (newPos <= 0) {
-        newPos = 0;
-        this.passBarActDirection.set(1);
-        this.decreaseMultiplier(); // toca el extremo izquierdo
-      }
-      this.passBarActPosition.set(newPos);
-    }, 20); // actualiza cada 20ms para suavidad
+    this.startBarUpdates();
   }
 
   gameUtils = new GameUtils();
@@ -70,6 +55,47 @@ export class PassiveService {
   passBarActPosition = signal(0); // posición de la línea en la barra, 0 a 1
   passBarActDirection = signal(1); // dirección: 1 (derecha) o -1 (izquierda)
   passBarActSpeed = 0.01; // velocidad de movimiento
+
+  private startBarUpdates() {
+    if (this.useAnimationFrame && typeof requestAnimationFrame !== 'undefined') {
+      const animate = () => {
+        this.updateIdleBar();
+        this.updateActiveBar();
+        this.animationFrameId = requestAnimationFrame(animate);
+      };
+      this.animationFrameId = requestAnimationFrame(animate);
+    } else {
+      this.idleIntervalId = setInterval(
+        () => this.updateIdleBar(),
+        this.barUpdateInterval
+      );
+      this.activeIntervalId = setInterval(
+        () => this.updateActiveBar(),
+        this.barUpdateInterval
+      );
+    }
+  }
+
+  private updateIdleBar() {
+    let newProgress = this.passBarIdleProgress() + this.passBarIdleSpeed;
+    this.wordsService.barIdleMultiplier.set(newProgress);
+    this.passBarIdleProgress.set(newProgress);
+  }
+
+  private updateActiveBar() {
+    let newPos =
+      this.passBarActPosition() + this.passBarActDirection() * this.passBarActSpeed;
+    if (newPos >= 1) {
+      newPos = 1;
+      this.passBarActDirection.set(-1);
+      this.decreaseMultiplier();
+    } else if (newPos <= 0) {
+      newPos = 0;
+      this.passBarActDirection.set(1);
+      this.decreaseMultiplier();
+    }
+    this.passBarActPosition.set(newPos);
+  }
   
   increaseMultiplier() {
     this.wordsService.barActMultiplier.update((multi) => multi + 0.1); // sube el multiplicador

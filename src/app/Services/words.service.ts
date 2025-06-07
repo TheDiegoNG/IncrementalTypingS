@@ -909,7 +909,7 @@ export class WordsService {
     const lettersBonus = this.gameService.game().lettersBonus;
     var letters = word.toLowerCase().split('');
     var points = 0;
-    let marketBonus: number[] = [];
+    let marketBonus: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Mark')) {
       marketBonus = this.marketService.letterBonus();
     }

@@ -61,10 +61,17 @@
   padding: 1rem;
   background-color: var(--primary-400);
   border-radius: 1rem;
+  
+  mat-card-title {
+    font-family: 'RobotoLocal';
+  }
+  mat-card-subtitle {
+    font-family: 'RobotoLocal';
+  }
 }
 
 .achievement-individual-status {
   margin-top: 0.5rem;
   font-weight: bold;
-  color: #999;
+  color: #000000;
 }

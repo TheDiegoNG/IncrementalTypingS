@@ -27,7 +27,6 @@ describe('ActiveService', () => {
 
   it('counts different letters ignoring case', () => {
     expect(service.getDifferentLetters('abc')).toBe(3);
-    // "Letter" has only four distinct letters when case is ignored
     expect(service.getDifferentLetters('Letter')).toBe(4);
     expect(service.getDifferentLetters('AaAa')).toBe(1);
   });

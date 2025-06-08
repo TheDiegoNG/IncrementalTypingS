@@ -27,6 +27,8 @@ export class AchievementService {
       );
     }
 
+    console.log("Achievements: ", this.achievements)
+
     this.intervalId = setInterval(() => {
       this.checkAchievements();
     }, 100);
@@ -187,9 +189,14 @@ export class AchievementService {
   }
 
   revealAchievementGroup(groupName: string) {
+    if(this.achievements
+      .filter(a => a.group === groupName).some(a => a.revealed = true)) return;
+      
     this.achievements
       .filter(a => a.group === groupName)
       .forEach(a => a.revealed = true);
+
+    console.log("Achievements Revealed!", this.achievements)
   }
 }
 

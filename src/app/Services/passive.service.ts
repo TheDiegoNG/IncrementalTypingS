@@ -131,9 +131,9 @@ export class PassiveService {
         ...game,
         passivePoints: game.passivePoints + points,
       }));
-    if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Passive Point Initiate")) {
+
       this.achievementService.revealAchievementGroup("Passive Points")
-    }
+    
   }
   getPassivePoints(passiveWord: string) {
     var totalPoints = 0;

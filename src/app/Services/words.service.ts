@@ -631,10 +631,7 @@ export class WordsService {
   10 - Mastery Bonus
   */
 
-  if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "First Scribble")) {
-    this.achievementService.revealAchievementGroup("Words Amount")
-  }
-
+  
   this.lastWordTime = Date.now();
     this.wordBonus = '';
     let totalPoints = 0;
@@ -890,10 +887,9 @@ export class WordsService {
       wordsAmount: ++game.wordsAmount,
     }));
 
-    if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Beginning")) {
+      this.achievementService.revealAchievementGroup("Words Amount")
       this.achievementService.revealAchievementGroup("Points")
-    }
-
+    
     this.achievementService.checkAchievementsByWord(word);
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Mast')) {

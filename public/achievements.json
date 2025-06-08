@@ -91,6 +91,13 @@
     "property": "wordsAmount"
   },
   {
+    "name": "Beginning",
+    "description": "Obtain your first point",
+    "id": 8,
+    "target": 1,
+    "property": "points"
+  },
+  {
     "name": "Initiate Explorer",
     "description": "Save 100 points",
     "id": 8,
@@ -187,6 +194,13 @@
     "id": 21,
     "target": 50000000,
     "property": "points"
+  },
+  {
+    "name": "Passive Points Initiate",
+    "description": "Get your first Passive Point",
+    "id": 22,
+    "target": 1,
+    "property": "passivePoints"
   },
   {
     "name": "Currency Collector",

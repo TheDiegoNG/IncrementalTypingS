@@ -86,9 +86,9 @@ export class ChallengesService {
                 game.rollsAmount +
                 game.challenges.find((x) => x.type == challengeType)!.amount,
             }));
-            if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Challenge Novice")) {
+
               this.achievementService.revealAchievementGroup("Challenges Amount")
-            }
+            
             clearInterval(this.intervalId!);
             this.exitChallenge(challengeType);
           } else if (

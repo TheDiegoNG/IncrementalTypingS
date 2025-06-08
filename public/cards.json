@@ -1,0 +1,428 @@
+[
+  {
+    "name": "Percentage Points Booster",
+    "type": "Common",
+    "bonusType": "PointsPercentage",
+    "id": 1
+  },
+  {
+    "name": "Nominal Points Booster",
+    "type": "Common",
+    "bonusType": "PointsAmount",
+    "id": 2
+  },
+  {
+    "name": "Percentage Passive Points Improver",
+    "type": "Common",
+    "bonusType": "PassivePointsPercentage",
+    "id": 3
+  },
+  {
+    "name": "Nominal Passive Points Improver",
+    "type": "Common",
+    "bonusType": "PassivePointsAmount",
+    "id": 4
+  },
+  {
+    "name": "Percentage Points Augmentor",
+    "type": "Uncommon",
+    "bonusType": "PointsPercentage",
+    "id": 5
+  },
+  {
+    "name": "Nominal Points Augmentor",
+    "type": "Uncommon",
+    "bonusType": "PointsAmount",
+    "id": 6
+  },
+  {
+    "name": "Percentage Passive Points Infuser",
+    "type": "Uncommon",
+    "bonusType": "PassivePointsPercentage",
+    "id": 7
+  },
+  {
+    "name": "Nominal Passive Points Infuser",
+    "type": "Uncommon",
+    "bonusType": "PassivePointsAmount",
+    "id": 8
+  },
+  {
+    "name": "Passive Points Accelerator",
+    "type": "Uncommon",
+    "bonusType": "PassivePointsSpeed",
+    "id": 9
+  },
+  {
+    "name": "Word Length Extender",
+    "type": "Uncommon",
+    "bonusType": "PassivePointsLength",
+    "id": 10
+  },
+  {
+    "name": "Income Impairer",
+    "type": "Broken",
+    "bonusType": "PointsPercentage",
+    "id": 24
+  },
+  {
+    "name": "Detrimental Debt",
+    "type": "Broken",
+    "bonusType": "PointsAmount",
+    "id": 25
+  },
+  {
+    "name": "Debilitating Discount",
+    "type": "Broken",
+    "bonusType": "PassivePointsPercentage",
+    "id": 26
+  },
+  {
+    "name": "Shrinking Stash",
+    "type": "Broken",
+    "bonusType": "PassivePointsAmount",
+    "id": 27
+  },
+  {
+    "name": "Lethargic Generator",
+    "type": "Broken",
+    "bonusType": "PassivePointsSpeed",
+    "id": 28
+  },
+  {
+    "name": "Diminished Diction",
+    "type": "Broken",
+    "bonusType": "PassivePointsLength",
+    "id": 29
+  },
+  {
+    "name": "Percentage Points Magnifier",
+    "type": "Rare",
+    "bonusType": "PointsPercentage",
+    "id": 11
+  },
+  {
+    "name": "All Lowercase",
+    "type": "Legendary",
+    "bonusType": "Lowercase",
+    "id": 12
+  },
+  {
+    "name": "Nominal Points Magnifier",
+    "type": "Rare",
+    "bonusType": "PointsAmount",
+    "id": 13
+  },
+  {
+    "name": "Percentage Passive Points Energizer",
+    "type": "Rare",
+    "bonusType": "PassivePointsPercentage",
+    "id": 14
+  },
+  {
+    "name": "Nominal Passive Points Energizer",
+    "type": "Rare",
+    "bonusType": "PassivePointsAmount",
+    "id": 15
+  },
+  {
+    "name": "Passive Points Turbocharger",
+    "type": "Rare",
+    "bonusType": "PassivePointsSpeed",
+    "id": 16
+  },
+  {
+    "name": "Word Length Expander",
+    "type": "Rare",
+    "bonusType": "PassivePointsLength",
+    "id": 17
+  },
+  {
+    "name": "Percentage Points Empowerer",
+    "type": "Epic",
+    "bonusType": "PointsPercentage",
+    "id": 18
+  },
+  {
+    "name": "Nominal Points Empowerer",
+    "type": "Epic",
+    "bonusType": "PointsAmount",
+    "id": 19
+  },
+  {
+    "name": "Percentage Passive Points Dynamo",
+    "type": "Epic",
+    "bonusType": "PassivePointsPercentage",
+    "id": 20
+  },
+  {
+    "name": "Nominal Passive Points Dynamo",
+    "type": "Epic",
+    "bonusType": "PassivePointsAmount",
+    "id": 21
+  },
+  {
+    "name": "Passive Points Booster",
+    "type": "Epic",
+    "bonusType": "PassivePointsSpeed",
+    "id": 22
+  },
+  {
+    "name": "Word Length Enhancer",
+    "type": "Epic",
+    "bonusType": "PassivePointsLength",
+    "id": 23
+  },
+  {
+    "name": "Significant Surge",
+    "type": "Legendary",
+    "bonusType": "PointsPercentage",
+    "id": 30
+  },
+  {
+    "name": "Masterful Magnification",
+    "type": "Legendary",
+    "bonusType": "PointsAmount",
+    "id": 31
+  },
+  {
+    "name": "Measured Momentum",
+    "type": "Legendary",
+    "bonusType": "PassivePointsPercentage",
+    "id": 32
+  },
+  {
+    "name": "Incremental Impact",
+    "type": "Legendary",
+    "bonusType": "PassivePointsAmount",
+    "id": 33
+  },
+  {
+    "name": "Speedy Scripting",
+    "type": "Legendary",
+    "bonusType": "PassivePointsSpeed",
+    "id": 34
+  },
+  {
+    "name": "Longevity Linguistics",
+    "type": "Legendary",
+    "bonusType": "PassivePointsLength",
+    "id": 35
+  },
+  {
+    "name": "Pronounced Percentage",
+    "type": "Mythical",
+    "bonusType": "PointsPercentage",
+    "id": 36
+  },
+  {
+    "name": "Grandiose Gain",
+    "type": "Mythical",
+    "bonusType": "PointsAmount",
+    "id": 37
+  },
+  {
+    "name": "Exponential Enhancement",
+    "type": "Mythical",
+    "bonusType": "PassivePointsPercentage",
+    "id": 38
+  },
+  {
+    "name": "Steady Stream",
+    "type": "Mythical",
+    "bonusType": "PassivePointsAmount",
+    "id": 39
+  },
+  {
+    "name": "Hustle Harmony",
+    "type": "Mythical",
+    "bonusType": "PassivePointsSpeed",
+    "id": 40
+  },
+  {
+    "name": "Word Length Enhancer",
+    "type": "Mythical",
+    "bonusType": "PassivePointsLength",
+    "id": 41
+  },
+  {
+    "name": "Elevated Expansion",
+    "type": "Celestial",
+    "bonusType": "PointsPercentage",
+    "id": 42
+  },
+  {
+    "name": "Illustrious Increase",
+    "type": "Celestial",
+    "bonusType": "PointsAmount",
+    "id": 43
+  },
+  {
+    "name": "Amplified Ascendance",
+    "type": "Celestial",
+    "bonusType": "PassivePointsPercentage",
+    "id": 44
+  },
+  {
+    "name": "Amplified Accumulation",
+    "type": "Celestial",
+    "bonusType": "PassivePointsAmount",
+    "id": 45
+  },
+  {
+    "name": "Velocity Versification",
+    "type": "Celestial",
+    "bonusType": "PassivePointsSpeed",
+    "id": 46
+  },
+  {
+    "name": "Extended Enunciation",
+    "type": "Celestial",
+    "bonusType": "PassivePointsLength",
+    "id": 47
+  },
+  {
+    "name": "Substantial Spike",
+    "type": "Divine",
+    "bonusType": "PointsPercentage",
+    "id": 48
+  },
+  {
+    "name": "Prodigious Profit",
+    "type": "Divine",
+    "bonusType": "PointsAmount",
+    "id": 49
+  },
+  {
+    "name": "Magnitude Multiplicity",
+    "type": "Divine",
+    "bonusType": "PassivePointsPercentage",
+    "id": 50
+  },
+  {
+    "name": "Significant Surplus",
+    "type": "Divine",
+    "bonusType": "PassivePointsAmount",
+    "id": 51
+  },
+  {
+    "name": "Supersonic Script",
+    "type": "Divine",
+    "bonusType": "PassivePointsSpeed",
+    "id": 52
+  },
+  {
+    "name": "Enduring Expression",
+    "type": "Divine",
+    "bonusType": "PassivePointsLength",
+    "id": 53
+  },
+  {
+    "name": "Momentous Multiplicity",
+    "type": "Ultimate",
+    "bonusType": "PointsPercentage",
+    "id": 54
+  },
+  {
+    "name": "Monumental Multiplication",
+    "type": "Ultimate",
+    "bonusType": "PointsAmount",
+    "id": 55
+  },
+  {
+    "name": "Grandiose Gargantua",
+    "type": "Ultimate",
+    "bonusType": "PassivePointsPercentage",
+    "id": 56
+  },
+  {
+    "name": "Elevated Endowment",
+    "type": "Ultimate",
+    "bonusType": "PassivePointsAmount",
+    "id": 57
+  },
+  {
+    "name": "Majestic Manuscript",
+    "type": "Ultimate",
+    "bonusType": "PassivePointsSpeed",
+    "id": 58
+  },
+  {
+    "name": "Celestial Composition",
+    "type": "Ultimate",
+    "bonusType": "PassivePointsLength",
+    "id": 59
+  },
+  {
+    "name": "Mythic Magnitude",
+    "type": "Infinite",
+    "bonusType": "PointsPercentage",
+    "id": 60
+  },
+  {
+    "name": "Legendary Lucre",
+    "type": "Infinite",
+    "bonusType": "PointsAmount",
+    "id": 61
+  },
+  {
+    "name": "Ultimate Uplift",
+    "type": "Infinite",
+    "bonusType": "PassivePointsPercentage",
+    "id": 62
+  },
+  {
+    "name": "Paramount Proliferation",
+    "type": "Infinite",
+    "bonusType": "PassivePointsAmount",
+    "id": 63
+  },
+  {
+    "name": "Grandiloquent Gyrator",
+    "type": "Infinite",
+    "bonusType": "PassivePointsSpeed",
+    "id": 64
+  },
+  {
+    "name": "Majestic Manifestation",
+    "type": "Infinite",
+    "bonusType": "PassivePointsLength",
+    "id": 65
+  },
+  {
+    "name": "Supreme Surplus",
+    "type": "Omnipotent",
+    "bonusType": "PointsPercentage",
+    "id": 66
+  },
+  {
+    "name": "Transcendent Treasury",
+    "type": "Omnipotent",
+    "bonusType": "PointsAmount",
+    "id": 67
+  },
+  {
+    "name": "Celestial Sovereignty",
+    "type": "Omnipotent",
+    "bonusType": "PassivePointsPercentage",
+    "id": 68
+  },
+  {
+    "name": "Ultimate Ubiquity",
+    "type": "Omnipotent",
+    "bonusType": "PassivePointsAmount",
+    "id": 69
+  },
+  {
+    "name": "Celestial Celerity",
+    "type": "Omnipotent",
+    "bonusType": "PassivePointsSpeed",
+    "id": 70
+  },
+  {
+    "name": "Supreme Syllabication",
+    "type": "Omnipotent",
+    "bonusType": "PassivePointsLength",
+    "id": 71
+  }
+]

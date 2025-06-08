@@ -49,6 +49,7 @@ export class Game {
   passiveLength: number = 4;
   passivePoints: number = 0;
   passiveRate: number = 1000;
+  passiveCharges: number = 0;
   cards: Card[] = [];
   cardsAmount: number = 0;
   cardCost: number = 0;

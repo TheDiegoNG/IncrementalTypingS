@@ -49,8 +49,6 @@ export class PassiveService {
     this.startBarUpdates();
   }
 
-  gameUtils = new GameUtils();
-
   passBarIdleProgress = signal(1); // de 0 a 1
   passBarIdleSpeed = 0.0005; // velocidad de llenado (ajustable)
 
@@ -185,5 +183,10 @@ export class PassiveService {
         this.gameService.addGainedGenerators(index);
       }
     }
+  }
+
+  collectCharge() {
+    this.passBarIdleProgress.set(0)
+    this.gameService.game.update(game => ({...game, passiveCharges: ++game.passiveCharges}))
   }
 }

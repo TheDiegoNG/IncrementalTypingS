@@ -1,4 +1,4 @@
-.slow-bar {
+.idle-bar {
     position: relative;
     width: 50dvw;
     height: 2rem;
@@ -15,4 +15,9 @@
     height: 100%;
     background-color: #66c;
     transition: width 0.02s linear;
+  }
+
+  .idle-bar-wrapper {
+    display: flex;
+    
   }

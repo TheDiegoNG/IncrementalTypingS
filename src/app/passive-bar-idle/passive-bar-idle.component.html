@@ -1,5 +1,11 @@
-<div class="slow-bar">
+
+<div class="idle-bar-wrapper">
+  <div class="idle-bar">
     <div class="bar-background"></div>
     <div class="bar-fill" [style.width.%]="this.passiveService.passBarIdleProgress() > 100 ? 100 : this.passiveService.passBarIdleProgress()"></div>
   </div>
+  @if(this.passiveService.passBarIdleProgress() > 100) {
+    <button (click)="passiveService.collectCharge()">Obtain Charge!</button>
+  }
+</div>
   <p>Multiplier: x{{ wordsService.barIdleMultiplier() | number:'1.1-1' }}</p>

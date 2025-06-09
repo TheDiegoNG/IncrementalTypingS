@@ -514,6 +514,9 @@ export class WordsService {
   updateBonuses() {
     const now = Date.now();
     const elapsedTime = (now - this.lastWordTime) / 1000;
+    const scrSElapsedTime = this.lastScrSWordTime
+      ? (now - this.lastScrSWordTime) / 1000
+      : 0;
 
     const bonuses = { ...this.bonusSignal() }; // copia actual
 
@@ -540,12 +543,15 @@ export class WordsService {
       bonuses['xSlow'] = powerGrowth;
     }
 
-    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS')) {
+    if (
+      GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS') &&
+      this.lastScrSWordTime !== 0
+    ) {
       const MAX_MULTIPLIER = 1.5;
       const MIN_MULTIPLIER = 1.0;
       const THRESHOLD = 3; // segundos hasta que empieza a decaer
 
-      const t = Math.max(elapsedTime, 0.01);
+      const t = Math.max(scrSElapsedTime, 0.01);
 
       if (t <= THRESHOLD) {
         bonuses['ScrS'] = MAX_MULTIPLIER;
@@ -561,6 +567,9 @@ export class WordsService {
             Math.exp(-decayFactor * decayTime);
 
         bonuses['ScrS'] = Math.max(MIN_MULTIPLIER, falloff);
+        if (bonuses['ScrS'] === MIN_MULTIPLIER) {
+          this.lastScrSWordTime = 0;
+        }
       }
     }
 
@@ -578,6 +587,7 @@ export class WordsService {
   private bonusSignal = signal<Record<string, number>>({});
   private bonusSumSignal = signal<Record<string, number>>({});
   private lastWordTime: number = Date.now();
+  private lastScrSWordTime = 0;
 
   barActMultiplier = signal(1);
   barIdleMultiplier = signal(1);
@@ -929,6 +939,7 @@ export class WordsService {
       if (/[^a-z]/.test(word.toLowerCase())) {
         console.log("Passed check!")
         this.bonusSignal.update(bonuses => ({...bonuses, 'ScrS': 1.5}))
+        this.lastScrSWordTime = Date.now();
       }
     }
 

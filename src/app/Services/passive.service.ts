@@ -51,11 +51,11 @@ export class PassiveService {
 
   passBarIdleProgress = signal(1); // de 0 a 1
   // passBarIdleSpeed = 0.0005; // velocidad de llenado (ajustable)
-  passBarIdleSpeed = 0.5;
+  passBarIdleSpeed = 0.0005;
 
   passBarActPosition = signal(0); // posición de la línea en la barra, 0 a 1
   passBarActDirection = signal(1); // dirección: 1 (derecha) o -1 (izquierda)
-  passBarActSpeed = 0.01; // velocidad de movimiento
+  passBarActSpeed = 0.005; // velocidad de movimiento
 
   private startBarUpdates() {
     if (this.useAnimationFrame && typeof requestAnimationFrame !== 'undefined') {

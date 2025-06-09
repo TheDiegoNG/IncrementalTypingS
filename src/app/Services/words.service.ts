@@ -31,8 +31,6 @@ export class WordsService {
   russianWordList: string[] = [];
   amharicWordList: string[] = [];
 
-
-
   constructor() {
     this.loadWordLists();
     setInterval(() => this.updateBonuses(), 100);
@@ -48,7 +46,6 @@ export class WordsService {
     this.russianWordList = ru;
     this.amharicWordList = am;
   }
-
 
   updateBonuses() {
     const now = Date.now();
@@ -127,6 +124,7 @@ export class WordsService {
   private bonusSumSignal = signal<Record<string, number>>({});
   private lastWordTime: number = Date.now();
   private lastScrSWordTime = 0;
+  private scrabbleQueue: number[] = [];
 
   barActMultiplier = signal(1);
   barIdleMultiplier = signal(1);
@@ -220,6 +218,10 @@ export class WordsService {
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Scr')) {
       let lettersValue = this.GetPointsLetters(word);
+      this.scrabbleQueue.push(lettersValue);
+      if (this.scrabbleQueue.length > 10) {
+        this.scrabbleQueue.shift();
+      }
       this.wordBonus += ` + [LettersValue] (Upgrade 8)`;
       this.updateSumBonus('LettersValue', lettersValue - word.length);
       // bonusSumsValues.push(lettersValue);
@@ -408,16 +410,22 @@ export class WordsService {
       // bonusValues.push(Math.log(GameUtils.getCardBonus(this.gameService.game())));
     }
 
-    if(GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS') && this.bonusSignal()['ScrS'] > 1)
-    {
+    if (
+      GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS') &&
+      this.bonusSignal()['ScrS'] > 1
+    ) {
       totalPoints *= this.bonusSignal()['ScrS'];
       this.wordBonus += ' x ScrSBonus';
-      this.updateBonus(
-        'ScrS',
-        this.bonusSignal()['ScrS']
-      );
+      this.updateBonus('ScrS', this.bonusSignal()['ScrS']);
     }
 
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'LetPo')) {
+      const sum = this.scrabbleQueue.reduce((sum, val) => sum + val, 0);
+      const multi = 1 + (sum / 85.6) ** 0.75;
+      totalPoints *= multi;
+      this.wordBonus += 'x [LetPoBonus]';
+      console.log('LetPo Bonus: ', multi, 'LetPo values: ', this.scrabbleQueue);
+    }
 
     if (
       GameUtils.IsPurchasedPrestigeUpgrade(
@@ -474,10 +482,10 @@ export class WordsService {
     this.achievementService.checkAchievementsByWord(word);
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS')) {
-      console.log("Checking word for ScrS bonus", word)
+      console.log('Checking word for ScrS bonus', word);
       if (/[^a-z]/.test(word.toLowerCase())) {
-        console.log("Passed check!")
-        this.bonusSignal.update(bonuses => ({...bonuses, 'ScrS': 1.5}))
+        console.log('Passed check!');
+        this.bonusSignal.update((bonuses) => ({ ...bonuses, ScrS: 1.5 }));
         this.lastScrSWordTime = Date.now();
       }
     }

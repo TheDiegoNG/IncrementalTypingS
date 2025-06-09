@@ -549,7 +549,7 @@ export class WordsService {
     ) {
       const MAX_MULTIPLIER = 1.5;
       const MIN_MULTIPLIER = 1.0;
-      const THRESHOLD = 3; // segundos hasta que empieza a decaer
+      const THRESHOLD = 30; // segundos hasta que empieza a decaer
 
       const t = Math.max(scrSElapsedTime, 0.01);
 

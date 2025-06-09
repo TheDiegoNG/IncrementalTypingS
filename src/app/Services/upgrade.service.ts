@@ -240,6 +240,12 @@ export class UpgradeService {
       }));
       this.gameService.addUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
+      if (upgradeType === '+1WLII') {
+        this.gameService.game.update((game) => ({
+          ...game,
+          maxLength: ++game.maxLength,
+        }));
+      }
     }
   }
 

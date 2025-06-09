@@ -510,6 +510,7 @@ export class WordsService {
     setInterval(() => this.updateBonuses(), 100);
   }
 
+
   updateBonuses() {
     const now = Date.now();
     const elapsedTime = (now - this.lastWordTime) / 1000;
@@ -524,8 +525,8 @@ export class WordsService {
       const t = Math.max(elapsedTime, 0.01);
 
       const logDecay = Math.log(DECAY_FACTOR / t) + 4;
-      const normalized = Math.max(MIN, Math.min(MAX, logDecay))
-      
+      const normalized = Math.max(MIN, Math.min(MAX, logDecay));
+
       bonuses['xFast'] = normalized;
     }
 
@@ -535,10 +536,33 @@ export class WordsService {
       const GROWTH_FACTOR = 0.01;
       const exponent = 1.5;
       const t = Math.max(elapsedTime, 0.01);
-      const powerGrowth = BASE + (t * GROWTH_FACTOR) ** exponent
-      bonuses['xSlow'] =  powerGrowth;
+      const powerGrowth = BASE + (t * GROWTH_FACTOR) ** exponent;
+      bonuses['xSlow'] = powerGrowth;
     }
 
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS')) {
+      const MAX_MULTIPLIER = 1.5;
+      const MIN_MULTIPLIER = 1.0;
+      const THRESHOLD = 3; // segundos hasta que empieza a decaer
+
+      const t = Math.max(elapsedTime, 0.01);
+
+      if (t <= THRESHOLD) {
+        bonuses['ScrS'] = MAX_MULTIPLIER;
+      } else {
+        // Decrecimiento suave después de los 3s
+        const decayTime = t - THRESHOLD;
+
+        // Logaritmo suavizado o exponencial inverso para bajar lentamente
+        const decayFactor = 2.5; // Cuanto menor, más lenta la caída
+        const falloff =
+          MIN_MULTIPLIER +
+          (MAX_MULTIPLIER - MIN_MULTIPLIER) *
+            Math.exp(-decayFactor * decayTime);
+
+        bonuses['ScrS'] = Math.max(MIN_MULTIPLIER, falloff);
+      }
+    }
 
     this.bonusSignal.set(bonuses);
   }
@@ -550,14 +574,13 @@ export class WordsService {
   masteryService = inject(MasteryService);
   cardService = inject(CardService);
   languageService = inject(LanguageService);
-  
 
   private bonusSignal = signal<Record<string, number>>({});
   private bonusSumSignal = signal<Record<string, number>>({});
   private lastWordTime: number = Date.now();
 
   barActMultiplier = signal(1);
-  barIdleMultiplier = signal(1)
+  barIdleMultiplier = signal(1);
 
   generateWord() {
     let generatedWord: string = '';
@@ -631,8 +654,7 @@ export class WordsService {
   10 - Mastery Bonus
   */
 
-  
-  this.lastWordTime = Date.now();
+    this.lastWordTime = Date.now();
     this.wordBonus = '';
     let totalPoints = 0;
     let bonusMainSum = 0; //For bonusesValues[0] and bonusesSumsValues[0]
@@ -755,7 +777,7 @@ export class WordsService {
     // bonusValues.push(bonusMainMulti);
 
     if (muResult[1] !== '') {
-      totalPoints *= muResult[3]
+      totalPoints *= muResult[3];
       this.wordBonus += muResult[1];
       this.updateBonus('muMulti', muResult[3]);
     }
@@ -787,15 +809,14 @@ export class WordsService {
     // bonusValues = bonusValues.concat(result[2]);
     // bonusSumsValues = bonusSumsValues.concat(result[3]);
 
-
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
-      const multi = this.bonusSignal()['xFast']
+      const multi = this.bonusSignal()['xFast'];
       totalPoints *= multi;
       this.wordBonus += ' x[Speed]';
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
-      const multi = this.bonusSignal()['xSlow']
+      const multi = this.bonusSignal()['xSlow'];
       totalPoints *= multi;
       this.wordBonus += ' x[TimeElapsed]';
     }
@@ -823,10 +844,10 @@ export class WordsService {
       );
       // bonusValues.push(Math.log10(this.gameService.game().passivePoints));
     }
-    if(GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow/cPrep')) {
-      this.wordBonus += 'x cbrt([PassiveBarIdleMulti])'
-      totalPoints *= Math.cbrt(this.barIdleMultiplier())
-      this.updateBonus('xSlow/c/Prop', Math.cbrt(this.barIdleMultiplier()))
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow/cPrep')) {
+      this.wordBonus += 'x cbrt([PassiveBarIdleMulti])';
+      totalPoints *= Math.cbrt(this.barIdleMultiplier());
+      this.updateBonus('xSlow/c/Prop', Math.cbrt(this.barIdleMultiplier()));
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xcaAm')) {
       totalPoints *= Math.log(GameUtils.getCardBonus(this.gameService.game()));
@@ -837,6 +858,17 @@ export class WordsService {
       );
       // bonusValues.push(Math.log(GameUtils.getCardBonus(this.gameService.game())));
     }
+
+    if(GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS') && this.bonusSignal()['ScrS'] > 1)
+    {
+      totalPoints *= this.bonusSignal()['ScrS'];
+      this.wordBonus += ' x ScrSBonus';
+      this.updateBonus(
+        'ScrS',
+        this.bonusSignal()['ScrS']
+      );
+    }
+
 
     if (
       GameUtils.IsPurchasedPrestigeUpgrade(
@@ -887,10 +919,18 @@ export class WordsService {
       wordsAmount: ++game.wordsAmount,
     }));
 
-      this.achievementService.revealAchievementGroup("Words Amount")
-      this.achievementService.revealAchievementGroup("Points")
-    
+    this.achievementService.revealAchievementGroup('Words Amount');
+    this.achievementService.revealAchievementGroup('Points');
+
     this.achievementService.checkAchievementsByWord(word);
+
+    if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS')) {
+      console.log("Checking word for ScrS bonus", word)
+      if (/[^a-z]/.test(word.toLowerCase())) {
+        console.log("Passed check!")
+        this.bonusSignal.update(bonuses => ({...bonuses, 'ScrS': 1.5}))
+      }
+    }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Mast')) {
       const letters = word.split('');
@@ -919,10 +959,7 @@ export class WordsService {
     }
     if (
       passive &&
-      !GameUtils.IsPurchasedPassiveUpgrade(
-        this.gameService.game(),
-        'MarkPB'
-      )
+      !GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'MarkPB')
     ) {
       marketBonus = [1, 1, 1, 1, 1, 1, 1, 1];
     }

@@ -1,0 +1,35 @@
+<section class="mastery-menu">
+  <p class="total-mast-levels">Total Levels: {{ getTotalMasteryLevels() }}</p>
+  <div class="mastery-wrapper">
+    @for (mastery of masteries(); track $index) {
+    <div class="mastery">
+      <p class="mastery-title">{{ mastery.tier }}</p>
+      <div class="mast-progress-bar">
+        <p>{{ mastery.amount }}/{{ mastery.costToLevelUp }}</p>
+        <mat-progress-bar
+          [value]="(mastery.amount / mastery.costToLevelUp) * 100"
+          mode="determinate"
+          color="accent"
+        ></mat-progress-bar>
+      </div>
+      <p>Level: {{ mastery.level }}</p>
+    </div>
+    }
+  </div>
+  <div class="mast-level-shop">
+    @for (mastShopItem of mastShopCards; track $index) {
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ mastShopItem.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ mastShopItem.level }}</p>
+        <p>{{ mastShopItem.amount }} / {{ mastShopItem.costToLevelUp }}</p>
+      </mat-card-content>
+      <mat-card-footer>
+        <button type="button">Buy!</button>
+      </mat-card-footer>
+    </mat-card>
+    }
+  </div>
+</section>

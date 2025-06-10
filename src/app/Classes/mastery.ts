@@ -2,10 +2,13 @@ export class Mastery {
     tier: MasteryTier;
     letters: string[];
     amount: number = 0;
+    costToLevelUp: number;
+    level: number = 0;
 
-    constructor(masteryTier: MasteryTier, masteryLetters: string[]) {
+    constructor(masteryTier: MasteryTier, masteryLetters: string[], cost: number) {
         this.tier = masteryTier;
         this.letters = masteryLetters;
+        this.costToLevelUp = cost;
     }
 }
 

@@ -491,13 +491,7 @@ export class WordsService {
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Mast')) {
-      const letters = word.split('');
-      letters.forEach((letter) => {
-        const mastery = this.gameService
-          .game()
-          .masteryLevels.find((x) => x.letters.includes(letter.toLowerCase()))!;
-        this.masteryService.updateMasteryValue(mastery.tier);
-      });
+      this.masteryService.calculateMasteryPoints(word.toLowerCase().split(''));
     }
 
     this.gameService.game.update((game) => ({
@@ -603,9 +597,7 @@ export class WordsService {
       }
     });
 
-    // if (GameUtils.IsPurchasedUpgrade('UnlockMastery')) {
-    //   this.masteryService.calculateMasteryPoints(letters);
-    // }
+
 
     return points;
   }

@@ -391,8 +391,8 @@
       "Mast"
     ],
     "x": 1650,
-    "y": 150,
-    "bonus": "You get more Alpha levels based on... x1 [NEEDS REAL TIME DATA]"
+    "y": 100,
+    "bonus": "You get more Alpha levels based on Points. x1 [NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Beta",
@@ -405,7 +405,7 @@
     ],
     "x": 1800,
     "y": 50,
-    "bonus": "You get more Beta levels based on... x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Beta levels based on Cards Amount. x1 [NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Gamma",
@@ -417,8 +417,8 @@
       "Mast"
     ],
     "x": 1950,
-    "y": 150,
-    "bonus": "You get more Gamma levels based on... x1 [NEEDS REAL TIME DATA]"
+    "y": 100,
+    "bonus": "You get more Gamma levels based on Words Typed. x1 [NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Delta",
@@ -429,9 +429,9 @@
     "parents": [
       "Mast"
     ],
-    "x": 1875,
+    "x": 1950,
     "y": 300,
-    "bonus": "You get more Delta levels based on... x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Delta levels based on MultiUpgrades bought. x1 [NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Epsilon",
@@ -442,9 +442,48 @@
     "parents": [
       "Mast"
     ],
-    "x": 1725,
+    "x": 1650,
     "y": 300,
-    "bonus": "You get more Epsilon levels based on... x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Epsilon levels based on your Achievements. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Dseta",
+    "description": "TO CHANGE",
+    "cost": 40000,
+    "id": "EnhDseta",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1650,
+    "y": 175,
+    "bonus": "You get more Dseta levels based on Passive Points. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Eta",
+    "description": "TO CHANGE",
+    "cost": 40000,
+    "id": "EnhEta",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1950,
+    "y": 175,
+    "bonus": "You get more Eta levels based on Prestige Points. x1 [NEEDS REAL TIME DATA]"
+  },
+  {
+    "name": "Enhance Zeta",
+    "description": "TO CHANGE",
+    "cost": 40000,
+    "id": "EnhZeta",
+    "branch": "Explorer",
+    "parents": [
+      "Mast"
+    ],
+    "x": 1800,
+    "y": 300,
+    "bonus": "You get more Zeta levels based on Mastery levels. x1 [NEEDS REAL TIME DATA]"
   },
   {
     "name": "Lexical Stretch",

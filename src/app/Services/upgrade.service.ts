@@ -262,6 +262,12 @@ export class UpgradeService {
       }));
       this.gameService.addUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
+      if (upgradeType === '+1WLIII') {
+        this.gameService.game.update((game) => ({
+          ...game,
+          maxLength: ++game.maxLength,
+        }));
+      }
     }
   }
 
@@ -278,6 +284,12 @@ export class UpgradeService {
       }));
       this.gameService.addUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
+      if (upgradeType === '+1WLIV') {
+        this.gameService.game.update((game) => ({
+          ...game,
+          maxLength: ++game.maxLength,
+        }));
+      }
     }
   }
 
@@ -294,6 +306,12 @@ export class UpgradeService {
       }));
       this.gameService.addUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
+      if (upgradeType === '+1WLV') {
+        this.gameService.game.update((game) => ({
+          ...game,
+          maxLength: ++game.maxLength,
+        }));
+      }
     }
   }
 

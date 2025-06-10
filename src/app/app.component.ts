@@ -15,6 +15,7 @@ import { OptionsMenuComponent } from './Menus/options-menu/options-menu.componen
 import { ModulesMenuComponent } from './Menus/modules-menu/modules-menu.component';
 import { OverlayComponent } from "./overlay/overlay.component";
 import { PrestigeMenuComponent } from "./Menus/prestige-menu/prestige-menu.component";
+import { MasteryMenuComponent } from "./Menus/mastery-menu/mastery-menu.component";
 
 @Component({
   selector: 'app-root',
@@ -32,7 +33,8 @@ import { PrestigeMenuComponent } from "./Menus/prestige-menu/prestige-menu.compo
     OptionsMenuComponent,
     ModulesMenuComponent,
     OverlayComponent,
-    PrestigeMenuComponent
+    PrestigeMenuComponent,
+    MasteryMenuComponent
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

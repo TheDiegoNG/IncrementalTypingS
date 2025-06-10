@@ -68,13 +68,13 @@ export class Game {
   lettersBonus: number[] = [1, 2, 3, 4, 5, 8, 10, 20];
   gameType: GameType;
   masteryLevels: Mastery[] = [
-    new Mastery('Alpha', ['a', 'e', 'i', 'o', 'u', 'l', 'n', 's', 't', 'r']),
-    new Mastery('Beta', ['d', 'g']),
-    new Mastery('Gamma', ['b', 'c', 'm', 'p']),
-    new Mastery('Delta', ['f', 'h', 'v', 'w', 'y']),
-    new Mastery('Epsilon', ['k']),
-    new Mastery('Dseta', ['j', 'x']),
-    new Mastery('Eta', ['q', 'z']),
+    new Mastery('Alpha', ['a', 'e', 'i', 'o', 'u', 'l', 'n', 's', 't', 'r'], 8),
+    new Mastery('Beta', ['d', 'g'], 7),
+    new Mastery('Gamma', ['b', 'c', 'm', 'p'], 6),
+    new Mastery('Delta', ['f', 'h', 'v', 'w', 'y'], 5),
+    new Mastery('Epsilon', ['k'], 4),
+    new Mastery('Dseta', ['j', 'x'], 3),
+    new Mastery('Eta', ['q', 'z'], 2),
     new Mastery('Zeta', [
       "'",
       '1',
@@ -88,7 +88,8 @@ export class Game {
       '9',
       '-',
       '&',
-    ]),
+      '.'
+    ], 1),
   ];
   letterCounterPerfection: number = 0;
   wordCounterPerfection: number = 0;

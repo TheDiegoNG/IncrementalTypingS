@@ -421,7 +421,18 @@ export class GameService {
   updateMasteryValue(masteryTier: MasteryTier, amount: number = 1) {
     this.game.update((game) => {
       const mastery = game.masteryLevels.find((x) => x.tier === masteryTier)!;
-      mastery.amount += amount
+      const baseCost = mastery.costToLevelUp;
+      mastery.amount = Number((mastery.amount + amount).toFixed(2));
+      console.log('Updating mastery: ', mastery, baseCost, amount)
+      const levelsGained = Math.floor(Math.log2(mastery.amount / baseCost + 1));
+      if (levelsGained > 0) {
+        // Nueva cantidad consumida en total
+        const totalCost = baseCost * (Math.pow(2, levelsGained) - 1);
+    
+        mastery.amount -= totalCost;
+        mastery.level += levelsGained;
+        mastery.costToLevelUp = baseCost * Math.pow(2, levelsGained);
+      }
       return ({...game })
     })
   }

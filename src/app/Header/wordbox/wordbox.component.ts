@@ -13,7 +13,6 @@ import { GameService } from '../../Services/game.service';
 // import { SaveService } from '../../Services/save.service';
 import { WordsService } from '../../Services/words.service';
 import { MessageService } from 'primeng/api';
-import { Toast } from 'primeng/toast'
 // import {
 //   ChallengesService,
 //   language,
@@ -28,10 +27,9 @@ import { SaveService } from '../../Services/save.service';
 
 @Component({
   selector: 'app-wordbox',
-  imports: [FormsModule, CommonModule, Toast],
+  imports: [FormsModule, CommonModule],
   templateUrl: './wordbox.component.html',
   styleUrls: ['./wordbox.component.scss'],
-  providers: [MessageService]
 })
 export class WordboxComponent {
   wordService = inject(WordsService);
@@ -55,6 +53,7 @@ export class WordboxComponent {
   // language: language = 'English ';
 
   constructor(private messageService: MessageService) {
+
     // this.challengeService
     //   .getLanguage()
     //   .subscribe((language) => (this.language = language));

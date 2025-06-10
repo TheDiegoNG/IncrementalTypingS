@@ -13,9 +13,10 @@ import { CardsMenuComponent } from './Menus/cards-menu/cards-menu.component';
 import { AchievementsMenuComponent } from './Menus/achievements-menu/achievements-menu.component';
 import { OptionsMenuComponent } from './Menus/options-menu/options-menu.component';
 import { ModulesMenuComponent } from './Menus/modules-menu/modules-menu.component';
-import { OverlayComponent } from "./overlay/overlay.component";
-import { PrestigeMenuComponent } from "./Menus/prestige-menu/prestige-menu.component";
-import { MasteryMenuComponent } from "./Menus/mastery-menu/mastery-menu.component";
+import { OverlayComponent } from './overlay/overlay.component';
+import { PrestigeMenuComponent } from './Menus/prestige-menu/prestige-menu.component';
+import { MasteryMenuComponent } from './Menus/mastery-menu/mastery-menu.component';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
@@ -34,8 +35,9 @@ import { MasteryMenuComponent } from "./Menus/mastery-menu/mastery-menu.componen
     ModulesMenuComponent,
     OverlayComponent,
     PrestigeMenuComponent,
-    MasteryMenuComponent
-],
+    MasteryMenuComponent,
+    ToastModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

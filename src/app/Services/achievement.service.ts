@@ -10,7 +10,7 @@ import { Game } from '../Classes/game';
 })
 export class AchievementService {
   gameService = inject(GameService);
-  // messageService = inject(MessageService);
+  messageService = inject(MessageService);
   achievements: Achievement[] = [];
   private intervalId: ReturnType<typeof setInterval> | null = null;;
 
@@ -180,12 +180,12 @@ export class AchievementService {
   }
 
   showAchievement(achievementName: string) {
-    // this.messageService.add({
-    //   severity: 'info',
-    //   summary: `New Achievement! ${achievementName}`,
-    //   life: 3000,
-    //   contentStyleClass: 'my-toast',
-    // });
+    this.messageService.add({
+      severity: 'info',
+      summary: `New Achievement! ${achievementName}`,
+      life: 3000,
+      contentStyleClass: 'my-toast',
+    });
   }
 
   revealAchievementGroup(groupName: string) {

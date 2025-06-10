@@ -92,7 +92,7 @@
     ],
     "x": 300,
     "y": 200,
-    "bonus": "Word Length + 1"
+    "bonus": "Word Length + 1. Current: [MAX LENGTH]"
   },
   {
     "name": "Echo Pattern",
@@ -105,7 +105,7 @@
     ],
     "x": 450,
     "y": 100,
-    "bonus": "x3.5^[Groups of +1 Same Letter]",
+    "bonus": "x3.5^[Groups of +1 Same Letter]. Last amount: [NEEDS SUM]",
     "excludes": [
       "diLW",
       "xSlow",
@@ -115,7 +115,7 @@
   },
   {
     "name": "Lexical Diversity",
-    "description": "Diversity shapes expression. Every unique letter adds a spark, a new angle to the word’s design — and with each difference, your potential multiplies.",
+    "description": "Diversity shapes expression. Every unique letter adds a spark, a new angle to the word's design — and with each difference, your potential multiplies.",
     "cost": 1250,
     "id": "diLW",
     "branch": "Starter",
@@ -124,7 +124,7 @@
     ],
     "x": 450,
     "y": 300,
-    "bonus": "x1.8^[Different Letters]",
+    "bonus": "x1.8^[Different Letters]. Last amount: [NEEDS SUM]",
     "excludes": [
       "saLW",
       "xFast",
@@ -143,7 +143,7 @@
     ],
     "x": 600,
     "y": 100,
-    "bonus": "x[NEEDS REAL TIME DATA]"
+    "bonus": "x[NEEDS MULTI]"
   },
   {
     "name": "Patience Multiplier",
@@ -156,7 +156,7 @@
     ],
     "x": 600,
     "y": 300,
-    "bonus": "x[NEEDS REAL TIME DATA]"
+    "bonus": "x[NEEDS MULTI]"
   },
   {
     "name": "Precision Harvest",
@@ -195,7 +195,7 @@
     ],
     "x": 900,
     "y": 100,
-    "bonus": "You get a combo on words perfectly typed. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get a combo on words perfectly typed. x[NEEDS MULTI]"
   },
   {
     "name": "Combo Resonance",
@@ -236,7 +236,7 @@
     ],
     "x": 1100,
     "y": 100,
-    "bonus": "xSqrt([CardAmount])"
+    "bonus": "xSqrt([CardAmount]). Last amount: x[NEEDS MULTI]"
   },
   {
     "name": "Lexical Reach",
@@ -249,7 +249,7 @@
     ],
     "x": 1200,
     "y": 200,
-    "bonus": "Word Length + 1"
+    "bonus": "Word Length + 1. Current: [MAX LENGTH]"
   },
   {
     "name": "Milestone Power",
@@ -262,7 +262,7 @@
     ],
     "x": 1200,
     "y": 300,
-    "bonus": "x[AchievementAmount]/10"
+    "bonus": "x[AchievementAmount]/10. Current: x[NEEDS MULTI]"
   },
   {
     "name": "Achievement Momentum",
@@ -275,7 +275,10 @@
     ],
     "x": 1200,
     "y": 400,
-    "bonus": "You get a combo on Achievements. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get a combo on Achievements. x[NEEDS MULTI]",
+    "excludes": [
+      "MileRes"
+    ]
   },
   {
     "name": "Merit Multiplier",
@@ -288,7 +291,10 @@
     ],
     "x": 1350,
     "y": 400,
-    "bonus": "Your achievements value more based on how hard they are. [Achievement]x[Quality]"
+    "bonus": "Your achievements value more based on how hard they are. [Achievement]x[Quality]",
+    "excludes": [
+      "comboAch"
+    ]
   },
   {
     "name": "Unlock Scrabble",
@@ -327,7 +333,10 @@
     ],
     "x": 1500,
     "y": 100,
-    "bonus": "Typing a word with an uncommon letter gives a temporary bonus. x[NEEDS REAL TIME DATA]"
+    "bonus": "Typing a word with an uncommon letter gives a temporary bonus. x[NEEDS MULTI]",
+    "excludes": [
+      "LetPo"
+    ]
   },
   {
     "name": "Echo Memory",
@@ -340,7 +349,10 @@
     ],
     "x": 1500,
     "y": 200,
-    "bonus": "You get a percentage of your Total Points based on your last 10 words typed by their values in Scrabble. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get a percentage of your Total Points based on your last 10 words typed by their values in Scrabble. x[NEEDS MULTI]",
+    "excludes": [
+      "ScrS"
+    ]
   },
   {
     "name": "Stretch Multiplier",
@@ -392,7 +404,7 @@
     ],
     "x": 1650,
     "y": 100,
-    "bonus": "You get more Alpha levels based on Points. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Alpha levels based on Points. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Beta",
@@ -405,7 +417,7 @@
     ],
     "x": 1800,
     "y": 50,
-    "bonus": "You get more Beta levels based on Cards Amount. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Beta levels based on Cards Amount. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Gamma",
@@ -418,7 +430,7 @@
     ],
     "x": 1950,
     "y": 100,
-    "bonus": "You get more Gamma levels based on Words Typed. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Gamma levels based on Words Typed. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Delta",
@@ -431,7 +443,7 @@
     ],
     "x": 1950,
     "y": 300,
-    "bonus": "You get more Delta levels based on MultiUpgrades bought. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Delta levels based on MultiUpgrades bought. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Epsilon",
@@ -444,7 +456,7 @@
     ],
     "x": 1650,
     "y": 300,
-    "bonus": "You get more Epsilon levels based on your Achievements. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Epsilon levels based on your Achievements. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Dseta",
@@ -457,7 +469,7 @@
     ],
     "x": 1650,
     "y": 175,
-    "bonus": "You get more Dseta levels based on Passive Points. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Dseta levels based on Passive Points. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Eta",
@@ -470,7 +482,7 @@
     ],
     "x": 1950,
     "y": 175,
-    "bonus": "You get more Eta levels based on Prestige Points. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Eta levels based on Prestige Points. x[NEEDS MULTI]"
   },
   {
     "name": "Enhance Zeta",
@@ -483,7 +495,7 @@
     ],
     "x": 1800,
     "y": 300,
-    "bonus": "You get more Zeta levels based on Mastery levels. x[NEEDS REAL TIME DATA]"
+    "bonus": "You get more Zeta levels based on Mastery levels. x[NEEDS MULTI]"
   },
   {
     "name": "Lexical Stretch",
@@ -500,7 +512,7 @@
     ],
     "x": 1875,
     "y": 500,
-    "bonus": "Word Length + 1"
+    "bonus": "Word Length + 1. Current: [MAX LENGTH]"
   },
   {
     "name": "Unlock Second Pack",
@@ -697,7 +709,7 @@
     ],
     "x": 750,
     "y": 800,
-    "bonus": "Word Length + 1"
+    "bonus": "Word Length + 1. Current: [MAX LENGTH]"
   },
   {
     "name": "Unlock Cardinal Sins",
@@ -932,7 +944,7 @@
     ],
     "x": 750,
     "y": 1000,
-    "bonus": "Word Length + 1"
+    "bonus": "Word Length + 1. Current: [MAX LENGTH]"
   },
   {
     "name": "Unlock Modules",

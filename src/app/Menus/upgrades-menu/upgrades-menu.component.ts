@@ -121,14 +121,21 @@ export class UpgradesMenuComponent {
 
   getUpgradeBonus() {
     const rawBonus = this.selectedUpgrade?.bonus;
-
-    if(rawBonus?.includes('[NEEDS REAL TIME DATA]')) {
+    let formatted = '';
+    if(rawBonus?.includes('[NEEDS MULTI]')) {
       const dynValue = this.gameService.game().bonusValues[this.selectedUpgrade!.id] ?? 1;
-      const formatted = dynValue.toFixed(2);
-      console.log("Logging dyn upgrade: ", this.selectedUpgrade, "Bonus: ", formatted, this.gameService.game())
-      return rawBonus.replace('[NEEDS REAL TIME DATA]', formatted)
+      formatted = dynValue.toFixed(2);
+      return rawBonus.replace('[NEEDS MULTI]', formatted)
     }
-
+    if(rawBonus?.includes('[MAX LENGTH]')) {
+      formatted = this.gameService.game().maxLength.toString()
+      return rawBonus?.replace('[MAX LENGTH]', formatted);
+    }
+    if(rawBonus?.includes('[NEEDS SUM]')) {
+      const dynValue = this.gameService.game().bonusSumsValues[this.selectedUpgrade!.id] ?? 1;
+      formatted = dynValue.toFixed(2);
+      return rawBonus?.replace('[NEEDS SUM]', formatted);
+    }
     return this.selectedUpgrade?.bonus
   }
 }

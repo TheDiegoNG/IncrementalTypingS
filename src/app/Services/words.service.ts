@@ -83,7 +83,7 @@ export class WordsService {
       GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS') &&
       this.lastScrSWordTime !== 0
     ) {
-      const MAX_MULTIPLIER = 1.5;
+      const MAX_MULTIPLIER = 2;
       const MIN_MULTIPLIER = 1.0;
       const THRESHOLD = 30; // segundos hasta que empieza a decaer
 
@@ -428,6 +428,12 @@ export class WordsService {
       const multi = 1 + (sum / 85.6) ** 0.75;
       totalPoints *= multi;
       this.wordBonus += 'x [LetPoBonus]';
+      let currBonus = this.gameService.game().bonusValues;
+      currBonus['LetPo'] = multi
+      this.gameService.game.update((game) => ({
+        ...game,
+        bonusValues: currBonus,
+      }));
       console.log('LetPo Bonus: ', multi, 'LetPo values: ', this.scrabbleQueue);
     }
 
@@ -618,10 +624,10 @@ export class WordsService {
 
   getRepeatedLetters(word: string): number {
     const repeatedLetters = new Set<string>();
-
+    const minusWord = word.toLowerCase() 
     for (let i = 0; i < word.length; i++) {
-      const char = word[i].toLowerCase();
-      if (word.lastIndexOf(char) > i) {
+      const char = minusWord[i];
+      if (minusWord.lastIndexOf(char) > i) {
         repeatedLetters.add(char);
       }
     }

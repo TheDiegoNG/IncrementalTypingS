@@ -68,7 +68,7 @@
     "parents": ["TB"],
     "x": 300,
     "y": 100,
-    "bonus": "Unlock a Letters per Minute"
+    "bonus": "Unlock a Letters per Minute Counter"
   },
   {
     "name": "Passive Word Enhancer",
@@ -105,7 +105,7 @@
     ],
     "x": 450,
     "y": 100,
-    "bonus": "3.5^[Groups of +1 Same Letter]",
+    "bonus": "x3.5^[Groups of +1 Same Letter]",
     "excludes": [
       "diLW",
       "xSlow",
@@ -124,7 +124,7 @@
     ],
     "x": 450,
     "y": 300,
-    "bonus": "1.8^[Different Letters]",
+    "bonus": "x1.8^[Different Letters]",
     "excludes": [
       "saLW",
       "xFast",
@@ -143,7 +143,7 @@
     ],
     "x": 600,
     "y": 100,
-    "bonus": "x5 [NEEDS REAL TIME DATA]"
+    "bonus": "x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Patience Multiplier",
@@ -156,7 +156,7 @@
     ],
     "x": 600,
     "y": 300,
-    "bonus": "x1 [NEEDS REAL TIME DATA]"
+    "bonus": "x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Precision Harvest",
@@ -195,7 +195,7 @@
     ],
     "x": 900,
     "y": 100,
-    "bonus": "You get a combo on words perfectly typed. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get a combo on words perfectly typed. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Combo Resonance",
@@ -275,7 +275,7 @@
     ],
     "x": 1200,
     "y": 400,
-    "bonus": "You get a combo on Achievements. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get a combo on Achievements. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Merit Multiplier",
@@ -327,7 +327,7 @@
     ],
     "x": 1500,
     "y": 100,
-    "bonus": "Typing a word with an uncommon letter gives a temporary bonus. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "Typing a word with an uncommon letter gives a temporary bonus. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Echo Memory",
@@ -340,7 +340,7 @@
     ],
     "x": 1500,
     "y": 200,
-    "bonus": "You get a percentage of your Total Points based on your last 10 words typed by their values in Scrabble. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get a percentage of your Total Points based on your last 10 words typed by their values in Scrabble. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Stretch Multiplier",
@@ -392,7 +392,7 @@
     ],
     "x": 1650,
     "y": 100,
-    "bonus": "You get more Alpha levels based on Points. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Alpha levels based on Points. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Beta",
@@ -405,7 +405,7 @@
     ],
     "x": 1800,
     "y": 50,
-    "bonus": "You get more Beta levels based on Cards Amount. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Beta levels based on Cards Amount. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Gamma",
@@ -418,7 +418,7 @@
     ],
     "x": 1950,
     "y": 100,
-    "bonus": "You get more Gamma levels based on Words Typed. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Gamma levels based on Words Typed. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Delta",
@@ -431,7 +431,7 @@
     ],
     "x": 1950,
     "y": 300,
-    "bonus": "You get more Delta levels based on MultiUpgrades bought. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Delta levels based on MultiUpgrades bought. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Epsilon",
@@ -444,7 +444,7 @@
     ],
     "x": 1650,
     "y": 300,
-    "bonus": "You get more Epsilon levels based on your Achievements. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Epsilon levels based on your Achievements. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Dseta",
@@ -457,7 +457,7 @@
     ],
     "x": 1650,
     "y": 175,
-    "bonus": "You get more Dseta levels based on Passive Points. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Dseta levels based on Passive Points. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Eta",
@@ -470,7 +470,7 @@
     ],
     "x": 1950,
     "y": 175,
-    "bonus": "You get more Eta levels based on Prestige Points. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Eta levels based on Prestige Points. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Enhance Zeta",
@@ -483,7 +483,7 @@
     ],
     "x": 1800,
     "y": 300,
-    "bonus": "You get more Zeta levels based on Mastery levels. x1 [NEEDS REAL TIME DATA]"
+    "bonus": "You get more Zeta levels based on Mastery levels. x[NEEDS REAL TIME DATA]"
   },
   {
     "name": "Lexical Stretch",

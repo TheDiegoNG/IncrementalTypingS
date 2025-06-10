@@ -17,7 +17,6 @@ import { TabsModule } from  'primeng/tabs'
 export class UpgradesMenuComponent {
   upgradeService = inject(UpgradeService);
   gameService = inject(GameService)
-  bonus$ = inject(WordsService).getBonusSignal();
   upgrades = this.upgradeService.starterUpgrades.concat(
     this.upgradeService.explorerUpgrades.concat(
       this.upgradeService.masterUpgrades.concat(
@@ -118,5 +117,18 @@ export class UpgradesMenuComponent {
     const width = 600 / this.scale;
     const height = 600 / this.scale;
     this.viewBox = `${this.offset.x} ${this.offset.y} ${width} ${height}`;
+  }
+
+  getUpgradeBonus() {
+    const rawBonus = this.selectedUpgrade?.bonus;
+
+    if(rawBonus?.includes('[NEEDS REAL TIME DATA]')) {
+      const dynValue = this.gameService.game().bonusValues[this.selectedUpgrade!.id] ?? 1;
+      const formatted = dynValue.toFixed(2);
+      console.log("Logging dyn upgrade: ", this.selectedUpgrade, "Bonus: ", formatted, this.gameService.game())
+      return rawBonus.replace('[NEEDS REAL TIME DATA]', formatted)
+    }
+
+    return this.selectedUpgrade?.bonus
   }
 }

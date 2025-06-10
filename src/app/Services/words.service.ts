@@ -54,7 +54,7 @@ export class WordsService {
       ? (now - this.lastScrSWordTime) / 1000
       : 0;
 
-    const bonuses = { ...this.bonusSignal() }; // copia actual
+    const bonuses = { ...this.gameService.game().bonusValues }; // copia actual
 
     // Bonus dinámico: xFast
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
@@ -109,7 +109,7 @@ export class WordsService {
       }
     }
 
-    this.bonusSignal.set(bonuses);
+    this.gameService.game.update((game) => ({ ...game, bonusValues: bonuses }));
   }
 
   gameService = inject(GameService);
@@ -120,8 +120,6 @@ export class WordsService {
   cardService = inject(CardService);
   languageService = inject(LanguageService);
 
-  private bonusSignal = signal<Record<string, number>>({});
-  private bonusSumSignal = signal<Record<string, number>>({});
   private lastWordTime: number = Date.now();
   private lastScrSWordTime = 0;
   private scrabbleQueue: number[] = [];
@@ -172,18 +170,21 @@ export class WordsService {
     return this.currentWord() === input;
   }
 
-  getBonusSignal() {
-    return this.bonusSignal.asReadonly(); // para que solo se lea desde fuera
-  }
-
   updateBonus(upgradeId: string, value: number) {
-    const current = this.bonusSignal();
-    this.bonusSignal.set({ ...current, [upgradeId]: value });
+    const current = this.gameService.game().bonusValues;
+    const updatedBonus = { ...current, [upgradeId]: value };
+    this.gameService.game.update((game) => ({
+      ...game,
+      bonusValues: updatedBonus,
+    }));
   }
-
   updateSumBonus(upgradeId: string, value: number) {
-    const current = this.bonusSumSignal();
-    this.bonusSumSignal.set({ ...current, [upgradeId]: value });
+    const current = this.gameService.game().bonusSumsValues;
+    const updatedBonus = { ...current, [upgradeId]: value };
+    this.gameService.game.update((game) => ({
+      ...game,
+      bonusSumsValues: updatedBonus,
+    }));
   }
 
   guessedWord(word: string) {
@@ -287,10 +288,13 @@ export class WordsService {
     }
     this.updateBonus(
       'Sums',
-      Object.values(this.bonusSumSignal()).reduce((a, b) => a + b, 0)
+      Object.values(this.gameService.game().bonusSumsValues).reduce(
+        (a, b) => a + b,
+        0
+      )
     );
     // bonusValues.push((bonusSumsValues ?? []).reduce((a, b) => a + b, 0));
-    totalPoints = Object.values(this.bonusSumSignal()).reduce(
+    totalPoints = Object.values(this.gameService.game().bonusSumsValues).reduce(
       (a, b) => a + b,
       0
     );
@@ -361,13 +365,13 @@ export class WordsService {
     // bonusSumsValues = bonusSumsValues.concat(result[3]);
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
-      const multi = this.bonusSignal()['xFast'];
+      const multi = this.gameService.game().bonusValues['xFast'];
       totalPoints *= multi;
       this.wordBonus += ' x[Speed]';
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
-      const multi = this.bonusSignal()['xSlow'];
+      const multi = this.gameService.game().bonusValues['xSlow'];
       totalPoints *= multi;
       this.wordBonus += ' x[TimeElapsed]';
     }
@@ -412,11 +416,11 @@ export class WordsService {
 
     if (
       GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'ScrS') &&
-      this.bonusSignal()['ScrS'] > 1
+      this.gameService.game().bonusValues['ScrS'] > 1
     ) {
-      totalPoints *= this.bonusSignal()['ScrS'];
+      totalPoints *= this.gameService.game().bonusValues['ScrS'];
       this.wordBonus += ' x ScrSBonus';
-      this.updateBonus('ScrS', this.bonusSignal()['ScrS']);
+      this.updateBonus('ScrS', this.gameService.game().bonusValues['ScrS']);
     }
 
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'LetPo')) {
@@ -485,7 +489,12 @@ export class WordsService {
       console.log('Checking word for ScrS bonus', word);
       if (/[^a-z]/.test(word.toLowerCase())) {
         console.log('Passed check!');
-        this.bonusSignal.update((bonuses) => ({ ...bonuses, ScrS: 1.5 }));
+        const current = this.gameService.game().bonusValues;
+        const updatedBonus = { ...current, ScrS: 1.5 };
+        this.gameService.game.update((game) => ({
+          ...game,
+          bonusValues: updatedBonus,
+        }));
         this.lastScrSWordTime = Date.now();
       }
     }
@@ -493,12 +502,6 @@ export class WordsService {
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'Mast')) {
       this.masteryService.calculateMasteryPoints(word.toLowerCase().split(''));
     }
-
-    this.gameService.game.update((game) => ({
-      ...game,
-      bonusValues: this.bonusSignal(),
-      bonusSumsValues: this.bonusSumSignal(),
-    }));
   }
 
   GetPointsLetters(word: string, passive: boolean = false) {
@@ -596,8 +599,6 @@ export class WordsService {
         }
       }
     });
-
-
 
     return points;
   }

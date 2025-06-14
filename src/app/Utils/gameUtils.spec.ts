@@ -33,7 +33,7 @@ describe('GameUtils', () => {
     game.challenges = [chal];
 
     game.achievements = [
-      new Achievement('Ach1', 'desc', 1, 1, 'Other'),
+      new Achievement('Ach1', 'desc', 1, 1, 'Other', false, undefined, false),
     ];
   });
 

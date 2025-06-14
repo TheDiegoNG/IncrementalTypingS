@@ -1,11 +1,12 @@
 [
   {
-    "name": "The Sorcerer\u2019s Stone",
+    "name": "The Sorcerer’s Stone",
     "description": "Write 77325 words",
     "id": 61,
     "target": 77325,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Chamber of Secrets",
@@ -13,7 +14,8 @@
     "id": 62,
     "target": 84799,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Prisoner of Azkaban",
@@ -21,7 +23,8 @@
     "id": 63,
     "target": 106821,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Goblet of Fire",
@@ -29,7 +32,8 @@
     "id": 64,
     "target": 190858,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Order of the Phoenix",
@@ -37,7 +41,8 @@
     "id": 65,
     "target": 257154,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Half-Blood Prince",
@@ -45,7 +50,8 @@
     "id": 66,
     "target": 169441,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Deathly Hallows",
@@ -53,7 +59,8 @@
     "id": 67,
     "target": 198227,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Hobbit",
@@ -61,7 +68,8 @@
     "id": 68,
     "target": 95022,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Fellowship of the Ring",
@@ -69,7 +77,8 @@
     "id": 69,
     "target": 177227,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Two Towers",
@@ -77,7 +86,8 @@
     "id": 70,
     "target": 143436,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Return of the King",
@@ -85,7 +95,8 @@
     "id": 71,
     "target": 134462,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Hunger Games",
@@ -93,7 +104,8 @@
     "id": 72,
     "target": 99750,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Hunger Games: Catching Fire",
@@ -101,7 +113,8 @@
     "id": 73,
     "target": 101564,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Hunger Games: Mockingjay",
@@ -109,7 +122,8 @@
     "id": 74,
     "target": 100269,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Game of Thrones",
@@ -117,7 +131,8 @@
     "id": 75,
     "target": 292727,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Clash of Kings",
@@ -125,7 +140,8 @@
     "id": 76,
     "target": 318903,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Storm of Swords",
@@ -133,7 +149,8 @@
     "id": 77,
     "target": 414604,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Feast for Crows",
@@ -141,7 +158,8 @@
     "id": 78,
     "target": 295032,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Dance with Dragons",
@@ -149,7 +167,8 @@
     "id": 79,
     "target": 414788,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Eye of the World",
@@ -157,7 +176,8 @@
     "id": 80,
     "target": 305902,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Great Hunt",
@@ -165,7 +185,8 @@
     "id": 81,
     "target": 267078,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Dragon Reborn",
@@ -173,7 +194,8 @@
     "id": 82,
     "target": 251392,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Shadow Rising",
@@ -181,7 +203,8 @@
     "id": 83,
     "target": 393823,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Fires of Heaven",
@@ -189,7 +212,8 @@
     "id": 84,
     "target": 354109,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Lord of Chaos",
@@ -197,7 +221,8 @@
     "id": 85,
     "target": 389823,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Crown of Swords",
@@ -205,7 +230,8 @@
     "id": 86,
     "target": 295028,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Path of Daggers",
@@ -213,15 +239,17 @@
     "id": 87,
     "target": 226687,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
-    "name": "Winter\u2019s Heart",
+    "name": "Winter’s Heart",
     "description": "Write 238789 words",
     "id": 88,
     "target": 238789,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Crossroads of Twilight",
@@ -229,7 +257,8 @@
     "id": 89,
     "target": 271632,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Knife of Dreams",
@@ -237,7 +266,8 @@
     "id": 90,
     "target": 315163,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Gathering Storm",
@@ -245,7 +275,8 @@
     "id": 91,
     "target": 297502,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Towers of Midnight",
@@ -253,7 +284,8 @@
     "id": 92,
     "target": 327052,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Memory of Light",
@@ -261,7 +293,8 @@
     "id": 93,
     "target": 353906,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Twilight",
@@ -269,7 +302,8 @@
     "id": 94,
     "target": 118975,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "New Moon",
@@ -277,7 +311,8 @@
     "id": 95,
     "target": 132758,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Eclipse",
@@ -285,7 +320,8 @@
     "id": 96,
     "target": 148971,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Breaking Dawn",
@@ -293,7 +329,8 @@
     "id": 97,
     "target": 186542,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Suitable Boy",
@@ -301,7 +338,8 @@
     "id": 98,
     "target": 591554,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "War and Peace",
@@ -309,7 +347,8 @@
     "id": 99,
     "target": 587287,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Atlas Shrugged",
@@ -317,7 +356,8 @@
     "id": 100,
     "target": 561996,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Lord of the Rings",
@@ -325,7 +365,8 @@
     "id": 101,
     "target": 455125,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Gone with the Wind",
@@ -333,7 +374,8 @@
     "id": 102,
     "target": 418053,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Lonesome Dove",
@@ -341,7 +383,8 @@
     "id": 103,
     "target": 365712,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Brothers Karamazov",
@@ -349,7 +392,8 @@
     "id": 104,
     "target": 364153,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Anna Karenina",
@@ -357,7 +401,8 @@
     "id": 105,
     "target": 349736,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Middlemarch",
@@ -365,7 +410,8 @@
     "id": 106,
     "target": 316059,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Fountainhead",
@@ -373,7 +419,8 @@
     "id": 107,
     "target": 311596,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Cloudsplitter",
@@ -381,7 +428,8 @@
     "id": 108,
     "target": 260742,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Prayer for Owen Meany",
@@ -389,7 +437,8 @@
     "id": 109,
     "target": 236061,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "East of Eden",
@@ -397,7 +446,8 @@
     "id": 110,
     "target": 225395,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Amazing Adventures of Kavelier and Clay",
@@ -405,7 +455,8 @@
     "id": 111,
     "target": 216020,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Crime and Punishment",
@@ -413,15 +464,17 @@
     "id": 112,
     "target": 211591,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
-    "name": "Midnight\u2019s Children",
+    "name": "Midnight’s Children",
     "description": "Write 208773 words",
     "id": 113,
     "target": 208773,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Moby Dick",
@@ -429,7 +482,8 @@
     "id": 114,
     "target": 206052,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A House for Mr. Biswas",
@@ -437,7 +491,8 @@
     "id": 115,
     "target": 198901,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Stones from the River",
@@ -445,7 +500,8 @@
     "id": 116,
     "target": 197517,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Corrections",
@@ -453,7 +509,8 @@
     "id": 117,
     "target": 196774,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Memoirs of a Geisha",
@@ -461,7 +518,8 @@
     "id": 118,
     "target": 186418,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Jane Eyre",
@@ -469,7 +527,8 @@
     "id": 119,
     "target": 183858,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Little Women (Books 1&2)",
@@ -477,7 +536,8 @@
     "id": 120,
     "target": 183833,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Great Expectations",
@@ -485,7 +545,8 @@
     "id": 121,
     "target": 183349,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Poisonwood Bible",
@@ -493,7 +554,8 @@
     "id": 122,
     "target": 177679,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Catch-22",
@@ -501,7 +563,8 @@
     "id": 123,
     "target": 174269,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Grapes of Wrath",
@@ -509,7 +572,8 @@
     "id": 124,
     "target": 169481,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "White Teeth",
@@ -517,15 +581,17 @@
     "id": 125,
     "target": 169389,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
-    "name": "Uncle Tom\u2019s Cabin",
+    "name": "Uncle Tom’s Cabin",
     "description": "Write 166622 words",
     "id": 126,
     "target": 166622,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Cold Mountain",
@@ -533,15 +599,17 @@
     "id": 127,
     "target": 161511,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
-    "name": "The Kitchen God\u2019s Wife",
+    "name": "The Kitchen God’s Wife",
     "description": "Write 159276 words",
     "id": 128,
     "target": 159276,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Alias Grace",
@@ -549,7 +617,8 @@
     "id": 129,
     "target": 157665,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Watership Down",
@@ -557,7 +626,8 @@
     "id": 130,
     "target": 156154,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Oliver Twist",
@@ -565,7 +635,8 @@
     "id": 131,
     "target": 155960,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Emma",
@@ -573,7 +644,8 @@
     "id": 132,
     "target": 155887,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Last of the Mohicans",
@@ -581,7 +653,8 @@
     "id": 133,
     "target": 145469,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Cold Sassy Tree",
@@ -589,7 +662,8 @@
     "id": 134,
     "target": 145265,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Tree Grows in Brooklyn",
@@ -597,7 +671,8 @@
     "id": 135,
     "target": 145092,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "One Hundred Years of Solitude",
@@ -605,7 +680,8 @@
     "id": 136,
     "target": 144523,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "20000 Leagues Under the Sea",
@@ -613,7 +689,8 @@
     "id": 137,
     "target": 138138,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Snow Falling on Cedars",
@@ -621,7 +698,8 @@
     "id": 138,
     "target": 138098,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Moll Flanders",
@@ -629,7 +707,8 @@
     "id": 139,
     "target": 138087,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Tale of Two Cities",
@@ -637,15 +716,17 @@
     "id": 140,
     "target": 135420,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
-    "name": "Schindler\u2019s List",
+    "name": "Schindler’s List",
     "description": "Write 134710 words",
     "id": 141,
     "target": 134710,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "War Trash",
@@ -653,7 +734,8 @@
     "id": 142,
     "target": 130460,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Yearling",
@@ -661,7 +743,8 @@
     "id": 143,
     "target": 128886,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Life on the Mississippi",
@@ -669,7 +752,8 @@
     "id": 144,
     "target": 127776,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Atonement",
@@ -677,7 +761,8 @@
     "id": 145,
     "target": 123378,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "My Sisters Keeper",
@@ -685,7 +770,8 @@
     "id": 146,
     "target": 119529,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Sense and Sensibility",
@@ -693,7 +779,8 @@
     "id": 147,
     "target": 119394,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Tenth Circle",
@@ -701,7 +788,8 @@
     "id": 148,
     "target": 114779,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Walden",
@@ -709,7 +797,8 @@
     "id": 149,
     "target": 114634,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Golden Compass",
@@ -717,7 +806,8 @@
     "id": 150,
     "target": 112815,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "McTeague",
@@ -725,7 +815,8 @@
     "id": 151,
     "target": 112737,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Adventures of Huckleberry Finn",
@@ -733,7 +824,8 @@
     "id": 152,
     "target": 109571,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Wuthering Heights",
@@ -741,7 +833,8 @@
     "id": 153,
     "target": 107945,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Gullivers Travels",
@@ -749,7 +842,8 @@
     "id": 154,
     "target": 107349,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Distant Shore",
@@ -757,15 +851,17 @@
     "id": 155,
     "target": 103090,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
-    "name": "Ender\u2019s Game",
+    "name": "Ender’s Game",
     "description": "Write 100609 words",
     "id": 156,
     "target": 100609,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "To Kill A Mockingbird",
@@ -773,7 +869,8 @@
     "id": 157,
     "target": 100388,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Anne of Green Gables",
@@ -781,7 +878,8 @@
     "id": 158,
     "target": 97364,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Song of Solomon",
@@ -789,7 +887,8 @@
     "id": 159,
     "target": 92400,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Joy Luck Club",
@@ -797,7 +896,8 @@
     "id": 160,
     "target": 91419,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Waiting",
@@ -805,7 +905,8 @@
     "id": 161,
     "target": 89297,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Nineteen Eighty-Four",
@@ -813,7 +914,8 @@
     "id": 162,
     "target": 88942,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Persuasion",
@@ -821,7 +923,8 @@
     "id": 163,
     "target": 87978,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Pere Goriot",
@@ -829,7 +932,8 @@
     "id": 164,
     "target": 87846,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Unbearable Lightness of Being",
@@ -837,7 +941,8 @@
     "id": 165,
     "target": 85199,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Gilead",
@@ -845,7 +950,8 @@
     "id": 166,
     "target": 84845,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Cry, the Beloved Country",
@@ -853,7 +959,8 @@
     "id": 167,
     "target": 83774,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Anne Frank: The Diary of a Young Girl",
@@ -861,7 +968,8 @@
     "id": 168,
     "target": 82762,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The English Patient",
@@ -869,7 +977,8 @@
     "id": 169,
     "target": 82370,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Dark Is Rising",
@@ -877,7 +986,8 @@
     "id": 170,
     "target": 82143,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Secret Garden",
@@ -885,7 +995,8 @@
     "id": 171,
     "target": 80398,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Picture of Dorian Gray",
@@ -893,7 +1004,8 @@
     "id": 172,
     "target": 78462,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Catcher in the Rye",
@@ -901,7 +1013,8 @@
     "id": 173,
     "target": 73404,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "White Fang",
@@ -909,7 +1022,8 @@
     "id": 174,
     "target": 72071,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Woman Warrior",
@@ -917,7 +1031,8 @@
     "id": 175,
     "target": 70957,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Adventures of Tom Sawyer",
@@ -925,7 +1040,8 @@
     "id": 176,
     "target": 69066,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Drinking Coffee Elsewhere",
@@ -933,7 +1049,8 @@
     "id": 177,
     "target": 68410,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Sun Also Rises",
@@ -941,7 +1058,8 @@
     "id": 178,
     "target": 67707,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Ironweed",
@@ -949,7 +1067,8 @@
     "id": 179,
     "target": 67606,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Fault in Our Stars",
@@ -957,7 +1076,8 @@
     "id": 180,
     "target": 67203,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Treasure Island",
@@ -965,7 +1085,8 @@
     "id": 181,
     "target": 66950,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Color Purple",
@@ -973,7 +1094,8 @@
     "id": 182,
     "target": 66556,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Martian Chronicles",
@@ -981,7 +1103,8 @@
     "id": 183,
     "target": 64768,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Brave New World",
@@ -989,7 +1112,8 @@
     "id": 184,
     "target": 63766,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Scarlet Letter",
@@ -997,7 +1121,8 @@
     "id": 185,
     "target": 63604,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Mrs. Dalloway",
@@ -1005,7 +1130,8 @@
     "id": 186,
     "target": 63422,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "All Quiet on the Western Front",
@@ -1013,7 +1139,8 @@
     "id": 187,
     "target": 61922,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Dew Breaker",
@@ -1021,7 +1148,8 @@
     "id": 188,
     "target": 60082,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Lord of the Flies",
@@ -1029,7 +1157,8 @@
     "id": 189,
     "target": 59900,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Black Beauty",
@@ -1037,7 +1166,8 @@
     "id": 190,
     "target": 59635,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Wind in the Willows",
@@ -1045,7 +1175,8 @@
     "id": 191,
     "target": 58428,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "A Separate Peace",
@@ -1053,7 +1184,8 @@
     "id": 192,
     "target": 56787,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "As I Lay Dying",
@@ -1061,7 +1193,8 @@
     "id": 193,
     "target": 56695,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Hours",
@@ -1069,7 +1202,8 @@
     "id": 194,
     "target": 54243,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Slaughterhouse-Five",
@@ -1077,7 +1211,8 @@
     "id": 195,
     "target": 49459,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Outsiders",
@@ -1085,7 +1220,8 @@
     "id": 196,
     "target": 48523,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Red Badge of Courage",
@@ -1093,7 +1229,8 @@
     "id": 197,
     "target": 47180,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Great Gatsby",
@@ -1101,7 +1238,8 @@
     "id": 198,
     "target": 47094,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Fahrenheit 451",
@@ -1109,7 +1247,8 @@
     "id": 199,
     "target": 46118,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Tequila Worm",
@@ -1117,7 +1256,8 @@
     "id": 200,
     "target": 42715,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Lion The Witch and the Wardrobe",
@@ -1125,7 +1265,8 @@
     "id": 201,
     "target": 36363,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Old Yeller",
@@ -1133,7 +1274,8 @@
     "id": 202,
     "target": 35968,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "Charlie and the Chocolate Factory",
@@ -1141,7 +1283,8 @@
     "id": 203,
     "target": 30644,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "The Mouse and the Motorcycle",
@@ -1149,7 +1292,8 @@
     "id": 204,
     "target": 22416,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   },
   {
     "name": "For sale: baby shoes, never worn.",
@@ -1157,6 +1301,7 @@
     "id": 205,
     "target": 6,
     "property": "wordsAmount",
-    "group": "Books"
+    "group": "Books",
+    "isCompleted": false
   }
 ]

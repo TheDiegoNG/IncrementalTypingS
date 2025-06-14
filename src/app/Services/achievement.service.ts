@@ -24,7 +24,16 @@ export class AchievementService {
     const list: AchievementJson[] = await response.json();
     for (const a of list) {
       this.createAchievement(
-        new Achievement(a.name, a.description, a.id, a.target, a.property, false)
+        new Achievement(
+          a.name,
+          a.description,
+          a.id,
+          a.target,
+          a.property,
+          false,
+          a.group,
+          a.isCompleted ?? false
+        )
       );
     }
 
@@ -40,7 +49,16 @@ export class AchievementService {
     const list: AchievementJson[] = await response.json();
     for (const a of list) {
       this.createAchievement(
-        new Achievement(a.name, a.description, a.id, a.target, a.property, false, a.group)
+        new Achievement(
+          a.name,
+          a.description,
+          a.id,
+          a.target,
+          a.property,
+          false,
+          a.group,
+          a.isCompleted ?? false
+        )
       );
     }
 
@@ -127,11 +145,15 @@ export class AchievementService {
   }
 
   completeAchievement(achievementName: string) {
+    const ach = this.achievements.find(a => a.name === achievementName);
+    if (!ach || ach.isCompleted) return;
+    ach.isCompleted = true;
     this.unlockAchievement(achievementName);
     this.showAchievement(achievementName);
   }
 
   getAchievementProgress(achievement: Achievement): number {
+    if (achievement.isCompleted) return 100;
     const target =
       this.gameService.game()[achievement.property as keyof Game];
     if (!(typeof target === 'number')) {
@@ -143,7 +165,7 @@ export class AchievementService {
 
   checkAchievements() {
     this.achievements.forEach((achievement) => {
-      if (GameUtils.IsUnlockedAchievement(this.gameService.game(), achievement.name)) {
+      if (achievement.isCompleted) {
         return;
       }
       this.compareProgress(achievement);
@@ -151,42 +173,47 @@ export class AchievementService {
   }
 
   checkAchievementsByWord(word: string) {
+    const bestWordAch = this.achievements.find(a => a.name === 'Best Word');
     if (
       word === 'Jack-go-to-bed-at-noon' &&
-      !GameUtils.IsUnlockedAchievement(this.gameService.game(), 'Best Word')
+      bestWordAch && !bestWordAch.isCompleted
     ) {
       this.completeAchievement('Best Word');
       this.showAchievement('Best Word');
     }
 
+    const tenLetterAch = this.achievements.find(a => a.name === '10-letter Word');
     if (
       word.length == 10 &&
-      !GameUtils.IsUnlockedAchievement(this.gameService.game(), '10-letter Word')
+      tenLetterAch && !tenLetterAch.isCompleted
     ) {
       this.completeAchievement('10-letter Word');
     }
 
     const consConsRegex = /[bcdfghjklmnpqrstvwxyz]{5}/i;
 
+    const consonantAch = this.achievements.find(a => a.name === 'Consonant Collector');
     if (
       consConsRegex.test(word) &&
-      !GameUtils.IsUnlockedAchievement(this.gameService.game(), 'Consonant Collector')
+      consonantAch && !consonantAch.isCompleted
     ) {
       this.completeAchievement('Consonant Collector');
     }
 
     const consVowelRegex = /[aeiou]{4}/i;
 
+    const vowelVoyagerAch = this.achievements.find(a => a.name === 'Vowel Voyager');
     if (
       consVowelRegex.test(word) &&
-      !GameUtils.IsUnlockedAchievement(this.gameService.game(), 'Vowel Voyager')
+      vowelVoyagerAch && !vowelVoyagerAch.isCompleted
     ) {
       this.completeAchievement('Vowel Voyager');
     }
 
+    const palindromeAch = this.achievements.find(a => a.name === 'Palindrome Searcher');
     if (
       word === word.split('').reverse().join('') &&
-      !GameUtils.IsUnlockedAchievement(this.gameService.game(), 'Palindrome Searcher')
+      palindromeAch && !palindromeAch.isCompleted
     ) {
       this.completeAchievement('Palindrome Searcher');
     }
@@ -220,4 +247,5 @@ interface AchievementJson {
   target: number;
   property: Achievement['property'];
   group?: string;
+  isCompleted?: boolean;
 }

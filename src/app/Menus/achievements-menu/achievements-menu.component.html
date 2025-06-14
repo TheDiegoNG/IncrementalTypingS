@@ -20,7 +20,7 @@
           <mat-card-title>{{ achievement.name }}</mat-card-title>
           <mat-card-subtitle>{{ achievement.description }}</mat-card-subtitle>
           <div class="achievement-individual-status">
-            {{ getAchievementProgress(achievement) === 100 ? "Unlocked" : "Locked" }}
+            {{ achievement.isCompleted ? "Unlocked" : "Locked" }}
           </div>
         </div>
       } @else {

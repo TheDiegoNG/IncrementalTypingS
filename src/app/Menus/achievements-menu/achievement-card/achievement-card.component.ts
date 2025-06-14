@@ -19,7 +19,7 @@ export class AchievementGroupCardComponent {
   @Input() currentValue!: number;
 
   get unlockedCount(): number {
-    return this.achievements.filter(a => this.achievementService.getAchievementProgress(a) >= 100).length;
+    return this.achievements.filter(a => a.isCompleted).length;
   }
 
   get totalCount(): number {
@@ -28,14 +28,14 @@ export class AchievementGroupCardComponent {
 
   get lastUnlockedAchievement(): Achievement | null {
     const unlocked = this.achievements
-      .filter(a => this.achievementService.getAchievementProgress(a) >= 100)
+      .filter(a => a.isCompleted)
       .sort((a, b) => b.target - a.target);
     return unlocked[0] ?? null;
   }
 
   get nextAchievement(): Achievement | null {
     const locked = this.achievements
-      .filter(a => !(this.achievementService.getAchievementProgress(a) >= 100))
+      .filter(a => !a.isCompleted)
       .sort((a, b) => a.target - b.target);
     return locked[0] ?? null;
   }
@@ -45,12 +45,5 @@ export class AchievementGroupCardComponent {
     if (!next) return 100;
     const percent = (this.currentValue / next.target) * 100;
     return Math.min(percent, 100);
-  }
-
-  getAchievementProgress(achievement: Achievement): number {
-    if(this.gameService.game().achievements.some(x => x.id == achievement.id)){
-      return 100;
-    }
-    return this.achievementService.getAchievementProgress(achievement);
   }
 }

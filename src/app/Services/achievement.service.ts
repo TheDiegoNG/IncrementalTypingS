@@ -16,6 +16,7 @@ export class AchievementService {
 
   constructor() {
     this.loadAchievements();
+    this.loadBookAchievements();
   }
 
   private async loadAchievements() {
@@ -32,6 +33,18 @@ export class AchievementService {
     this.intervalId = setInterval(() => {
       this.checkAchievements();
     }, 100);
+  }
+
+  private async loadBookAchievements() {
+    const response = await fetch('/books_achievements.json');
+    const list: AchievementJson[] = await response.json();
+    for (const a of list) {
+      this.createAchievement(
+        new Achievement(a.name, a.description, a.id, a.target, a.property, false, a.group)
+      );
+    }
+
+    console.log("Book Achievements: ", list)
   }
 
   ngOnDestroy() {

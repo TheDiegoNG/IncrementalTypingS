@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 import { TimerService } from '../../Services/timer.service';
 import { LanguageService } from '../../Services/language.service';
 import { SaveService } from '../../Services/save.service';
+import { AchievementService } from '../../Services/achievement.service';
 
 @Component({
   selector: 'app-wordbox',
@@ -38,6 +39,7 @@ export class WordboxComponent {
   timerService = inject(TimerService)
   languageService = inject(LanguageService);
   saveService = inject(SaveService);
+  achievementService = inject(AchievementService)
   // messageService = inject(MessageService);
   // challengeService = inject(ChallengesService);
   startTime = Date.now();
@@ -143,6 +145,7 @@ export class WordboxComponent {
         wordCounterPerfection: ++game.wordCounterPerfection,
         letterCounterPerfection: 0
       }));
+      this.achievementService.revealAchievementGroup("Word Counter Perfection")
     } else {
       this.gameService.game.update((game) => ({
         ...game,

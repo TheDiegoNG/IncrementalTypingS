@@ -1,0 +1,1162 @@
+[
+  {
+    "name": "The Sorcerer\u2019s Stone",
+    "description": "Write 77325 words",
+    "id": 61,
+    "target": 77325,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Chamber of Secrets",
+    "description": "Write 84799 words",
+    "id": 62,
+    "target": 84799,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Prisoner of Azkaban",
+    "description": "Write 106821 words",
+    "id": 63,
+    "target": 106821,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Goblet of Fire",
+    "description": "Write 190858 words",
+    "id": 64,
+    "target": 190858,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Order of the Phoenix",
+    "description": "Write 257154 words",
+    "id": 65,
+    "target": 257154,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Half-Blood Prince",
+    "description": "Write 169441 words",
+    "id": 66,
+    "target": 169441,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Deathly Hallows",
+    "description": "Write 198227 words",
+    "id": 67,
+    "target": 198227,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Hobbit",
+    "description": "Write 95022 words",
+    "id": 68,
+    "target": 95022,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Fellowship of the Ring",
+    "description": "Write 177227 words",
+    "id": 69,
+    "target": 177227,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Two Towers",
+    "description": "Write 143436 words",
+    "id": 70,
+    "target": 143436,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Return of the King",
+    "description": "Write 134462 words",
+    "id": 71,
+    "target": 134462,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Hunger Games",
+    "description": "Write 99750 words",
+    "id": 72,
+    "target": 99750,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Hunger Games: Catching Fire",
+    "description": "Write 101564 words",
+    "id": 73,
+    "target": 101564,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Hunger Games: Mockingjay",
+    "description": "Write 100269 words",
+    "id": 74,
+    "target": 100269,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Game of Thrones",
+    "description": "Write 292727 words",
+    "id": 75,
+    "target": 292727,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Clash of Kings",
+    "description": "Write 318903 words",
+    "id": 76,
+    "target": 318903,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Storm of Swords",
+    "description": "Write 414604 words",
+    "id": 77,
+    "target": 414604,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Feast for Crows",
+    "description": "Write 295032 words",
+    "id": 78,
+    "target": 295032,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Dance with Dragons",
+    "description": "Write 414788 words",
+    "id": 79,
+    "target": 414788,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Eye of the World",
+    "description": "Write 305902 words",
+    "id": 80,
+    "target": 305902,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Great Hunt",
+    "description": "Write 267078 words",
+    "id": 81,
+    "target": 267078,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Dragon Reborn",
+    "description": "Write 251392 words",
+    "id": 82,
+    "target": 251392,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Shadow Rising",
+    "description": "Write 393823 words",
+    "id": 83,
+    "target": 393823,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Fires of Heaven",
+    "description": "Write 354109 words",
+    "id": 84,
+    "target": 354109,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Lord of Chaos",
+    "description": "Write 389823 words",
+    "id": 85,
+    "target": 389823,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Crown of Swords",
+    "description": "Write 295028 words",
+    "id": 86,
+    "target": 295028,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Path of Daggers",
+    "description": "Write 226687 words",
+    "id": 87,
+    "target": 226687,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Winter\u2019s Heart",
+    "description": "Write 238789 words",
+    "id": 88,
+    "target": 238789,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Crossroads of Twilight",
+    "description": "Write 271632 words",
+    "id": 89,
+    "target": 271632,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Knife of Dreams",
+    "description": "Write 315163 words",
+    "id": 90,
+    "target": 315163,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Gathering Storm",
+    "description": "Write 297502 words",
+    "id": 91,
+    "target": 297502,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Towers of Midnight",
+    "description": "Write 327052 words",
+    "id": 92,
+    "target": 327052,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Memory of Light",
+    "description": "Write 353906 words",
+    "id": 93,
+    "target": 353906,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Twilight",
+    "description": "Write 118975 words",
+    "id": 94,
+    "target": 118975,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "New Moon",
+    "description": "Write 132758 words",
+    "id": 95,
+    "target": 132758,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Eclipse",
+    "description": "Write 148971 words",
+    "id": 96,
+    "target": 148971,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Breaking Dawn",
+    "description": "Write 186542 words",
+    "id": 97,
+    "target": 186542,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Suitable Boy",
+    "description": "Write 591554 words",
+    "id": 98,
+    "target": 591554,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "War and Peace",
+    "description": "Write 587287 words",
+    "id": 99,
+    "target": 587287,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Atlas Shrugged",
+    "description": "Write 561996 words",
+    "id": 100,
+    "target": 561996,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Lord of the Rings",
+    "description": "Write 455125 words",
+    "id": 101,
+    "target": 455125,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Gone with the Wind",
+    "description": "Write 418053 words",
+    "id": 102,
+    "target": 418053,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Lonesome Dove",
+    "description": "Write 365712 words",
+    "id": 103,
+    "target": 365712,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Brothers Karamazov",
+    "description": "Write 364153 words",
+    "id": 104,
+    "target": 364153,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Anna Karenina",
+    "description": "Write 349736 words",
+    "id": 105,
+    "target": 349736,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Middlemarch",
+    "description": "Write 316059 words",
+    "id": 106,
+    "target": 316059,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Fountainhead",
+    "description": "Write 311596 words",
+    "id": 107,
+    "target": 311596,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Cloudsplitter",
+    "description": "Write 260742 words",
+    "id": 108,
+    "target": 260742,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Prayer for Owen Meany",
+    "description": "Write 236061 words",
+    "id": 109,
+    "target": 236061,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "East of Eden",
+    "description": "Write 225395 words",
+    "id": 110,
+    "target": 225395,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Amazing Adventures of Kavelier and Clay",
+    "description": "Write 216020 words",
+    "id": 111,
+    "target": 216020,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Crime and Punishment",
+    "description": "Write 211591 words",
+    "id": 112,
+    "target": 211591,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Midnight\u2019s Children",
+    "description": "Write 208773 words",
+    "id": 113,
+    "target": 208773,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Moby Dick",
+    "description": "Write 206052 words",
+    "id": 114,
+    "target": 206052,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A House for Mr. Biswas",
+    "description": "Write 198901 words",
+    "id": 115,
+    "target": 198901,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Stones from the River",
+    "description": "Write 197517 words",
+    "id": 116,
+    "target": 197517,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Corrections",
+    "description": "Write 196774 words",
+    "id": 117,
+    "target": 196774,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Memoirs of a Geisha",
+    "description": "Write 186418 words",
+    "id": 118,
+    "target": 186418,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Jane Eyre",
+    "description": "Write 183858 words",
+    "id": 119,
+    "target": 183858,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Little Women (Books 1&2)",
+    "description": "Write 183833 words",
+    "id": 120,
+    "target": 183833,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Great Expectations",
+    "description": "Write 183349 words",
+    "id": 121,
+    "target": 183349,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Poisonwood Bible",
+    "description": "Write 177679 words",
+    "id": 122,
+    "target": 177679,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Catch-22",
+    "description": "Write 174269 words",
+    "id": 123,
+    "target": 174269,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Grapes of Wrath",
+    "description": "Write 169481 words",
+    "id": 124,
+    "target": 169481,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "White Teeth",
+    "description": "Write 169389 words",
+    "id": 125,
+    "target": 169389,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Uncle Tom\u2019s Cabin",
+    "description": "Write 166622 words",
+    "id": 126,
+    "target": 166622,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Cold Mountain",
+    "description": "Write 161511 words",
+    "id": 127,
+    "target": 161511,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Kitchen God\u2019s Wife",
+    "description": "Write 159276 words",
+    "id": 128,
+    "target": 159276,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Alias Grace",
+    "description": "Write 157665 words",
+    "id": 129,
+    "target": 157665,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Watership Down",
+    "description": "Write 156154 words",
+    "id": 130,
+    "target": 156154,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Oliver Twist",
+    "description": "Write 155960 words",
+    "id": 131,
+    "target": 155960,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Emma",
+    "description": "Write 155887 words",
+    "id": 132,
+    "target": 155887,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Last of the Mohicans",
+    "description": "Write 145469 words",
+    "id": 133,
+    "target": 145469,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Cold Sassy Tree",
+    "description": "Write 145265 words",
+    "id": 134,
+    "target": 145265,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Tree Grows in Brooklyn",
+    "description": "Write 145092 words",
+    "id": 135,
+    "target": 145092,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "One Hundred Years of Solitude",
+    "description": "Write 144523 words",
+    "id": 136,
+    "target": 144523,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "20000 Leagues Under the Sea",
+    "description": "Write 138138 words",
+    "id": 137,
+    "target": 138138,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Snow Falling on Cedars",
+    "description": "Write 138098 words",
+    "id": 138,
+    "target": 138098,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Moll Flanders",
+    "description": "Write 138087 words",
+    "id": 139,
+    "target": 138087,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Tale of Two Cities",
+    "description": "Write 135420 words",
+    "id": 140,
+    "target": 135420,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Schindler\u2019s List",
+    "description": "Write 134710 words",
+    "id": 141,
+    "target": 134710,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "War Trash",
+    "description": "Write 130460 words",
+    "id": 142,
+    "target": 130460,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Yearling",
+    "description": "Write 128886 words",
+    "id": 143,
+    "target": 128886,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Life on the Mississippi",
+    "description": "Write 127776 words",
+    "id": 144,
+    "target": 127776,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Atonement",
+    "description": "Write 123378 words",
+    "id": 145,
+    "target": 123378,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "My Sisters Keeper",
+    "description": "Write 119529 words",
+    "id": 146,
+    "target": 119529,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Sense and Sensibility",
+    "description": "Write 119394 words",
+    "id": 147,
+    "target": 119394,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Tenth Circle",
+    "description": "Write 114779 words",
+    "id": 148,
+    "target": 114779,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Walden",
+    "description": "Write 114634 words",
+    "id": 149,
+    "target": 114634,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Golden Compass",
+    "description": "Write 112815 words",
+    "id": 150,
+    "target": 112815,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "McTeague",
+    "description": "Write 112737 words",
+    "id": 151,
+    "target": 112737,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Adventures of Huckleberry Finn",
+    "description": "Write 109571 words",
+    "id": 152,
+    "target": 109571,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Wuthering Heights",
+    "description": "Write 107945 words",
+    "id": 153,
+    "target": 107945,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Gullivers Travels",
+    "description": "Write 107349 words",
+    "id": 154,
+    "target": 107349,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Distant Shore",
+    "description": "Write 103090 words",
+    "id": 155,
+    "target": 103090,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Ender\u2019s Game",
+    "description": "Write 100609 words",
+    "id": 156,
+    "target": 100609,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "To Kill A Mockingbird",
+    "description": "Write 100388 words",
+    "id": 157,
+    "target": 100388,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Anne of Green Gables",
+    "description": "Write 97364 words",
+    "id": 158,
+    "target": 97364,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Song of Solomon",
+    "description": "Write 92400 words",
+    "id": 159,
+    "target": 92400,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Joy Luck Club",
+    "description": "Write 91419 words",
+    "id": 160,
+    "target": 91419,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Waiting",
+    "description": "Write 89297 words",
+    "id": 161,
+    "target": 89297,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Nineteen Eighty-Four",
+    "description": "Write 88942 words",
+    "id": 162,
+    "target": 88942,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Persuasion",
+    "description": "Write 87978 words",
+    "id": 163,
+    "target": 87978,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Pere Goriot",
+    "description": "Write 87846 words",
+    "id": 164,
+    "target": 87846,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Unbearable Lightness of Being",
+    "description": "Write 85199 words",
+    "id": 165,
+    "target": 85199,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Gilead",
+    "description": "Write 84845 words",
+    "id": 166,
+    "target": 84845,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Cry, the Beloved Country",
+    "description": "Write 83774 words",
+    "id": 167,
+    "target": 83774,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Anne Frank: The Diary of a Young Girl",
+    "description": "Write 82762 words",
+    "id": 168,
+    "target": 82762,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The English Patient",
+    "description": "Write 82370 words",
+    "id": 169,
+    "target": 82370,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Dark Is Rising",
+    "description": "Write 82143 words",
+    "id": 170,
+    "target": 82143,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Secret Garden",
+    "description": "Write 80398 words",
+    "id": 171,
+    "target": 80398,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Picture of Dorian Gray",
+    "description": "Write 78462 words",
+    "id": 172,
+    "target": 78462,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Catcher in the Rye",
+    "description": "Write 73404 words",
+    "id": 173,
+    "target": 73404,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "White Fang",
+    "description": "Write 72071 words",
+    "id": 174,
+    "target": 72071,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Woman Warrior",
+    "description": "Write 70957 words",
+    "id": 175,
+    "target": 70957,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Adventures of Tom Sawyer",
+    "description": "Write 69066 words",
+    "id": 176,
+    "target": 69066,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Drinking Coffee Elsewhere",
+    "description": "Write 68410 words",
+    "id": 177,
+    "target": 68410,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Sun Also Rises",
+    "description": "Write 67707 words",
+    "id": 178,
+    "target": 67707,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Ironweed",
+    "description": "Write 67606 words",
+    "id": 179,
+    "target": 67606,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Fault in Our Stars",
+    "description": "Write 67203 words",
+    "id": 180,
+    "target": 67203,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Treasure Island",
+    "description": "Write 66950 words",
+    "id": 181,
+    "target": 66950,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Color Purple",
+    "description": "Write 66556 words",
+    "id": 182,
+    "target": 66556,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Martian Chronicles",
+    "description": "Write 64768 words",
+    "id": 183,
+    "target": 64768,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Brave New World",
+    "description": "Write 63766 words",
+    "id": 184,
+    "target": 63766,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Scarlet Letter",
+    "description": "Write 63604 words",
+    "id": 185,
+    "target": 63604,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Mrs. Dalloway",
+    "description": "Write 63422 words",
+    "id": 186,
+    "target": 63422,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "All Quiet on the Western Front",
+    "description": "Write 61922 words",
+    "id": 187,
+    "target": 61922,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Dew Breaker",
+    "description": "Write 60082 words",
+    "id": 188,
+    "target": 60082,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Lord of the Flies",
+    "description": "Write 59900 words",
+    "id": 189,
+    "target": 59900,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Black Beauty",
+    "description": "Write 59635 words",
+    "id": 190,
+    "target": 59635,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Wind in the Willows",
+    "description": "Write 58428 words",
+    "id": 191,
+    "target": 58428,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "A Separate Peace",
+    "description": "Write 56787 words",
+    "id": 192,
+    "target": 56787,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "As I Lay Dying",
+    "description": "Write 56695 words",
+    "id": 193,
+    "target": 56695,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Hours",
+    "description": "Write 54243 words",
+    "id": 194,
+    "target": 54243,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Slaughterhouse-Five",
+    "description": "Write 49459 words",
+    "id": 195,
+    "target": 49459,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Outsiders",
+    "description": "Write 48523 words",
+    "id": 196,
+    "target": 48523,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Red Badge of Courage",
+    "description": "Write 47180 words",
+    "id": 197,
+    "target": 47180,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Great Gatsby",
+    "description": "Write 47094 words",
+    "id": 198,
+    "target": 47094,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Fahrenheit 451",
+    "description": "Write 46118 words",
+    "id": 199,
+    "target": 46118,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Tequila Worm",
+    "description": "Write 42715 words",
+    "id": 200,
+    "target": 42715,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Lion The Witch and the Wardrobe",
+    "description": "Write 36363 words",
+    "id": 201,
+    "target": 36363,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Old Yeller",
+    "description": "Write 35968 words",
+    "id": 202,
+    "target": 35968,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "Charlie and the Chocolate Factory",
+    "description": "Write 30644 words",
+    "id": 203,
+    "target": 30644,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "The Mouse and the Motorcycle",
+    "description": "Write 22416 words",
+    "id": 204,
+    "target": 22416,
+    "property": "wordsAmount",
+    "group": "Books"
+  },
+  {
+    "name": "For sale: baby shoes, never worn.",
+    "description": "Write 6 words",
+    "id": 205,
+    "target": 6,
+    "property": "wordsAmount",
+    "group": "Books"
+  }
+]

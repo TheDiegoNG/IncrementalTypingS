@@ -487,6 +487,7 @@ export class WordsService {
     }));
 
     this.achievementService.revealAchievementGroup('Words Amount');
+    this.achievementService.revealAchievementGroup('Books');
     this.achievementService.revealAchievementGroup('Points');
 
     this.achievementService.checkAchievementsByWord(word);

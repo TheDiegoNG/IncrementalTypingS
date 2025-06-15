@@ -214,14 +214,18 @@ export class UpgradeService {
         points: game.points - multiUpgrade.cost,
       }));
       this.gameService.buyMultiUpgrade(upgradeType);
+      let multi = GameUtils.IsPurchasedPrestigeUpgrade(
+        this.gameService.game(),
+        'PrestigeBetterScaling'
+      )
+        ? 2
+        : 1;
+      
+      const mastShopItem = this.gameService.game().mastShopItems.find(x => x.name === 'Stasis Mark')
+      multi *= Math.pow(1.01, mastShopItem!.level);
       this.gameService.setMultiUpgradeCost(
         upgradeType,
-        GameUtils.IsPurchasedPrestigeUpgrade(
-          this.gameService.game(),
-          'PrestigeBetterScaling'
-        )
-          ? 2
-          : 1
+        multi
       );
       this.timerService.logGameTimer(`Obtained Upgrade: ${multiUpgrade.name}"`);
     }

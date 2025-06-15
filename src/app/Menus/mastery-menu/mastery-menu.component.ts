@@ -1,8 +1,9 @@
 import { Component, computed, inject } from '@angular/core';
-import { Mastery } from '../../Classes/mastery';
+import { Mastery, MastShopItem } from '../../Classes/mastery';
 import { GameService } from '../../Services/game.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
+import { MasteryService } from '../../Services/mastery.service';
 
 @Component({
   selector: 'app-mastery-menu',
@@ -12,17 +13,18 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class MasteryMenuComponent {
   gameService = inject(GameService)
+  masteryService = inject(MasteryService)
   masteries = computed(() => this.gameService.game().masteryLevels);
-  mastShopCards = [
-    {name: "MastTest1", level: 0, costToLevelUp: 100, amount: 59},
-    {name: "MastTest2", level: 0, costToLevelUp: 100, amount: 59},
-    {name: "MastTest3", level: 0, costToLevelUp: 100, amount: 59},
-    {name: "MastTest4", level: 0, costToLevelUp: 100, amount: 59}
-  ]
+
   constructor() {
   }
 
     getTotalMasteryLevels() {
       return this.masteries().reduce((sum, mast) => sum + mast.level, 0);
     }
+
+    getMastShopLevel(item: MastShopItem) {
+      this.masteryService.getMastShopLevel(item, 1)
+    }
+    
 }

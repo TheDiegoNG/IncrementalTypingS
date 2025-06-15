@@ -58,6 +58,29 @@ export class Upgrade {
 
 export class MultiUpgrade extends Upgrade {
   count: number = 0;
+  amountBought: number = 0;
+  multiBonus: number = 0;
+
+  constructor(
+    upgradeName: string,
+    upgradeDesc: string,
+    upgradeCost: number,
+    upgradeId: eIdUpgrade,
+    branch:
+      | 'Starter'
+      | 'Explorer'
+      | 'Master'
+      | 'GrandMaster'
+      | 'Mighty'
+      | 'Score'
+      | 'Multi'
+      | 'Passive'
+      | 'Prestige',
+    multiBonus: number
+  ) {
+    super(upgradeName, upgradeDesc, upgradeCost, upgradeId, branch);
+    this.multiBonus = multiBonus;
+  }
 }
 
 export type eIdUpgrade =

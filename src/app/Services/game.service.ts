@@ -183,7 +183,9 @@ export class GameService {
 
   updatePrestige() {
     const game = this.game();
-    game.prestigePoints = Math.round(Math.cbrt(game.points));
+    const mastShopPres = game.mastShopItems.find(x => x.name === 'Ascendant Core')!;
+    const exp = (1/3) + 0.57 * (1 - Math.exp(-0.00005 * mastShopPres.level));
+    game.prestigePoints = Math.round(Math.pow(game.points, exp));
     game.prestigeCount++;
     game.points = 0;
     game.upgrades = [];
@@ -254,6 +256,7 @@ export class GameService {
   buyMultiUpgrade(id: eIdUpgrade) {
     const game = this.game();
     const upgrade = game.multiUpgrades.find((x) => x.id == id);
+    upgrade!.amountBought++;
     upgrade!.count++;
     this.game.set({...game});
   }
@@ -262,8 +265,8 @@ export class GameService {
     const game = this.game();
     const upgrade = game.multiUpgrades.find((x) => x.id == id);
     upgrade!.cost *=
-      ((upgrade!.count + 1) / bonus) **
-      Math.log10((upgrade!.count + 1) / bonus);
+      ((upgrade!.amountBought + 1) / bonus) **
+      Math.log10(((upgrade!.amountBought + 1) / bonus) + 1);
     this.game.set({...game});
   }
 
@@ -432,6 +435,7 @@ export class GameService {
         mastery.amount -= totalCost;
         mastery.level += levelsGained;
         mastery.costToLevelUp = baseCost * Math.pow(2, levelsGained);
+        game.mastLevelAmount += levelsGained;
       }
       return ({...game })
     })

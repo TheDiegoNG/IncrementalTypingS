@@ -6,7 +6,7 @@
       (click)="AddMultiUpgrade(multiUpgrade.id)"
     >
       <p class="multiUpgradeName">{{ multiUpgrade.name }}</p>
-      <p class="multiUpgradeDesc">{{ multiUpgrade.description }}</p>
+      <p class="multiUpgradeDesc">{{ multiUpgrade.description.replace("[bonus]", multiUpgrade.multiBonus.toString()) }}</p>
       <p>{{ multiUpgrade.cost | exponentialNumber }}</p>
     </div>
     }

@@ -11,7 +11,11 @@ export class PrestigeMenuComponent {
   gameService = inject(GameService)
   prestigeService = inject(PrestigeService)
 
-  prestigePointsToGet = computed(() => Math.round(Math.cbrt(this.gameService.game().points)));
+  prestigePointsToGet = computed(() => {
+    const mastShopPres = this.gameService.game().mastShopItems.find(x => x.name === 'Ascendant Core')!;
+    const exp = (1/3) + 0.57 * (1 - Math.exp(-0.00005 * mastShopPres.level));
+    return Math.round(Math.pow(this.gameService.game().points, exp));
+  });
 
   constructor(
     private renderer: Renderer2

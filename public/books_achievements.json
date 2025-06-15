@@ -1,6 +1,6 @@
 [
   {
-    "name": "The Sorcerer’s Stone",
+    "name": "The Sorcerer's Stone",
     "description": "Write 77325 words",
     "id": 61,
     "target": 77325,
@@ -603,7 +603,7 @@
     "isCompleted": false
   },
   {
-    "name": "The Kitchen God’s Wife",
+    "name": "The Kitchen God's Wife",
     "description": "Write 159276 words",
     "id": 128,
     "target": 159276,
@@ -1300,6 +1300,213 @@
     "description": "Write 6 words",
     "id": 205,
     "target": 6,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Metamorphosis",
+    "description": "Write 11500 words",
+    "id": 206,
+    "target": 11500,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Death in Venice",
+    "description": "Write 14000 words",
+    "id": 207,
+    "target": 14000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Strange Case of Dr Jekyll and Mr Hyde",
+    "description": "Write 13500 words",
+    "id": 208,
+    "target": 13500,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Spectacles",
+    "description": "Write 9200 words",
+    "id": 209,
+    "target": 9200,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Little Prince",
+    "description": "Write 16500 words",
+    "id": 210,
+    "target": 16500,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Of Mice and Men",
+    "description": "Write 29550 words",
+    "id": 211,
+    "target": 29550,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Animal Farm",
+    "description": "Write 36000 words",
+    "id": 212,
+    "target": 36000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Sense of an Ending",
+    "description": "Write 40750 words",
+    "id": 213,
+    "target": 40750,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Seize the Day",
+    "description": "Write 36000 words",
+    "id": 214,
+    "target": 36000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Old Man and the Sea",
+    "description": "Write 28000 words",
+    "id": 215,
+    "target": 28000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Death of Ivan Ilyich",
+    "description": "Write 32000 words",
+    "id": 216,
+    "target": 32000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Train Dreams",
+    "description": "Write 29000 words",
+    "id": 217,
+    "target": 29000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The House on Mango Street",
+    "description": "Write 40000 words",
+    "id": 218,
+    "target": 40000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "A Haunted House",
+    "description": "Write 700 words",
+    "id": 219,
+    "target": 700,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "One of These Days",
+    "description": "Write 1000 words",
+    "id": 220,
+    "target": 1000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Why Don’t you Dance",
+    "description": "Write 1600 words",
+    "id": 221,
+    "target": 1600,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "Hearts and Minds",
+    "description": "Write 2000 words",
+    "id": 222,
+    "target": 2000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Tell-Tale Heart",
+    "description": "Write 2000 words",
+    "id": 223,
+    "target": 2000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "A Child’s Christmas in Wales",
+    "description": "Write 3000 words",
+    "id": 224,
+    "target": 3000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "A Sound of Thunder",
+    "description": "Write 4300 words",
+    "id": 225,
+    "target": 4300,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Edge of the Shoal",
+    "description": "Write 6000 words",
+    "id": 226,
+    "target": 6000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "The Snows of Kilimanjaro",
+    "description": "Write 11000 words",
+    "id": 227,
+    "target": 11000,
+    "property": "wordsAmount",
+    "group": "Books",
+    "isCompleted": false
+  },
+  {
+    "name": "To All Their Dues",
+    "description": "Write 11000 words",
+    "id": 228,
+    "target": 11000,
     "property": "wordsAmount",
     "group": "Books",
     "isCompleted": false

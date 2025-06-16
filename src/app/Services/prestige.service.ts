@@ -4,6 +4,7 @@ import { GameUtils } from '../Utils/gameUtils';
 import { UpgradeService } from './upgrade.service';
 import { TimerService } from './timer.service';
 import { AchievementService } from './achievement.service';
+import { PassiveService } from './passive.service';
 
 @Injectable({
   providedIn: 'root',
@@ -13,20 +14,17 @@ export class PrestigeService {
   upgradeService = inject(UpgradeService)
   timerService = inject(TimerService)
   achievementService = inject(AchievementService) 
+  passiveService = inject(PassiveService)
   constructor(
   ) {}
 
   prestigeStats() {
-    let maintainsPassive =
-    GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), "PrestigeBringEnhancer");
     this.timerService.logGameTimer("Prestige");
-    this.gameService.updatePrestige();
+    this.gameService.updatePrestige(this.upgradeService);
     this.achievementService.revealAchievementGroup("Prestige Count")
     this.achievementService.revealAchievementGroup("Prestige Points")
-    const prestigeBringEnhancer = this.upgradeService.prestigeUpgrades.find(x => x.id === "PrestigeBringEnhancer")!;
     // const challengeYourself = this.upgradeService.getBasicUpgrades().find(x => x.id === "ChallengeYourself")!;
     //CHECK
-    if (maintainsPassive) this.gameService.addUpgrade(prestigeBringEnhancer);
     // this.gameService.addUpgrade(challengeYourself)
   }
 }

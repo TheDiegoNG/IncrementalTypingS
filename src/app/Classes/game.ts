@@ -58,6 +58,7 @@ export class Game {
     ),
   ];
 
+  //Achievements
   achievements: Achievement[] = [];
   
   //Passive

@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { HOST_TAG_NAME, inject, Injectable, signal } from '@angular/core';
 import { Achievement } from '../Classes/achievement';
 import { Game } from '../Classes/game';
 import { GameUtils } from '../Utils/gameUtils';
@@ -6,6 +6,8 @@ import { MasteryTier } from '../Classes/mastery';
 import { eIdUpgrade, MultiUpgrade, Upgrade } from '../Classes/upgrade';
 import { Generator } from '../Classes/generator';
 import { ChallengeType } from '../Classes/challenge';
+import { UpgradesMenuComponent } from '../Menus/upgrades-menu/upgrades-menu.component';
+import { UpgradeService } from './upgrade.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,13 +17,11 @@ export class GameService {
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 
-  constructor() {
-  }
+  constructor() {}
 
   loadGame(game: Game) {
-    this.game.set(game)
+    this.game.set(game);
   }
-
 
   loadChallengeGame() {
     this.game.set(GameUtils.deepCopy(this.challengeGame()));
@@ -131,7 +131,7 @@ export class GameService {
   addGenerator(generator: Generator) {
     const game = this.game();
     game.passiveGenerators.push(generator);
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   buyGenerator(id: number) {
@@ -142,14 +142,14 @@ export class GameService {
     generator!.cost =
       generator!.cost *
       (generator!.amountBought + 1) ** Math.log10(generator!.amountBought + 1);
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   removeGenerators(id: number, cost: number) {
     const game = this.game();
     const generator = game.passiveGenerators.find((x) => x.id == id)!;
     generator.amountGained -= cost;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   addGainedGenerators(id: number) {
@@ -157,7 +157,7 @@ export class GameService {
     const generatorGained = game.passiveGenerators.find((x) => x.id == id - 1);
     const generatorGainer = game.passiveGenerators.find((x) => x.id == id);
     generatorGained!.amountGained += generatorGainer!.amountGained;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   addGainedGeneratorsBoosted(id: number) {
@@ -170,7 +170,7 @@ export class GameService {
         (acc, val) => acc + val.amountBought * val.synergyValue,
         0
       );
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   // //Prestige
@@ -181,36 +181,80 @@ export class GameService {
   //   this.game.next(game);
   // }
 
-  updatePrestige() {
+  updatePrestige(upgradeService: UpgradeService) {
     const game = this.game();
-    const mastShopPres = game.mastShopItems.find(x => x.name === 'Ascendant Core')!;
-    const exp = (1/3) + 0.57 * (1 - Math.exp(-0.00005 * mastShopPres.level));
+    //Prestige
+    const mastShopPres = game.mastShopItems.find(
+      (x) => x.name === 'Ascendant Core'
+    )!;
+    const exp = 1 / 3 + 0.57 * (1 - Math.exp(-0.00005 * mastShopPres.level));
     game.prestigePoints = Math.round(Math.pow(game.points, exp));
     game.prestigeCount++;
+
+    //Points
     game.points = 0;
-    game.upgrades = [];
+    game.bonusValues = {};
+    game.bonusSumsValues = {};
+
+    //WordBasics
     game.maxLength = 4;
-    game.bestWord = '';
+
+    //Upgrades
+    game.upgrades = [];
+    let maintainsPassive = GameUtils.IsPurchasedPrestigeUpgrade(
+      this.game(),
+      'KeepPas'
+    );
+    if (maintainsPassive) {
+      this.addUpgrade(
+        upgradeService.starterUpgrades.find((x) => x.id === 'PaE')!
+      );
+    }
     const MUcosts = [50, 500, 1000, 1000];
     game.multiUpgrades.forEach((multiUpgrade, index) => {
       multiUpgrade.count = 0;
       multiUpgrade.cost = MUcosts[index];
     });
-    game.wordsAmount = 0;
-    game.packs.length = 0;
+
+    //Passive
+    const generatorCosts = [5, 6, 9, 12, 15, 18, 21, 24, 27, 30];
+    const generator = game.passiveGenerators.find((x) => x.id === 1)!;
+    generator.amountGained = 1;
+    generator.amountBought = 0;
+    generator.cost = generatorCosts[0];
+    game.passiveGenerators = [generator];
+    // game.passiveGenerators.forEach((passiveGenerator, index) => {
+    //   passiveGenerator.amountBought = 0;
+    //   passiveGenerator.amountGained = 0;
+    //   passiveGenerator.cost = generatorCosts[index];
+    // });
     game.passiveUpgrades = [];
     game.passiveLength = 4;
     game.passivePoints = 0;
     game.passiveRate = 1000;
-    const generatorCosts = [5, 6, 9, 12, 15, 18, 21, 24, 27, 30];
-    game.passiveGenerators.forEach((passiveGenerator, index) => {
-      passiveGenerator.amountBought = 0;
-      passiveGenerator.amountGained = 0;
-      passiveGenerator.cost = generatorCosts[index];
-    });
+    game.passiveCharges = 0;
+
+    //Cards
     game.cards = [];
+    game.cardsAmount = 0;
     game.cardCost = 0;
-    this.game.set({...game});
+    game.packs = [];
+
+    //Challenges
+    game.challenges = [];
+    game.challengesAmount = 0;
+
+    //Modules
+    game.modulesUnlocked = [];
+    game.mergeAmount = 10;
+    game.mergeCardsCost = 200;
+    game.mergeCount = 0;
+    game.lettersBonus = [1, 2, 3, 4, 5, 8, 10, 20];
+
+    //Market
+    game.marketBonus = [];
+
+    this.game.set({ ...game });
   }
 
   // //Achievement
@@ -224,7 +268,7 @@ export class GameService {
   updateAchievements() {
     const game = this.challengeGame();
     game.achievements = GameUtils.deepCopy(this.game().achievements);
-    this.challengeGame.set({...game});
+    this.challengeGame.set({ ...game });
   }
 
   // //Upgrades
@@ -232,25 +276,25 @@ export class GameService {
   addUpgrade(upgrade: Upgrade) {
     const game = this.game();
     game.upgrades.push(upgrade);
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   addPassiveUpgrade(upgrade: Upgrade) {
     const game = this.game();
     game.passiveUpgrades.push(upgrade);
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   addPrestigeUpgrade(upgrade: Upgrade) {
     const game = this.game();
     game.prestigeUpgrades.push(upgrade);
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   addMultiUpgrade(upgrade: MultiUpgrade) {
     const game = this.game();
     game.multiUpgrades.push(upgrade);
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   buyMultiUpgrade(id: eIdUpgrade) {
@@ -258,7 +302,7 @@ export class GameService {
     const upgrade = game.multiUpgrades.find((x) => x.id == id);
     upgrade!.amountBought++;
     upgrade!.count++;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   setMultiUpgradeCost(id: eIdUpgrade, bonus: number) {
@@ -266,15 +310,16 @@ export class GameService {
     const upgrade = game.multiUpgrades.find((x) => x.id == id);
     upgrade!.cost *=
       ((upgrade!.amountBought + 1) / bonus) **
-      Math.log10(((upgrade!.amountBought + 1) / bonus) + 1);
-    this.game.set({...game});
+      Math.log10((upgrade!.amountBought + 1) / bonus + 1);
+    this.game.set({ ...game });
   }
 
   updateTaxEvasion() {
     const game = this.game();
-    const brokenCards = game.cards.filter((x) => x.type === 'Broken' && !x.description.includes('Halved'));
+    const brokenCards = game.cards.filter(
+      (x) => x.type === 'Broken' && !x.description.includes('Halved')
+    );
     brokenCards.forEach((card) => {
-
       let savedCard = game.cards.find((x) => x === card)!;
       savedCard.bonusAmount = Math.floor(savedCard.bonusAmount / 2);
       switch (savedCard.bonusType) {
@@ -300,7 +345,7 @@ export class GameService {
           break;
       }
     });
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   // //Cards
@@ -321,7 +366,7 @@ export class GameService {
     const game = this.game();
     game.cardCost =
       100000 * 2 ** game.packs.filter((pack) => pack.type === 'Starter').length;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   // addCard(card: Card) {
@@ -361,7 +406,7 @@ export class GameService {
   updateChallengeState(state: boolean, challengeType: ChallengeType) {
     const game = this.game();
     game.challenges.find((x) => x.type == challengeType)!.onChallenge = state;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   // resetLetterCounter() {
@@ -374,13 +419,13 @@ export class GameService {
     const game = this.activeGame();
     game.challenges.find((x) => x.type == challengeType)!.amount++;
     game.challengesAmount++;
-    this.activeGame.set({...game});
+    this.activeGame.set({ ...game });
   }
 
   updateChallenges() {
     const game = this.challengeGame();
     game.challenges = GameUtils.deepCopy(this.game().challenges);
-    this.challengeGame.set({...game});
+    this.challengeGame.set({ ...game });
   }
 
   // //Modules
@@ -406,7 +451,7 @@ export class GameService {
   unlockModule(index: number) {
     const game = this.game();
     game.modulesUnlocked[index] = true;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   addSynergyValue(generatorNumber: number) {
@@ -416,7 +461,7 @@ export class GameService {
     )!;
     generator.synergyValue++;
     generator.synergyCost = generator.synergyCost * 2 ** generator.synergyValue;
-    this.game.set({...game});
+    this.game.set({ ...game });
   }
 
   // //Mastery
@@ -426,19 +471,18 @@ export class GameService {
       const mastery = game.masteryLevels.find((x) => x.tier === masteryTier)!;
       const baseCost = mastery.costToLevelUp;
       mastery.amount = Number((mastery.amount + amount).toFixed(2));
-      console.log('Updating mastery: ', mastery, baseCost, amount)
+      console.log('Updating mastery: ', mastery, baseCost, amount);
       const levelsGained = Math.floor(Math.log2(mastery.amount / baseCost + 1));
       if (levelsGained > 0) {
         // Nueva cantidad consumida en total
         const totalCost = baseCost * (Math.pow(2, levelsGained) - 1);
-    
+
         mastery.amount -= totalCost;
         mastery.level += levelsGained;
         mastery.costToLevelUp = baseCost * Math.pow(2, levelsGained);
         game.mastLevelAmount += levelsGained;
       }
-      return ({...game })
-    })
+      return { ...game };
+    });
   }
 }
-

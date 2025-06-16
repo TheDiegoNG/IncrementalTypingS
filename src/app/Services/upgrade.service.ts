@@ -379,6 +379,8 @@ export class UpgradeService {
         return this.getMightyUpgrade(upgradeId);
       case 'Passive':
         return this.getPassiveUpgrade(upgradeId);
+      case 'Prestige':
+          return this.getPrestigeUpgrade(upgradeId);
       default:
         throw new Error('Unknown upgrade branch: ' + branch);
     }

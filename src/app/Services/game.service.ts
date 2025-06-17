@@ -130,7 +130,7 @@ export class GameService {
 
   addGenerator(generator: Generator) {
     const game = this.game();
-    game.passiveGenerators.push(generator);
+    game.passiveGenerators.push(({...generator}));
     this.game.set({ ...game });
   }
 
@@ -199,33 +199,17 @@ export class GameService {
     //WordBasics
     game.maxLength = 4;
 
-    //Upgrades
-    game.upgrades = [];
-    let maintainsPassive = GameUtils.IsPurchasedPrestigeUpgrade(
-      this.game(),
-      'KeepPas'
-    );
-    if (maintainsPassive) {
-      this.addUpgrade(
-        upgradeService.starterUpgrades.find((x) => x.id === 'PaE')!
-      );
-    }
-    const MUcosts = [50, 500, 1000, 1000];
-    game.multiUpgrades.forEach((multiUpgrade, index) => {
-      multiUpgrade.count = 0;
-      multiUpgrade.amountBought = 0;
-      multiUpgrade.cost = MUcosts[index];
-    });
-
     //Passive
     const generatorCosts = [5, 6, 9, 12, 15, 18, 21, 24, 27, 30];
-    if(GameUtils.IsPurchasedUpgrade(game, "PaE")) {
-      const generator = game.passiveGenerators.find((x) => x.id === 1)!;
-      console.log("Generators:", game.passiveGenerators)
-      generator.amountGained = 1;
+    if (GameUtils.IsPurchasedUpgrade(game, 'PaE')) {
+      const generator = game.passiveGenerators.find((x) => x.name === "Portable Generator")!;
+      console.log('Generators:', game.passiveGenerators, "Gen chosen: ", generator);
+      generator.amountGained = 0;
       generator.amountBought = 0;
       generator.cost = generatorCosts[0];
+      console.log("Generator after modification: ", generator)
       game.passiveGenerators = [generator];
+      console.log("Final PassGen in Game: ", game.passiveGenerators)
     }
     // game.passiveGenerators.forEach((passiveGenerator, index) => {
     //   passiveGenerator.amountBought = 0;
@@ -237,6 +221,25 @@ export class GameService {
     game.passivePoints = 0;
     game.passiveRate = 1000;
     game.passiveCharges = 0;
+
+    //Upgrades
+    game.upgrades = [];
+    let maintainsPassive = GameUtils.IsPurchasedPrestigeUpgrade(
+      this.game(),
+      'KeepPas'
+    );
+    if (maintainsPassive) {
+      this.addUpgrade(
+        upgradeService.starterUpgrades.find((x) => x.id === 'PaE')!
+      );
+      this.buyGenerator(1);
+    }
+    const MUcosts = [50, 500, 1000, 1000];
+    game.multiUpgrades.forEach((multiUpgrade, index) => {
+      multiUpgrade.count = 0;
+      multiUpgrade.amountBought = 0;
+      multiUpgrade.cost = MUcosts[index];
+    });
 
     //Cards
     game.cards = [];

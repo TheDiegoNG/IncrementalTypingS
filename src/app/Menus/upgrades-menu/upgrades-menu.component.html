@@ -6,7 +6,9 @@
         @if (this.gameService.game().passivePoints > 0) {
         <p-tab value="1">Passive</p-tab>
         }
+        @if (this.gameService.game().prestigePoints > 0) {
         <p-tab value="2">Prestige</p-tab>
+        }
       </p-tablist>
       <p-tabpanels>
         <p-tabpanel value="0">

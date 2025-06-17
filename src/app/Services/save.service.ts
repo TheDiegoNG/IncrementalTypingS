@@ -22,6 +22,9 @@ export class SaveService {
 
   async loadGame(game: string) {
     const gameData = JSON.parse(game) as Game;
+    gameData.multiUpgrades.forEach((muUpg) => {
+      muUpg.amountBought = 0;
+    })
     this.gameService.loadGame(gameData);
   }
 

@@ -1383,7 +1383,7 @@
   {
     "name": "Silent Legacy",
     "description": "Your passive efforts become a hidden legacy, persisting across time. Even in new beginnings, their silent pulse remains, steady and unbroken.",
-    "cost": 0,
+    "cost": 100,
     "id": "KeepPas",
     "branch": "Prestige",
     "parents": [
@@ -2100,7 +2100,7 @@
   {
     "name": "Tides of Cost",
     "description": "The currents of cost yield to your command. Each purchase now flows more smoothly, scaling in your favor.",
-    "cost": 0,
+    "cost": 50,
     "id": "MuScal+",
     "branch": "Prestige",
     "parents": [

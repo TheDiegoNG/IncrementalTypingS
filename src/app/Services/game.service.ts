@@ -213,16 +213,20 @@ export class GameService {
     const MUcosts = [50, 500, 1000, 1000];
     game.multiUpgrades.forEach((multiUpgrade, index) => {
       multiUpgrade.count = 0;
+      multiUpgrade.amountBought = 0;
       multiUpgrade.cost = MUcosts[index];
     });
 
     //Passive
     const generatorCosts = [5, 6, 9, 12, 15, 18, 21, 24, 27, 30];
-    const generator = game.passiveGenerators.find((x) => x.id === 1)!;
-    generator.amountGained = 1;
-    generator.amountBought = 0;
-    generator.cost = generatorCosts[0];
-    game.passiveGenerators = [generator];
+    if(GameUtils.IsPurchasedUpgrade(game, "PaE")) {
+      const generator = game.passiveGenerators.find((x) => x.id === 1)!;
+      console.log("Generators:", game.passiveGenerators)
+      generator.amountGained = 1;
+      generator.amountBought = 0;
+      generator.cost = generatorCosts[0];
+      game.passiveGenerators = [generator];
+    }
     // game.passiveGenerators.forEach((passiveGenerator, index) => {
     //   passiveGenerator.amountBought = 0;
     //   passiveGenerator.amountGained = 0;

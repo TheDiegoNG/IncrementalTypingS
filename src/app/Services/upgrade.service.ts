@@ -216,9 +216,9 @@ export class UpgradeService {
       this.gameService.buyMultiUpgrade(upgradeType);
       let multi = GameUtils.IsPurchasedPrestigeUpgrade(
         this.gameService.game(),
-        'PrestigeBetterScaling'
+        'MuScal+'
       )
-        ? 2
+        ? 1.1
         : 1;
       
       const mastShopItem = this.gameService.game().mastShopItems.find(x => x.name === 'Stasis Mark')

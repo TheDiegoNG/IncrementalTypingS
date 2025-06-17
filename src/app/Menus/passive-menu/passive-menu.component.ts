@@ -55,24 +55,22 @@ export class PassiveMenuComponent {
   }
 
   BuyGeneratorTier() {
-    const generatorToBuy = this.passiveService.generators.find(
-      (x) => x.id == this.gameService.game().passiveGenerators.length + 1
-    );
+    const ownedGenerators = this.gameService.game().passiveGenerators;
+    const nextIndex = ownedGenerators.length;
+
+    // Cannot buy the very first generator with this method
+    if (nextIndex === 0) return;
+
+    const generatorToBuy = this.passiveService.generators[nextIndex];
     if (!generatorToBuy) return;
-    if (
-      this.gameService.game().passiveGenerators.find(
-        (x) => x.id == generatorToBuy.id - 1
-      )!.amountGained >= generatorToBuy.cost
-    ) {
-      this.gameService.removeGenerators(generatorToBuy.id - 1, generatorToBuy.cost);
+
+    const previousGenerator = ownedGenerators[nextIndex - 1];
+    if (!previousGenerator) return;
+
+    if (previousGenerator.amountGained >= generatorToBuy.cost) {
+      this.gameService.removeGenerators(previousGenerator.id, generatorToBuy.cost);
       this.gameService.addGenerator(generatorToBuy);
       this.gameService.buyGenerator(generatorToBuy.id);
-
-      const generator = document.querySelector(
-        `#PassivePointsGenerator${generatorToBuy.id - 1}`
-      );
-      if (generator && generator instanceof HTMLElement)
-        generator.style.display = 'block';
     }
   }
 

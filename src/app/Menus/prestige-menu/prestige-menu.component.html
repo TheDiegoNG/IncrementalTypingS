@@ -5,6 +5,12 @@
     <button class="prestigeButton" (click)="fadeOutBody()">Prestige!</button>
   </div>
   <div class="era-container">
+    <div class="progress-fill" [style.height.%]="prestigeProgress()"></div>
+    @for (marker of eraMarkers(); track marker.name) {
+      <div class="era-marker" [style.bottom.%]="marker.position">
+        <span class="era-label">{{ marker.name }}</span>
+      </div>
+    }
   </div>
 </section>
  

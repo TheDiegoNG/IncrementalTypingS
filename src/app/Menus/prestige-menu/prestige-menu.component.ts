@@ -19,6 +19,27 @@ export class PrestigeMenuComponent {
     return Math.round(Math.pow(this.gameService.game().points, exp));
   });
 
+  prestigeProgress = computed(() => {
+    const points = this.gameService.game().prestigePoints;
+    const eras = this.prestigeService.eras;
+    if (eras.length === 0) return 0;
+    const maxValue = Math.log10(Math.max(eras[eras.length - 1].numberToReach, 1));
+    if (maxValue === 0) return 100;
+    const value = Math.log10(Math.max(points, 1));
+    return Math.min((value / maxValue) * 100, 100);
+  });
+
+  eraMarkers = computed(() => {
+    const eras = this.prestigeService.eras;
+    if (eras.length === 0) return [] as { name: string; position: number }[];
+    const maxValue = Math.log10(Math.max(eras[eras.length - 1].numberToReach, 1));
+    return eras.map(era => {
+      const value = era.numberToReach > 0 ? Math.log10(era.numberToReach) : 0;
+      const position = maxValue === 0 ? 0 : (value / maxValue) * 100;
+      return { name: era.name, position };
+    });
+  });
+
   constructor(
     private renderer: Renderer2
   ) {

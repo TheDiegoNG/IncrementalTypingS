@@ -24,8 +24,8 @@ export class PrestigeService {
     this.createEra(new Era('Ascent', 2, 'x[BONUS] Points', 0));
     this.createEra(new Era('Surge', 1.25, 'x[BONUS] Passive Rate', 1e5));
     this.createEra(new Era('Growth', 2, 'x[BONUS] Bonus Mastery Exp', 1e10));
-    this.createEra(new Era('Ascent', 15, '[BONUS]% Free Gacha Draw', 1e15));
-    this.createEra(new Era('Ascent', 2, 'x[BONUS] Passive Bars', 1e20));
+    this.createEra(new Era('Overflow', 15, '[BONUS]% Free Gacha Draw', 1e15));
+    this.createEra(new Era('Eclipse', 2, 'x[BONUS] Passive Bars', 1e20));
   }
 
   createEra(era: Era) {

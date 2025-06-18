@@ -31,12 +31,14 @@ export class PrestigeMenuComponent {
 
   eraMarkers = computed(() => {
     const eras = this.prestigeService.eras;
-    if (eras.length === 0) return [] as { name: string; position: number }[];
+    if (eras.length === 0) return [] as { name: string; position: number; reached: boolean }[];
     const maxValue = Math.log10(Math.max(eras[eras.length - 1].numberToReach, 1));
+    const reachedEras = this.gameService.game().prestigeEras.map(e => e.name);
     return eras.map(era => {
       const value = era.numberToReach > 0 ? Math.log10(era.numberToReach) : 0;
       const position = maxValue === 0 ? 0 : (value / maxValue) * 100;
-      return { name: era.name, position };
+      const reached = reachedEras.includes(era.name);
+      return { name: era.name, position, reached };
     });
   });
 

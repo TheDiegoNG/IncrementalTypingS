@@ -8,7 +8,7 @@
     <div class="progress-fill" [style.height.%]="prestigeProgress()"></div>
     @for (marker of eraMarkers(); track marker.name) {
       <div class="era-marker" [style.bottom.%]="marker.position">
-        <span class="era-label">{{ marker.name }}</span>
+        <span class="era-label" [class.reached]="marker.reached">{{ marker.name }}</span>
       </div>
     }
   </div>

@@ -5,6 +5,7 @@ import { Generator } from '../Classes/generator';
 import { GameUtils } from '../Utils/gameUtils';
 import { WordsService } from './words.service';
 import { AchievementService } from './achievement.service';
+import { Era } from '../Classes/era';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +14,17 @@ export class PassiveService {
   gameService = inject(GameService);
   activeService = inject(ActiveService);
   wordsService = inject(WordsService);
-  achievementService = inject(AchievementService)
+  achievementService = inject(AchievementService);
+
   generators: Generator[] = [];
+
   intervalId: ReturnType<typeof setInterval> | null = null;
   barUpdateInterval = 20; // ms
   useAnimationFrame = true;
   animationFrameId: number | null = null;
   idleIntervalId: ReturnType<typeof setInterval> | null = null;
   activeIntervalId: ReturnType<typeof setInterval> | null = null;
+
   passiveWord = signal('');
   passiveRate = computed(() => this.gameService.game().passiveRate);
 
@@ -35,6 +39,8 @@ export class PassiveService {
     this.createGenerator(new Generator('Major Generator', 24, 8));
     this.createGenerator(new Generator('Jumbo Generator', 27, 9));
     this.createGenerator(new Generator('Colossal Generator', 30, 10));
+
+
     effect(() => {
       const rate = this.passiveRate();
       if (this.intervalId !== null) {
@@ -58,7 +64,10 @@ export class PassiveService {
   passBarActSpeed = 0.005; // velocidad de movimiento
 
   private startBarUpdates() {
-    if (this.useAnimationFrame && typeof requestAnimationFrame !== 'undefined') {
+    if (
+      this.useAnimationFrame &&
+      typeof requestAnimationFrame !== 'undefined'
+    ) {
       const animate = () => {
         this.updateIdleBar();
         this.updateActiveBar();
@@ -85,7 +94,8 @@ export class PassiveService {
 
   private updateActiveBar() {
     let newPos =
-      this.passBarActPosition() + this.passBarActDirection() * this.passBarActSpeed;
+      this.passBarActPosition() +
+      this.passBarActDirection() * this.passBarActSpeed;
     if (newPos >= 1) {
       newPos = 1;
       this.passBarActDirection.set(-1);
@@ -97,13 +107,15 @@ export class PassiveService {
     }
     this.passBarActPosition.set(newPos);
   }
-  
+
   increaseMultiplier() {
     this.wordsService.barActMultiplier.update((multi) => multi + 0.1); // sube el multiplicador
   }
 
   decreaseMultiplier() {
-    this.wordsService.barActMultiplier.update((multi) => Math.max(1, multi - 0.1)); // baja mínimo a 1
+    this.wordsService.barActMultiplier.update((multi) =>
+      Math.max(1, multi - 0.1)
+    ); // baja mínimo a 1
   }
 
   createGenerator(generator: Generator) {
@@ -120,10 +132,10 @@ export class PassiveService {
     var points = this.getPassivePoints(word);
     points *= portableGenerator.amountGained;
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
-      points *= this.wordsService.barActMultiplier()
+      points *= this.wordsService.barActMultiplier();
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
-      points *= this.wordsService.barIdleMultiplier()
+      points *= this.wordsService.barIdleMultiplier();
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE'))
       this.gameService.game.update((game) => ({
@@ -131,8 +143,7 @@ export class PassiveService {
         passivePoints: game.passivePoints + points,
       }));
 
-      this.achievementService.revealAchievementGroup("Passive Points")
-    
+    this.achievementService.revealAchievementGroup('Passive Points');
   }
   getPassivePoints(passiveWord: string) {
     var totalPoints = 0;
@@ -143,11 +154,26 @@ export class PassiveService {
       .game()
       .cards.filter((x) => x.bonusType === 'PassivePointsAmount')
       .reduce((total, card) => total + card.bonusAmount, 0);
-    if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveLittleBonus'))
+    if (
+      GameUtils.IsPurchasedPassiveUpgrade(
+        this.gameService.game(),
+        'PassiveLittleBonus'
+      )
+    )
       totalPoints += 2;
-    if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveEnhancerEnhancerer'))
+    if (
+      GameUtils.IsPurchasedPassiveUpgrade(
+        this.gameService.game(),
+        'PassiveEnhancerEnhancerer'
+      )
+    )
       totalPoints *= 1.25;
-    if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PassiveDontKnow'))
+    if (
+      GameUtils.IsPurchasedPassiveUpgrade(
+        this.gameService.game(),
+        'PassiveDontKnow'
+      )
+    )
       totalPoints *= 1.5;
     totalPoints *=
       1 +
@@ -178,7 +204,9 @@ export class PassiveService {
       index <= this.gameService.game().passiveGenerators.length;
       index++
     ) {
-      if (GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'SynM')) {
+      if (
+        GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'SynM')
+      ) {
         this.gameService.addGainedGeneratorsBoosted(index);
       } else {
         this.gameService.addGainedGenerators(index);
@@ -187,7 +215,10 @@ export class PassiveService {
   }
 
   collectCharge() {
-    this.passBarIdleProgress.set(0)
-    this.gameService.game.update(game => ({...game, passiveCharges: ++game.passiveCharges}))
+    this.passBarIdleProgress.set(0);
+    this.gameService.game.update((game) => ({
+      ...game,
+      passiveCharges: ++game.passiveCharges,
+    }));
   }
 }

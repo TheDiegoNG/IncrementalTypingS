@@ -1,6 +1,7 @@
 import { Achievement } from './achievement';
 import { Card } from './card';
 import { Challenge } from './challenge';
+import { Era } from './era';
 import { Generator } from './generator';
 import { Mastery, MastShopItem } from './mastery';
 import { Pack } from './pack';
@@ -85,6 +86,7 @@ export class Game {
   prestigePoints: number = 0;
   prestigeCount: number = 0;
   prestigeUpgrades: Upgrade[] = [];
+  prestigeEras: Era[] = [];
 
   //Modules
   modulesUnlocked: boolean[] = [];

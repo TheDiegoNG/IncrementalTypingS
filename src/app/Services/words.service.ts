@@ -391,8 +391,8 @@ export class WordsService {
       GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE') &&
       this.gameService.game().passivePoints > 0
     ) {
-      totalPoints *= Math.log10(this.gameService.game().passivePoints);
-      this.wordBonus += ' x log10([PassivePoints])';
+      totalPoints *= Math.pow(this.gameService.game().passivePoints, (1/7));
+      this.wordBonus += ' x [PassivePoints] ** (1/7)';
       this.updateBonus(
         'PaE',
         Math.log10(this.gameService.game().passivePoints)

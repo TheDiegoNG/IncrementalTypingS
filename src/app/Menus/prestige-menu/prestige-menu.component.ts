@@ -1,11 +1,13 @@
 import { Component, computed, inject, Renderer2 } from '@angular/core';
 import { GameService } from '../../Services/game.service';
 import { PrestigeService } from '../../Services/prestige.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-prestige-menu',
   templateUrl: './prestige-menu.component.html',
   styleUrls: ['./prestige-menu.component.scss'],
+  imports:[MatCardModule]
 })
 export class PrestigeMenuComponent {
   gameService = inject(GameService)

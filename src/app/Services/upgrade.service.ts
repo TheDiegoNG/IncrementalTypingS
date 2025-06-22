@@ -5,6 +5,8 @@ import { PassiveService } from './passive.service';
 import { eIdUpgrade, Upgrade, UnlockType } from '../Classes/upgrade';
 import { TimerService } from './timer.service';
 import { GameUtils } from '../Utils/gameUtils';
+import { CardService } from './card.service';
+import { OverlayService } from './overlay.service';
 
 interface UpgradeJson {
   name: string;
@@ -28,6 +30,8 @@ export class UpgradeService {
   layoutService = inject(LayoutService);
   passiveService = inject(PassiveService);
   timerService = inject(TimerService);
+  cardService = inject(CardService);
+  overlayService = inject(OverlayService);
   starterUpgrades: Upgrade[] = [];
   explorerUpgrades: Upgrade[] = [];
   masterUpgrades: Upgrade[] = [];
@@ -203,6 +207,11 @@ export class UpgradeService {
           maxLength: ++game.maxLength,
         }));
       }
+      if (upgradeType === 'Gacha') {
+        const cards = this.cardService.getPack('Starter');
+        this.gameService.updateCardsCost();
+        this.overlayService.cards.set(cards);
+      }
     }
   }
 
@@ -274,6 +283,11 @@ export class UpgradeService {
           ...game,
           maxLength: ++game.maxLength,
         }));
+      }
+      if (upgradeType === '2ndP') {
+        const cards = this.cardService.getPack('Explorer');
+        this.gameService.updateCardsCost();
+        this.overlayService.cards.set(cards);
       }
     }
   }

@@ -124,9 +124,6 @@ export class WordsService {
   private lastScrSWordTime = 0;
   private scrabbleQueue: number[] = [];
 
-  barActMultiplier = signal(1);
-  barIdleMultiplier = signal(1);
-
   generateWord() {
     let generatedWord: string = '';
     switch (this.languageService.language()) {
@@ -401,8 +398,8 @@ export class WordsService {
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow/cPrep')) {
       this.wordBonus += 'x cbrt([PassiveBarIdleMulti])';
-      totalPoints *= Math.cbrt(this.barIdleMultiplier());
-      this.updateBonus('xSlow/c/Prop', Math.cbrt(this.barIdleMultiplier()));
+      totalPoints *= Math.cbrt(this.gameService.game().passiveBarActMulti);
+      this.updateBonus('xSlow/c/Prop', Math.cbrt(this.gameService.game().passiveBarActMulti));
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xcaAm')) {
       totalPoints *= Math.log(GameUtils.getCardBonus(this.gameService.game()));
@@ -436,16 +433,12 @@ export class WordsService {
       }));
       console.log('LetPo Bonus: ', multi, 'LetPo values: ', this.scrabbleQueue);
     }
-
-    if (
-      GameUtils.IsPurchasedPrestigeUpgrade(
-        this.gameService.game(),
-        'PrestigeFreeMultiplier'
-      )
-    ) {
-      totalPoints *= 2;
-      this.wordBonus += 'x 2 (Prestige Upgrade 1)';
-      this.updateBonus('PrestigeFreeMultiplier', 2);
+    const ascentEra = this.gameService.game().prestigeEras.find(x => x.name === 'Ascent')
+    if (ascentEra)
+    { 
+      totalPoints *= ascentEra.bonus;
+      this.wordBonus += `x ${ascentEra.bonus} (Era 1)`;
+      this.updateBonus('Era', ascentEra.bonus);
       // bonusValues.push(2);
     }
 

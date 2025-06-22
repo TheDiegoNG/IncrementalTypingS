@@ -38,6 +38,10 @@ export class PrestigeService {
     this.achievementService.revealAchievementGroup("Prestige Count")
     this.achievementService.revealAchievementGroup("Prestige Points")
 
+    if(this.passiveService.intervalId) {
+      clearInterval(this.passiveService.intervalId)
+      this.passiveService.startPassInterval(this.gameService.game().passiveRate)
+    }
     this.eras.forEach(era => {
       const eraPlayer = this.gameService.game().prestigeEras.find(x => x.name === era.name);
       if(this.gameService.game().prestigePoints > era.numberToReach && !eraPlayer) {

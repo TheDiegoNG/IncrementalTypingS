@@ -464,6 +464,30 @@
     "isCompleted": false
   },
   {
+    "name": "Nice Multiplier",
+    "description": "Reach x10 PassAct Multiplier",
+    "id": 61,
+    "target": 10,
+    "property": "passiveBarActMulti",
+    "isCompleted": false
+  },
+  {
+    "name": "Cool Multiplier",
+    "description": "Reach x50 PassAct Multiplier",
+    "id": 61,
+    "target": 50,
+    "property": "passiveBarActMulti",
+    "isCompleted": false
+  },
+  {
+    "name": "Epic Multiplier",
+    "description": "Reach x100 PassAct Multiplier. Get a x2 Passive Points bonus!",
+    "id": 61,
+    "target": 100,
+    "property": "passiveBarActMulti",
+    "isCompleted": false
+  },
+  {
     "name": "Consonant Collector",
     "description": "Write a word that contains 5 consecutive consonants",
     "id": 43,

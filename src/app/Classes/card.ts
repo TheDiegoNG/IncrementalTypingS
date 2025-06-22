@@ -1,271 +1,138 @@
 export class Card {
-    name: string;
-    description: string;
-    type: CardType;
-    bonusType: BonusType;
-    bonusAmount: number;
-    id: number;
-  
-    readonly cardMap: Record<CardType, number> = {
-      ['Common']: 1,
-      ['Uncommon']: 2,
-      ['Broken']: 3,
-      ['Rare']: 4,
-      ['Epic']: 5,
-      ['Legendary']: 6,
-      ['Mythical']: 7,
-      ['Celestial']: 8,
-      ['Divine']: 9,
-      ['Ultimate']: 10,
-      ['Infinite']: 11,
-      ['Omnipotent']: 12,
-    };
-  
-    readonly cardProgressionformulaOptions: formulaOptions = {
-      upperbound: 1000,
-      steepness: 0.1,
-      separator: 5,
-      midpoint: 70,
-    };
-  
-    constructor(
-      cardName: string,
-      cardType: CardType,
-      bonusType: BonusType,
-      cardNumber: number
-    ) {
-      this.name = cardName;
-      this.type = cardType;
-      this.bonusType = bonusType;
-      this.id = cardNumber;
-      this.description = this.getDescAmount();
-      this.bonusAmount = this.getBonusAmount();
+  name: string;
+  description: string;
+  type: CardType;
+  bonusType?: BonusType;
+  bonusAmount: number;
+  id: number;
+  isSpecial: boolean;
+
+  readonly cardMap: Record<CardType, number> = {
+    ['Common']: 1,
+    ['Uncommon']: 2,
+    ['Broken']: 3,
+    ['Rare']: 4,
+    ['Epic']: 5,
+    ['Legendary']: 6,
+    ['Mythical']: 7,
+    ['Celestial']: 8,
+    ['Divine']: 9,
+    ['Ultimate']: 10,
+    ['Infinite']: 11,
+    ['Omnipotent']: 12,
+  };
+
+  readonly cardPowerGrowthPerTier = 2.5;
+
+  readonly baseBonusValues: Record<BonusType, number> = {
+    PointsAmount: 1,
+    PointsPercentage: 5,
+    PassivePointsAmount: 3,
+    PassivePointsPercentage: 15,
+    PassivePointsSpeed: 0.5,
+    PassivePointsLength: 0.4
+  };
+
+  constructor(
+    cardName: string,
+    cardType: CardType,
+    id: number,
+    options: { bonusType?: BonusType; isSpecial?: boolean } = {}
+  ) {
+    this.name = cardName;
+    this.type = cardType;
+    this.id = id;
+    this.isSpecial = options.isSpecial ?? false;
+    this.bonusType = options.bonusType;
+
+    this.bonusAmount = this.isSpecial ? 0 : this.getBonusAmount();
+    this.description = this.getDescAmount();
+  }
+
+  private getBonusAmount(): number {
+    if (!this.bonusType || this.isSpecial) return 0;
+
+    if (this.type === 'Broken') {
+      const penalties: Record<BonusType, number> = {
+        PointsAmount: -10,
+        PointsPercentage: -50,
+        PassivePointsAmount: -25,
+        PassivePointsPercentage: -65,
+        PassivePointsSpeed: -10,
+        PassivePointsLength: -1
+      };
+      return penalties[this.bonusType] ?? 0;
     }
-  
-    private getBonusAmount(): number {
-      switch (this.bonusType) {
-        case 'PointsAmount':
-          return this.type === 'Broken'
-            ? -10
-            : Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      )))
-              );
-        case 'PointsPercentage':
-          return this.type === 'Broken'
-            ? -50
-            : Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      )))
-              ) * 5;
-        case 'PassivePointsAmount':
-          return this.type === 'Broken'
-            ? -25
-            : Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      )))
-              ) * 3;
-        case 'PassivePointsPercentage':
-          return this.type === 'Broken'
-            ? -65
-            : Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      )))
-              ) * 15;
-        case 'PassivePointsSpeed':
-          return this.type === 'Broken'
-            ? -10
-            : Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      ))) *
-                  0.5
-              );
-        case 'PassivePointsLength':
-          return this.type === 'Broken'
-            ? -1
-            : Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      ))) *
-                  0.4
-              );
-        default:
-          return 1;
-          break;
-      }
-    }
-  
-    private getDescAmount(): string {
-      switch (this.bonusType) {
-        case 'PointsAmount':
-          return this.type === 'Broken'
-            ? '-10 Points Per Word'
-            : `+${Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      )))
-              )} Points Per Word`;
-        case 'PointsPercentage':
-          return this.type === 'Broken'
-            ? '-50% Points Per Word'
-            : `+${
-                Math.floor(
-                  this.cardProgressionformulaOptions.upperbound *
-                    (1 /
-                      (1 +
-                        Math.exp(
-                          -this.cardProgressionformulaOptions.steepness *
-                            (this.cardMap[this.type] *
-                              this.cardProgressionformulaOptions.separator -
-                              this.cardProgressionformulaOptions.midpoint)
-                        )))
-                ) * 5
-              }% Points Per Word`;
-        case 'PassivePointsAmount':
-          return this.type === 'Broken'
-            ? '-25 Passive Points Per Word'
-            : `+${
-                Math.floor(
-                  this.cardProgressionformulaOptions.upperbound *
-                    (1 /
-                      (1 +
-                        Math.exp(
-                          -this.cardProgressionformulaOptions.steepness *
-                            (this.cardMap[this.type] *
-                              this.cardProgressionformulaOptions.separator -
-                              this.cardProgressionformulaOptions.midpoint)
-                        )))
-                ) * 3
-              } Passive Points Per Word`;
-        case 'PassivePointsPercentage':
-          return this.type === 'Broken'
-            ? '-65% Passive Points Per Word'
-            : `+${
-                Math.floor(
-                  this.cardProgressionformulaOptions.upperbound *
-                    (1 /
-                      (1 +
-                        Math.exp(
-                          -this.cardProgressionformulaOptions.steepness *
-                            (this.cardMap[this.type] *
-                              this.cardProgressionformulaOptions.separator -
-                              this.cardProgressionformulaOptions.midpoint)
-                        )))
-                ) * 15
-              }% Passive Points Per Word`;
-        case 'PassivePointsSpeed':
-          return this.type === 'Broken'
-            ? 'Generate Passive Words -10% Faster'
-            : `Generate Passive Words +${Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      ))) *
-                  0.5
-              )}% Faster`;
-        case 'PassivePointsLength':
-          return this.type === 'Broken'
-            ? '-1 Passive Word Length'
-            : `+${Math.floor(
-                this.cardProgressionformulaOptions.upperbound *
-                  (1 /
-                    (1 +
-                      Math.exp(
-                        -this.cardProgressionformulaOptions.steepness *
-                          (this.cardMap[this.type] *
-                            this.cardProgressionformulaOptions.separator -
-                            this.cardProgressionformulaOptions.midpoint)
-                      ))) *
-                  0.4
-              )} Passive Word Length`;
-              case "Lowercase":
-                return 'All Words are Lowercase'
+
+    const tierLevel = this.cardMap[this.type];
+    const base = this.baseBonusValues[this.bonusType] ?? 1;
+    return Math.floor(base * Math.pow(this.cardPowerGrowthPerTier, tierLevel - 1));
+  }
+
+  private getDescAmount(): string {
+    if (this.isSpecial) {
+      // Acá se pueden agregar más tipos especiales si es necesario
+      switch (this.name) {
+        case 'Lowercase':
+          return 'All Words are Lowercase';
         default:
           return '';
-          break;
       }
     }
+
+    if (!this.bonusType) return '';
+
+    if (this.type === 'Broken') {
+      const brokenDescriptions: Record<BonusType, string> = {
+        PointsAmount: '-10 Points Per Word',
+        PointsPercentage: '-50% Points Per Word',
+        PassivePointsAmount: '-25 Passive Points Per Word',
+        PassivePointsPercentage: '-65% Passive Points Per Word',
+        PassivePointsSpeed: 'Generate Passive Words -10% Faster',
+        PassivePointsLength: '-1 Passive Word Length'
+      };
+      return brokenDescriptions[this.bonusType] ?? '';
+    }
+
+    const amount = this.getBonusAmount();
+
+    switch (this.bonusType) {
+      case 'PointsAmount':
+        return `+${amount} Points Per Word`;
+      case 'PointsPercentage':
+        return `+${amount}% Points Per Word`;
+      case 'PassivePointsAmount':
+        return `+${amount} Passive Points Per Word`;
+      case 'PassivePointsPercentage':
+        return `+${amount}% Passive Points Per Word`;
+      case 'PassivePointsSpeed':
+        return `Generate Passive Words +${amount}% Faster`;
+      case 'PassivePointsLength':
+        return `+${amount} Passive Word Length`;
+      default:
+        return '';
+    }
   }
-  
-  export type BonusType =
-    | 'PointsPercentage'
-    | 'PointsAmount'
-    | 'PassivePointsPercentage'
-    | 'PassivePointsAmount'
-    | 'PassivePointsSpeed'
-    | 'PassivePointsLength'
-    | 'Lowercase';
-  
-  export type CardType =
-    | 'Broken'
-    | 'Common'
-    | 'Uncommon'
-    | 'Rare'
-    | 'Epic'
-    | 'Legendary'
-    | 'Mythical'
-    | 'Celestial'
-    | 'Divine'
-    | 'Ultimate'
-    | 'Infinite'
-    | 'Omnipotent';
-  
-  interface formulaOptions {
-    upperbound: number;
-    steepness: number;
-    separator: number;
-    midpoint: number;
-  }
-  
+}
+
+export type BonusType =
+  | 'PointsPercentage'
+  | 'PointsAmount'
+  | 'PassivePointsPercentage'
+  | 'PassivePointsAmount'
+  | 'PassivePointsSpeed'
+  | 'PassivePointsLength';
+
+export type CardType =
+  | 'Broken'
+  | 'Common'
+  | 'Uncommon'
+  | 'Rare'
+  | 'Epic'
+  | 'Legendary'
+  | 'Mythical'
+  | 'Celestial'
+  | 'Divine'
+  | 'Ultimate'
+  | 'Infinite'
+  | 'Omnipotent';

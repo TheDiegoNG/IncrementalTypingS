@@ -69,6 +69,8 @@ export class Game {
   passivePoints: number = 0;
   passiveRate: number = 1000;
   passiveCharges: number = 0;
+  passiveBarActMulti: number = 1;
+  passiveBarIdleMulti: number = 1;
 
   //Cards
   cards: Card[] = [];

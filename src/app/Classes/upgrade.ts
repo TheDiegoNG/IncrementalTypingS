@@ -14,6 +14,7 @@ export class Upgrade {
     | 'GrandMaster'
     | 'Mighty'
     | 'Score'
+    | 'PassiveScore'
     | 'Multi'
     | 'Passive'
     | 'Prestige';
@@ -32,6 +33,7 @@ export class Upgrade {
       | 'GrandMaster'
       | 'Mighty'
       | 'Score'
+      | 'PassiveScore'
       | 'Multi'
       | 'Passive'
       | 'Prestige',
@@ -73,6 +75,7 @@ export class MultiUpgrade extends Upgrade {
       | 'GrandMaster'
       | 'Mighty'
       | 'Score'
+      | 'PassiveScore'
       | 'Multi'
       | 'Passive'
       | 'Prestige',

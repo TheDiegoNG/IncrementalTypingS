@@ -40,19 +40,31 @@ export class PassiveService {
     this.createGenerator(new Generator('Jumbo Generator', 27, 9));
     this.createGenerator(new Generator('Colossal Generator', 30, 10));
 
-
     effect(() => {
       const rate = this.passiveRate();
       if (this.intervalId !== null) {
         clearInterval(this.intervalId);
       }
-      this.intervalId = setInterval(() => {
-        this.createWord();
-        this.calculatePassiveGenerators();
-      }, rate);
+      this.startPassInterval(rate);
+      
     });
 
+    // setInterval(() => {
+    //   this.gameService.game.update((game) => ({
+    //     ...game,
+    //     passiveBarActMulti: this.wordsService.barActMultiplier(),
+    //     passiveBarIdleMulti: this.wordsService.barIdleMultiplier(),
+    //   }));
+    // }, 1000);
+
     this.startBarUpdates();
+  }
+
+  startPassInterval(rate: number) {
+    this.intervalId = setInterval(() => {
+      this.createWord();
+      this.calculatePassiveGenerators();
+    }, rate);
   }
 
   passBarIdleProgress = signal(1); // de 0 a 1
@@ -62,7 +74,13 @@ export class PassiveService {
   passBarActPosition = signal(0); // posición de la línea en la barra, 0 a 1
   passBarActDirection = signal(1); // dirección: 1 (derecha) o -1 (izquierda)
   passBarActSpeed = 0.005; // velocidad de movimiento
-
+  passBarActZoneWidth = computed(() => {
+    const barEnlargers = this.gameService
+      .game()
+      .passiveUpgrades.filter((x) => x.id.includes('LBarSize'));
+    return 20 * 1.5 ** barEnlargers.length;
+  }); //Ancho de la zona clickeable
+  passBarActCritZoneWidth = signal(10);
   private startBarUpdates() {
     if (
       this.useAnimationFrame &&
@@ -87,8 +105,9 @@ export class PassiveService {
   }
 
   private updateIdleBar() {
+    if(!GameUtils.IsPurchasedUpgrade(this.gameService.game(), "xPass/t")) return;
     let newProgress = this.passBarIdleProgress() + this.passBarIdleSpeed;
-    this.wordsService.barIdleMultiplier.set(newProgress);
+    this.gameService.game.update((game) => ({...game, passiveBarIdleMulti: newProgress}));
     this.passBarIdleProgress.set(newProgress);
   }
 
@@ -108,14 +127,14 @@ export class PassiveService {
     this.passBarActPosition.set(newPos);
   }
 
-  increaseMultiplier() {
-    this.wordsService.barActMultiplier.update((multi) => multi + 0.1); // sube el multiplicador
+  increaseMultiplier(bonus: number) {
+    this.gameService.game.update((game) => ({...game, passiveBarActMulti: game.passiveBarActMulti + bonus})); // sube el multiplicador
   }
 
   decreaseMultiplier() {
-    this.wordsService.barActMultiplier.update((multi) =>
-      Math.max(1, multi - 0.1)
-    ); // baja mínimo a 1
+    this.gameService.game.update((game) => ({...game, passiveBarActMulti: 
+      Math.max(1, game.passiveBarActMulti - 0.1)
+    })); // baja mínimo a 1
   }
 
   createGenerator(generator: Generator) {
@@ -132,10 +151,13 @@ export class PassiveService {
     var points = this.getPassivePoints(word);
     points *= portableGenerator.amountGained;
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
-      points *= this.wordsService.barActMultiplier();
+      points *= this.gameService.game().passiveBarActMulti;
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xSlow')) {
-      points *= this.wordsService.barIdleMultiplier();
+      points *= this.gameService.game().passiveBarIdleMulti;
+    }
+    if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Epic Multiplier")) {
+      points *= 2
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE'))
       this.gameService.game.update((game) => ({
@@ -144,6 +166,7 @@ export class PassiveService {
       }));
 
     this.achievementService.revealAchievementGroup('Passive Points');
+    this.achievementService.revealAchievementGroup('Passive Bar Active Multiplier');
   }
   getPassivePoints(passiveWord: string) {
     var totalPoints = 0;

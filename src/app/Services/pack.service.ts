@@ -11,7 +11,7 @@ export class PackService {
     this.createPack(
       new Pack(
         'Starter',
-        1E5
+        1E9
       )
     );
     this.createPack(

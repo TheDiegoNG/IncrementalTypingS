@@ -10,12 +10,24 @@
   height: 100%;
   background-color: #333;
 }
+
+.bar-crit-zone {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  background-color: #ddd;
+  height: 100%;
+  z-index: 2;
+}
+
 .bar-zone {
   position: absolute;
-  left: 40%;
+  left: 50%;
+  transform: translateX(-50%);
   width: 20%;
   height: 100%;
   background-color: #666; /* zona más clara */
+  z-index: 1;
 }
 .bar-line {
   position: absolute;
@@ -23,6 +35,7 @@
   height: 100%;
   background-color: #fff;
   transition: left 0.02s linear;
+  z-index: 5;
 }
 
 .passive-bar-wrapper {

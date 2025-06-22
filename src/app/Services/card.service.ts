@@ -22,7 +22,7 @@ export class CardService {
     const response = await fetch('/cards.json');
     const list: CardJson[] = await response.json();
     for (const c of list) {
-      this.createCard(new Card(c.name, c.type, c.bonusType, c.id));
+      this.createCard(new Card(c.name, c.type, c.id, {bonusType: c.bonusType}));
     }
   }
 
@@ -181,10 +181,10 @@ export class CardService {
         case 'PassivePointsLength':
           bonusPassiveLength += x.bonusAmount;
           break;
-        case 'Lowercase':
-          extraBonus += '- All Lowercase';
-          break;
         default:
+          if (x.isSpecial && x.name === 'Lowercase') {
+            extraBonus += '- All Lowercase';
+          }
           break;
       }
     });

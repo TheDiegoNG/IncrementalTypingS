@@ -1,10 +1,13 @@
 <div class="passive-bar-wrapper">
     <div (click)="clickZone()" class="passive-bar">
         <div class="bar-background"></div>
-        <div class="bar-zone"></div> <!-- zona clara -->
-        <div class="bar-line" [style.left.%]="passiveService.passBarActPosition() * 100"></div>
+        @if(isCritZoneUnlocked){
+            <div class="bar-crit-zone" [style.width.%]="passiveService.passBarActCritZoneWidth()"></div>
+        }
+        <div class="bar-zone" [style.width.%]="passiveService.passBarActZoneWidth()"></div> <!-- zona clara -->
+        <div class="bar-line" [style.left.%]="passiveService.passBarActPosition() * 100" ></div>
     </div>
     <button (click)="clickZone()">Click the bar!</button>
-    <p>Multiplier: x{{ wordsService.barActMultiplier() | number:'1.1-1' }}</p>
+    <p>Multiplier: x{{ gameService.game().passiveBarActMulti | number:'1.1-1' }}</p>
 </div>
     

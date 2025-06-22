@@ -24,9 +24,8 @@ export class CardsMenuComponent {
   packService = inject(PackService)
   cards: Card[] = [];
 
-  constructor(
-  ) {
-  }
+  constructor() {}
+  
   getPack(packTier: PackTier) {
     const pack = this.packService.packs.find((x) => x.type === packTier)!;
     if (this.gameService.game().points >= pack.cost) {

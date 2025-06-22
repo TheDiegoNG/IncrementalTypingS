@@ -187,7 +187,7 @@
   {
     "name": "Flawless Focus",
     "description": "Perfection sharpens progress. With every word typed flawlessly, your focus is rewarded — building momentum through mastery.",
-    "cost": 1000000,
+    "cost": 5e7,
     "id": "xPrec",
     "branch": "Starter",
     "parents": [
@@ -213,7 +213,7 @@
   {
     "name": "Unlock Gacha",
     "description": "Fortune spins in your favor — or against it. With a roll of fate, you unlock the unpredictable. Risk and reward merge in the great game of chance.",
-    "cost": 100000,
+    "cost": 1e9,
     "id": "Gacha",
     "branch": "Starter",
     "parents": [
@@ -1066,23 +1066,23 @@
   {
     "name": "You force the enhancer to be enhancerer",
     "description": "x1.25 Points",
-    "cost": 100000,
+    "cost": 1e8,
     "id": "PassiveEnhancerEnhancerer",
-    "branch": "Passive"
+    "branch": "PassiveScore"
   },
   {
     "name": "Here's a little bonus for you",
     "description": "+2 points per Word",
-    "cost": 700000,
+    "cost": 5e9,
     "id": "PassiveLittleBonus",
-    "branch": "Passive"
+    "branch": "PassiveScore"
   },
   {
     "name": "I don't know exactly what to upgrade, I'm sorry",
     "description": "x1.5 Points",
     "cost": 4000000,
     "id": "PassiveDontKnow",
-    "branch": "Passive"
+    "branch": "PassiveScore"
   },
   {
     "name": "Whispers of Stillness",
@@ -1171,7 +1171,7 @@
   {
     "name": "Path of Clarity",
     "description": "The line widens, giving more room to strike with precision. The Active Bar becomes more forgiving for those who watch closely.",
-    "cost": 2000000,
+    "cost": 1e6,
     "id": "LBarSize+",
     "branch": "Passive",
     "parents": [
@@ -1183,7 +1183,7 @@
   {
     "name": "Path of Precision",
     "description": "Further widening brings clarity to the path. Precision becomes easier to achieve as the Active Bar grows larger.",
-    "cost": 100000000,
+    "cost": 1e7,
     "id": "LBarSize++",
     "branch": "Passive",
     "parents": [
@@ -1195,7 +1195,7 @@
   {
     "name": "Path of Mastery",
     "description": "The path reaches its peak clarity. Every strike becomes more confident, each click more rewarding.",
-    "cost": 100000000,
+    "cost": 1e8,
     "id": "LBarSize+++",
     "branch": "Passive",
     "parents": [
@@ -1207,7 +1207,7 @@
   {
     "name": "Edge of Perfection",
     "description": "A hidden, narrow window reveals itself. Those who dare strike with perfect precision unlock a surge of passive power far beyond the norm.",
-    "cost": 100000000,
+    "cost": 1e9,
     "id": "PrecBarCrit",
     "branch": "Passive",
     "parents": [

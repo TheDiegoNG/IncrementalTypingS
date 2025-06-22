@@ -13,14 +13,14 @@ import { UpgradeService } from './upgrade.service';
   providedIn: 'root',
 })
 export class GameService {
-  game = signal(new Game(1e35, 'Current'));
+  game = signal(new Game(1e5, 'Current'));
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 
   constructor() {}
 
   loadGame(game: Game) {
-    this.game.set(game);
+    this.game.set({...game});
   }
 
   loadChallengeGame() {

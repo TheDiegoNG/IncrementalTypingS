@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { PassiveService } from '../Services/passive.service';
 import { WordsService } from '../Services/words.service';
+import { GameService } from '../Services/game.service';
+import { GameUtils } from '../Utils/gameUtils';
 
 @Component({
   selector: 'app-passive-bar-active',
@@ -12,22 +14,33 @@ import { WordsService } from '../Services/words.service';
 export class PassiveBarComponent {
   passiveService = inject(PassiveService)
   wordsService = inject(WordsService)
-  
+  gameService = inject(GameService)
 
   constructor() {
     
   }
 
   clickZone() {
-    const pos = this.passiveService.passBarActPosition();
-    const zoneStart = 0.4; // margen izquierdo del área clara
-    const zoneEnd = 0.6; // margen derecho del área clara
-
+    const pos = this.passiveService.passBarActPosition() * 100;
+    const zoneStart = (100 - this.passiveService.passBarActZoneWidth())/2; // margen izquierdo del área clara
+    const zoneEnd = (100 + this.passiveService.passBarActZoneWidth())/2; // margen derecho del área clara
+    const critZoneStart = (100 - this.passiveService.passBarActCritZoneWidth())/2;
+    const critZoneEnd = (100 + this.passiveService.passBarActCritZoneWidth())/2;
+    
     if (pos >= zoneStart && pos <= zoneEnd) {
-      this.passiveService.increaseMultiplier();
+      this.passiveService.increaseMultiplier(0.1);
+      if(pos >= critZoneStart && pos <= critZoneEnd && GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PrecBarCrit')) {
+        this.passiveService.increaseMultiplier(1);
+      }
     } else {
       this.passiveService.decreaseMultiplier(); // si hace clic fuera del área
     }
+  }
+
+  
+
+  get isCritZoneUnlocked(): boolean {
+    return GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PrecBarCrit');
   }
 }
  

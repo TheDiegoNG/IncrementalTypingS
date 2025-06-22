@@ -116,6 +116,9 @@ export class AchievementService {
         case 'wordCounterPerfection':
           achievement.group = 'Word Counter Perfection';
           break;
+        case 'passiveBarActMulti':
+          achievement.group = 'Passive Bar Active Multiplier';
+          break;
         default:
           achievement.group = 'Other';
       }

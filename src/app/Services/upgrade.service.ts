@@ -84,6 +84,9 @@ export class UpgradeService {
         case 'Score':
           this.createScoreUpgrade(upgrade);
           break;
+        case 'PassiveScore':
+          this.createPassiveScoreUpgrade(upgrade);
+          break;
         default:
           break;
       }
@@ -380,7 +383,7 @@ export class UpgradeService {
       case 'Passive':
         return this.getPassiveUpgrade(upgradeId);
       case 'Prestige':
-          return this.getPrestigeUpgrade(upgradeId);
+        return this.getPrestigeUpgrade(upgradeId);
       default:
         throw new Error('Unknown upgrade branch: ' + branch);
     }

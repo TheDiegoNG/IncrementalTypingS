@@ -8,4 +8,4 @@
     <button (click)="passiveService.collectCharge()">Obtain Charge!</button>
   }
 </div>
-  <p>Multiplier: x{{ wordsService.barIdleMultiplier() | number:'1.1-1' }}</p>
+  <p>Multiplier: x{{ gameService.game().passiveBarIdleMulti | number:'1.1-1' }}</p>

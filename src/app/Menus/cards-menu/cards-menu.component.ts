@@ -66,4 +66,14 @@ export class CardsMenuComponent {
         break;
     }
   }
+
+  get groupedCards(): { [group: string]: Card[] } {
+    return this.gameService.game().cards
+      .reduce((acc, card) => {
+        const group = card.name;
+        acc[group] = acc[group] ?? [];
+        acc[group].push(card);
+        return acc;
+      }, {} as { [group: string]: Card[] });
+  }
 }

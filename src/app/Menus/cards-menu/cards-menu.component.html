@@ -12,9 +12,10 @@
     </div>
     <p id="cardBonus" class="cardBonus"> {{ this.cardService.getBonus() }}</p>
     <div id="cardsContainer" class="cardsContainer">
-        @for (card of this.gameService.game().cards; track $index) {
-            <div [ngClass]="getCardType(card)" class="normalCard" [attr.data-tooltip]="card.description">
-                {{card.name}}
+        @for (cardGroup of groupedCards | keyvalue; track $index) {
+            <div [ngClass]="getCardType(cardGroup.value[0])" class="normalCard" [attr.data-tooltip]="cardGroup.value[0].description">
+                {{cardGroup.value[0].name}}
+                <div class="cardCounter">{{cardGroup.value.length}}</div>
             </div>
         }
     </div>

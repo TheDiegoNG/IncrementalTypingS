@@ -32,7 +32,8 @@ export class CardsMenuComponent {
       this.gameService.game.update((game) => ({...game, points: game.points-pack.cost}))
       var cards = this.cardService.getPack(packTier);
       this.timerService.logGameTimer('Purchased Cards');
-      this.gameService.updateCardsCost();
+      this.packService.updatePackCost(packTier);
+      // this.gameService.updateCardsCost();
       this.overlayService.cards.set(cards)
       console.log("New cards in overlay: ", this.overlayService.cards())
     }

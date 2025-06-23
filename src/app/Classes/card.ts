@@ -54,12 +54,12 @@ export class Card {
 
     if (this.type === 'Broken') {
       const penalties: Record<BonusType, number> = {
-        PointsAmount: -10,
-        PointsPercentage: -50,
-        PassivePointsAmount: -25,
-        PassivePointsPercentage: -65,
-        PassivePointsSpeed: -10,
-        PassivePointsLength: -1
+        PointsAmount: -5,
+        PointsPercentage: -25,
+        PassivePointsAmount: -15,
+        PassivePointsPercentage: -45,
+        PassivePointsSpeed: -2.5,
+        PassivePointsLength: -2
       };
       return penalties[this.bonusType] ?? 0;
     }
@@ -84,12 +84,12 @@ export class Card {
 
     if (this.type === 'Broken') {
       const brokenDescriptions: Record<BonusType, string> = {
-        PointsAmount: '-10 Points Per Word',
-        PointsPercentage: '-50% Points Per Word',
-        PassivePointsAmount: '-25 Passive Points Per Word',
-        PassivePointsPercentage: '-65% Passive Points Per Word',
-        PassivePointsSpeed: 'Generate Passive Words -10% Faster',
-        PassivePointsLength: '-1 Passive Word Length'
+        PointsAmount: '-5 Points Per Word',
+        PointsPercentage: '-25% Points Per Word',
+        PassivePointsAmount: '-15 Passive Points Per Word',
+        PassivePointsPercentage: '-45% Passive Points Per Word',
+        PassivePointsSpeed: 'Generate Passive Words 2.5% Slower',
+        PassivePointsLength: '-2 Passive Word Length'
       };
       return brokenDescriptions[this.bonusType] ?? '';
     }

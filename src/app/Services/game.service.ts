@@ -13,7 +13,7 @@ import { UpgradeService } from './upgrade.service';
   providedIn: 'root',
 })
 export class GameService {
-  game = signal(new Game(1e5, 'Current'));
+  game = signal(new Game(5e9, 'Current'));
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 
@@ -372,7 +372,7 @@ export class GameService {
   updateCardsCost() {
     const game = this.game();
     game.cardCost =
-      100000 * 2 ** game.packs.filter((pack) => pack.type === 'Starter').length;
+      1e9 * 2 ** game.packs.filter((pack) => pack.type === 'Starter').length;
     this.game.set({ ...game });
   }
 

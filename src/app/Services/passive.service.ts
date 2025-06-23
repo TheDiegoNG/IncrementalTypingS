@@ -148,7 +148,8 @@ export class PassiveService {
     if (!portableGenerator) return;
     const word = this.GetRandomString(this.gameService.game().passiveLength);
     this.passiveWord.set(word);
-    var points = this.getPassivePoints(word);
+    let points = this.getPassivePoints(word);
+    if(points <= 0) points = 1
     points *= portableGenerator.amountGained;
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'xFast')) {
       points *= this.gameService.game().passiveBarActMulti;

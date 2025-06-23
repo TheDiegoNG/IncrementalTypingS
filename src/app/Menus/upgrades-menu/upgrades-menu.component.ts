@@ -28,14 +28,19 @@ export class UpgradesMenuComponent implements OnInit {
   );
 
   selectedUpgrade: Upgrade | null = null;
+  activeTab = 0;
 
   ngOnInit() {
-    this.updateViewBox();
+    this.switchTree(0);
   }
 
   selectUpgrade(upgrade: Upgrade) {
     this.selectedUpgrade = upgrade;
-  }  
+  }
+
+  onTabChange(index: number) {
+    this.switchTree(index);
+  }
 
   getUpgradeById(id: string): Upgrade | undefined {
     return this.upgrades.find((u) => u.id === id);
@@ -80,17 +85,55 @@ export class UpgradesMenuComponent implements OnInit {
            !this.isUnlocked('Act/IdleI');
   }
 
+  private switchTree(index: number) {
+    this.activeTab = index;
+    let treeUpgrades: Upgrade[] = [];
+    if (index === 0) {
+      treeUpgrades = this.upgrades;
+    } else if (index === 1) {
+      treeUpgrades = this.upgradeService.passiveUpgrades;
+    } else if (index === 2) {
+      treeUpgrades = this.upgradeService.prestigeUpgrades;
+    }
+    this.setTreeBounds(treeUpgrades);
+    this.scale = 1;
+    this.updateViewBox();
+  }
+
+  private setTreeBounds(list: Upgrade[]) {
+    if (list.length === 0) return;
+    const margin = 250;
+    const xs = list.map(u => u.x ?? 0);
+    const ys = list.map(u => u.y ?? 0);
+    const minX = Math.min(...xs);
+    const minY = Math.min(...ys);
+    const maxX = Math.max(...xs);
+    const maxY = Math.max(...ys);
+    this.bounds = {
+      minX: minX - margin,
+      maxX: maxX + margin,
+      minY: minY - margin,
+      maxY: maxY + margin,
+    };
+    const root = list.find(u => (u.parents?.length ?? 0) === 0);
+    this.rootPos = {
+      x: root?.x ?? 0,
+      y: root?.y ?? 0,
+    };
+    this.offset = { x: this.rootPos.x - 300, y: this.rootPos.y - 300 };
+  }
+
   // ViewBox control
   viewBox = '-100 -150 600 600';
   private panStart: { x: number; y: number } | null = null;
-  // Coordinates of the first upgrade in upgrades.json
-  private readonly ROOT_POS = { x: 150, y: 100 };
-  private offset = { x: this.ROOT_POS.x - 300, y: this.ROOT_POS.y - 300 };
+  // Coordinates of the root upgrade of the current tree
+  private rootPos = { x: 150, y: 100 };
+  private offset = { x: this.rootPos.x - 300, y: this.rootPos.y - 300 };
   private scale = 1;
 
   private readonly MIN_SCALE = 0.5;
   private readonly MAX_SCALE = 2.5;
-  private readonly BOUNDS = {
+  private bounds = {
     minX: -250,
     maxX: 2100,
     minY: -250,
@@ -132,10 +175,10 @@ export class UpgradesMenuComponent implements OnInit {
   updateViewBox() {
     const width = 600 / this.scale;
     const height = 600 / this.scale;
-    const maxX = this.BOUNDS.maxX - width;
-    const maxY = this.BOUNDS.maxY - height;
-    this.offset.x = Math.min(Math.max(this.offset.x, this.BOUNDS.minX), maxX);
-    this.offset.y = Math.min(Math.max(this.offset.y, this.BOUNDS.minY), maxY);
+    const maxX = this.bounds.maxX - width;
+    const maxY = this.bounds.maxY - height;
+    this.offset.x = Math.min(Math.max(this.offset.x, this.bounds.minX), maxX);
+    this.offset.y = Math.min(Math.max(this.offset.y, this.bounds.minY), maxY);
     this.viewBox = `${this.offset.x} ${this.offset.y} ${width} ${height}`;
   }
 

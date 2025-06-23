@@ -1,6 +1,6 @@
 <section id="upgradesMenu" class="menu upgrades-menu">
   <div class="tree-zone" #treeWrapper>
-    <p-tabs value="0">
+    <p-tabs [(value)]="activeTab" (valueChange)="onTabChange($event)">
       <p-tablist>
         <p-tab value="0">Upgrades</p-tab>
         @if (this.gameService.game().passivePoints > 0) {

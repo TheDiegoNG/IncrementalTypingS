@@ -47,10 +47,7 @@ export class WordboxComponent {
   inputValue = model('');
   currentLetterCount = computed(() => this.inputValue().length);
   currentTime = signal(Date.now());
-  lettersPerSecond = signal(0);
-
-  lettersTimestamps: number[] = [];
-  private lastLength = 0;
+  lettersPerSecond = computed(() => this.wordService.lettersPerSecond());
 
   // language: language = 'English ';
 
@@ -61,31 +58,8 @@ export class WordboxComponent {
     //   .subscribe((language) => (this.language = language));
 
     effect(() => {
-      const newLength = this.inputValue().length;
-      const delta = newLength - this.lastLength;
-      const now = Date.now();
-
-      if (delta > 0) {
-        for (let i = 0; i < delta; i++) {
-          this.lettersTimestamps.push(now);
-        }
-      }
-
-      this.lastLength = newLength;
+      this.wordService.recordInputLength(this.inputValue().length);
     });
-
-    setInterval(() => {
-      const now = Date.now();
-      const oneSecondAgo = now - 1000;
-
-      // Filtra timestamps que estén dentro de la última ventana de 1 segundo
-      this.lettersTimestamps = this.lettersTimestamps.filter(
-        (t) => t > oneSecondAgo
-      );
-
-      // Actualiza el signal
-      this.lettersPerSecond.set(this.lettersTimestamps.length);
-    }, 200);
 
     
   }

@@ -30,10 +30,14 @@ export class WordsService {
   hiraganaWordList: string[] = [];
   russianWordList: string[] = [];
   amharicWordList: string[] = [];
+  lettersPerSecond = signal(0);
+  private lettersTimestamps: number[] = [];
+  private lastInputLength = 0;
 
   constructor() {
     this.loadWordLists();
     setInterval(() => this.updateBonuses(), 100);
+    setInterval(() => this.updateLettersPerSecond(), 200);
   }
 
   private async loadWordLists() {
@@ -119,6 +123,24 @@ export class WordsService {
   masteryService = inject(MasteryService);
   cardService = inject(CardService);
   languageService = inject(LanguageService);
+
+  recordInputLength(length: number) {
+    const delta = length - this.lastInputLength;
+    const now = Date.now();
+    if (delta > 0) {
+      for (let i = 0; i < delta; i++) {
+        this.lettersTimestamps.push(now);
+      }
+    }
+    this.lastInputLength = length;
+  }
+
+  private updateLettersPerSecond() {
+    const now = Date.now();
+    const oneSecondAgo = now - 1000;
+    this.lettersTimestamps = this.lettersTimestamps.filter((t) => t > oneSecondAgo);
+    this.lettersPerSecond.set(this.lettersTimestamps.length);
+  }
 
   private lastWordTime: number = Date.now();
   private lastScrSWordTime = 0;

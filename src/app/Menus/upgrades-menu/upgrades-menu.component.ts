@@ -28,7 +28,7 @@ export class UpgradesMenuComponent implements OnInit {
   );
 
   selectedUpgrade: Upgrade | null = null;
-  activeTab = 0;
+  activeTab = "0";
 
   ngOnInit() {
     this.switchTree(0);
@@ -38,8 +38,9 @@ export class UpgradesMenuComponent implements OnInit {
     this.selectedUpgrade = upgrade;
   }
 
-  onTabChange(index: number) {
-    this.switchTree(index);
+  onTabChange(index: number | string) {
+    const treeIndex = index as number
+    this.switchTree(treeIndex);
   }
 
   getUpgradeById(id: string): Upgrade | undefined {
@@ -86,7 +87,7 @@ export class UpgradesMenuComponent implements OnInit {
   }
 
   private switchTree(index: number) {
-    this.activeTab = index;
+    this.activeTab = index.toString();
     let treeUpgrades: Upgrade[] = [];
     if (index === 0) {
       treeUpgrades = this.upgrades;
@@ -121,6 +122,7 @@ export class UpgradesMenuComponent implements OnInit {
       y: root?.y ?? 0,
     };
     this.offset = { x: this.rootPos.x - 300, y: this.rootPos.y - 300 };
+    console.log("Setting Tree Bounds: ", this.bounds, "RootPos: ", this.rootPos, "Offset: ", this.offset)
   }
 
   // ViewBox control
@@ -177,9 +179,11 @@ export class UpgradesMenuComponent implements OnInit {
     const height = 600 / this.scale;
     const maxX = this.bounds.maxX - width;
     const maxY = this.bounds.maxY - height;
-    this.offset.x = Math.min(Math.max(this.offset.x, this.bounds.minX), maxX);
-    this.offset.y = Math.min(Math.max(this.offset.y, this.bounds.minY), maxY);
+    console.log("Width: ", width, "Height: ", height, "maxX: ", maxX, "maxY: ", maxY, "Scale: ", this.scale)
+    this.offset.x = Math.min(Math.max(this.offset.x, this.bounds.minX), this.bounds.maxX);
+    this.offset.y = Math.min(Math.max(this.offset.y, this.bounds.minY), this.bounds.maxY);
     this.viewBox = `${this.offset.x} ${this.offset.y} ${width} ${height}`;
+    console.log("New coords: ViewBox: ", this.viewBox, "Bounds: ", this.bounds)
   }
 
   getUpgradeBonus() {

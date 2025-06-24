@@ -30,14 +30,14 @@ export class WordsService {
   hiraganaWordList: string[] = [];
   russianWordList: string[] = [];
   amharicWordList: string[] = [];
-  lettersPerSecond = signal(0);
+  lettersPerMinute = signal(0);
   private lettersTimestamps: number[] = [];
   private lastInputLength = 0;
 
   constructor() {
     this.loadWordLists();
     setInterval(() => this.updateBonuses(), 100);
-    setInterval(() => this.updateLettersPerSecond(), 200);
+    setInterval(() => this.updateLettersPerMinute(), 200);
   }
 
   private async loadWordLists() {
@@ -135,11 +135,11 @@ export class WordsService {
     this.lastInputLength = length;
   }
 
-  private updateLettersPerSecond() {
+  private updateLettersPerMinute() {
     const now = Date.now();
-    const oneSecondAgo = now - 1000;
-    this.lettersTimestamps = this.lettersTimestamps.filter((t) => t > oneSecondAgo);
-    this.lettersPerSecond.set(this.lettersTimestamps.length);
+    const oneMinuteAgo = now - 60000;
+    this.lettersTimestamps = this.lettersTimestamps.filter((t) => t > oneMinuteAgo);
+    this.lettersPerMinute.set(this.lettersTimestamps.length);
   }
 
   private lastWordTime: number = Date.now();
@@ -473,7 +473,7 @@ export class WordsService {
     if (ascentEra)
     { 
       totalPoints *= ascentEra.bonus;
-      this.wordBonus += `x ${ascentEra.bonus} (Era 1) `;
+      this.wordBonus += `x${ascentEra.bonus} (Era 1) `;
       this.updateBonus('Era', ascentEra.bonus);
       // bonusValues.push(2);
     }
@@ -494,8 +494,16 @@ export class WordsService {
       }
     }
 
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'PowSurge')) {
+      totalPoints *= 1 + Math.floor(this.gameService.game().prestigePoints / 1000) * 0.1;
+      this.wordBonus += `x${1 + Math.floor(this.gameService.game().prestigePoints / 1000) * 0.1} (PowSurge) `;
+      this.updateBonus('PowSurge', 1 + Math.floor(this.gameService.game().prestigePoints / 1000) * 0.1);
+    }
+
     if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'LpVMulti')) {
-      
+      totalPoints *= 1 + Math.cbrt(this.lettersPerMinute());
+      this.wordBonus += `x${1 + Math.cbrt(this.lettersPerMinute())} (LpVMulti) `;
+      this.updateBonus('LpVMulti', 1 + Math.cbrt(this.lettersPerMinute()));
     }
 
     if(this.prestigeTempStartMulti) {

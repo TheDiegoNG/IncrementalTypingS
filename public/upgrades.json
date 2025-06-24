@@ -2145,7 +2145,7 @@
     ],
     "x": 600,
     "y": 100,
-    "bonus": "0.1% of Points on Prestige Reset"
+    "bonus": "CurrentPoints**0.4 points on Prestige Reset"
   },
   {
     "name": "Letters of Momentum",
@@ -2158,7 +2158,7 @@
     ],
     "x": 600,
     "y": 200,
-    "bonus": "Multiplier on Letter Per Second"
+    "bonus": "Multiplier on Letter Per Minute"
   },
   {
     "name": "Convergence Pulse",
@@ -2171,7 +2171,7 @@
     ],
     "x": 800,
     "y": 200,
-    "bonus": "All multipliers +x% per 1000 Prestige Points"
+    "bonus": "Passive and Points +10% per 1000 Prestige Points"
   },
   {
     "name": "Glyph Flood",

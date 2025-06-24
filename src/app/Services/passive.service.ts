@@ -160,11 +160,15 @@ export class PassiveService {
     if(GameUtils.IsUnlockedAchievement(this.gameService.game(), "Epic Multiplier")) {
       points *= 2
     }
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'PowSurge')) {
+      points *= 1 + Math.floor(this.gameService.game().prestigePoints / 1000) * 0.1;
+    }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE'))
       this.gameService.game.update((game) => ({
         ...game,
         passivePoints: game.passivePoints + points,
       }));
+    
 
     this.achievementService.revealAchievementGroup('Passive Points');
     this.achievementService.revealAchievementGroup('Passive Bar Active Multiplier');

@@ -13,7 +13,7 @@ import { UpgradeService } from './upgrade.service';
   providedIn: 'root',
 })
 export class GameService {
-  game = signal(new Game(1e8, 'Current'));
+  game = signal(new Game(1e12, 'Current'));
   challengeGame = signal(new Game(0, 'Challenge'));
   activeGame = signal(new Game(0, 'Active'));
 
@@ -192,7 +192,8 @@ export class GameService {
     game.prestigeCount++;
 
     //Points
-    game.points = 0;
+    let maintainsPercentPoints = GameUtils.IsPurchasedPrestigeUpgrade(game, "PrNexus")
+    game.points = maintainsPercentPoints ? game.points ** 0.4 : 0;
     game.bonusValues = {};
     game.bonusSumsValues = {};
 

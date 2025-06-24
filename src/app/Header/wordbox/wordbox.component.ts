@@ -47,7 +47,7 @@ export class WordboxComponent {
   inputValue = model('');
   currentLetterCount = computed(() => this.inputValue().length);
   currentTime = signal(Date.now());
-  lettersPerSecond = computed(() => this.wordService.lettersPerSecond());
+  lettersPerSecond = computed(() => this.wordService.lettersPerMinute());
 
   // language: language = 'English ';
 

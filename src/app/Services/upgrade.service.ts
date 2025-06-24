@@ -209,6 +209,15 @@ export class UpgradeService {
     }
   }
 
+  startAutobuyMultiUpgrade() {
+    setInterval(() => {
+      this.getMultiUpgrade("MultiUpgradePoints");
+      this.getMultiUpgrade("MultiUpgradePointsMult");
+      this.getMultiUpgrade("MultiUpgradeCritMulti");
+      this.getMultiUpgrade("MultiUpgradeCritChance");
+    }, 100) 
+  }
+
   getMultiUpgrade(upgradeType: eIdUpgrade) {
     const multiUpgrade = this.gameService
       .game()
@@ -373,6 +382,9 @@ export class UpgradeService {
           ...game,
           rollsAmount: game.rollsAmount + 2,
         }));
+      if(upgradeType === 'AutoMulti') {
+        this.startAutobuyMultiUpgrade();
+      }
     }
   }
 

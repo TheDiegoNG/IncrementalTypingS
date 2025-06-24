@@ -6,6 +6,7 @@ import { TimerService } from './timer.service';
 import { AchievementService } from './achievement.service';
 import { PassiveService } from './passive.service';
 import { Era } from '../Classes/era';
+import { WordsService } from './words.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ export class PrestigeService {
   timerService = inject(TimerService)
   achievementService = inject(AchievementService) 
   passiveService = inject(PassiveService)
+  wordsService = inject(WordsService)
 
   eras: Era[] = [];
   
@@ -41,6 +43,9 @@ export class PrestigeService {
     if(this.passiveService.intervalId) {
       clearInterval(this.passiveService.intervalId)
       this.passiveService.startPassInterval(this.gameService.game().passiveRate)
+    }
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), "PrTempB")) {
+      this.wordsService.startPresTempStartMultiBonus();
     }
     this.eras.forEach(era => {
       const eraPlayer = this.gameService.game().prestigeEras.find(x => x.name === era.name);

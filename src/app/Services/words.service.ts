@@ -124,6 +124,20 @@ export class WordsService {
   private lastScrSWordTime = 0;
   private scrabbleQueue: number[] = [];
 
+  prestigeTempStartMulti = false;
+  private prestigeTempStartMultiTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  startPresTempStartMultiBonus() {
+    this.prestigeTempStartMulti = true;
+    if (this.prestigeTempStartMultiTimeout) {
+      clearTimeout(this.prestigeTempStartMultiTimeout);
+    }
+    this.prestigeTempStartMultiTimeout = setTimeout(() => {
+      this.prestigeTempStartMulti = false;
+      this.prestigeTempStartMultiTimeout = null;
+    }, 30000);
+  }
+
   generateWord() {
     let generatedWord: string = '';
     switch (this.languageService.language()) {
@@ -437,7 +451,7 @@ export class WordsService {
     if (ascentEra)
     { 
       totalPoints *= ascentEra.bonus;
-      this.wordBonus += `x ${ascentEra.bonus} (Era 1)`;
+      this.wordBonus += `x ${ascentEra.bonus} (Era 1) `;
       this.updateBonus('Era', ascentEra.bonus);
       // bonusValues.push(2);
     }
@@ -447,15 +461,25 @@ export class WordsService {
 
       if (wordCounter + 1 < 100) {
         totalPoints *= Math.sqrt(wordCounter + 1);
-        this.wordBonus += 'xMath.sqrt(perfectWords)';
+        this.wordBonus += 'xMath.sqrt(perfectWords) ';
         this.updateBonus('xPrec', Math.sqrt(wordCounter + 1));
         // bonusValues.push(Math.sqrt(wordCounter + 1));
       } else {
         totalPoints *= 10;
-        this.wordBonus += 'x10 (perfectWords > 100)';
+        this.wordBonus += 'x10 (perfectWords > 100) ';
         this.updateBonus('xPrec', 10);
         // bonusValues.push(10);
       }
+    }
+
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'LpVMulti')) {
+      
+    }
+
+    if(this.prestigeTempStartMulti) {
+      totalPoints *= 2;
+      this.wordBonus += 'x2 (Temp Pres Bonus) ';
+      this.updateBonus('PrTempB', 2);
     }
 
     if (this.critical()) {

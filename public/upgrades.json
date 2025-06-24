@@ -2112,7 +2112,7 @@
   {
     "name": "Hands of Fate",
     "description": "Automation whispers into the void. Multiupgrades now flow freely, weaving themselves into your systems without a single touch.",
-    "cost": 0,
+    "cost": 250,
     "id": "AutoMulti",
     "branch": "Prestige",
     "parents": [
@@ -2124,7 +2124,7 @@
   {
     "name": "Flare of Rebirth",
     "description": "In the instant of reset, a spark ignites. A burst of multiplier energy surges forth, propelling you into your next journey.",
-    "cost": 0,
+    "cost": 200,
     "id": "PrTempB",
     "branch": "Prestige",
     "parents": [

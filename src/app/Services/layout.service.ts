@@ -1,11 +1,14 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { GameUtils } from '../Utils/gameUtils';
+import { GameService } from './game.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LayoutService {
-  lettersPerSecondVisible = signal(false);
-  comboCounterVisible = signal(false);
+  gameService = inject(GameService)
+  lettersPerSecondVisible = computed(() => GameUtils.IsPurchasedUpgrade(this.gameService.game(), "LpV"));
+  comboCounterVisible = computed(() => GameUtils.IsPurchasedUpgrade(this.gameService.game(), "xPrec"));
   challengeTimerVisible = signal(false);
   challengeTimerValue = signal('');
   private intervalId: ReturnType<typeof setInterval> | null = null;

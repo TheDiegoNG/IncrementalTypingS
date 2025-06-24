@@ -37,7 +37,7 @@
   {
     "name": "Let's go back to the basics",
     "description": "x3 Points!",
-    "cost": 600000000,
+    "cost": 1e8,
     "id": "IntermediateBasicsOne",
     "branch": "Score"
   },
@@ -241,7 +241,7 @@
   {
     "name": "Lexical Reach",
     "description": "The shape of thought stretches. Words now extend beyond their former bounds, allowing for longer, more potent expressions.",
-    "cost": 100000,
+    "cost": 1e12,
     "id": "+1WLII",
     "branch": "Explorer",
     "parents": [
@@ -1080,7 +1080,7 @@
   {
     "name": "I don't know exactly what to upgrade, I'm sorry",
     "description": "x1.5 Points",
-    "cost": 4000000,
+    "cost": 1e11,
     "id": "PassiveDontKnow",
     "branch": "PassiveScore"
   },

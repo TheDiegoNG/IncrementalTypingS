@@ -179,11 +179,9 @@ export class UpgradesMenuComponent implements OnInit {
     const height = 600 / this.scale;
     const maxX = this.bounds.maxX - width;
     const maxY = this.bounds.maxY - height;
-    console.log("Width: ", width, "Height: ", height, "maxX: ", maxX, "maxY: ", maxY, "Scale: ", this.scale)
     this.offset.x = Math.min(Math.max(this.offset.x, this.bounds.minX), this.bounds.maxX);
     this.offset.y = Math.min(Math.max(this.offset.y, this.bounds.minY), this.bounds.maxY);
     this.viewBox = `${this.offset.x} ${this.offset.y} ${width} ${height}`;
-    console.log("New coords: ViewBox: ", this.viewBox, "Bounds: ", this.bounds)
   }
 
   getUpgradeBonus() {

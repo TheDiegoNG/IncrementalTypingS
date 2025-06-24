@@ -183,12 +183,6 @@ export class UpgradeService {
       }));
       this.gameService.addUpgrade(upgrade);
       this.timerService.logGameTimer(`Obtained Upgrade: ${upgrade.name}"`);
-      if (upgradeType === 'LpV') {
-        this.layoutService.lettersPerSecondVisible.set(true);
-      }
-      if (upgradeType === 'xPrec') {
-        this.layoutService.comboCounterVisible.set(true);
-      }
       if (upgradeType === 'xPass/t') {
         this.passiveService.passBarIdleProgress.set(1);
       }

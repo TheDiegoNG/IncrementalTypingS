@@ -193,7 +193,7 @@ export class GameService {
 
     //Points
     let maintainsPercentPoints = GameUtils.IsPurchasedPrestigeUpgrade(game, "PrNexus")
-    game.points = maintainsPercentPoints ? game.points ** 0.4 : 0;
+    game.points = maintainsPercentPoints ? game.points ** 0.4 : 1e15;
     game.bonusValues = {};
     game.bonusSumsValues = {};
 

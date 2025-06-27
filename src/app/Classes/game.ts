@@ -70,6 +70,7 @@ export class Game {
   passiveRate: number = 1000;
   passiveCharges: number = 0;
   passiveBarActMulti: number = 1;
+  passiveBarActCombo: number = 0;
   passiveBarIdleMulti: number = 1;
 
   //Cards

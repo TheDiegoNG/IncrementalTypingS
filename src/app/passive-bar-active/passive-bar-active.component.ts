@@ -32,8 +32,10 @@ export class PassiveBarComponent {
       if(pos >= critZoneStart && pos <= critZoneEnd && GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PrecBarCrit')) {
         this.passiveService.increaseMultiplier(1);
       }
+      this.passiveService.increaseActBarCombo();
     } else {
       this.passiveService.decreaseMultiplier(); // si hace clic fuera del área
+      this.passiveService.resetActBarCombo();
     }
   }
 
@@ -41,6 +43,10 @@ export class PassiveBarComponent {
 
   get isCritZoneUnlocked(): boolean {
     return GameUtils.IsPurchasedPassiveUpgrade(this.gameService.game(), 'PrecBarCrit');
+  }
+
+  get isBarActComboUnlocked(): boolean {
+    return GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'ActBarPerf');
   }
 }
  

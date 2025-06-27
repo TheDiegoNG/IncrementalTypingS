@@ -128,6 +128,9 @@ export class PassiveService {
   }
 
   increaseMultiplier(bonus: number) {
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'ActBarMulti+')) {
+      bonus *= 1.5
+    }
     this.gameService.game.update((game) => ({...game, passiveBarActMulti: game.passiveBarActMulti + bonus})); // sube el multiplicador
   }
 
@@ -135,6 +138,14 @@ export class PassiveService {
     this.gameService.game.update((game) => ({...game, passiveBarActMulti: 
       Math.max(1, game.passiveBarActMulti - 0.1)
     })); // baja mínimo a 1
+  }
+
+  increaseActBarCombo() {
+    this.gameService.game.update((game) => ({...game, passiveBarActCombo: game.passiveBarActCombo + 1}))
+  }
+
+  resetActBarCombo() {
+    this.gameService.game.update((game) => ({...game, passiveBarActCombo: 0}))
   }
 
   createGenerator(generator: Generator) {
@@ -162,6 +173,9 @@ export class PassiveService {
     }
     if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'PowSurge')) {
       points *= 1 + Math.floor(this.gameService.game().prestigePoints / 1000) * 0.1;
+    }
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'ActBarPerf')) {
+      points *= Math.min(25, Math.pow(this.gameService.game().passiveBarActCombo + 1, 0.4));
     }
     if (GameUtils.IsPurchasedUpgrade(this.gameService.game(), 'PaE'))
       this.gameService.game.update((game) => ({

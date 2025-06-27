@@ -428,7 +428,7 @@ export class WordsService {
       this.wordBonus += ' x [PassivePoints] ** (1/7)';
       this.updateBonus(
         'PaE',
-        Math.log10(this.gameService.game().passivePoints)
+        Math.pow(this.gameService.game().passivePoints, (1/7))
       );
       // bonusValues.push(Math.log10(this.gameService.game().passivePoints));
     }
@@ -504,6 +504,12 @@ export class WordsService {
       totalPoints *= 1 + Math.cbrt(this.lettersPerMinute());
       this.wordBonus += `x${1 + Math.cbrt(this.lettersPerMinute())} (LpVMulti) `;
       this.updateBonus('LpVMulti', 1 + Math.cbrt(this.lettersPerMinute()));
+    }
+
+    if(GameUtils.IsPurchasedPrestigeUpgrade(this.gameService.game(), 'LetCountB')) {
+      totalPoints *= Math.min(1e10, Math.pow(this.gameService.game().letterCounter / 1000, 1.076));
+      this.wordBonus += `x${Math.min(1e10, Math.pow(this.gameService.game().letterCounter / 1000, 1.076))} (LetCountB) `;
+      this.updateBonus('LetCountB', Math.min(1e10, Math.pow(this.gameService.game().letterCounter / 1000, 1.076)));
     }
 
     if(this.prestigeTempStartMulti) {

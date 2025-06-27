@@ -60,7 +60,7 @@
     "bonus": "A feeling of determination"
   },
   {
-    "name": "Letters per Value",
+    "name": "Letters per Minute",
     "description": "Your words are no longer just expressions — they become metrics of mastery. Each letter typed finds its weight in the great ledger of language, charting your fluency over time.",
     "cost": 300,
     "id": "LpV",
@@ -1393,25 +1393,13 @@
     "bonus": "Keep Passive on Prestige"
   },
   {
-    "name": "Foundry Surge",
-    "description": "Each thousand echoes of Prestige fuels the fires of productivity. Passive points swell like molten metal in the heart of your forge, growing with every spark of progress.",
-    "cost": 0,
-    "id": "PrGenBulk",
-    "branch": "Prestige",
-    "parents": [
-      "KeepPas"
-    ],
-    "y": 200,
-    "bonus": "+X% Passive Point per 1000 Prestige Points"
-  },
-  {
     "name": "Precision Arc",
     "description": "Your focus sharpens like a blade. The Active Bar responds, resonating with a higher, clearer multiplier — the mark of one who strikes with intent.",
     "cost": 0,
     "id": "ActBarMulti+",
     "branch": "Prestige",
     "parents": [
-      "PrGenBulk"
+      "KeepPas"
     ],
     "y": 300,
     "bonus": "Better Active Bar Multiplier"
@@ -1435,7 +1423,7 @@
     "id": "IdleBarMulti+",
     "branch": "Prestige",
     "parents": [
-      "PrGenBulk"
+      "KeepPas"
     ],
     "x": 200,
     "y": 300,
